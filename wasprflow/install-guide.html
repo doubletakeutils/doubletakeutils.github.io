@@ -5,22 +5,22 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>WASPrFlow Install Guide</title>
   <meta name="description" content="Comprehensive installation, licensing, and settings guide for WASPrFlow on Windows." />
-  <meta name="theme-color" content="#241013" />
+  <meta name="theme-color" content="#1e1315" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-1: #12090b;
-      --bg-2: #241013;
-      --panel: #2d1619;
-      --line: #6a2c35;
-      --text: #fff0f1;
-      --muted: #d9b0b5;
-      --accent: #d94b5c;
-      --ok: #ff9aa6;
-      --warn: #ff9b6b;
-      --danger: #ff6b7a;
+      --bg-1: #110b0c;
+      --bg-2: #1e1315;
+      --panel: #26181b;
+      --line: #5a353b;
+      --text: #f7edef;
+      --muted: #ccb7ba;
+      --accent: #a64652;
+      --ok: #c98a92;
+      --warn: #d38c68;
+      --danger: #d76672;
       --radius: 14px;
     }
     * { box-sizing: border-box; }
@@ -29,22 +29,22 @@
       font-family: "Space Grotesk", Segoe UI, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(1200px 600px at 20% -10%, rgba(217, 75, 92, 0.2) 0%, transparent 60%),
-        radial-gradient(1000px 800px at 100% 0%, rgba(255, 122, 136, 0.14) 0%, transparent 65%),
+        radial-gradient(1200px 600px at 20% -10%, rgba(166, 70, 82, 0.16) 0%, transparent 60%),
+        radial-gradient(1000px 800px at 100% 0%, rgba(200, 108, 116, 0.1) 0%, transparent 65%),
         linear-gradient(165deg, var(--bg-1), var(--bg-2));
       min-height: 100vh;
     }
     .wrap { width: min(1080px, 92vw); margin: 0 auto; }
-    .topbar { position: sticky; top: 0; background: rgba(18,10,12,0.88); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(106,44,53,0.62); }
+    .topbar { position: sticky; top: 0; background: rgba(17,11,12,0.88); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(90,53,59,0.62); }
     .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
     .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.03em; }
-    .dot { width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--ok)); box-shadow: 0 0 0 5px rgba(217,75,92,0.16); }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--ok)); box-shadow: 0 0 0 5px rgba(166,70,82,0.14); }
     .nav a { color: var(--muted); text-decoration: none; margin-left: 18px; }
     .nav a:hover { color: var(--text); }
     .hero { padding: 42px 0 14px; }
     .hero h1 { margin: 0 0 10px; font-size: clamp(1.9rem, 4.2vw, 3rem); line-height: 1.05; }
     .hero p { margin: 0; color: var(--muted); max-width: 70ch; }
-    .panel { border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(180deg, rgba(51,22,28,0.96), rgba(32,14,18,0.96)); }
+    .panel { border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(180deg, rgba(43,26,30,0.96), rgba(28,18,20,0.96)); }
     .callout { margin-top: 16px; padding: 14px; }
     .callout p { margin: 0; color: var(--muted); }
     .callout strong { color: var(--text); }
@@ -56,7 +56,7 @@
     .step h3 { margin: 0 0 8px; font-size: 1.05rem; }
     .step p { margin: 0 0 10px; color: var(--muted); line-height: 1.5; }
     figure { margin: 0; }
-    img { width: 100%; height: auto; border-radius: 10px; border: 1px solid #5a2630; background: #160b0d; }
+    img { width: 100%; height: auto; border-radius: 10px; border: 1px solid #513439; background: #160f10; }
     figcaption { color: var(--muted); font-size: 0.92rem; margin-top: 7px; }
     .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .status { display: grid; gap: 10px; }
