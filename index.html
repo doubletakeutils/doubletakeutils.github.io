@@ -8,7 +8,7 @@
     name="description"
     content="DoubleTake Utilities builds practical Windows software, including WASPrFlow and DoubleTake Image and Video."
   />
-  <meta name="theme-color" content="#1a0c0f" />
+  <meta name="theme-color" content="#0c1b2d" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -17,13 +17,13 @@
   />
   <style>
     :root {
-      --ink: #8f1d2c;
-      --ink-soft: #b94b5d;
-      --paper: #12080a;
-      --panel: rgba(31, 14, 18, 0.86);
-      --line: rgba(143, 29, 44, 0.24);
-      --text: #f6eeee;
-      --muted: #cbb7b9;
+      --ink: #3a72b7;
+      --ink-soft: #6c96d1;
+      --paper: #08111c;
+      --panel: rgba(13, 24, 39, 0.84);
+      --line: rgba(58, 114, 183, 0.18);
+      --text: #edf3fb;
+      --muted: #a3b4c9;
       --shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
       --radius-xl: 28px;
       --radius-lg: 20px;
@@ -35,9 +35,9 @@
       font-family: "Outfit", "Segoe UI", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(143, 29, 44, 0.2), transparent 30%),
-        radial-gradient(circle at top right, rgba(185, 75, 93, 0.1), transparent 28%),
-        linear-gradient(180deg, #0f0809 0%, #170c0f 52%, #211013 100%);
+        radial-gradient(circle at top left, rgba(58, 114, 183, 0.2), transparent 30%),
+        radial-gradient(circle at top right, rgba(108, 150, 209, 0.12), transparent 28%),
+        linear-gradient(180deg, #071018 0%, #0e1a2a 52%, #152537 100%);
       min-height: 100vh;
     }
     a { color: inherit; }
@@ -55,7 +55,7 @@
       padding: 18px 22px;
       border: 1px solid var(--line);
       border-radius: 999px;
-      background: rgba(16, 10, 11, 0.78);
+      background: rgba(8, 15, 25, 0.76);
       backdrop-filter: blur(12px);
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
     }
@@ -99,12 +99,12 @@
     .hero {
       position: relative;
       overflow: hidden;
-      border: 1px solid rgba(143, 29, 44, 0.24);
+      border: 1px solid rgba(58, 114, 183, 0.18);
       border-radius: 36px;
       padding: clamp(28px, 5vw, 54px);
       background:
-        linear-gradient(135deg, rgba(41,17,21,0.94), rgba(24,12,14,0.92)),
-        linear-gradient(125deg, #2a1014, #14090b);
+        linear-gradient(135deg, rgba(14,28,45,0.94), rgba(10,18,29,0.92)),
+        linear-gradient(125deg, #18304c, #0b1522);
       box-shadow: var(--shadow);
     }
     .hero::before,
@@ -119,14 +119,14 @@
       height: 420px;
       right: -120px;
       top: -110px;
-      background: radial-gradient(circle, rgba(143, 29, 44, 0.2) 0%, transparent 66%);
+      background: radial-gradient(circle, rgba(58, 114, 183, 0.2) 0%, transparent 66%);
     }
     .hero::after {
       width: 320px;
       height: 320px;
       left: -120px;
       bottom: -150px;
-      background: radial-gradient(circle, rgba(185, 75, 93, 0.1) 0%, transparent 72%);
+      background: radial-gradient(circle, rgba(108, 150, 209, 0.12) 0%, transparent 72%);
     }
     .hero-grid {
       position: relative;
@@ -142,9 +142,9 @@
       gap: 10px;
       margin-bottom: 16px;
       padding: 8px 12px;
-      border: 1px solid rgba(143, 29, 44, 0.22);
+      border: 1px solid rgba(58, 114, 183, 0.18);
       border-radius: 999px;
-      background: rgba(55, 18, 24, 0.84);
+      background: rgba(19, 34, 53, 0.84);
       color: var(--ink-soft);
       font-size: 0.88rem;
       font-weight: 600;
@@ -156,8 +156,8 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #7f1423, #b73a4d);
-      box-shadow: 0 0 0 6px rgba(143, 29, 44, 0.1);
+      background: linear-gradient(135deg, #2f5f9d, #6c96d1);
+      box-shadow: 0 0 0 6px rgba(58, 114, 183, 0.1);
     }
     h1 {
       margin: 0 0 14px;
@@ -197,18 +197,18 @@
     }
     .button.primary {
       color: #fff;
-      background: linear-gradient(135deg, #5c101d, #8f1d2c);
+      background: linear-gradient(135deg, #163a67, #2f5f9d);
     }
     .button.secondary {
       color: var(--text);
-      background: rgba(46, 22, 26, 0.94);
-      border-color: rgba(143, 29, 44, 0.24);
+      background: rgba(18, 33, 52, 0.92);
+      border-color: rgba(58, 114, 183, 0.2);
     }
     .hero-card {
       padding: 24px;
-      border: 1px solid rgba(143, 29, 44, 0.18);
+      border: 1px solid rgba(58, 114, 183, 0.14);
       border-radius: var(--radius-xl);
-      background: linear-gradient(180deg, rgba(46, 16, 21, 0.98), rgba(28, 11, 14, 0.98));
+      background: linear-gradient(180deg, rgba(15, 28, 44, 0.98), rgba(9, 17, 28, 0.98));
       color: #f8eff0;
       box-shadow: 0 20px 44px rgba(0, 0, 0, 0.34);
     }
@@ -269,15 +269,15 @@
       gap: 16px;
       min-height: 280px;
       padding: 24px;
-      border: 1px solid rgba(143, 29, 44, 0.18);
+      border: 1px solid rgba(58, 114, 183, 0.14);
       border-radius: var(--radius-xl);
-      background: linear-gradient(180deg, rgba(40,16,20,0.96), rgba(24,11,13,0.96));
+      background: linear-gradient(180deg, rgba(15,28,44,0.96), rgba(9,17,28,0.96));
     }
     .product .tag {
       width: fit-content;
       padding: 8px 11px;
       border-radius: 999px;
-      background: rgba(143, 29, 44, 0.12);
+      background: rgba(58, 114, 183, 0.12);
       color: var(--ink-soft);
       font-size: 0.84rem;
       font-weight: 700;
@@ -308,9 +308,9 @@
     }
     .utility-card {
       padding: 18px;
-      border: 1px solid rgba(143, 29, 44, 0.16);
+      border: 1px solid rgba(58, 114, 183, 0.12);
       border-radius: var(--radius-lg);
-      background: rgba(31, 14, 18, 0.86);
+      background: rgba(13, 24, 39, 0.84);
     }
     .utility-card h3 {
       margin: 0 0 8px;
@@ -324,9 +324,9 @@
     .publish-note {
       margin-top: 24px;
       padding: 18px 20px;
-      border-left: 4px solid #8f1d2c;
+      border-left: 4px solid #3a72b7;
       border-radius: 16px;
-      background: rgba(143, 29, 44, 0.12);
+      background: rgba(58, 114, 183, 0.12);
       color: var(--ink-soft);
       line-height: 1.6;
     }
@@ -450,7 +450,7 @@
       <section class="section" id="about">
         <div class="section-head">
           <div><h2>How This Page Works</h2></div>
-          <p>The page keeps the red-forward visual direction consistent across the hero, cards, and CTAs while staying lightweight enough for static hosting.</p>
+          <p>The page keeps the dark navy visual direction consistent across the hero, cards, and CTAs while staying lightweight enough for static hosting.</p>
         </div>
         <div class="utility-grid">
           <article class="utility-card">
