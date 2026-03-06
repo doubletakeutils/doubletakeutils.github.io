@@ -5,21 +5,22 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>WASPrFlow Install Guide</title>
   <meta name="description" content="Comprehensive installation, licensing, and settings guide for WASPrFlow on Windows." />
+  <meta name="theme-color" content="#1b140e" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-1: #11131b;
-      --bg-2: #1a1f2e;
-      --panel: #202637;
-      --line: #36415e;
-      --text: #e8ecf7;
-      --muted: #9aa6bf;
-      --accent: #5ea8ff;
-      --ok: #7dd3a7;
+      --bg-1: #0d0b09;
+      --bg-2: #1b140e;
+      --panel: #241a12;
+      --line: #5a3c20;
+      --text: #fff1d8;
+      --muted: #d2b78d;
+      --accent: #ffab2d;
+      --ok: #ffc86f;
       --warn: #ffbf5e;
-      --danger: #ff7d7d;
+      --danger: #ff8a65;
       --radius: 14px;
     }
     * { box-sizing: border-box; }
@@ -28,22 +29,22 @@
       font-family: "Space Grotesk", Segoe UI, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(1200px 600px at 20% -10%, #243156 0%, transparent 60%),
-        radial-gradient(1000px 800px at 100% 0%, #1f3b2f 0%, transparent 65%),
+        radial-gradient(1200px 600px at 20% -10%, rgba(255, 171, 45, 0.18) 0%, transparent 60%),
+        radial-gradient(1000px 800px at 100% 0%, rgba(255, 200, 111, 0.12) 0%, transparent 65%),
         linear-gradient(165deg, var(--bg-1), var(--bg-2));
       min-height: 100vh;
     }
     .wrap { width: min(1080px, 92vw); margin: 0 auto; }
-    .topbar { position: sticky; top: 0; background: rgba(17,19,27,0.88); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(54,65,94,0.6); }
+    .topbar { position: sticky; top: 0; background: rgba(16,12,9,0.88); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(90,60,32,0.62); }
     .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
     .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.03em; }
-    .dot { width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--ok)); box-shadow: 0 0 0 5px rgba(94,168,255,0.15); }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--ok)); box-shadow: 0 0 0 5px rgba(255,171,45,0.15); }
     .nav a { color: var(--muted); text-decoration: none; margin-left: 18px; }
     .nav a:hover { color: var(--text); }
     .hero { padding: 42px 0 14px; }
     .hero h1 { margin: 0 0 10px; font-size: clamp(1.9rem, 4.2vw, 3rem); line-height: 1.05; }
     .hero p { margin: 0; color: var(--muted); max-width: 70ch; }
-    .panel { border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(180deg, rgba(37,45,66,0.95), rgba(32,38,55,0.95)); }
+    .panel { border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(180deg, rgba(43,30,18,0.96), rgba(30,22,15,0.96)); }
     .callout { margin-top: 16px; padding: 14px; }
     .callout p { margin: 0; color: var(--muted); }
     .callout strong { color: var(--text); }
@@ -55,11 +56,11 @@
     .step h3 { margin: 0 0 8px; font-size: 1.05rem; }
     .step p { margin: 0 0 10px; color: var(--muted); line-height: 1.5; }
     figure { margin: 0; }
-    img { width: 100%; height: auto; border-radius: 10px; border: 1px solid #2b3651; background: #121723; }
+    img { width: 100%; height: auto; border-radius: 10px; border: 1px solid #4f341d; background: #120e0a; }
     figcaption { color: var(--muted); font-size: 0.92rem; margin-top: 7px; }
     .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .status { display: grid; gap: 10px; }
-    .status .row { padding: 12px; border: 1px solid var(--line); border-radius: 10px; background: #1d2334; }
+    .status .row { padding: 12px; border: 1px solid var(--line); border-radius: 10px; background: #1b140f; }
     .status .row b { color: var(--text); }
     .good { color: var(--ok); }
     .warn { color: var(--warn); }
@@ -73,6 +74,7 @@
     <div class="wrap nav">
       <div class="brand"><span class="dot"></span> WASPrFlow</div>
       <nav>
+        <a href="/">DoubleTake Utilities</a>
         <a href="index.html">Home</a>
         <a href="#install">Install</a>
         <a href="#license">License</a>
@@ -232,7 +234,7 @@
   </main>
 
   <footer>
-    WASPrFlow - Voice Dictation for Windows
+    WASPrFlow - Voice Dictation for Windows - <a href="/" style="color:inherit;">DoubleTake Utilities</a>
   </footer>
 </body>
 </html>
