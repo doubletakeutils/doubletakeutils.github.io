@@ -5,23 +5,23 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>WASPrFlow | Voice Dictation for Windows</title>
   <meta name="description" content="WASPrFlow turns speech into polished, ready-to-insert text anywhere on Windows." />
-  <meta name="theme-color" content="#1e1315" />
+  <meta name="theme-color" content="#1a0c0f" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-1: #110b0c;
-      --bg-2: #1e1315;
-      --panel: #26181b;
-      --panel-soft: #312023;
-      --text: #f7edef;
-      --muted: #ccb7ba;
-      --line: #5a353b;
-      --accent: #a64652;
-      --accent-2: #c86c74;
-      --warn: #d38c68;
-      --danger: #d76672;
+      --bg-1: #0f0809;
+      --bg-2: #1a0c0f;
+      --panel: #221114;
+      --panel-soft: #2c171b;
+      --text: #f6eeee;
+      --muted: #cbb7b9;
+      --line: #5b2b32;
+      --accent: #8f1d2c;
+      --accent-2: #b73a4d;
+      --warn: #cf7a5f;
+      --danger: #d14d5f;
       --radius: 14px;
       --shadow: 0 14px 44px rgba(0, 0, 0, 0.42);
     }
@@ -32,8 +32,8 @@
       font-family: "Space Grotesk", Segoe UI, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(1200px 600px at 20% -10%, rgba(166, 70, 82, 0.16) 0%, transparent 60%),
-        radial-gradient(1000px 800px at 100% 0%, rgba(200, 108, 116, 0.1) 0%, transparent 65%),
+        radial-gradient(1200px 600px at 20% -10%, rgba(143, 29, 44, 0.2) 0%, transparent 60%),
+        radial-gradient(1000px 800px at 100% 0%, rgba(183, 58, 77, 0.1) 0%, transparent 65%),
         linear-gradient(165deg, var(--bg-1), var(--bg-2));
       min-height: 100vh;
     }
@@ -43,8 +43,8 @@
       position: sticky;
       top: 0;
       backdrop-filter: blur(10px);
-      background: rgba(17, 11, 12, 0.84);
-      border-bottom: 1px solid rgba(90, 53, 59, 0.62);
+      background: rgba(16, 10, 11, 0.84);
+      border-bottom: 1px solid rgba(91, 43, 50, 0.62);
       z-index: 10;
     }
     .nav {
@@ -65,7 +65,7 @@
       height: 10px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: 0 0 0 5px rgba(166, 70, 82, 0.14);
+      box-shadow: 0 0 0 5px rgba(143, 29, 44, 0.14);
     }
     .nav a {
       color: var(--muted);
@@ -113,20 +113,20 @@
       gap: 8px;
       transition: transform .15s ease, border-color .15s ease, background .2s ease;
     }
-    .btn:hover { transform: translateY(-1px); border-color: #c86c74; }
+    .btn:hover { transform: translateY(-1px); border-color: #b73a4d; }
     .btn.primary {
-      border-color: #a64652;
-      background: linear-gradient(135deg, #6f2d36, #a64652);
+      border-color: #8f1d2c;
+      background: linear-gradient(135deg, #5c101d, #8f1d2c);
     }
     .btn.secondary {
-      border-color: #8f5b62;
-      background: linear-gradient(135deg, #432a2f, #6a3f46);
+      border-color: #7f4049;
+      background: linear-gradient(135deg, #3b1d22, #5a2a31);
     }
 
     .panel {
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(43, 26, 30, 0.96), rgba(28, 18, 20, 0.96));
+      background: linear-gradient(180deg, rgba(40, 16, 20, 0.96), rgba(24, 11, 13, 0.96));
       box-shadow: var(--shadow);
     }
     .hero-card {
@@ -152,10 +152,10 @@
     .terminal {
       font-family: "JetBrains Mono", Consolas, monospace;
       background: #160b0d;
-      border: 1px solid #513439;
+      border: 1px solid #4f252c;
       border-radius: 10px;
       padding: 12px;
-      color: #f0c7cc;
+      color: #eec2c8;
       font-size: .87rem;
       line-height: 1.5;
     }
@@ -189,10 +189,10 @@
     .note {
       margin-top: 8px;
       border-left: 3px solid var(--warn);
-      background: rgba(166, 70, 82, 0.1);
+      background: rgba(143, 29, 44, 0.12);
       padding: 10px 12px;
       border-radius: 9px;
-      color: #f0c7cc;
+      color: #eec2c8;
       font-size: .9rem;
     }
 
@@ -342,9 +342,9 @@
     idsNsis.forEach(id => document.getElementById(id).href = nsisUrl);
 
     const note = document.getElementById("deploy-note");
-    note.style.borderLeftColor = "#a64652";
-    note.style.background = "rgba(166,70,82,0.1)";
-    note.style.color = "#f0c7cc";
+    note.style.borderLeftColor = "#8f1d2c";
+    note.style.background = "rgba(143,29,44,0.12)";
+    note.style.color = "#eec2c8";
     note.textContent = "Downloads are hosted directly on this website.";
   </script>
 </body>
