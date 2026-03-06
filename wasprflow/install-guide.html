@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WASPrFlow Install Guide</title>
+  <meta name="description" content="Comprehensive installation, licensing, and settings guide for WASPrFlow on Windows." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-1: #11131b;
+      --bg-2: #1a1f2e;
+      --panel: #202637;
+      --line: #36415e;
+      --text: #e8ecf7;
+      --muted: #9aa6bf;
+      --accent: #5ea8ff;
+      --ok: #7dd3a7;
+      --warn: #ffbf5e;
+      --danger: #ff7d7d;
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: "Space Grotesk", Segoe UI, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, #243156 0%, transparent 60%),
+        radial-gradient(1000px 800px at 100% 0%, #1f3b2f 0%, transparent 65%),
+        linear-gradient(165deg, var(--bg-1), var(--bg-2));
+      min-height: 100vh;
+    }
+    .wrap { width: min(1080px, 92vw); margin: 0 auto; }
+    .topbar { position: sticky; top: 0; background: rgba(17,19,27,0.88); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(54,65,94,0.6); }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.03em; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--ok)); box-shadow: 0 0 0 5px rgba(94,168,255,0.15); }
+    .nav a { color: var(--muted); text-decoration: none; margin-left: 18px; }
+    .nav a:hover { color: var(--text); }
+    .hero { padding: 42px 0 14px; }
+    .hero h1 { margin: 0 0 10px; font-size: clamp(1.9rem, 4.2vw, 3rem); line-height: 1.05; }
+    .hero p { margin: 0; color: var(--muted); max-width: 70ch; }
+    .panel { border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(180deg, rgba(37,45,66,0.95), rgba(32,38,55,0.95)); }
+    .callout { margin-top: 16px; padding: 14px; }
+    .callout p { margin: 0; color: var(--muted); }
+    .callout strong { color: var(--text); }
+    main { padding: 8px 0 28px; }
+    section { padding: 16px 0; }
+    section h2 { margin: 0 0 10px; font-size: 1.35rem; }
+    .list { margin: 0; padding-left: 20px; color: var(--muted); line-height: 1.6; }
+    .step { margin-top: 14px; padding: 14px; }
+    .step h3 { margin: 0 0 8px; font-size: 1.05rem; }
+    .step p { margin: 0 0 10px; color: var(--muted); line-height: 1.5; }
+    figure { margin: 0; }
+    img { width: 100%; height: auto; border-radius: 10px; border: 1px solid #2b3651; background: #121723; }
+    figcaption { color: var(--muted); font-size: 0.92rem; margin-top: 7px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .status { display: grid; gap: 10px; }
+    .status .row { padding: 12px; border: 1px solid var(--line); border-radius: 10px; background: #1d2334; }
+    .status .row b { color: var(--text); }
+    .good { color: var(--ok); }
+    .warn { color: var(--warn); }
+    .bad { color: var(--danger); }
+    footer { padding: 24px 0 40px; color: var(--muted); text-align: center; }
+    @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap nav">
+      <div class="brand"><span class="dot"></span> WASPrFlow</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="#install">Install</a>
+        <a href="#license">License</a>
+        <a href="#settings">Settings</a>
+        <a href="#troubleshooting">Troubleshooting</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap hero">
+    <h1>WASPrFlow Install And Setup Guide</h1>
+    <p>This guide covers install, first launch, licensing, API keys, expected behavior, and troubleshooting for Windows users.</p>
+    <div class="panel callout">
+      <p><strong>Recommended installer:</strong> Use <b>Setup EXE</b> for most users. Use <b>MSI</b> for managed business rollouts (RMM, Intune, SCCM, GPO workflows).</p>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section id="install">
+      <h2>1. Download And Install</h2>
+      <div class="grid-2">
+        <article class="panel step">
+          <h3>Step 1: Open the download page</h3>
+          <p>Use either <b>WASPrFlow MSI</b> or <b>WASPrFlow Setup EXE</b>.</p>
+          <figure>
+            <img src="assets/guide/01-download-page.png" alt="WASPrFlow website download section" loading="lazy" />
+            <figcaption>Download buttons on the WASPrFlow site.</figcaption>
+          </figure>
+        </article>
+        <article class="panel step">
+          <h3>Step 2: If SmartScreen appears</h3>
+          <p>Windows may show an unknown publisher prompt. Select <b>Run anyway</b> to continue installation.</p>
+          <figure>
+            <img src="assets/guide/02-smartscreen.png" alt="Windows SmartScreen prompt" loading="lazy" />
+            <figcaption>Expected first-run Windows SmartScreen prompt.</figcaption>
+          </figure>
+        </article>
+      </div>
+
+      <article class="panel step">
+        <h3>Step 3: Complete setup wizard</h3>
+        <p>Run through the setup wizard and finish installation.</p>
+        <figure>
+          <img src="assets/guide/03-installer-setup.png" alt="WASPrFlow setup wizard welcome screen" loading="lazy" />
+          <figcaption>Setup wizard screen.</figcaption>
+        </figure>
+      </article>
+    </section>
+
+    <section id="first-run">
+      <h2>2. First Launch And Main UI</h2>
+      <div class="grid-2">
+        <article class="panel step">
+          <h3>Floating bar</h3>
+          <p>The compact bar is your always-available control point. Use your configured hotkey to dictate and insert text.</p>
+          <figure>
+            <img src="assets/guide/04-floating-bar-idle.png" alt="WASPrFlow compact floating bar" loading="lazy" />
+            <figcaption>Idle floating bar state.</figcaption>
+          </figure>
+        </article>
+        <article class="panel step" id="settings">
+          <h3>Settings panel</h3>
+          <p>Open settings from the bar. Configure hotkey, language, microphone, privacy mode, dictionary, and open licensing or API keys.</p>
+          <figure>
+            <img src="assets/guide/05-settings-panel.png" alt="WASPrFlow settings panel" loading="lazy" />
+            <figcaption>Main settings and controls.</figcaption>
+          </figure>
+        </article>
+      </div>
+    </section>
+
+    <section id="license">
+      <h2>3. Licensing Workflow</h2>
+      <div class="grid-2">
+        <article class="panel step">
+          <h3>Enter key or buy license</h3>
+          <p>From the License panel, paste a key, import a saved <code>.lic</code> file, or purchase with your email.</p>
+          <figure>
+            <img src="assets/guide/06-license-panel-entry.png" alt="License panel with activate and buy options" loading="lazy" />
+            <figcaption>License entry and buy options.</figcaption>
+          </figure>
+        </article>
+        <article class="panel step">
+          <h3>Import a saved license file</h3>
+          <p>Select the <code>/</code> import button, choose your <code>WASPrflow_license.lic</code>, then activate.</p>
+          <figure>
+            <img src="assets/guide/09-import-dialog.png" alt="Open file dialog selecting license file" loading="lazy" />
+            <figcaption>Importing a <code>.lic</code> file.</figcaption>
+          </figure>
+        </article>
+      </div>
+
+      <div class="grid-2">
+        <article class="panel step">
+          <h3>File loaded state</h3>
+          <p>After import, the app confirms file load and enables activation with the loaded key.</p>
+          <figure>
+            <img src="assets/guide/07-license-file-loaded.png" alt="License file loaded message in panel" loading="lazy" />
+            <figcaption>License file loaded and ready to activate.</figcaption>
+          </figure>
+        </article>
+        <article class="panel step">
+          <h3>Activated state</h3>
+          <p>After successful activation, you should see <b>Pro License</b> and management actions for remove, backup, and delete.</p>
+          <figure>
+            <img src="assets/guide/08-license-activated.png" alt="Activated pro license panel with management buttons" loading="lazy" />
+            <figcaption>Activated license UI and controls.</figcaption>
+          </figure>
+        </article>
+      </div>
+
+      <article class="panel step">
+        <h3>Backup license file</h3>
+        <p>Use <b>Backup License</b> to save a reusable file named <code>WASPrflow_license.lic</code>.</p>
+        <figure>
+          <img src="assets/guide/10-backup-dialog.png" alt="Save As dialog for license backup file" loading="lazy" />
+          <figcaption>Saving a backup <code>.lic</code> file.</figcaption>
+        </figure>
+      </article>
+
+      <div class="panel step status">
+        <h3>Expected Licensing Behaviors</h3>
+        <div class="row"><b class="good">Expected:</b> Activation happens only after confirmed payment or valid key import/paste.</div>
+        <div class="row"><b class="good">Expected:</b> Saved license in AppData can be reused on startup through the license prompt flow.</div>
+        <div class="row"><b class="good">Expected:</b> You can import, backup, and delete local license files directly from the license panel.</div>
+      </div>
+    </section>
+
+    <section id="api-keys">
+      <h2>4. API Keys</h2>
+      <article class="panel step">
+        <h3>Built-in keys and custom keys</h3>
+        <p>WASPrFlow includes built-in keys. Add your own Deepgram/OpenAI keys if you want dedicated quota, then click <b>Save</b>.</p>
+        <figure>
+          <img src="assets/guide/11-api-keys-panel.png" alt="API Keys panel for Deepgram and OpenAI" loading="lazy" />
+          <figcaption>API key management panel.</figcaption>
+        </figure>
+      </article>
+    </section>
+
+    <section id="behavior">
+      <h2>5. Expected Runtime Behavior</h2>
+      <ul class="list">
+        <li>Hold configured hotkey to capture speech, release to insert text at current cursor position.</li>
+        <li>The bar reflects state changes (idle, listening, processing, success/error).</li>
+        <li>Very short utterances may be less reliable than full phrases depending on mic and noise conditions.</li>
+        <li>License purchase flow should send receipt/invoice and include license details based on configured payment worker setup.</li>
+      </ul>
+    </section>
+
+    <section id="troubleshooting">
+      <h2>6. Troubleshooting</h2>
+      <div class="panel step">
+        <ul class="list">
+          <li><b>Cannot activate:</b> confirm purchase email matches, then try importing your saved <code>.lic</code> and activating again.</li>
+          <li><b>No receipt received:</b> verify sender/domain settings in your payment email provider and check spam folder.</li>
+          <li><b>Mic issues:</b> confirm selected input device in settings and Windows sound privacy permissions.</li>
+          <li><b>Punctuation quality:</b> speak complete phrases and pauses; tune model settings as they are updated.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    WASPrFlow - Voice Dictation for Windows
+  </footer>
+</body>
+</html>
