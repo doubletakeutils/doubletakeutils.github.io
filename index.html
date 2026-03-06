@@ -1,12 +1,507 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Welcome to DoubleTake Utilities</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DoubleTake Utilities | Software Landing Page</title>
+  <meta
+    name="description"
+    content="DoubleTake Utilities builds practical Windows software, including WASPrFlow and DoubleTake Image and Video."
+  />
+  <meta name="theme-color" content="#0f264f" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Chivo+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --ink: #0d2146;
+      --ink-soft: #23406d;
+      --paper: #f7f8fb;
+      --panel: rgba(255, 255, 255, 0.78);
+      --line: rgba(13, 33, 70, 0.12);
+      --text: #102341;
+      --muted: #5a6c88;
+      --shadow: 0 24px 70px rgba(17, 35, 64, 0.18);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Outfit", "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(78, 111, 152, 0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(19, 56, 103, 0.16), transparent 30%),
+        linear-gradient(180deg, #f2f4f8 0%, #dde4ed 100%);
+      min-height: 100vh;
+    }
+    a { color: inherit; }
+    .shell {
+      width: min(1160px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 24px 0 48px;
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 26px;
+      padding: 18px 22px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.58);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 24px rgba(17, 35, 64, 0.08);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+    .brand-mark {
+      position: relative;
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      background: linear-gradient(155deg, #17355f, #0d2146);
+      overflow: hidden;
+      flex: 0 0 auto;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+    }
+    .brand-mark::before,
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      background: rgba(255, 255, 255, 0.88);
+    }
+    .brand-mark::before {
+      inset: 12px 28px 12px 12px;
+      box-shadow:
+        18px 0 0 rgba(255, 255, 255, 0.88),
+        0 18px 0 rgba(255, 255, 255, 0.88),
+        18px 18px 0 rgba(255, 255, 255, 0.88);
+    }
+    .brand-mark::after {
+      width: 70px;
+      height: 16px;
+      left: -8px;
+      bottom: 9px;
+      border-radius: 999px;
+      transform: rotate(24deg);
+      background: linear-gradient(90deg, rgba(255,255,255,0.96), rgba(255,255,255,0.85));
+    }
+    .brand-copy b {
+      display: block;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+    }
+    .brand-copy span {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .nav a:hover { color: var(--ink); }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(13, 33, 70, 0.12);
+      border-radius: 36px;
+      padding: clamp(28px, 5vw, 54px);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.88), rgba(241,245,250,0.82)),
+        linear-gradient(125deg, #f7f8fb, #e6ebf3);
+      box-shadow: var(--shadow);
+    }
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      pointer-events: none;
+    }
+    .hero::before {
+      width: 420px;
+      height: 420px;
+      right: -120px;
+      top: -110px;
+      background: radial-gradient(circle, rgba(20, 56, 103, 0.18) 0%, transparent 66%);
+    }
+    .hero::after {
+      width: 320px;
+      height: 320px;
+      left: -120px;
+      bottom: -150px;
+      background: radial-gradient(circle, rgba(78, 111, 152, 0.16) 0%, transparent 72%);
+    }
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(290px, 0.85fr);
+      gap: 24px;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding: 8px 12px;
+      border: 1px solid rgba(19, 56, 103, 0.1);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.68);
+      color: var(--ink-soft);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #17355f, #5576a1);
+      box-shadow: 0 0 0 6px rgba(20, 56, 103, 0.08);
+    }
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2.6rem, 6vw, 5.3rem);
+      line-height: 0.94;
+      letter-spacing: -0.04em;
+      max-width: 10ch;
+    }
+    .hero p {
+      margin: 0;
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.6;
+    }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+    }
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(17, 35, 64, 0.14);
+    }
+    .button.primary {
+      color: #fff;
+      background: linear-gradient(135deg, #17355f, #31598e);
+    }
+    .button.secondary {
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.7);
+      border-color: rgba(13, 33, 70, 0.12);
+    }
+    .hero-card {
+      padding: 24px;
+      border: 1px solid rgba(13, 33, 70, 0.1);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, rgba(17, 38, 71, 0.97), rgba(27, 56, 96, 0.97));
+      color: #f7fbff;
+      box-shadow: 0 20px 44px rgba(17, 35, 64, 0.24);
+    }
+    .hero-card .code {
+      margin: 0 0 18px;
+      color: rgba(221, 233, 245, 0.88);
+      font-family: "Chivo Mono", Consolas, monospace;
+      font-size: 0.86rem;
+      line-height: 1.75;
+    }
+    .hero-card h2 {
+      margin: 0 0 10px;
+      font-size: 1.45rem;
+    }
+    .hero-card p {
+      margin: 0;
+      color: rgba(231, 239, 248, 0.78);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .section {
+      margin-top: 26px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      background: var(--panel);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 18px 48px rgba(17, 35, 64, 0.08);
+    }
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+    .section-head h2,
+    .section-head p {
+      margin: 0;
+    }
+    .section-head h2 {
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      letter-spacing: -0.03em;
+    }
+    .section-head p {
+      color: var(--muted);
+      max-width: 54ch;
+      line-height: 1.55;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .product {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      min-height: 280px;
+      padding: 24px;
+      border: 1px solid rgba(13, 33, 70, 0.1);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(239,243,248,0.92));
+    }
+    .product .tag {
+      width: fit-content;
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: rgba(20, 56, 103, 0.08);
+      color: var(--ink-soft);
+      font-size: 0.84rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .product h3 {
+      margin: 0;
+      font-size: 1.7rem;
+      letter-spacing: -0.03em;
+    }
+    .product p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+    .product ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+    .utility-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .utility-card {
+      padding: 18px;
+      border: 1px solid rgba(13, 33, 70, 0.08);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.72);
+    }
+    .utility-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.02rem;
+    }
+    .utility-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .publish-note {
+      margin-top: 24px;
+      padding: 18px 20px;
+      border-left: 4px solid #31598e;
+      border-radius: 16px;
+      background: rgba(20, 56, 103, 0.08);
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+    footer {
+      padding: 28px 0 8px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.94rem;
+    }
+    @media (max-width: 920px) {
+      .topbar,
+      .section-head {
+        align-items: flex-start;
+      }
+      .hero-grid,
+      .product-grid,
+      .utility-grid {
+        grid-template-columns: 1fr;
+      }
+      .topbar {
+        flex-direction: column;
+        border-radius: 28px;
+      }
+      .nav {
+        justify-content: flex-start;
+      }
+    }
+    @media (max-width: 640px) {
+      .shell { width: min(100vw - 18px, 1160px); padding-top: 10px; }
+      .topbar,
+      .hero,
+      .section { padding: 18px; }
+      h1 { max-width: none; }
+      .button { width: 100%; }
+    }
+  </style>
 </head>
 <body>
-    <h1>Hello from DoubleTake Utilities!</h1>
-    <p>This is my utility homepage and download source.</p>
-    <p><a href="/wasprflow/">Visit the WASPrFlow product page</a></p>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div class="brand-copy">
+          <b>DoubleTake Utilities</b>
+          <span>Windows-focused software and utility products</span>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#products">Products</a>
+        <a href="#about">Approach</a>
+        <a href="#publish">Publish Ready</a>
+      </nav>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow">DoubleTake Utilities Software Company</div>
+            <h1>Utility software built to get out of the way.</h1>
+            <p>
+              This landing page is the front door for DoubleTake Utilities. From here, visitors can
+              go directly to the existing WASPrFlow product site or to the DoubleTake Image and Video page.
+            </p>
+            <div class="cta-row">
+              <a class="button primary" href="/wasprflow/">Open WASPrFlow</a>
+              <a class="button secondary" href="https://www.google.com/" rel="noopener" target="_blank">Open DoubleTake Image and Video</a>
+            </div>
+          </div>
+          <aside class="hero-card">
+            <p class="code">
+              company.doubletake.utilities<br />
+              products = ["WASPrFlow", "DoubleTake Image and Video"]<br />
+              purpose = "simple, useful desktop tools"
+            </p>
+            <h2>Prepared for logo placement</h2>
+            <p>
+              The header mark and layout are already structured so your final logo can drop in with minimal rework.
+              If you provide a transparent PNG or SVG, this page can be swapped to the real brand asset quickly.
+            </p>
+          </aside>
+        </div>
+      </section>
+      <section class="section" id="products">
+        <div class="section-head">
+          <div><h2>Products</h2></div>
+          <p>Two clear destination cards keep this page focused. It acts as a company entry point, not a replacement for the existing product pages.</p>
+        </div>
+        <div class="product-grid">
+          <article class="product">
+            <div class="tag">Live Product Site</div>
+            <h3>WASPrFlow</h3>
+            <p>
+              The current WASPrFlow site remains unchanged. This landing page simply routes visitors into that existing install, download, and guide experience.
+            </p>
+            <ul>
+              <li>Existing page structure preserved</li>
+              <li>Direct path to downloads and install guide</li>
+              <li>Published under `/wasprflow/`</li>
+            </ul>
+            <div class="cta-row">
+              <a class="button primary" href="/wasprflow/">Go To WASPrFlow</a>
+            </div>
+          </article>
+          <article class="product">
+            <div class="tag">Second Destination</div>
+            <h3>DoubleTake Image and Video</h3>
+            <p>
+              This card is using a placeholder target for now. When the DoubleTake Image and Video page has a final public address, this button can be switched without changing the rest of the landing page.
+            </p>
+            <ul>
+              <li>Current target is a temporary placeholder link</li>
+              <li>Opens separately so visitors do not lose this page</li>
+              <li>Easy to swap to a public product URL later</li>
+            </ul>
+            <div class="cta-row">
+              <a class="button secondary" href="https://www.google.com/" rel="noopener" target="_blank">Go To DoubleTake Image and Video</a>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="section" id="about">
+        <div class="section-head">
+          <div><h2>How This Page Works</h2></div>
+          <p>The design follows the branding cues in the logo image you attached: cool gray surfaces, deep navy typography, and a clean utility-first presentation.</p>
+        </div>
+        <div class="utility-grid">
+          <article class="utility-card">
+            <h3>Company-first entry</h3>
+            <p>Visitors land on DoubleTake Utilities first, then choose the product they need.</p>
+          </article>
+          <article class="utility-card">
+            <h3>Low-friction publishing</h3>
+            <p>The publish root can serve this landing page while the current WASPrFlow content remains in its own folder.</p>
+          </article>
+          <article class="utility-card">
+            <h3>Logo-ready structure</h3>
+            <p>The current mark is a placeholder so the final logo asset can be dropped in without redesigning the page.</p>
+          </article>
+        </div>
+      </section>
+      <section class="section" id="publish">
+        <div class="section-head">
+          <div><h2>Publish Readiness</h2></div>
+          <p>The publish root can point at this landing page while the existing WASPrFlow site stays published exactly as-is in `/wasprflow/`.</p>
+        </div>
+        <div class="publish-note">
+          Pending final publish input: your actual transparent PNG logo asset so I can replace the placeholder brand mark before final deployment.
+        </div>
+      </section>
+    </main>
+    <footer>DoubleTake Utilities</footer>
+  </div>
 </body>
 </html>
