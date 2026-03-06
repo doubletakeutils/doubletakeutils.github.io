@@ -8,7 +8,7 @@
     name="description"
     content="DoubleTake Utilities builds practical Windows software, including WASPrFlow and DoubleTake Image and Video."
   />
-  <meta name="theme-color" content="#0f264f" />
+  <meta name="theme-color" content="#241013" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -17,13 +17,13 @@
   />
   <style>
     :root {
-      --ink: #ffb347;
-      --ink-soft: #ffc86f;
-      --paper: #12100d;
-      --panel: rgba(29, 24, 19, 0.82);
-      --line: rgba(255, 183, 77, 0.14);
-      --text: #fff1d8;
-      --muted: #d2b78d;
+      --ink: #e25566;
+      --ink-soft: #ff9aa6;
+      --paper: #150b0d;
+      --panel: rgba(37, 17, 21, 0.84);
+      --line: rgba(217, 75, 92, 0.18);
+      --text: #fff0f1;
+      --muted: #d9b0b5;
       --shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
       --radius-xl: 28px;
       --radius-lg: 20px;
@@ -35,9 +35,9 @@
       font-family: "Outfit", "Segoe UI", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(255, 166, 43, 0.18), transparent 30%),
-        radial-gradient(circle at top right, rgba(255, 196, 94, 0.12), transparent 28%),
-        linear-gradient(180deg, #0d0b09 0%, #16110d 52%, #1f1710 100%);
+        radial-gradient(circle at top left, rgba(226, 85, 102, 0.2), transparent 30%),
+        radial-gradient(circle at top right, rgba(255, 122, 136, 0.14), transparent 28%),
+        linear-gradient(180deg, #12090b 0%, #1d0d10 52%, #2a1116 100%);
       min-height: 100vh;
     }
     a { color: inherit; }
@@ -55,7 +55,7 @@
       padding: 18px 22px;
       border: 1px solid var(--line);
       border-radius: 999px;
-      background: rgba(20, 16, 12, 0.72);
+      background: rgba(24, 11, 14, 0.74);
       backdrop-filter: blur(12px);
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
     }
@@ -66,36 +66,12 @@
       min-width: 0;
     }
     .brand-mark {
-      position: relative;
-      width: 56px;
-      height: 56px;
-      border-radius: 18px;
-      background: linear-gradient(155deg, #5a2f00, #1b1208);
-      overflow: hidden;
+      display: block;
+      width: 172px;
+      max-width: min(34vw, 172px);
+      height: auto;
       flex: 0 0 auto;
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
-    }
-    .brand-mark::before,
-    .brand-mark::after {
-      content: "";
-      position: absolute;
-      background: rgba(255, 209, 140, 0.92);
-    }
-    .brand-mark::before {
-      inset: 12px 28px 12px 12px;
-      box-shadow:
-        18px 0 0 rgba(255, 209, 140, 0.92),
-        0 18px 0 rgba(255, 209, 140, 0.92),
-        18px 18px 0 rgba(255, 209, 140, 0.92);
-    }
-    .brand-mark::after {
-      width: 70px;
-      height: 16px;
-      left: -8px;
-      bottom: 9px;
-      border-radius: 999px;
-      transform: rotate(24deg);
-      background: linear-gradient(90deg, rgba(255,204,122,0.98), rgba(255,173,71,0.86));
+      filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.28));
     }
     .brand-copy b {
       display: block;
@@ -123,12 +99,12 @@
     .hero {
       position: relative;
       overflow: hidden;
-      border: 1px solid rgba(255, 183, 77, 0.16);
+      border: 1px solid rgba(217, 75, 92, 0.2);
       border-radius: 36px;
       padding: clamp(28px, 5vw, 54px);
       background:
-        linear-gradient(135deg, rgba(32,24,17,0.92), rgba(22,17,13,0.9)),
-        linear-gradient(125deg, #1f1710, #140f0b);
+        linear-gradient(135deg, rgba(46,21,26,0.92), rgba(27,13,16,0.9)),
+        linear-gradient(125deg, #2a1116, #170a0d);
       box-shadow: var(--shadow);
     }
     .hero::before,
@@ -143,14 +119,14 @@
       height: 420px;
       right: -120px;
       top: -110px;
-      background: radial-gradient(circle, rgba(255, 166, 43, 0.18) 0%, transparent 66%);
+      background: radial-gradient(circle, rgba(226, 85, 102, 0.2) 0%, transparent 66%);
     }
     .hero::after {
       width: 320px;
       height: 320px;
       left: -120px;
       bottom: -150px;
-      background: radial-gradient(circle, rgba(255, 196, 94, 0.14) 0%, transparent 72%);
+      background: radial-gradient(circle, rgba(255, 122, 136, 0.14) 0%, transparent 72%);
     }
     .hero-grid {
       position: relative;
@@ -166,9 +142,9 @@
       gap: 10px;
       margin-bottom: 16px;
       padding: 8px 12px;
-      border: 1px solid rgba(255, 183, 77, 0.16);
+      border: 1px solid rgba(217, 75, 92, 0.18);
       border-radius: 999px;
-      background: rgba(43, 30, 18, 0.82);
+      background: rgba(54, 22, 28, 0.82);
       color: var(--ink-soft);
       font-size: 0.88rem;
       font-weight: 600;
@@ -180,8 +156,8 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #ff9f1c, #ffd27a);
-      box-shadow: 0 0 0 6px rgba(255, 173, 71, 0.08);
+      background: linear-gradient(135deg, #d94b5c, #ff9aa6);
+      box-shadow: 0 0 0 6px rgba(217, 75, 92, 0.1);
     }
     h1 {
       margin: 0 0 14px;
@@ -221,24 +197,24 @@
     }
     .button.primary {
       color: #fff;
-      background: linear-gradient(135deg, #b85b00, #ffab2d);
+      background: linear-gradient(135deg, #8e2433, #d94b5c);
     }
     .button.secondary {
       color: var(--text);
-      background: rgba(44, 31, 19, 0.92);
-      border-color: rgba(255, 183, 77, 0.18);
+      background: rgba(58, 26, 32, 0.92);
+      border-color: rgba(217, 75, 92, 0.22);
     }
     .hero-card {
       padding: 24px;
-      border: 1px solid rgba(255, 183, 77, 0.12);
+      border: 1px solid rgba(217, 75, 92, 0.14);
       border-radius: var(--radius-xl);
-      background: linear-gradient(180deg, rgba(35, 23, 13, 0.98), rgba(23, 16, 11, 0.98));
-      color: #fff6e7;
+      background: linear-gradient(180deg, rgba(43, 18, 23, 0.98), rgba(26, 11, 15, 0.98));
+      color: #fff3f4;
       box-shadow: 0 20px 44px rgba(0, 0, 0, 0.34);
     }
     .hero-card .code {
       margin: 0 0 18px;
-      color: rgba(255, 216, 160, 0.88);
+      color: rgba(255, 194, 202, 0.88);
       font-family: "Chivo Mono", Consolas, monospace;
       font-size: 0.86rem;
       line-height: 1.75;
@@ -249,7 +225,7 @@
     }
     .hero-card p {
       margin: 0;
-      color: rgba(255, 233, 200, 0.78);
+      color: rgba(255, 221, 225, 0.8);
       font-size: 1rem;
       line-height: 1.6;
     }
@@ -293,7 +269,7 @@
       gap: 16px;
       min-height: 280px;
       padding: 24px;
-      border: 1px solid rgba(255, 183, 77, 0.12);
+      border: 1px solid rgba(217, 75, 92, 0.14);
       border-radius: var(--radius-xl);
       background: linear-gradient(180deg, rgba(32,24,17,0.96), rgba(22,17,13,0.96));
     }
@@ -301,7 +277,7 @@
       width: fit-content;
       padding: 8px 11px;
       border-radius: 999px;
-      background: rgba(255, 173, 71, 0.12);
+      background: rgba(217, 75, 92, 0.12);
       color: var(--ink-soft);
       font-size: 0.84rem;
       font-weight: 700;
@@ -332,9 +308,9 @@
     }
     .utility-card {
       padding: 18px;
-      border: 1px solid rgba(255, 183, 77, 0.1);
+      border: 1px solid rgba(217, 75, 92, 0.12);
       border-radius: var(--radius-lg);
-      background: rgba(34, 25, 18, 0.84);
+      background: rgba(37, 17, 21, 0.84);
     }
     .utility-card h3 {
       margin: 0 0 8px;
@@ -348,9 +324,9 @@
     .publish-note {
       margin-top: 24px;
       padding: 18px 20px;
-      border-left: 4px solid #ffab2d;
+      border-left: 4px solid #d94b5c;
       border-radius: 16px;
-      background: rgba(255, 173, 71, 0.12);
+      background: rgba(217, 75, 92, 0.12);
       color: var(--ink-soft);
       line-height: 1.6;
     }
@@ -392,7 +368,7 @@
   <div class="shell">
     <header class="topbar">
       <div class="brand">
-        <div class="brand-mark" aria-hidden="true"></div>
+        <img class="brand-mark" src="assets/logo-rebuilt-amber.svg" alt="DoubleTake Utilities logo" />
         <div class="brand-copy">
           <b>DoubleTake Utilities</b>
           <span>Windows-focused software and utility products</span>
@@ -425,10 +401,10 @@
               products = ["WASPrFlow", "DoubleTake Image and Video"]<br />
               purpose = "simple, useful desktop tools"
             </p>
-            <h2>Prepared for logo placement</h2>
+            <h2>Focused Windows utility software</h2>
             <p>
-              The header mark and layout are already structured so your final logo can drop in with minimal rework.
-              If you provide a transparent PNG or SVG, this page can be swapped to the real brand asset quickly.
+              DoubleTake Utilities now uses the current logo system directly on the landing page, with the product cards
+              routing visitors into the current WASPrFlow site and the next product destination.
             </p>
           </aside>
         </div>
@@ -474,7 +450,7 @@
       <section class="section" id="about">
         <div class="section-head">
           <div><h2>How This Page Works</h2></div>
-          <p>The design follows the branding cues in the logo image you attached: cool gray surfaces, deep navy typography, and a clean utility-first presentation.</p>
+          <p>The page keeps the red-forward visual direction consistent across the hero, cards, and CTAs while staying lightweight enough for static hosting.</p>
         </div>
         <div class="utility-grid">
           <article class="utility-card">
@@ -497,7 +473,7 @@
           <p>The publish root can point at this landing page while the existing WASPrFlow site stays published exactly as-is in `/wasprflow/`.</p>
         </div>
         <div class="publish-note">
-          Pending final publish input: your actual transparent PNG logo asset so I can replace the placeholder brand mark before final deployment.
+          The publish root can serve this landing page directly, while the current WASPrFlow download and install pages remain available under <code>/wasprflow/</code>.
         </div>
       </section>
     </main>
