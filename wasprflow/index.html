@@ -330,17 +330,11 @@
   </footer>
 
   <script>
-    // Update these three values before publishing.
-    const GITHUB_OWNER = "doubletakeutils";
-    const GITHUB_REPO = "WASPrFlow";
     const VERSION = "0.1.0";
-
     const msiFile = `WASPrFlow_${VERSION}_x64_en-US.msi`;
     const nsisFile = `WASPrFlow_${VERSION}_x64-setup.exe`;
-    const base = `https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}/releases/latest/download`;
-
-    const msiUrl = `${base}/${msiFile}`;
-    const nsisUrl = `${base}/${nsisFile}`;
+    const msiUrl = `downloads/${msiFile}`;
+    const nsisUrl = `downloads/${nsisFile}`;
 
     const idsMsi = ["btn-msi", "dl-msi"];
     const idsNsis = ["btn-nsis", "dl-nsis"];
@@ -348,12 +342,10 @@
     idsNsis.forEach(id => document.getElementById(id).href = nsisUrl);
 
     const note = document.getElementById("deploy-note");
-    if (GITHUB_OWNER !== "YOUR_GITHUB_USERNAME_OR_ORG") {
-      note.style.borderLeftColor = "#7dd3a7";
-      note.style.background = "rgba(125,211,167,0.08)";
-      note.style.color = "#bdeed8";
-      note.textContent = "Release download links are configured for this repository.";
-    }
+    note.style.borderLeftColor = "#7dd3a7";
+    note.style.background = "rgba(125,211,167,0.08)";
+    note.style.color = "#bdeed8";
+    note.textContent = "Downloads are hosted directly on this website.";
   </script>
 </body>
 </html>
