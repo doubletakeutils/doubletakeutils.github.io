@@ -17,11 +17,14 @@
   />
   <style>
     :root {
-      --ink: #3a72b7;
-      --ink-soft: #6c96d1;
+      --ink-h: 212;
+      --ink-s: 52%;
+      --ink-l: 47%;
+      --ink: hsl(var(--ink-h) var(--ink-s) var(--ink-l));
+      --ink-soft: hsl(var(--ink-h) 51% 62%);
       --paper: #08111c;
       --panel: rgba(13, 24, 39, 0.84);
-      --line: rgba(58, 114, 183, 0.18);
+      --line: hsl(var(--ink-h) 52% 47% / 0.18);
       --text: #edf3fb;
       --muted: #a3b4c9;
       --shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
@@ -35,8 +38,8 @@
       font-family: "Outfit", "Segoe UI", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(58, 114, 183, 0.2), transparent 30%),
-        radial-gradient(circle at top right, rgba(108, 150, 209, 0.12), transparent 28%),
+        radial-gradient(circle at top left, hsl(var(--ink-h) var(--ink-s) var(--ink-l) / 0.2), transparent 30%),
+        radial-gradient(circle at top right, hsl(var(--ink-h) 51% 62% / 0.12), transparent 28%),
         linear-gradient(180deg, #071018 0%, #0e1a2a 52%, #152537 100%);
       min-height: 100vh;
     }
@@ -90,6 +93,33 @@
       flex-wrap: wrap;
       justify-content: flex-end;
     }
+    .theme-swatches {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: 4px;
+    }
+    .theme-swatches span {
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .swatch {
+      width: 16px;
+      height: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      background: hsl(var(--swatch-h) 58% 52%);
+      cursor: pointer;
+      box-shadow: 0 0 0 0 transparent;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+    }
+    .swatch:hover { transform: translateY(-1px) scale(1.06); }
+    .swatch[aria-pressed="true"] {
+      border-color: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 0 0 4px hsl(var(--swatch-h) 58% 52% / 0.2);
+    }
     .nav a {
       text-decoration: none;
       color: var(--muted);
@@ -99,7 +129,7 @@
     .hero {
       position: relative;
       overflow: hidden;
-      border: 1px solid rgba(58, 114, 183, 0.18);
+      border: 1px solid hsl(var(--ink-h) 52% 47% / 0.18);
       border-radius: 36px;
       padding: clamp(28px, 5vw, 54px);
       background:
@@ -119,14 +149,14 @@
       height: 420px;
       right: -120px;
       top: -110px;
-      background: radial-gradient(circle, rgba(58, 114, 183, 0.2) 0%, transparent 66%);
+      background: radial-gradient(circle, hsl(var(--ink-h) var(--ink-s) var(--ink-l) / 0.2) 0%, transparent 66%);
     }
     .hero::after {
       width: 320px;
       height: 320px;
       left: -120px;
       bottom: -150px;
-      background: radial-gradient(circle, rgba(108, 150, 209, 0.12) 0%, transparent 72%);
+      background: radial-gradient(circle, hsl(var(--ink-h) 51% 62% / 0.12) 0%, transparent 72%);
     }
     .hero-grid {
       position: relative;
@@ -142,7 +172,7 @@
       gap: 10px;
       margin-bottom: 16px;
       padding: 8px 12px;
-      border: 1px solid rgba(58, 114, 183, 0.18);
+      border: 1px solid hsl(var(--ink-h) 52% 47% / 0.18);
       border-radius: 999px;
       background: rgba(19, 34, 53, 0.84);
       color: var(--ink-soft);
@@ -156,8 +186,8 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #2f5f9d, #6c96d1);
-      box-shadow: 0 0 0 6px rgba(58, 114, 183, 0.1);
+      background: linear-gradient(135deg, hsl(var(--ink-h) 54% 40%), hsl(var(--ink-h) 51% 62%));
+      box-shadow: 0 0 0 6px hsl(var(--ink-h) 52% 47% / 0.1);
     }
     h1 {
       margin: 0 0 14px;
@@ -197,16 +227,16 @@
     }
     .button.primary {
       color: #fff;
-      background: linear-gradient(135deg, #163a67, #2f5f9d);
+      background: linear-gradient(135deg, hsl(var(--ink-h) 64% 25%), hsl(var(--ink-h) 54% 40%));
     }
     .button.secondary {
       color: var(--text);
       background: rgba(18, 33, 52, 0.92);
-      border-color: rgba(58, 114, 183, 0.2);
+      border-color: hsl(var(--ink-h) 52% 47% / 0.2);
     }
     .hero-card {
       padding: 24px;
-      border: 1px solid rgba(58, 114, 183, 0.14);
+      border: 1px solid hsl(var(--ink-h) 52% 47% / 0.14);
       border-radius: var(--radius-xl);
       background: linear-gradient(180deg, rgba(15, 28, 44, 0.98), rgba(9, 17, 28, 0.98));
       color: #f8eff0;
@@ -214,7 +244,7 @@
     }
     .hero-card .code {
       margin: 0 0 18px;
-      color: rgba(230, 196, 200, 0.82);
+      color: rgba(233, 200, 204, 0.84);
       font-family: "Chivo Mono", Consolas, monospace;
       font-size: 0.86rem;
       line-height: 1.75;
@@ -269,7 +299,7 @@
       gap: 16px;
       min-height: 280px;
       padding: 24px;
-      border: 1px solid rgba(58, 114, 183, 0.14);
+      border: 1px solid hsl(var(--ink-h) 52% 47% / 0.14);
       border-radius: var(--radius-xl);
       background: linear-gradient(180deg, rgba(15,28,44,0.96), rgba(9,17,28,0.96));
     }
@@ -277,7 +307,7 @@
       width: fit-content;
       padding: 8px 11px;
       border-radius: 999px;
-      background: rgba(58, 114, 183, 0.12);
+      background: hsl(var(--ink-h) 52% 47% / 0.12);
       color: var(--ink-soft);
       font-size: 0.84rem;
       font-weight: 700;
@@ -308,7 +338,7 @@
     }
     .utility-card {
       padding: 18px;
-      border: 1px solid rgba(58, 114, 183, 0.12);
+      border: 1px solid hsl(var(--ink-h) 52% 47% / 0.12);
       border-radius: var(--radius-lg);
       background: rgba(13, 24, 39, 0.84);
     }
@@ -324,9 +354,9 @@
     .publish-note {
       margin-top: 24px;
       padding: 18px 20px;
-      border-left: 4px solid #3a72b7;
+      border-left: 4px solid var(--ink);
       border-radius: 16px;
-      background: rgba(58, 114, 183, 0.12);
+      background: hsl(var(--ink-h) 52% 47% / 0.12);
       color: var(--ink-soft);
       line-height: 1.6;
     }
@@ -378,6 +408,13 @@
         <a href="#products">Products</a>
         <a href="#about">Approach</a>
         <a href="#publish">Publish Ready</a>
+        <div class="theme-swatches" aria-label="Theme colour">
+          <span>Colour</span>
+          <button class="swatch" type="button" data-theme-color="212" style="--swatch-h: 212" aria-label="Blue theme"></button>
+          <button class="swatch" type="button" data-theme-color="164" style="--swatch-h: 164" aria-label="Teal theme"></button>
+          <button class="swatch" type="button" data-theme-color="18" style="--swatch-h: 18" aria-label="Amber theme"></button>
+          <button class="swatch" type="button" data-theme-color="332" style="--swatch-h: 332" aria-label="Rose theme"></button>
+        </div>
       </nav>
     </header>
     <main>
@@ -479,5 +516,30 @@
     </main>
     <footer>DoubleTake Utilities</footer>
   </div>
+  <script>
+    const storageKey = "doubletake-theme-hue";
+    const root = document.documentElement;
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const swatches = Array.from(document.querySelectorAll(".swatch"));
+
+    function applyTheme(hue) {
+      root.style.setProperty("--ink-h", hue);
+      if (metaTheme) metaTheme.setAttribute("content", `hsl(${hue} 48% 18%)`);
+      swatches.forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.themeColor === String(hue)));
+      });
+    }
+
+    const savedHue = localStorage.getItem(storageKey);
+    applyTheme(savedHue || "212");
+
+    swatches.forEach((button) => {
+      button.addEventListener("click", () => {
+        const hue = button.dataset.themeColor;
+        localStorage.setItem(storageKey, hue);
+        applyTheme(hue);
+      });
+    });
+  </script>
 </body>
 </html>

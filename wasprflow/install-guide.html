@@ -14,13 +14,16 @@
       --bg-1: #071018;
       --bg-2: #0c1b2d;
       --panel: #112033;
-      --line: #29405c;
       --text: #edf3fb;
       --muted: #9fb1c9;
-      --accent: #2f5f9d;
-      --ok: #5d87c4;
-      --warn: #7aa2d6;
-      --danger: #93b5e4;
+      --accent-h: 212;
+      --accent-s: 54%;
+      --accent-l: 40%;
+      --line: hsl(var(--accent-h) 39% 26%);
+      --accent: hsl(var(--accent-h) var(--accent-s) var(--accent-l));
+      --ok: hsl(var(--accent-h) 47% 57%);
+      --warn: hsl(var(--accent-h) 53% 65%);
+      --danger: hsl(var(--accent-h) 57% 73%);
       --radius: 14px;
     }
     * { box-sizing: border-box; }
@@ -29,18 +32,24 @@
       font-family: "Space Grotesk", Segoe UI, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(1200px 600px at 20% -10%, rgba(47, 95, 157, 0.18) 0%, transparent 60%),
-        radial-gradient(1000px 800px at 100% 0%, rgba(93, 135, 196, 0.12) 0%, transparent 65%),
+        radial-gradient(1200px 600px at 20% -10%, hsl(var(--accent-h) var(--accent-s) var(--accent-l) / 0.18) 0%, transparent 60%),
+        radial-gradient(1000px 800px at 100% 0%, hsl(var(--accent-h) 47% 57% / 0.12) 0%, transparent 65%),
         linear-gradient(165deg, var(--bg-1), var(--bg-2));
       min-height: 100vh;
     }
     .wrap { width: min(1080px, 92vw); margin: 0 auto; }
-    .topbar { position: sticky; top: 0; background: rgba(9,17,28,0.88); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(41,64,92,0.62); }
-    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .topbar { position: sticky; top: 0; background: rgba(9,17,28,0.88); backdrop-filter: blur(10px); border-bottom: 1px solid hsl(var(--accent-h) 39% 26% / 0.62); }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 14px 0; }
+    .nav-cluster { display: flex; align-items: center; justify-content: flex-end; gap: 16px; flex-wrap: wrap; }
     .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.03em; }
-    .dot { width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--ok)); box-shadow: 0 0 0 5px rgba(47,95,157,0.16); }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--ok)); box-shadow: 0 0 0 5px hsl(var(--accent-h) var(--accent-s) var(--accent-l) / 0.16); }
     .nav a { color: var(--muted); text-decoration: none; margin-left: 18px; }
     .nav a:hover { color: var(--text); }
+    .theme-swatches { display: inline-flex; align-items: center; gap: 8px; }
+    .theme-swatches span { font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+    .swatch { width: 16px; height: 16px; border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; background: hsl(var(--swatch-h) 58% 52%); cursor: pointer; box-shadow: 0 0 0 0 transparent; transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
+    .swatch:hover { transform: translateY(-1px) scale(1.06); }
+    .swatch[aria-pressed="true"] { border-color: rgba(255,255,255,0.6); box-shadow: 0 0 0 4px hsl(var(--swatch-h) 58% 52% / 0.2); }
     .hero { padding: 42px 0 14px; }
     .hero h1 { margin: 0 0 10px; font-size: clamp(1.9rem, 4.2vw, 3rem); line-height: 1.05; }
     .hero p { margin: 0; color: var(--muted); max-width: 70ch; }
@@ -56,7 +65,7 @@
     .step h3 { margin: 0 0 8px; font-size: 1.05rem; }
     .step p { margin: 0 0 10px; color: var(--muted); line-height: 1.5; }
     figure { margin: 0; }
-    img { width: 100%; height: auto; border-radius: 10px; border: 1px solid #284260; background: #0a1420; }
+    img { width: 100%; height: auto; border-radius: 10px; border: 1px solid hsl(var(--accent-h) 39% 26%); background: #0a1420; }
     figcaption { color: var(--muted); font-size: 0.92rem; margin-top: 7px; }
     .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .status { display: grid; gap: 10px; }
@@ -66,21 +75,30 @@
     .warn { color: var(--warn); }
     .bad { color: var(--danger); }
     footer { padding: 24px 0 40px; color: var(--muted); text-align: center; }
-    @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
+    @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } .nav { align-items: flex-start; } .nav-cluster { justify-content: flex-start; } }
   </style>
 </head>
 <body>
   <header class="topbar">
     <div class="wrap nav">
       <div class="brand"><span class="dot"></span> WASPrFlow</div>
-      <nav>
-        <a href="/">DoubleTake Utilities</a>
-        <a href="index.html">Home</a>
-        <a href="#install">Install</a>
-        <a href="#license">License</a>
-        <a href="#settings">Settings</a>
-        <a href="#troubleshooting">Troubleshooting</a>
-      </nav>
+      <div class="nav-cluster">
+        <nav>
+          <a href="/">DoubleTake Utilities</a>
+          <a href="index.html">Home</a>
+          <a href="#install">Install</a>
+          <a href="#license">License</a>
+          <a href="#settings">Settings</a>
+          <a href="#troubleshooting">Troubleshooting</a>
+        </nav>
+        <div class="theme-swatches" aria-label="Theme colour">
+          <span>Colour</span>
+          <button class="swatch" type="button" data-theme-color="212" style="--swatch-h: 212" aria-label="Blue theme"></button>
+          <button class="swatch" type="button" data-theme-color="164" style="--swatch-h: 164" aria-label="Teal theme"></button>
+          <button class="swatch" type="button" data-theme-color="18" style="--swatch-h: 18" aria-label="Amber theme"></button>
+          <button class="swatch" type="button" data-theme-color="332" style="--swatch-h: 332" aria-label="Rose theme"></button>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -236,5 +254,30 @@
   <footer>
     WASPrFlow - Voice Dictation for Windows - <a href="/" style="color:inherit;">DoubleTake Utilities</a>
   </footer>
+  <script>
+    const storageKey = "wasprflow-theme-hue";
+    const root = document.documentElement;
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const swatches = Array.from(document.querySelectorAll(".swatch"));
+
+    function applyTheme(hue) {
+      root.style.setProperty("--accent-h", hue);
+      if (metaTheme) metaTheme.setAttribute("content", `hsl(${hue} 52% 18%)`);
+      swatches.forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.themeColor === String(hue)));
+      });
+    }
+
+    const savedHue = localStorage.getItem(storageKey);
+    applyTheme(savedHue || "212");
+
+    swatches.forEach((button) => {
+      button.addEventListener("click", () => {
+        const hue = button.dataset.themeColor;
+        localStorage.setItem(storageKey, hue);
+        applyTheme(hue);
+      });
+    });
+  </script>
 </body>
 </html>
