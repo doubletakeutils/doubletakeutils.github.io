@@ -3,108 +3,127 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>DoubleTake Utilities | Software Landing Page</title>
+  <title>DoubleTake Utilities | Software That Stays Out Of The Way</title>
   <meta
     name="description"
     content="DoubleTake Utilities builds practical Windows software, including WASPrFlow and DoubleTake Image and Video."
   />
-  <meta name="theme-color" content="#0c1b2d" />
+  <meta name="theme-color" content="#2b1808" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Chivo+Mono:wght@400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap"
     rel="stylesheet"
   />
   <style>
     :root {
-      --ink-h: 212;
-      --ink-s: 52%;
-      --ink-l: 47%;
-      --ink: hsl(var(--ink-h) var(--ink-s) var(--ink-l));
-      --ink-soft: hsl(var(--ink-h) 51% 62%);
-      --paper: #08111c;
-      --panel: rgba(13, 24, 39, 0.84);
-      --line: hsl(var(--ink-h) 52% 47% / 0.18);
-      --text: #edf3fb;
-      --muted: #a3b4c9;
-      --shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+      --bg: #120d08;
+      --text: #fff4e8;
+      --muted: #d2b89f;
+      --muted-strong: #e7cdb5;
+      --accent-h: 26;
+      --accent: hsl(var(--accent-h) 88% 57%);
+      --accent-2: hsl(calc(var(--accent-h) + 16) 82% 63%);
+      --line: rgba(255, 215, 176, 0.18);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
       --radius-xl: 28px;
       --radius-lg: 20px;
+      --radius-md: 14px;
+      --wrap: min(1180px, 92vw);
     }
+
     * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      margin: 0;
-      font-family: "Outfit", "Segoe UI", sans-serif;
+      font-family: "Sora", "Segoe UI", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, hsl(var(--ink-h) var(--ink-s) var(--ink-l) / 0.2), transparent 30%),
-        radial-gradient(circle at top right, hsl(var(--ink-h) 51% 62% / 0.12), transparent 28%),
-        linear-gradient(180deg, #071018 0%, #0e1a2a 52%, #152537 100%);
+        radial-gradient(circle at top left, rgba(255, 146, 61, 0.24), transparent 28%),
+        radial-gradient(circle at top right, rgba(255, 204, 128, 0.13), transparent 22%),
+        linear-gradient(180deg, #120d08 0%, #191007 34%, #0f0c0a 100%);
       min-height: 100vh;
     }
+
     a { color: inherit; }
-    .shell {
-      width: min(1160px, calc(100vw - 32px));
-      margin: 0 auto;
-      padding: 24px 0 48px;
-    }
+    img { max-width: 100%; display: block; }
+    .wrap { width: var(--wrap); margin: 0 auto; }
+
     .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 26px;
-      padding: 18px 22px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(8, 15, 25, 0.76);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(18, 13, 8, 0.76);
+      border-bottom: 1px solid rgba(255, 223, 193, 0.08);
     }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      min-width: 0;
-    }
-    .brand-mark {
-      display: block;
-      width: 172px;
-      max-width: min(34vw, 172px);
-      height: auto;
-      flex: 0 0 auto;
-      filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.28));
-    }
-    .brand-copy b {
-      display: block;
-      font-size: 1rem;
-      letter-spacing: 0.04em;
-    }
-    .brand-copy span {
-      display: block;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
+
     .nav {
       display: flex;
       align-items: center;
-      gap: 16px;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      display: block;
+      width: 176px;
+      max-width: min(38vw, 176px);
+      height: auto;
+      filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.28));
+    }
+
+    .brand-copy b {
+      display: block;
+      font-size: 0.98rem;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-copy span {
+      display: block;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
       flex-wrap: wrap;
       justify-content: flex-end;
     }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
     .theme-swatches {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       margin-left: 4px;
     }
+
     .theme-swatches span {
       font-size: 0.76rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--muted);
     }
+
     .swatch {
       width: 16px;
       height: 16px;
@@ -115,299 +134,373 @@
       box-shadow: 0 0 0 0 transparent;
       transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
     }
+
     .swatch:hover { transform: translateY(-1px) scale(1.06); }
+
     .swatch[aria-pressed="true"] {
       border-color: rgba(255, 255, 255, 0.6);
       box-shadow: 0 0 0 4px hsl(var(--swatch-h) 58% 52% / 0.2);
     }
-    .nav a {
-      text-decoration: none;
-      color: var(--muted);
-      font-weight: 500;
-    }
-    .nav a:hover { color: var(--ink); }
+
     .hero {
-      position: relative;
-      overflow: hidden;
-      border: 1px solid hsl(var(--ink-h) 52% 47% / 0.18);
-      border-radius: 36px;
-      padding: clamp(28px, 5vw, 54px);
-      background:
-        linear-gradient(135deg, rgba(14,28,45,0.94), rgba(10,18,29,0.92)),
-        linear-gradient(125deg, #18304c, #0b1522);
-      box-shadow: var(--shadow);
-    }
-    .hero::before,
-    .hero::after {
-      content: "";
-      position: absolute;
-      border-radius: 999px;
-      pointer-events: none;
-    }
-    .hero::before {
-      width: 420px;
-      height: 420px;
-      right: -120px;
-      top: -110px;
-      background: radial-gradient(circle, hsl(var(--ink-h) var(--ink-s) var(--ink-l) / 0.2) 0%, transparent 66%);
-    }
-    .hero::after {
-      width: 320px;
-      height: 320px;
-      left: -120px;
-      bottom: -150px;
-      background: radial-gradient(circle, hsl(var(--ink-h) 51% 62% / 0.12) 0%, transparent 72%);
-    }
-    .hero-grid {
-      position: relative;
-      z-index: 1;
+      padding: 56px 0 28px;
       display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(290px, 0.85fr);
-      gap: 24px;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+      gap: 28px;
       align-items: center;
     }
+
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 16px;
       padding: 8px 12px;
-      border: 1px solid hsl(var(--ink-h) 52% 47% / 0.18);
+      border: 1px solid rgba(255, 198, 146, 0.16);
       border-radius: 999px;
-      background: rgba(19, 34, 53, 0.84);
-      color: var(--ink-soft);
-      font-size: 0.88rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
+      background: rgba(255, 168, 91, 0.08);
+      color: var(--muted-strong);
+      font-size: 0.82rem;
+      letter-spacing: 0.07em;
       text-transform: uppercase;
     }
-    .eyebrow::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, hsl(var(--ink-h) 54% 40%), hsl(var(--ink-h) 51% 62%));
-      box-shadow: 0 0 0 6px hsl(var(--ink-h) 52% 47% / 0.1);
+
+    .hero h1 {
+      margin: 18px 0 16px;
+      font-size: clamp(2.7rem, 6vw, 5.3rem);
+      line-height: 0.96;
+      letter-spacing: -0.05em;
+      max-width: 11ch;
     }
-    h1 {
-      margin: 0 0 14px;
-      font-size: clamp(2.6rem, 6vw, 5.3rem);
-      line-height: 0.94;
-      letter-spacing: -0.04em;
-      max-width: 10ch;
-    }
-    .hero p {
+
+    .hero-copy {
       margin: 0;
-      max-width: 62ch;
-      color: var(--muted);
+      color: var(--muted-strong);
       font-size: 1.08rem;
-      line-height: 1.6;
+      line-height: 1.72;
+      max-width: 62ch;
     }
+
+    .hero-copy strong { color: var(--text); }
+
     .cta-row {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
       margin-top: 24px;
     }
-    .button {
+
+    .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      gap: 10px;
       min-height: 52px;
       padding: 0 18px;
       border-radius: 999px;
-      border: 1px solid transparent;
+      border: 1px solid var(--line);
       text-decoration: none;
       font-weight: 700;
-      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+      transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease;
     }
-    .button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(17, 35, 64, 0.14);
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn.primary {
+      color: #1b0e03;
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 18px 46px rgba(255, 159, 77, 0.28);
     }
-    .button.primary {
-      color: #fff;
-      background: linear-gradient(135deg, hsl(var(--ink-h) 64% 25%), hsl(var(--ink-h) 54% 40%));
+
+    .btn.secondary {
+      background: rgba(255, 255, 255, 0.04);
     }
-    .button.secondary {
-      color: var(--text);
-      background: rgba(18, 33, 52, 0.92);
-      border-color: hsl(var(--ink-h) 52% 47% / 0.2);
+
+    .micro-proof {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.92rem;
     }
+
+    .micro-proof span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .micro-proof span::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      opacity: 0.9;
+    }
+
+    .panel {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, rgba(53, 30, 14, 0.84), rgba(24, 17, 11, 0.96));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
     .hero-card {
       padding: 24px;
-      border: 1px solid hsl(var(--ink-h) 52% 47% / 0.14);
-      border-radius: var(--radius-xl);
-      background: linear-gradient(180deg, rgba(15, 28, 44, 0.98), rgba(9, 17, 28, 0.98));
-      color: #f8eff0;
-      box-shadow: 0 20px 44px rgba(0, 0, 0, 0.34);
-    }
-    .hero-card .code {
-      margin: 0 0 18px;
-      color: rgba(233, 200, 204, 0.84);
-      font-family: "Chivo Mono", Consolas, monospace;
-      font-size: 0.86rem;
-      line-height: 1.75;
-    }
-    .hero-card h2 {
-      margin: 0 0 10px;
-      font-size: 1.45rem;
-    }
-    .hero-card p {
-      margin: 0;
-      color: rgba(236, 220, 222, 0.78);
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-    .section {
-      margin-top: 26px;
-      padding: 28px;
-      border: 1px solid var(--line);
-      border-radius: 32px;
-      background: var(--panel);
-      backdrop-filter: blur(8px);
-      box-shadow: 0 18px 48px rgba(17, 35, 64, 0.08);
-    }
-    .section-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
+      display: grid;
       gap: 18px;
-      margin-bottom: 20px;
     }
-    .section-head h2,
-    .section-head p {
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(255, 176, 88, 0.12), transparent 34%);
+      pointer-events: none;
+    }
+
+    .stat-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .stat {
+      padding: 12px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 236, 216, 0.07);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.84rem;
+      line-height: 1.4;
+    }
+
+    .placeholder {
+      border: 1px dashed rgba(255, 212, 171, 0.34);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(135deg, rgba(255, 171, 84, 0.14), rgba(255, 171, 84, 0.04)),
+        repeating-linear-gradient(
+          -45deg,
+          rgba(255, 255, 255, 0.03),
+          rgba(255, 255, 255, 0.03) 14px,
+          rgba(255, 255, 255, 0.01) 14px,
+          rgba(255, 255, 255, 0.01) 28px
+        );
+      min-height: 300px;
+      padding: 20px;
+      display: grid;
+      align-content: space-between;
+      gap: 18px;
+    }
+
+    .placeholder-label {
+      display: inline-flex;
+      width: fit-content;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.28);
+      color: var(--muted-strong);
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .placeholder h2,
+    .placeholder p {
       margin: 0;
     }
-    .section-head h2 {
-      font-size: clamp(1.7rem, 3vw, 2.4rem);
-      letter-spacing: -0.03em;
-    }
-    .section-head p {
+
+    .placeholder p {
       color: var(--muted);
-      max-width: 54ch;
-      line-height: 1.55;
+      line-height: 1.6;
+      max-width: 34ch;
     }
+
+    .placeholder-callout {
+      font-family: "IBM Plex Mono", Consolas, monospace;
+      font-size: 0.92rem;
+      color: #ffe8d3;
+      line-height: 1.6;
+      padding: 14px;
+      border-radius: var(--radius-md);
+      background: rgba(14, 10, 7, 0.48);
+      border: 1px solid rgba(255, 222, 186, 0.08);
+    }
+
+    section { padding: 34px 0; }
+
+    .proof-band,
+    .utility-grid,
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-    .product {
-      display: flex;
-      flex-direction: column;
       gap: 16px;
-      min-height: 280px;
-      padding: 24px;
-      border: 1px solid hsl(var(--ink-h) 52% 47% / 0.14);
-      border-radius: var(--radius-xl);
-      background: linear-gradient(180deg, rgba(15,28,44,0.96), rgba(9,17,28,0.96));
     }
-    .product .tag {
-      width: fit-content;
-      padding: 8px 11px;
-      border-radius: 999px;
-      background: hsl(var(--ink-h) 52% 47% / 0.12);
-      color: var(--ink-soft);
-      font-size: 0.84rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
+
+    .proof-band { grid-template-columns: repeat(4, 1fr); margin: 14px 0 6px; }
+    .utility-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .proof-item,
+    .utility-card,
+    .product-card {
+      padding: 22px;
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 239, 226, 0.08);
     }
-    .product h3 {
+
+    .proof-item strong,
+    .utility-card strong,
+    .product-card strong {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .proof-item p,
+    .utility-card p,
+    .product-card p {
       margin: 0;
-      font-size: 1.7rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
       letter-spacing: -0.03em;
     }
-    .product p {
+
+    .section-head p {
       margin: 0;
       color: var(--muted);
-      line-height: 1.6;
-      flex: 1;
+      max-width: 54ch;
+      line-height: 1.66;
     }
-    .product ul {
-      margin: 0;
-      padding-left: 18px;
-      color: var(--ink-soft);
-      line-height: 1.7;
+
+    .feature-kicker {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: var(--accent-2);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
-    .utility-grid {
+
+    .product-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.4rem;
+    }
+
+    .bullet-list {
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      gap: 10px;
     }
-    .utility-card {
-      padding: 18px;
-      border: 1px solid hsl(var(--ink-h) 52% 47% / 0.12);
-      border-radius: var(--radius-lg);
-      background: rgba(13, 24, 39, 0.84);
+
+    .bullet-list li {
+      padding-left: 18px;
+      position: relative;
+      color: var(--muted-strong);
+      line-height: 1.65;
     }
-    .utility-card h3 {
-      margin: 0 0 8px;
-      font-size: 1.02rem;
+
+    .bullet-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.66em;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
     }
-    .utility-card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.55;
-    }
+
     .publish-note {
-      margin-top: 24px;
       padding: 18px 20px;
-      border-left: 4px solid var(--ink);
+      border-left: 4px solid var(--accent);
       border-radius: 16px;
-      background: hsl(var(--ink-h) 52% 47% / 0.12);
-      color: var(--ink-soft);
+      background: rgba(255, 170, 91, 0.1);
+      color: var(--muted-strong);
       line-height: 1.6;
     }
+
     footer {
-      padding: 28px 0 8px;
+      padding: 34px 0 52px;
       color: var(--muted);
       text-align: center;
-      font-size: 0.94rem;
+      font-size: 0.92rem;
     }
+
+    @media (max-width: 1080px) {
+      .proof-band { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
     @media (max-width: 920px) {
-      .topbar,
-      .section-head {
-        align-items: flex-start;
-      }
-      .hero-grid,
+      .hero,
       .product-grid,
       .utility-grid {
         grid-template-columns: 1fr;
       }
-      .topbar {
+
+      .section-head {
         flex-direction: column;
-        border-radius: 28px;
+        align-items: flex-start;
       }
-      .nav {
-        justify-content: flex-start;
-      }
+
+      .stat-strip { grid-template-columns: 1fr; }
     }
-    @media (max-width: 640px) {
-      .shell { width: min(100vw - 18px, 1160px); padding-top: 10px; }
-      .topbar,
-      .hero,
-      .section { padding: 18px; }
-      h1 { max-width: none; }
-      .button { width: 100%; }
+
+    @media (max-width: 760px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .proof-band { grid-template-columns: 1fr; }
+      .hero { padding-top: 42px; }
+      .hero h1 { max-width: none; }
+      .brand { align-items: flex-start; flex-direction: column; }
     }
   </style>
 </head>
 <body>
-  <div class="shell">
-    <header class="topbar">
-      <div class="brand">
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="index.html">
         <img class="brand-mark" src="assets/logo-rebuilt-amber.svg" alt="DoubleTake Utilities logo" />
-        <div class="brand-copy">
+        <span class="brand-copy">
           <b>DoubleTake Utilities</b>
-          <span>Windows-focused software and utility products</span>
-        </div>
-      </div>
-      <nav class="nav">
+          <span>Windows software built for real daily workflow</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
         <a href="#products">Products</a>
-        <a href="#about">Approach</a>
-        <a href="#publish">Publish Ready</a>
+        <a href="#approach">Approach</a>
+        <a href="#publish">Publish</a>
         <div class="theme-swatches" aria-label="Theme colour">
           <span>Colour</span>
           <button class="swatch" type="button" data-theme-color="212" style="--swatch-h: 212" aria-label="Blue theme"></button>
@@ -416,106 +509,161 @@
           <button class="swatch" type="button" data-theme-color="332" style="--swatch-h: 332" aria-label="Rose theme"></button>
         </div>
       </nav>
-    </header>
-    <main>
-      <section class="hero">
-        <div class="hero-grid">
-          <div>
-            <div class="eyebrow">DoubleTake Utilities Software Company</div>
-            <h1>Utility software built to get out of the way.</h1>
-            <p>
-              This landing page is the front door for DoubleTake Utilities. From here, visitors can
-              go directly to the existing WASPrFlow product site or to the DoubleTake Image and Video page.
-            </p>
-            <div class="cta-row">
-              <a class="button primary" href="/wasprflow/">Open WASPrFlow</a>
-              <a class="button secondary" href="https://www.google.com/" rel="noopener" target="_blank">Open DoubleTake Image and Video</a>
-            </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="wrap hero">
+      <div>
+        <span class="eyebrow">DoubleTake Utilities</span>
+        <h1>Useful software with less noise and more payoff.</h1>
+        <p class="hero-copy">
+          <strong>DoubleTake Utilities builds desktop tools that stay out of the way</strong> and help people
+          move faster inside the work they are already doing. WASPrFlow is live now, and DoubleTake Image and Video
+          is the next destination in the product line.
+        </p>
+        <div class="cta-row">
+          <a class="btn primary" href="/wasprflow/">Open WASPrFlow</a>
+          <a class="btn secondary" href="https://www.google.com/" rel="noopener" target="_blank">Open DoubleTake Image and Video</a>
+        </div>
+        <div class="micro-proof">
+          <span>Windows-first utility products</span>
+          <span>Built for low-friction everyday use</span>
+          <span>Static-site friendly publishing</span>
+        </div>
+      </div>
+
+      <aside class="panel hero-card">
+        <div class="stat-strip">
+          <div class="stat">
+            <strong>Focused</strong>
+            <span>Small products with a clear job instead of bloated suites.</span>
           </div>
-          <aside class="hero-card">
-            <p class="code">
-              company.doubletake.utilities<br />
-              products = ["WASPrFlow", "DoubleTake Image and Video"]<br />
-              purpose = "simple, useful desktop tools"
-            </p>
-            <h2>Focused Windows utility software</h2>
+          <div class="stat">
+            <strong>Practical</strong>
+            <span>Built around real work patterns, not novelty demos.</span>
+          </div>
+          <div class="stat">
+            <strong>Shippable</strong>
+            <span>Designed to publish cleanly and stay easy to maintain.</span>
+          </div>
+        </div>
+        <div class="placeholder">
+          <span class="placeholder-label">Company Snapshot</span>
+          <div>
+            <h2>Product Family Overview</h2>
             <p>
-              DoubleTake Utilities now uses the current logo system directly on the landing page, with the product cards
-              routing visitors into the current WASPrFlow site and the next product destination.
+              This panel frames DoubleTake Utilities as a software company first, then routes visitors into
+              the active product pages without making the landing page feel like a generic corporate shell.
             </p>
-          </aside>
+          </div>
+          <div class="placeholder-callout">
+            company.doubletake.utilities
+            <br />products = ["WASPrFlow", "DoubleTake Image and Video"]
+            <br />goal = "software that gets out of the way"
+          </div>
         </div>
-      </section>
-      <section class="section" id="products">
-        <div class="section-head">
-          <div><h2>Products</h2></div>
-          <p>Two clear destination cards keep this page focused. It acts as a company entry point, not a replacement for the existing product pages.</p>
+      </aside>
+    </section>
+
+    <section class="wrap">
+      <div class="proof-band">
+        <div class="proof-item">
+          <strong>One front door</strong>
+          <p>The company page stays simple and routes visitors directly into the product they need.</p>
         </div>
-        <div class="product-grid">
-          <article class="product">
-            <div class="tag">Live Product Site</div>
-            <h3>WASPrFlow</h3>
-            <p>
-              The current WASPrFlow site remains unchanged. This landing page simply routes visitors into that existing install, download, and guide experience.
-            </p>
-            <ul>
-              <li>Existing page structure preserved</li>
-              <li>Direct path to downloads and install guide</li>
-              <li>Published under `/wasprflow/`</li>
-            </ul>
-            <div class="cta-row">
-              <a class="button primary" href="/wasprflow/">Go To WASPrFlow</a>
-            </div>
-          </article>
-          <article class="product">
-            <div class="tag">Second Destination</div>
-            <h3>DoubleTake Image and Video</h3>
-            <p>
-              This card is using a placeholder target for now. When the DoubleTake Image and Video page has a final public address, this button can be switched without changing the rest of the landing page.
-            </p>
-            <ul>
-              <li>Current target is a temporary placeholder link</li>
-              <li>Opens separately so visitors do not lose this page</li>
-              <li>Easy to swap to a public product URL later</li>
-            </ul>
-            <div class="cta-row">
-              <a class="button secondary" href="https://www.google.com/" rel="noopener" target="_blank">Go To DoubleTake Image and Video</a>
-            </div>
-          </article>
+        <div class="proof-item">
+          <strong>Consistent visual language</strong>
+          <p>The landing page now shares the same design system as the WASPrFlow site instead of feeling detached from it.</p>
         </div>
-      </section>
-      <section class="section" id="about">
-        <div class="section-head">
-          <div><h2>How This Page Works</h2></div>
-          <p>The page keeps the dark navy visual direction consistent across the hero, cards, and CTAs while staying lightweight enough for static hosting.</p>
+        <div class="proof-item">
+          <strong>Easy to grow</strong>
+          <p>New products can be added without redesigning the entire root site structure.</p>
         </div>
-        <div class="utility-grid">
-          <article class="utility-card">
-            <h3>Company-first entry</h3>
-            <p>Visitors land on DoubleTake Utilities first, then choose the product they need.</p>
-          </article>
-          <article class="utility-card">
-            <h3>Low-friction publishing</h3>
-            <p>The publish root can serve this landing page while the current WASPrFlow content remains in its own folder.</p>
-          </article>
-          <article class="utility-card">
-            <h3>Logo-ready structure</h3>
-            <p>The current mark is a placeholder so the final logo asset can be dropped in without redesigning the page.</p>
-          </article>
+        <div class="proof-item">
+          <strong>Clean publish model</strong>
+          <p>The root page can stay lightweight while product sites live in their own folders.</p>
         </div>
-      </section>
-      <section class="section" id="publish">
-        <div class="section-head">
-          <div><h2>Publish Readiness</h2></div>
-          <p>The publish root can point at this landing page while the existing WASPrFlow site stays published exactly as-is in `/wasprflow/`.</p>
-        </div>
-        <div class="publish-note">
-          The publish root can serve this landing page directly, while the current WASPrFlow download and install pages remain available under <code>/wasprflow/</code>.
-        </div>
-      </section>
-    </main>
-    <footer>DoubleTake Utilities</footer>
-  </div>
+      </div>
+    </section>
+
+    <section class="wrap" id="products">
+      <div class="section-head">
+        <h2>Products</h2>
+        <p>Visitors should be able to understand the company quickly and move directly to the right destination without hunting for navigation.</p>
+      </div>
+      <div class="product-grid">
+        <article class="panel product-card">
+          <span class="feature-kicker">Live Product Site</span>
+          <h3>WASPrFlow</h3>
+          <p>
+            The WASPrFlow product page handles positioning, downloads, privacy details, and the install guide.
+            This landing page exists to route visitors there cleanly.
+          </p>
+          <ul class="bullet-list">
+            <li>Live marketing page under <code>/wasprflow/</code></li>
+            <li>Direct path to installers and install guide</li>
+            <li>Matches the current product visual direction</li>
+          </ul>
+          <div class="cta-row">
+            <a class="btn primary" href="/wasprflow/">Go To WASPrFlow</a>
+          </div>
+        </article>
+        <article class="panel product-card">
+          <span class="feature-kicker">Next Destination</span>
+          <h3>DoubleTake Image and Video</h3>
+          <p>
+            This card stays ready for the next product launch. The current outbound link can be swapped to the final public
+            address later without restructuring the page.
+          </p>
+          <ul class="bullet-list">
+            <li>Temporary placeholder link for now</li>
+            <li>Kept separate so visitors do not lose the company page</li>
+            <li>Simple to replace with the final public URL</li>
+          </ul>
+          <div class="cta-row">
+            <a class="btn secondary" href="https://www.google.com/" rel="noopener" target="_blank">Go To DoubleTake Image and Video</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap" id="approach">
+      <div class="section-head">
+        <h2>How This Page Works</h2>
+        <p>The landing page now uses the same warmer product-led system as WASPrFlow so the company brand and product brand feel connected instead of separate.</p>
+      </div>
+      <div class="utility-grid">
+        <article class="utility-card">
+          <strong>Company-first entry</strong>
+          <p>People can start at DoubleTake Utilities and immediately see what products exist and where each one goes.</p>
+        </article>
+        <article class="utility-card">
+          <strong>Shared design system</strong>
+          <p>Typography, panels, CTAs, gradients, and theme controls now align with the WASPrFlow product site.</p>
+        </article>
+        <article class="utility-card">
+          <strong>Low-friction maintenance</strong>
+          <p>The root page stays static and lightweight while product-specific depth remains inside the product folders.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap" id="publish">
+      <div class="section-head">
+        <h2>Publish Readiness</h2>
+        <p>The root landing page can stay clean and company-focused while the current WASPrFlow site continues to live under its own published path.</p>
+      </div>
+      <div class="publish-note">
+        The publish root serves this company landing page directly, while the current WASPrFlow marketing site, downloads, and install guide remain available under <code>/wasprflow/</code>.
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    DoubleTake Utilities • Software that stays out of the way
+  </footer>
+
   <script>
     const storageKey = "doubletake-theme-hue";
     const root = document.documentElement;
@@ -523,15 +671,15 @@
     const swatches = Array.from(document.querySelectorAll(".swatch"));
 
     function applyTheme(hue) {
-      root.style.setProperty("--ink-h", hue);
-      if (metaTheme) metaTheme.setAttribute("content", `hsl(${hue} 48% 18%)`);
+      root.style.setProperty("--accent-h", hue);
+      if (metaTheme) metaTheme.setAttribute("content", `hsl(${hue} 52% 18%)`);
       swatches.forEach((button) => {
         button.setAttribute("aria-pressed", String(button.dataset.themeColor === String(hue)));
       });
     }
 
     const savedHue = localStorage.getItem(storageKey);
-    applyTheme(savedHue || "212");
+    applyTheme(savedHue || "18");
 
     swatches.forEach((button) => {
       button.addEventListener("click", () => {
