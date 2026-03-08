@@ -17,14 +17,21 @@
   />
   <style>
     :root {
-      --bg: #120d08;
-      --text: #fff4e8;
-      --muted: #d2b89f;
-      --muted-strong: #e7cdb5;
-      --accent-h: 26;
+      --accent-h: 18;
+      --bg: hsl(var(--accent-h) 30% 8%);
+      --bg-soft: hsl(var(--accent-h) 34% 10%);
+      --bg-deep: hsl(var(--accent-h) 22% 6%);
+      --text: hsl(calc(var(--accent-h) + 22) 100% 95%);
+      --muted: hsl(calc(var(--accent-h) + 8) 34% 72%);
+      --muted-strong: hsl(calc(var(--accent-h) + 10) 55% 82%);
       --accent: hsl(var(--accent-h) 88% 57%);
       --accent-2: hsl(calc(var(--accent-h) + 16) 82% 63%);
-      --line: rgba(255, 215, 176, 0.18);
+      --line: hsl(calc(var(--accent-h) + 8) 72% 82% / 0.18);
+      --line-soft: hsl(calc(var(--accent-h) + 8) 72% 82% / 0.08);
+      --panel-strong: hsl(var(--accent-h) 38% 16% / 0.96);
+      --glow: hsl(var(--accent-h) 88% 57% / 0.28);
+      --glow-soft: hsl(var(--accent-h) 88% 57% / 0.14);
+      --surface-soft: hsl(var(--accent-h) 20% 8% / 0.48);
       --shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
       --radius-xl: 28px;
       --radius-lg: 20px;
@@ -39,9 +46,9 @@
       font-family: "Sora", "Segoe UI", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(255, 146, 61, 0.24), transparent 28%),
-        radial-gradient(circle at top right, rgba(255, 204, 128, 0.13), transparent 22%),
-        linear-gradient(180deg, #120d08 0%, #191007 34%, #0f0c0a 100%);
+        radial-gradient(circle at top left, hsl(var(--accent-h) 88% 57% / 0.24), transparent 28%),
+        radial-gradient(circle at top right, hsl(calc(var(--accent-h) + 16) 82% 63% / 0.13), transparent 22%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 34%, var(--bg-deep) 100%);
       min-height: 100vh;
     }
 
@@ -54,8 +61,8 @@
       top: 0;
       z-index: 20;
       backdrop-filter: blur(16px);
-      background: rgba(18, 13, 8, 0.76);
-      border-bottom: 1px solid rgba(255, 223, 193, 0.08);
+      background: hsl(var(--accent-h) 30% 8% / 0.76);
+      border-bottom: 1px solid var(--line-soft);
     }
 
     .nav {
@@ -155,9 +162,9 @@
       align-items: center;
       gap: 10px;
       padding: 8px 12px;
-      border: 1px solid rgba(255, 198, 146, 0.16);
+      border: 1px solid var(--line);
       border-radius: 999px;
-      background: rgba(255, 168, 91, 0.08);
+      background: var(--glow-soft);
       color: var(--muted-strong);
       font-size: 0.82rem;
       letter-spacing: 0.07em;
@@ -209,7 +216,7 @@
       color: #1b0e03;
       border-color: transparent;
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: 0 18px 46px rgba(255, 159, 77, 0.28);
+      box-shadow: 0 18px 46px var(--glow);
     }
 
     .btn.secondary {
@@ -244,7 +251,7 @@
       position: relative;
       border: 1px solid var(--line);
       border-radius: var(--radius-xl);
-      background: linear-gradient(180deg, rgba(53, 30, 14, 0.84), rgba(24, 17, 11, 0.96));
+      background: linear-gradient(180deg, var(--panel-strong), hsl(var(--accent-h) 22% 9% / 0.96));
       box-shadow: var(--shadow);
       overflow: hidden;
     }
@@ -259,7 +266,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at top right, rgba(255, 176, 88, 0.12), transparent 34%);
+      background: radial-gradient(circle at top right, var(--glow-soft), transparent 34%);
       pointer-events: none;
     }
 
@@ -272,8 +279,8 @@
     .stat {
       padding: 12px;
       border-radius: var(--radius-md);
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 236, 216, 0.07);
+      background: hsl(var(--accent-h) 20% 98% / 0.04);
+      border: 1px solid var(--line-soft);
     }
 
     .stat strong {
@@ -289,10 +296,10 @@
     }
 
     .placeholder {
-      border: 1px dashed rgba(255, 212, 171, 0.34);
+      border: 1px dashed hsl(calc(var(--accent-h) + 8) 72% 82% / 0.34);
       border-radius: var(--radius-lg);
       background:
-        linear-gradient(135deg, rgba(255, 171, 84, 0.14), rgba(255, 171, 84, 0.04)),
+        linear-gradient(135deg, hsl(var(--accent-h) 88% 57% / 0.14), hsl(var(--accent-h) 88% 57% / 0.04)),
         repeating-linear-gradient(
           -45deg,
           rgba(255, 255, 255, 0.03),
@@ -312,7 +319,7 @@
       width: fit-content;
       padding: 7px 10px;
       border-radius: 999px;
-      background: rgba(0, 0, 0, 0.28);
+      background: hsl(var(--accent-h) 18% 6% / 0.28);
       color: var(--muted-strong);
       font-size: 0.76rem;
       letter-spacing: 0.08em;
@@ -333,12 +340,12 @@
     .placeholder-callout {
       font-family: "IBM Plex Mono", Consolas, monospace;
       font-size: 0.92rem;
-      color: #ffe8d3;
+      color: hsl(calc(var(--accent-h) + 18) 100% 90%);
       line-height: 1.6;
       padding: 14px;
       border-radius: var(--radius-md);
-      background: rgba(14, 10, 7, 0.48);
-      border: 1px solid rgba(255, 222, 186, 0.08);
+      background: var(--surface-soft);
+      border: 1px solid var(--line-soft);
     }
 
     section { padding: 34px 0; }
@@ -359,8 +366,8 @@
     .product-card {
       padding: 22px;
       border-radius: var(--radius-lg);
-      background: rgba(255, 255, 255, 0.035);
-      border: 1px solid rgba(255, 239, 226, 0.08);
+      background: hsl(var(--accent-h) 20% 98% / 0.035);
+      border: 1px solid var(--line-soft);
     }
 
     .proof-item strong,
@@ -443,7 +450,7 @@
       padding: 18px 20px;
       border-left: 4px solid var(--accent);
       border-radius: 16px;
-      background: rgba(255, 170, 91, 0.1);
+      background: var(--glow-soft);
       color: var(--muted-strong);
       line-height: 1.6;
     }

@@ -262,6 +262,11 @@
 
     function applyTheme(hue) {
       root.style.setProperty("--accent-h", hue);
+      root.style.setProperty("--bg-1", `hsl(${hue} 46% 8%)`);
+      root.style.setProperty("--bg-2", `hsl(${hue} 42% 13%)`);
+      root.style.setProperty("--panel", `hsl(${hue} 34% 16%)`);
+      root.style.setProperty("--text", `hsl(${Number(hue) + 18} 72% 96%)`);
+      root.style.setProperty("--muted", `hsl(${Number(hue) + 10} 34% 72%)`);
       if (metaTheme) metaTheme.setAttribute("content", `hsl(${hue} 52% 18%)`);
       swatches.forEach((button) => {
         button.setAttribute("aria-pressed", String(button.dataset.themeColor === String(hue)));
