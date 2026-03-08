@@ -3,378 +3,931 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>WASPrFlow | Voice Dictation for Windows</title>
-  <meta name="description" content="WASPrFlow turns speech into polished, ready-to-insert text anywhere on Windows." />
-  <meta name="theme-color" content="#0c1b2d" />
+  <title>WASPrFlow | Dictation That Writes Like You Mean It</title>
+  <meta name="description" content="WASPrFlow turns speech into polished text and inserts it directly into any Windows app. Hold a hotkey, speak, release, and keep working." />
+  <meta name="theme-color" content="#2b1808" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-1: #071018;
-      --bg-2: #0c1b2d;
-      --panel: #112033;
-      --panel-soft: #18273b;
-      --text: #edf3fb;
-      --muted: #9fb1c9;
-      --accent-h: 212;
-      --accent-s: 54%;
-      --accent-l: 40%;
-      --line: hsl(var(--accent-h) 39% 26%);
-      --accent: hsl(var(--accent-h) var(--accent-s) var(--accent-l));
-      --accent-2: hsl(var(--accent-h) 47% 57%);
-      --warn: hsl(var(--accent-h) 53% 65%);
-      --danger: hsl(var(--accent-h) 57% 73%);
-      --radius: 14px;
-      --shadow: 0 14px 44px rgba(0, 0, 0, 0.42);
+      --bg: #120d08;
+      --bg-soft: #1a120b;
+      --panel: rgba(40, 24, 12, 0.86);
+      --panel-strong: rgba(55, 33, 16, 0.96);
+      --text: #fff4e8;
+      --muted: #d2b89f;
+      --muted-strong: #e7cdb5;
+      --accent-h: 26;
+      --accent: hsl(var(--accent-h) 88% 57%);
+      --accent-2: hsl(calc(var(--accent-h) + 16) 82% 63%);
+      --accent-3: hsl(calc(var(--accent-h) - 10) 76% 42%);
+      --line: rgba(255, 215, 176, 0.18);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --wrap: min(1180px, 92vw);
     }
 
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: "Space Grotesk", Segoe UI, sans-serif;
+      font-family: "Sora", "Segoe UI", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(1200px 600px at 20% -10%, hsl(var(--accent-h) var(--accent-s) var(--accent-l) / 0.18) 0%, transparent 60%),
-        radial-gradient(1000px 800px at 100% 0%, hsl(var(--accent-h) 47% 57% / 0.12) 0%, transparent 65%),
-        linear-gradient(165deg, var(--bg-1), var(--bg-2));
+        radial-gradient(circle at top left, rgba(255, 146, 61, 0.24), transparent 28%),
+        radial-gradient(circle at top right, rgba(255, 204, 128, 0.13), transparent 22%),
+        linear-gradient(180deg, #120d08 0%, #191007 34%, #0f0c0a 100%);
       min-height: 100vh;
     }
 
-    .wrap { width: min(1080px, 92vw); margin: 0 auto; }
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+    .wrap { width: var(--wrap); margin: 0 auto; }
+
     .topbar {
       position: sticky;
       top: 0;
-      backdrop-filter: blur(10px);
-      background: rgba(9, 17, 28, 0.84);
-      border-bottom: 1px solid hsl(var(--accent-h) 39% 26% / 0.62);
-      z-index: 10;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(18, 13, 8, 0.76);
+      border-bottom: 1px solid rgba(255, 223, 193, 0.08);
     }
+
     .nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
-      padding: 14px 0;
-    }
-    .nav-cluster {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-    }
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: 0 0 0 5px hsl(var(--accent-h) var(--accent-s) var(--accent-l) / 0.16);
-    }
-    .nav a {
-      color: var(--muted);
-      text-decoration: none;
-      margin-left: 18px;
-      font-size: 0.95rem;
-    }
-    .nav a:hover { color: var(--text); }
-    .theme-swatches {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .theme-swatches span {
-      font-size: 0.76rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .swatch {
-      width: 16px;
-      height: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 999px;
-      background: hsl(var(--swatch-h) 58% 52%);
-      cursor: pointer;
-      box-shadow: 0 0 0 0 transparent;
-      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
-    }
-    .swatch:hover { transform: translateY(-1px) scale(1.06); }
-    .swatch[aria-pressed="true"] {
-      border-color: rgba(255, 255, 255, 0.6);
-      box-shadow: 0 0 0 4px hsl(var(--swatch-h) 58% 52% / 0.2);
+      gap: 20px;
+      padding: 16px 0;
     }
 
-    .hero {
-      padding: 68px 0 34px;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 28px;
-      align-items: stretch;
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-decoration: none;
     }
-    .hero h1 {
-      margin: 0 0 10px;
-      font-size: clamp(2rem, 4.8vw, 3.5rem);
-      line-height: 1.04;
-      letter-spacing: -0.02em;
+
+    .brand-mark {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 0 8px rgba(255, 161, 78, 0.12);
     }
-    .hero p {
-      margin: 0;
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
       color: var(--muted);
-      font-size: 1.06rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .hero {
+      padding: 56px 0 28px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+      gap: 28px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255, 198, 146, 0.16);
+      border-radius: 999px;
+      background: rgba(255, 168, 91, 0.08);
+      color: var(--muted-strong);
+      font-size: 0.82rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 18px 0 16px;
+      font-size: clamp(2.7rem, 6vw, 5.3rem);
+      line-height: 0.96;
+      letter-spacing: -0.05em;
+      max-width: 11ch;
+    }
+
+    .hero-copy {
+      margin: 0;
+      color: var(--muted-strong);
+      font-size: 1.08rem;
+      line-height: 1.72;
       max-width: 62ch;
     }
-    .cta {
-      margin-top: 22px;
+
+    .hero-copy strong { color: var(--text); }
+
+    .cta-row {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
+      margin-top: 24px;
     }
+
     .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 18px;
+      border-radius: 999px;
       border: 1px solid var(--line);
-      color: var(--text);
-      background: var(--panel-soft);
-      border-radius: 11px;
-      padding: 11px 14px;
-      font-weight: 600;
       text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn.primary {
+      color: #1b0e03;
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 18px 46px rgba(255, 159, 77, 0.28);
+    }
+
+    .btn.secondary {
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .micro-proof {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .micro-proof span {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      transition: transform .15s ease, border-color .15s ease, background .2s ease;
     }
-    .btn:hover { transform: translateY(-1px); border-color: var(--accent-2); }
-    .btn.primary {
-      border-color: var(--accent);
-      background: linear-gradient(135deg, hsl(var(--accent-h) 64% 25%), var(--accent));
-    }
-    .btn.secondary {
-      border-color: hsl(var(--accent-h) 32% 43%);
-      background: linear-gradient(135deg, hsl(var(--accent-h) 45% 20%), hsl(var(--accent-h) 43% 27%));
+
+    .micro-proof span::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      opacity: 0.9;
     }
 
     .panel {
+      position: relative;
       border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(18, 32, 51, 0.96), rgba(12, 24, 40, 0.96));
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, rgba(53, 30, 14, 0.84), rgba(24, 17, 11, 0.96));
       box-shadow: var(--shadow);
-    }
-    .hero-card {
-      padding: 18px;
-      display: grid;
-      grid-template-rows: auto auto 1fr;
-      gap: 12px;
-    }
-    .meta {
-      display: flex;
-      gap: 9px;
-      flex-wrap: wrap;
-      font-size: .82rem;
-      color: var(--muted);
-    }
-    .chip {
-      border: 1px solid var(--line);
-      background: #201012;
-      border-radius: 999px;
-      padding: 4px 10px;
-      white-space: nowrap;
-    }
-    .terminal {
-      font-family: "JetBrains Mono", Consolas, monospace;
-      background: #160b0d;
-      border: 1px solid hsl(var(--accent-h) 39% 26%);
-      border-radius: 10px;
-      padding: 12px;
-      color: #c7dcfb;
-      font-size: .87rem;
-      line-height: 1.5;
+      overflow: hidden;
     }
 
-    section { padding: 20px 0; }
-    section h2 {
-      margin: 0 0 14px;
-      font-size: 1.45rem;
-      letter-spacing: 0.01em;
+    .hero-card {
+      padding: 24px;
+      display: grid;
+      gap: 18px;
     }
-    .grid-3 {
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(255, 176, 88, 0.12), transparent 34%);
+      pointer-events: none;
+    }
+
+    .stat-strip {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
+      gap: 10px;
     }
-    .card { padding: 16px; }
-    .card h3 { margin: 0 0 7px; font-size: 1.05rem; }
-    .card p { margin: 0; color: var(--muted); line-height: 1.5; }
 
-    .download {
-      margin-top: 16px;
-      padding: 18px;
-      display: grid;
-      gap: 12px;
+    .stat {
+      padding: 12px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 236, 216, 0.07);
     }
-    .small {
+
+    .stat strong {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+
+    .stat span {
       color: var(--muted);
-      font-size: .9rem;
+      font-size: 0.84rem;
+      line-height: 1.4;
+    }
+
+    .placeholder {
+      border: 1px dashed rgba(255, 212, 171, 0.34);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(135deg, rgba(255, 171, 84, 0.14), rgba(255, 171, 84, 0.04)),
+        repeating-linear-gradient(
+          -45deg,
+          rgba(255, 255, 255, 0.03),
+          rgba(255, 255, 255, 0.03) 14px,
+          rgba(255, 255, 255, 0.01) 14px,
+          rgba(255, 255, 255, 0.01) 28px
+        );
+      min-height: 280px;
+      padding: 20px;
+      display: grid;
+      align-content: space-between;
+      gap: 18px;
+    }
+
+    .placeholder-label {
+      display: inline-flex;
+      width: fit-content;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.28);
+      color: var(--muted-strong);
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .placeholder h2,
+    .placeholder p {
       margin: 0;
     }
-    .note {
-      margin-top: 8px;
-      border-left: 3px solid var(--warn);
-      background: hsl(var(--accent-h) var(--accent-s) var(--accent-l) / 0.12);
-      padding: 10px 12px;
-      border-radius: 9px;
-      color: #c7dcfb;
-      font-size: .9rem;
+
+    .placeholder p {
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 34ch;
+    }
+
+    .placeholder-callout {
+      font-family: "IBM Plex Mono", Consolas, monospace;
+      font-size: 0.92rem;
+      color: #ffe8d3;
+      line-height: 1.6;
+      padding: 14px;
+      border-radius: var(--radius-md);
+      background: rgba(14, 10, 7, 0.48);
+      border: 1px solid rgba(255, 222, 186, 0.08);
+    }
+
+    .proof-band {
+      margin: 14px 0 6px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .proof-item {
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 239, 226, 0.08);
+    }
+
+    .proof-item strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.94rem;
+    }
+
+    .proof-item p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 0.92rem;
+    }
+
+    section { padding: 34px 0; }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      letter-spacing: -0.03em;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 54ch;
+      line-height: 1.66;
+    }
+
+    .two-up {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      padding: 22px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .feature-card {
+      padding: 22px;
+      min-height: 220px;
+    }
+
+    .feature-kicker {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: var(--accent-2);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .step {
+      padding: 22px;
+    }
+
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #1b0e03;
+      font-weight: 800;
+    }
+
+    .persona-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .persona {
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .persona strong {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .persona p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 0.92rem;
+    }
+
+    .security-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+    }
+
+    .bullet-list {
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .bullet-list li {
+      padding-left: 18px;
+      position: relative;
+      color: var(--muted-strong);
+      line-height: 1.65;
+    }
+
+    .bullet-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.66em;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+
+    .pricing {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .pricing-card {
+      padding: 24px;
+    }
+
+    .price-line {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin: 16px 0 8px;
+    }
+
+    .price-line strong {
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.05em;
+    }
+
+    .price-line span {
+      color: var(--muted);
+    }
+
+    .download-panel {
+      padding: 24px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .download-panel p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .download-note {
+      padding: 14px 16px;
+      border-left: 3px solid var(--accent);
+      border-radius: 12px;
+      background: rgba(255, 170, 91, 0.1);
+      color: var(--muted-strong);
+      font-size: 0.94rem;
+      line-height: 1.6;
     }
 
     .faq {
       display: grid;
-      gap: 10px;
+      gap: 12px;
     }
+
     details {
       border: 1px solid var(--line);
-      border-radius: 10px;
-      background: #201012;
-      padding: 10px 12px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.035);
+      padding: 16px 18px;
     }
+
     summary {
       cursor: pointer;
-      font-weight: 600;
+      font-weight: 700;
+      list-style: none;
     }
+
+    summary::-webkit-details-marker { display: none; }
+
     details p {
-      margin: 9px 0 2px;
+      margin: 12px 0 4px;
       color: var(--muted);
-      line-height: 1.5;
+      line-height: 1.7;
     }
 
     footer {
-      padding: 26px 0 42px;
+      padding: 34px 0 52px;
       color: var(--muted);
-      font-size: .92rem;
       text-align: center;
+      font-size: 0.92rem;
     }
 
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; padding-top: 44px; }
-      .grid-3 { grid-template-columns: 1fr; }
-      .nav { align-items: flex-start; }
-      .nav-cluster { justify-content: flex-start; }
+    @media (max-width: 1080px) {
+      .proof-band,
+      .persona-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .feature-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 920px) {
+      .hero,
+      .pricing,
+      .security-grid,
+      .two-up,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .stat-strip {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .proof-band,
+      .feature-grid,
+      .persona-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 42px;
+      }
+
+      .hero h1 {
+        max-width: none;
+      }
     }
   </style>
 </head>
 <body>
   <header class="topbar">
     <div class="wrap nav">
-      <div class="brand"><span class="dot"></span> WASPrFlow</div>
-      <div class="nav-cluster">
-        <nav>
-          <a href="/">DoubleTake Utilities</a>
-          <a href="#features">Features</a>
-          <a href="#download">Download</a>
-          <a href="install-guide.html">Install Guide</a>
-          <a href="#faq">FAQ</a>
-        </nav>
-        <div class="theme-swatches" aria-label="Theme colour">
-          <span>Colour</span>
-          <button class="swatch" type="button" data-theme-color="212" style="--swatch-h: 212" aria-label="Blue theme"></button>
-          <button class="swatch" type="button" data-theme-color="164" style="--swatch-h: 164" aria-label="Teal theme"></button>
-          <button class="swatch" type="button" data-theme-color="18" style="--swatch-h: 18" aria-label="Amber theme"></button>
-          <button class="swatch" type="button" data-theme-color="332" style="--swatch-h: 332" aria-label="Rose theme"></button>
-        </div>
-      </div>
+      <a class="brand" href="index.html">
+        <span class="brand-mark"></span>
+        <span>WASPrFlow</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#how-it-works">How It Works</a>
+        <a href="#features">Features</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#download">Download</a>
+        <a href="install-guide.html">Install Guide</a>
+      </nav>
     </div>
   </header>
 
-  <main class="wrap">
-    <section class="hero">
+  <main>
+    <section class="wrap hero">
       <div>
-        <h1>Dictate faster. Insert cleaner text. Anywhere in Windows.</h1>
-        <p>
-          WASPrFlow captures your voice with a hold-to-talk hotkey, transcribes in real-time,
-          and formats output for direct insertion into browsers, documents, chat apps, and IDEs.
+        <span class="eyebrow">Windows Dictation for People Who Actually Ship Work</span>
+        <h1>Talk for seconds. Get polished text instantly.</h1>
+        <p class="hero-copy">
+          <strong>WASPrFlow turns speech into ready-to-send writing</strong> and inserts it directly into
+          whatever you are using on Windows. Hold a hotkey, speak, release, and your words appear with
+          grammar, punctuation, and phrasing already cleaned up. No copy-paste. No dictation window. No broken flow.
         </p>
-        <div class="cta">
+        <div class="cta-row">
           <a class="btn primary" id="btn-msi" href="#" rel="noopener">Download MSI</a>
           <a class="btn secondary" id="btn-nsis" href="#" rel="noopener">Download Setup EXE</a>
-          <a class="btn" href="install-guide.html">Install Guide</a>
+          <a class="btn secondary" href="install-guide.html">See Install Guide</a>
+        </div>
+        <div class="micro-proof">
+          <span>Works in browsers, docs, chat apps, and IDEs</span>
+          <span>One-time purchase, not a subscription</span>
+          <span>Offline license verification</span>
         </div>
       </div>
+
       <aside class="panel hero-card">
-        <div class="meta">
-          <span class="chip">Windows Desktop</span>
-          <span class="chip">Deepgram + OpenAI</span>
-          <span class="chip">Tauri</span>
+        <div class="stat-strip">
+          <div class="stat">
+            <strong>Hold</strong>
+            <span>Press your hotkey with the cursor in any text field.</span>
+          </div>
+          <div class="stat">
+            <strong>Speak</strong>
+            <span>Live capture with instant streaming transcription.</span>
+          </div>
+          <div class="stat">
+            <strong>Release</strong>
+            <span>Polished text appears where you were already working.</span>
+          </div>
         </div>
-        <h2 style="margin:0;font-size:1.08rem;">Built for Daily Workflow</h2>
-        <div class="terminal">
-          - Hold to talk, release to insert.<br />
-          - Works across chat, docs, browsers, and IDEs.<br />
-          - Fast transcription with polished output formatting.<br /><br />
-          Install in minutes and start dictating immediately.
+        <div class="placeholder">
+          <span class="placeholder-label">Marketing Image Placeholder</span>
+          <div>
+            <h2>Hero Product Shot</h2>
+            <p>
+              Show the WASPrFlow floating bar layered over a real desktop workflow:
+              email on the left, Slack or Teams on the right, and a subtle cursor insertion moment.
+            </p>
+          </div>
+          <div class="placeholder-callout">
+            Suggested visual story:
+            <br />"Ctrl + Shift held"
+            <br />Live volume meter visible
+            <br />Before/after text transformation in context
+          </div>
         </div>
       </aside>
     </section>
 
-    <section id="features">
-      <h2>Why Teams Pick WASPrFlow</h2>
-      <div class="grid-3">
-        <article class="panel card">
-          <h3>Low Friction Capture</h3>
-          <p>Hold hotkey, speak, release. The floating bar gives live state feedback from listening through insertion.</p>
+    <section class="wrap">
+      <div class="proof-band">
+        <div class="proof-item">
+          <strong>No window juggling</strong>
+          <p>Stay inside the app you are already using instead of dictating somewhere else and pasting later.</p>
+        </div>
+        <div class="proof-item">
+          <strong>Polished output</strong>
+          <p>Raw dictation becomes readable text, not a transcript that still needs cleanup.</p>
+        </div>
+        <div class="proof-item">
+          <strong>Built for professionals</strong>
+          <p>Useful for developers, writers, support teams, lawyers, doctors, and anyone typing all day.</p>
+        </div>
+        <div class="proof-item">
+          <strong>Quiet by design</strong>
+          <p>Runs in the tray, stays out of the way, and shows up exactly when you need it.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap" id="how-it-works">
+      <div class="section-head">
+        <h2>The workflow is the product.</h2>
+        <p>
+          WASPrFlow is designed around one promise: speaking should be faster than typing
+          without adding a second workflow to manage.
+        </p>
+      </div>
+      <div class="steps">
+        <article class="panel step">
+          <span class="step-num">1</span>
+          <h3>Hold the hotkey</h3>
+          <p>
+            Keep your cursor in any field in any Windows app. Press and hold the hotkey
+            and the floating bar confirms you are live.
+          </p>
         </article>
-        <article class="panel card">
-          <h3>Real-Time Transcription</h3>
-          <p>Deepgram streaming reduces wait time on longer dictations and improves short-utterance responsiveness.</p>
+        <article class="panel step">
+          <span class="step-num">2</span>
+          <h3>Speak naturally</h3>
+          <p>
+            Deepgram streaming speech recognition transcribes in real time while the app
+            tracks your live audio input.
+          </p>
         </article>
-        <article class="panel card">
-          <h3>Built-In Licensing</h3>
-          <p>Card checkout, automatic activation polling, license backup/import, and customer license delivery workflow.</p>
+        <article class="panel step">
+          <span class="step-num">3</span>
+          <h3>Release and keep moving</h3>
+          <p>
+            GPT-4o-mini cleans up grammar and phrasing, then WASPrFlow inserts the result
+            directly at your cursor as if you typed it yourself.
+          </p>
         </article>
       </div>
     </section>
 
-    <section id="download">
-      <h2>Download</h2>
-      <div class="panel download">
-        <p class="small">
-          Choose installer format. MSI is ideal for managed rollouts; Setup EXE is easiest for direct installs.
+    <section class="wrap" id="features">
+      <div class="section-head">
+        <h2>Everything needed to make voice input usable every day.</h2>
+        <p>
+          Better dictation is not just speech recognition. It is speed, presentation, insertion,
+          correction control, and trust that the tool will not get in your way.
         </p>
-        <div class="cta" style="margin-top:0;">
-          <a class="btn primary" id="dl-msi" href="#" rel="noopener">WASPrFlow MSI</a>
-          <a class="btn secondary" id="dl-nsis" href="#" rel="noopener">WASPrFlow Setup EXE</a>
+      </div>
+      <div class="feature-grid">
+        <article class="panel feature-card">
+          <span class="feature-kicker">Speed</span>
+          <h3>Streaming speech recognition</h3>
+          <p>Deepgram Nova-3 processes audio in real time, so your transcript is ready almost the moment you stop speaking.</p>
+        </article>
+        <article class="panel feature-card">
+          <span class="feature-kicker">Readability</span>
+          <h3>AI rewrite that makes dictation presentable</h3>
+          <p>OpenAI GPT-4o-mini fixes punctuation, grammar, and phrasing so the inserted text reads like finished writing.</p>
+        </article>
+        <article class="panel feature-card">
+          <span class="feature-kicker">Control</span>
+          <h3>Privacy mode in one click</h3>
+          <p>Disable AI rewrite instantly when you want transcription only. In privacy mode, text is not sent to OpenAI.</p>
+        </article>
+        <article class="panel feature-card">
+          <span class="feature-kicker">Accuracy</span>
+          <h3>Personal dictionary</h3>
+          <p>Add names, acronyms, client terms, product names, and technical vocabulary that matter in your work.</p>
+        </article>
+        <article class="panel feature-card">
+          <span class="feature-kicker">Compatibility</span>
+          <h3>Works in the apps you already use</h3>
+          <p>Insertion uses Windows keyboard events with a clipboard fallback, so it works in browsers, Office, email, chat apps, and IDEs.</p>
+        </article>
+        <article class="panel feature-card">
+          <span class="feature-kicker">Ownership</span>
+          <h3>Buy once and keep it</h3>
+          <p>No subscription, no account wall, and no always-online license dependency during normal use.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="two-up">
+        <article class="panel card">
+          <span class="placeholder-label">Marketing Image Placeholder</span>
+          <h3 style="margin-top:16px;">Before / After Copy Example</h3>
+          <p>
+            Use a split visual showing raw spoken text on the left and the polished inserted result on the right.
+            Ideal examples: support response, sales follow-up, standup update, or technical note.
+          </p>
+          <div class="placeholder-callout" style="margin-top:18px;">
+            Raw: "hey just wanted to follow up on the deploy it looks like the issue is fixed now"
+            <br /><br />
+            Inserted: "Just following up on the deployment. It looks like the issue is fixed now."
+          </div>
+        </article>
+        <article class="panel card">
+          <h3>Built for work that has to sound competent the first time.</h3>
+          <p>
+            WASPrFlow is for people who write all day but do not want raw voice transcripts landing in front of customers,
+            coworkers, or stakeholders. The core promise is simple: speak naturally, then let the app handle the cleanup
+            before the text ever hits the page.
+          </p>
+          <ul class="bullet-list">
+            <li>Reply faster in email and chat without sounding rushed.</li>
+            <li>Capture longer thoughts without breaking your keyboard flow.</li>
+            <li>Reduce repetitive strain when you are typing for hours.</li>
+            <li>Dictate inside the tools where your real work already happens.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="section-head">
+        <h2>Who it is for</h2>
+        <p>
+          The product is broad enough for any heavy keyboard user, but the value becomes obvious
+          fastest in roles where speed and clarity both matter.
+        </p>
+      </div>
+      <div class="persona-grid">
+        <div class="persona">
+          <strong>Developers</strong>
+          <p>Write tickets, pull request notes, bug reports, comments, and internal updates without stopping to type every sentence.</p>
         </div>
-        <p class="small">Need setup help? Open the full install guide for screenshots and step-by-step instructions.</p>
-        <div class="note" id="deploy-note">
-          Configure GitHub release URLs in the script section before publishing to GitHub Pages.
+        <div class="persona">
+          <strong>Writers</strong>
+          <p>Capture momentum while drafting outlines, paragraphs, interview notes, and revisions.</p>
+        </div>
+        <div class="persona">
+          <strong>Support and ops teams</strong>
+          <p>Respond faster in chat, document incidents, and summarize actions while context is still fresh.</p>
+        </div>
+        <div class="persona">
+          <strong>Legal and medical professionals</strong>
+          <p>Dictate terminology-heavy notes more comfortably and improve output with custom vocabulary.</p>
         </div>
       </div>
-    </section>    <section id="faq">
-      <h2>FAQ</h2>
+    </section>
+
+    <section class="wrap" id="privacy">
+      <div class="security-grid">
+        <article class="panel card">
+          <div class="section-head" style="margin-bottom:0;">
+            <h2 style="font-size:2rem;">Privacy that can survive scrutiny.</h2>
+          </div>
+          <ul class="bullet-list">
+            <li>Audio is captured in real time and is not written to disk.</li>
+            <li>Your API keys, history, settings, dictionary, and license stay on your machine.</li>
+            <li>No analytics, no telemetry, no crash reporter, and no general phone-home behavior.</li>
+            <li>Licenses are cryptographically signed and verified locally offline.</li>
+            <li>No account is required to use the product.</li>
+          </ul>
+        </article>
+        <article class="panel card">
+          <span class="placeholder-label">Marketing Image Placeholder</span>
+          <h3 style="margin-top:16px;">Trust / Security Visual</h3>
+          <p>
+            Replace this block with a clean privacy graphic: local machine, microphone input,
+            Deepgram path, optional OpenAI path, and bold labels for "No telemetry" and "Offline license verification."
+          </p>
+          <div class="placeholder-callout" style="margin-top:18px;">
+            Suggested caption:
+            <br />"Your workflow stays local. Only the transcription and optional rewrite requests leave the machine."
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap" id="download">
+      <div class="pricing">
+        <article class="panel pricing-card">
+          <span class="feature-kicker">Pricing</span>
+          <h2 style="margin:0;font-size:2.5rem;letter-spacing:-0.04em;">One-time purchase. No subscription creep.</h2>
+          <div class="price-line">
+            <strong>Buy once</strong>
+            <span>Your license stays on your machine and verifies offline.</span>
+          </div>
+          <p style="margin:0;color:var(--muted);line-height:1.7;">
+            WASPrFlow is positioned as a permanent productivity tool, not another recurring charge.
+            If you want dictation that fits into your daily workflow and keeps paying off over time, this is the point.
+          </p>
+          <ul class="bullet-list">
+            <li>Use the Setup EXE for the easiest direct install.</li>
+            <li>Use the MSI for managed or standardized Windows deployments.</li>
+            <li>Import and back up your license file locally whenever needed.</li>
+          </ul>
+        </article>
+        <aside class="panel download-panel">
+          <span class="feature-kicker">Download</span>
+          <h3 style="margin:0;font-size:1.5rem;">Start using WASPrFlow on Windows</h3>
+          <p>Choose your installer format below. Most users should start with the Setup EXE.</p>
+          <div class="cta-row" style="margin-top:4px;">
+            <a class="btn primary" id="dl-nsis" href="#" rel="noopener">Download Setup EXE</a>
+            <a class="btn secondary" id="dl-msi" href="#" rel="noopener">Download MSI</a>
+          </div>
+          <div class="download-note" id="deploy-note">
+            Installers are hosted directly on this website.
+          </div>
+          <a class="btn secondary" href="install-guide.html">Open step-by-step install guide</a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="wrap" id="faq">
+      <div class="section-head">
+        <h2>Questions buyers will ask</h2>
+        <p>Answer the objections clearly and close the gap between interest and download.</p>
+      </div>
       <div class="faq">
         <details>
-          <summary>Which installer should I download?</summary>
-          <p>Use the Setup EXE for most users. Use the MSI if your organization deploys software with managed tools.</p>
+          <summary>Does it work only in one app?</summary>
+          <p>No. WASPrFlow is built to insert text into any Windows app where you can type, including browsers, Office apps, email clients, chat apps, and IDEs.</p>
         </details>
         <details>
-          <summary>How do I activate my license?</summary>
-          <p>After purchase, use the same email in WASPrFlow. You can also paste your key or import your <code>.lic</code> file from the License panel.</p>
+          <summary>Is this just speech-to-text?</summary>
+          <p>No. The difference is that WASPrFlow focuses on ready-to-use writing. It transcribes quickly, then cleans up the text before inserting it into your current field.</p>
         </details>
         <details>
-          <summary>What if my key does not activate?</summary>
-          <p>Check that you used the purchase email, then try importing your saved <code>.lic</code> file. If it still fails, reply to your purchase email for support.</p>
+          <summary>What if I do not want AI rewrite on some dictations?</summary>
+          <p>Use Privacy Mode. That disables the OpenAI rewrite path so your text is only transcribed through Deepgram.</p>
+        </details>
+        <details>
+          <summary>Do I need an account?</summary>
+          <p>No. WASPrFlow does not require account creation or a persistent online login to use the product.</p>
+        </details>
+        <details>
+          <summary>Which installer should I pick?</summary>
+          <p>The Setup EXE is best for most individual users. The MSI is better for managed or IT-administered Windows environments.</p>
         </details>
       </div>
     </section>
   </main>
 
   <footer>
-    WASPrFlow • Voice Dictation for Windows • <a href="/" style="color:inherit;">DoubleTake Utilities</a>
+    WASPrFlow for Windows • Dictation that inserts polished text where you work • <a href="/">DoubleTake Utilities</a>
   </footer>
 
   <script>
@@ -384,39 +937,14 @@
     const msiUrl = `downloads/${msiFile}`;
     const nsisUrl = `downloads/${nsisFile}`;
 
-    const idsMsi = ["btn-msi", "dl-msi"];
-    const idsNsis = ["btn-nsis", "dl-nsis"];
-    idsMsi.forEach(id => document.getElementById(id).href = msiUrl);
-    idsNsis.forEach(id => document.getElementById(id).href = nsisUrl);
+    ["btn-msi", "dl-msi"].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) el.href = msiUrl;
+    });
 
-    const note = document.getElementById("deploy-note");
-    note.style.borderLeftColor = "var(--accent)";
-    note.style.background = "hsl(var(--accent-h) var(--accent-s) var(--accent-l) / 0.12)";
-    note.style.color = "#c7dcfb";
-    note.textContent = "Downloads are hosted directly on this website.";
-
-    const storageKey = "wasprflow-theme-hue";
-    const root = document.documentElement;
-    const metaTheme = document.querySelector('meta[name="theme-color"]');
-    const swatches = Array.from(document.querySelectorAll(".swatch"));
-
-    function applyTheme(hue) {
-      root.style.setProperty("--accent-h", hue);
-      if (metaTheme) metaTheme.setAttribute("content", `hsl(${hue} 52% 18%)`);
-      swatches.forEach((button) => {
-        button.setAttribute("aria-pressed", String(button.dataset.themeColor === String(hue)));
-      });
-    }
-
-    const savedHue = localStorage.getItem(storageKey);
-    applyTheme(savedHue || "212");
-
-    swatches.forEach((button) => {
-      button.addEventListener("click", () => {
-        const hue = button.dataset.themeColor;
-        localStorage.setItem(storageKey, hue);
-        applyTheme(hue);
-      });
+    ["btn-nsis", "dl-nsis"].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) el.href = nsisUrl;
     });
   </script>
 </body>
