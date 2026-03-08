@@ -6,6 +6,7 @@
   <title>WASPrFlow | Dictation That Writes Like You Mean It</title>
   <meta name="description" content="WASPrFlow turns speech into polished text and inserts it directly into any Windows app. Hold a hotkey, speak, release, and keep working." />
   <meta name="theme-color" content="#2b1808" />
+  <link rel="icon" type="image/png" href="assets/wasprflow-mark.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -83,11 +84,11 @@
     }
 
     .brand-mark {
-      width: 14px;
-      height: 14px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: 0 0 0 8px var(--glow-soft);
+      width: 38px;
+      height: 38px;
+      display: block;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.28));
     }
 
     .nav-links {
@@ -681,7 +682,7 @@
   <header class="topbar">
     <div class="wrap nav">
       <a class="brand" href="index.html">
-        <span class="brand-mark"></span>
+        <img class="brand-mark" src="assets/wasprflow-mark.png" alt="WASPrFlow mark" />
         <span>WASPrFlow</span>
       </a>
       <nav class="nav-links" aria-label="Primary">
