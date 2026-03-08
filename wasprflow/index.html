@@ -34,6 +34,8 @@
       --radius-lg: 20px;
       --radius-md: 14px;
       --wrap: min(1180px, 92vw);
+      --measure: 66ch;
+      --measure-wide: 74ch;
     }
 
     * { box-sizing: border-box; }
@@ -41,6 +43,7 @@
     html { scroll-behavior: smooth; }
     body {
       font-family: "Sora", "Segoe UI", sans-serif;
+      font-size: 16px;
       color: var(--text);
       background:
         radial-gradient(circle at top left, hsl(var(--accent-h) 88% 57% / 0.24), transparent 28%),
@@ -66,7 +69,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      gap: 16px 24px;
       padding: 16px 0;
     }
 
@@ -90,7 +93,7 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 10px 16px;
       flex-wrap: wrap;
     }
 
@@ -99,6 +102,7 @@
       align-items: center;
       gap: 8px;
       margin-left: 4px;
+      flex-wrap: wrap;
     }
 
     .theme-swatches span {
@@ -129,16 +133,17 @@
     .nav-links a {
       text-decoration: none;
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
+      line-height: 1.4;
     }
 
     .nav-links a:hover { color: var(--text); }
 
     .hero {
-      padding: 56px 0 28px;
+      padding: 52px 0 26px;
       display: grid;
-      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
-      gap: 28px;
+      grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+      gap: 24px;
       align-items: center;
     }
 
@@ -158,18 +163,19 @@
 
     .hero h1 {
       margin: 18px 0 16px;
-      font-size: clamp(2.7rem, 6vw, 5.3rem);
-      line-height: 0.96;
+      font-size: clamp(2.45rem, 5.1vw, 4.7rem);
+      line-height: 1.01;
       letter-spacing: -0.05em;
-      max-width: 11ch;
+      max-width: 12ch;
+      text-wrap: balance;
     }
 
     .hero-copy {
       margin: 0;
       color: var(--muted-strong);
-      font-size: 1.08rem;
-      line-height: 1.72;
-      max-width: 62ch;
+      font-size: 1rem;
+      line-height: 1.68;
+      max-width: var(--measure);
     }
 
     .hero-copy strong { color: var(--text); }
@@ -177,8 +183,8 @@
     .cta-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 24px;
+      gap: 10px 12px;
+      margin-top: 22px;
     }
 
     .btn {
@@ -186,12 +192,14 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      min-height: 52px;
-      padding: 0 18px;
+      min-height: 48px;
+      padding: 0 16px;
       border-radius: 999px;
       border: 1px solid var(--line);
       text-decoration: none;
       font-weight: 700;
+      font-size: 0.95rem;
+      line-height: 1.2;
       transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease;
     }
 
@@ -211,10 +219,11 @@
     .micro-proof {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 10px 14px;
       margin-top: 18px;
       color: var(--muted);
       font-size: 0.92rem;
+      line-height: 1.5;
     }
 
     .micro-proof span {
@@ -242,9 +251,9 @@
     }
 
     .hero-card {
-      padding: 24px;
+      padding: 22px;
       display: grid;
-      gap: 18px;
+      gap: 16px;
     }
 
     .hero-card::before {
@@ -292,11 +301,11 @@
           rgba(255, 255, 255, 0.01) 14px,
           rgba(255, 255, 255, 0.01) 28px
         );
-      min-height: 280px;
-      padding: 20px;
+      min-height: 264px;
+      padding: 18px;
       display: grid;
       align-content: space-between;
-      gap: 18px;
+      gap: 16px;
     }
 
     .placeholder-label {
@@ -319,7 +328,7 @@
     .placeholder p {
       color: var(--muted);
       line-height: 1.6;
-      max-width: 34ch;
+      max-width: 40ch;
     }
 
     .placeholder-callout {
@@ -334,14 +343,14 @@
     }
 
     .proof-band {
-      margin: 14px 0 6px;
+      margin: 12px 0 4px;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
     }
 
     .proof-item {
-      padding: 18px;
+      padding: 20px 18px;
       border-radius: var(--radius-lg);
       background: hsl(var(--accent-h) 20% 98% / 0.035);
       border: 1px solid var(--line-soft);
@@ -356,70 +365,74 @@
     .proof-item p {
       margin: 0;
       color: var(--muted);
-      line-height: 1.55;
-      font-size: 0.92rem;
+      line-height: 1.6;
+      font-size: 0.95rem;
     }
 
-    section { padding: 34px 0; }
+    section { padding: 30px 0; }
 
     .section-head {
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
-      gap: 18px;
-      margin-bottom: 18px;
+      gap: 14px 18px;
+      margin-bottom: 16px;
     }
 
     .section-head h2 {
       margin: 0;
-      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      font-size: clamp(1.65rem, 2.7vw, 2.35rem);
       letter-spacing: -0.03em;
+      line-height: 1.08;
+      text-wrap: balance;
     }
 
     .section-head p {
       margin: 0;
       color: var(--muted);
-      max-width: 54ch;
-      line-height: 1.66;
+      max-width: var(--measure-wide);
+      line-height: 1.62;
     }
 
     .two-up {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
+      gap: 16px;
     }
 
     .card {
-      padding: 22px;
+      padding: 20px;
     }
 
     .card h3 {
       margin: 0 0 10px;
-      font-size: 1.15rem;
+      font-size: 1.12rem;
+      line-height: 1.2;
     }
 
     .card p {
       margin: 0;
       color: var(--muted);
-      line-height: 1.7;
+      line-height: 1.62;
+      font-size: 0.97rem;
     }
 
     .feature-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      gap: 14px;
     }
 
     .feature-card {
-      padding: 22px;
-      min-height: 220px;
+      padding: 20px;
+      min-height: 0;
     }
 
     .feature-kicker {
       display: inline-block;
       margin-bottom: 14px;
       color: var(--accent-2);
-      font-size: 0.78rem;
+      font-size: 0.74rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
@@ -427,11 +440,26 @@
     .steps {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      gap: 14px;
     }
 
     .step {
-      padding: 22px;
+      padding: 20px;
+    }
+
+    .step h3,
+    .feature-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+      line-height: 1.2;
+    }
+
+    .step p,
+    .feature-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.62;
+      font-size: 0.96rem;
     }
 
     .step-num {
@@ -450,7 +478,7 @@
     .persona-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
+      gap: 12px;
     }
 
     .persona {
@@ -468,14 +496,14 @@
     .persona p {
       margin: 0;
       color: var(--muted);
-      line-height: 1.55;
-      font-size: 0.92rem;
+      line-height: 1.58;
+      font-size: 0.94rem;
     }
 
     .security-grid {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
-      gap: 18px;
+      gap: 16px;
     }
 
     .bullet-list {
@@ -483,14 +511,14 @@
       padding: 0;
       list-style: none;
       display: grid;
-      gap: 10px;
+      gap: 8px;
     }
 
     .bullet-list li {
       padding-left: 18px;
       position: relative;
       color: var(--muted-strong);
-      line-height: 1.65;
+      line-height: 1.58;
     }
 
     .bullet-list li::before {
@@ -507,24 +535,25 @@
     .pricing {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
-      gap: 18px;
+      gap: 16px;
       align-items: stretch;
     }
 
     .pricing-card {
-      padding: 24px;
+      padding: 22px;
     }
 
     .price-line {
       display: flex;
       align-items: baseline;
-      gap: 12px;
+      gap: 10px 12px;
       margin: 16px 0 8px;
     }
 
     .price-line strong {
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(1.8rem, 3.6vw, 2.6rem);
       letter-spacing: -0.05em;
+      line-height: 1;
     }
 
     .price-line span {
@@ -532,42 +561,44 @@
     }
 
     .download-panel {
-      padding: 24px;
+      padding: 22px;
       display: grid;
-      gap: 14px;
+      gap: 12px;
     }
 
     .download-panel p {
       margin: 0;
       color: var(--muted);
-      line-height: 1.65;
+      line-height: 1.6;
+      font-size: 0.97rem;
     }
 
     .download-note {
-      padding: 14px 16px;
+      padding: 12px 14px;
       border-left: 3px solid var(--accent);
       border-radius: 12px;
       background: var(--glow-soft);
       color: var(--muted-strong);
-      font-size: 0.94rem;
-      line-height: 1.6;
+      font-size: 0.92rem;
+      line-height: 1.56;
     }
 
     .faq {
       display: grid;
-      gap: 12px;
+      gap: 10px;
     }
 
     details {
       border: 1px solid var(--line);
       border-radius: 18px;
       background: hsl(var(--accent-h) 20% 98% / 0.035);
-      padding: 16px 18px;
+      padding: 14px 16px;
     }
 
     summary {
       cursor: pointer;
       font-weight: 700;
+      line-height: 1.4;
       list-style: none;
     }
 
@@ -576,19 +607,22 @@
     details p {
       margin: 12px 0 4px;
       color: var(--muted);
-      line-height: 1.7;
+      line-height: 1.62;
+      font-size: 0.96rem;
     }
 
     footer {
-      padding: 34px 0 52px;
+      padding: 28px 0 42px;
       color: var(--muted);
       text-align: center;
       font-size: 0.92rem;
+      line-height: 1.6;
     }
 
     @media (max-width: 1080px) {
       .proof-band,
-      .persona-grid {
+      .persona-grid,
+      .steps {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
@@ -622,14 +656,19 @@
         align-items: flex-start;
       }
 
+      .nav-links {
+        width: 100%;
+      }
+
       .proof-band,
       .feature-grid,
-      .persona-grid {
+      .persona-grid,
+      .steps {
         grid-template-columns: 1fr;
       }
 
       .hero {
-        padding-top: 42px;
+        padding-top: 38px;
       }
 
       .hero h1 {
@@ -822,7 +861,7 @@
       <div class="two-up">
         <article class="panel card">
           <span class="placeholder-label">Marketing Image Placeholder</span>
-          <h3 style="margin-top:16px;">Before / After Copy Example</h3>
+          <h3 style="margin-top:14px;">Before / After Copy Example</h3>
           <p>
             Use a split visual showing raw spoken text on the left and the polished inserted result on the right.
             Ideal examples: support response, sales follow-up, standup update, or technical note.
@@ -882,7 +921,7 @@
       <div class="security-grid">
         <article class="panel card">
           <div class="section-head" style="margin-bottom:0;">
-            <h2 style="font-size:2rem;">Privacy that can survive scrutiny.</h2>
+            <h2 style="font-size:clamp(1.6rem, 2.5vw, 2rem);line-height:1.1;">Privacy that can survive scrutiny.</h2>
           </div>
           <ul class="bullet-list">
             <li>Audio is captured in real time and is not written to disk.</li>
@@ -894,7 +933,7 @@
         </article>
         <article class="panel card">
           <span class="placeholder-label">Marketing Image Placeholder</span>
-          <h3 style="margin-top:16px;">Trust / Security Visual</h3>
+          <h3 style="margin-top:14px;">Trust / Security Visual</h3>
           <p>
             Replace this block with a clean privacy graphic: local machine, microphone input,
             Deepgram path, optional OpenAI path, and bold labels for "No telemetry" and "Offline license verification."
@@ -911,12 +950,12 @@
       <div class="pricing">
         <article class="panel pricing-card">
           <span class="feature-kicker">Pricing</span>
-          <h2 style="margin:0;font-size:2.5rem;letter-spacing:-0.04em;">One-time purchase. No subscription creep.</h2>
+          <h2 style="margin:0;font-size:clamp(1.95rem, 3vw, 2.35rem);letter-spacing:-0.04em;line-height:1.08;text-wrap:balance;">One-time purchase. No subscription creep.</h2>
           <div class="price-line">
             <strong>Buy once</strong>
             <span>Your license stays on your machine and verifies offline.</span>
           </div>
-          <p style="margin:0;color:var(--muted);line-height:1.7;">
+          <p style="margin:0;color:var(--muted);line-height:1.62;font-size:0.97rem;">
             WASPrFlow is positioned as a permanent productivity tool, not another recurring charge.
             If you want dictation that fits into your daily workflow and keeps paying off over time, this is the point.
           </p>
@@ -928,7 +967,7 @@
         </article>
         <aside class="panel download-panel">
           <span class="feature-kicker">Download</span>
-          <h3 style="margin:0;font-size:1.5rem;">Start using WASPrFlow on Windows</h3>
+          <h3 style="margin:0;font-size:clamp(1.2rem, 2vw, 1.4rem);line-height:1.15;">Start using WASPrFlow on Windows</h3>
           <p>Choose your installer format below. Most users should start with the Setup EXE.</p>
           <div class="cta-row" style="margin-top:4px;">
             <a class="btn primary" id="dl-nsis" href="#" rel="noopener">Download Setup EXE</a>
