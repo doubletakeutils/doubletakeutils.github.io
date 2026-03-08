@@ -88,6 +88,38 @@
       flex-wrap: wrap;
     }
 
+    .theme-swatches {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: 4px;
+    }
+
+    .theme-swatches span {
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .swatch {
+      width: 16px;
+      height: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      background: hsl(var(--swatch-h) 58% 52%);
+      cursor: pointer;
+      box-shadow: 0 0 0 0 transparent;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+    }
+
+    .swatch:hover { transform: translateY(-1px) scale(1.06); }
+
+    .swatch[aria-pressed="true"] {
+      border-color: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 0 0 4px hsl(var(--swatch-h) 58% 52% / 0.2);
+    }
+
     .nav-links a {
       text-decoration: none;
       color: var(--muted);
@@ -613,6 +645,13 @@
         <a href="#privacy">Privacy</a>
         <a href="#download">Download</a>
         <a href="install-guide.html">Install Guide</a>
+        <div class="theme-swatches" aria-label="Theme colour">
+          <span>Colour</span>
+          <button class="swatch" type="button" data-theme-color="212" style="--swatch-h: 212" aria-label="Blue theme"></button>
+          <button class="swatch" type="button" data-theme-color="164" style="--swatch-h: 164" aria-label="Teal theme"></button>
+          <button class="swatch" type="button" data-theme-color="18" style="--swatch-h: 18" aria-label="Amber theme"></button>
+          <button class="swatch" type="button" data-theme-color="332" style="--swatch-h: 332" aria-label="Rose theme"></button>
+        </div>
       </nav>
     </div>
   </header>
@@ -932,6 +971,10 @@
 
   <script>
     const VERSION = "0.1.0";
+    const storageKey = "wasprflow-theme-hue";
+    const root = document.documentElement;
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const swatches = Array.from(document.querySelectorAll(".swatch"));
     const msiFile = `WASPrFlow_${VERSION}_x64_en-US.msi`;
     const nsisFile = `WASPrFlow_${VERSION}_x64-setup.exe`;
     const msiUrl = `downloads/${msiFile}`;
@@ -945,6 +988,25 @@
     ["btn-nsis", "dl-nsis"].forEach((id) => {
       const el = document.getElementById(id);
       if (el) el.href = nsisUrl;
+    });
+
+    function applyTheme(hue) {
+      root.style.setProperty("--accent-h", hue);
+      if (metaTheme) metaTheme.setAttribute("content", `hsl(${hue} 52% 18%)`);
+      swatches.forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.themeColor === String(hue)));
+      });
+    }
+
+    const savedHue = localStorage.getItem(storageKey);
+    applyTheme(savedHue || "18");
+
+    swatches.forEach((button) => {
+      button.addEventListener("click", () => {
+        const hue = button.dataset.themeColor;
+        localStorage.setItem(storageKey, hue);
+        applyTheme(hue);
+      });
     });
   </script>
 </body>
