@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 1200" role="img" aria-label="DoubleTake Utilities amber logo">
+  <defs>
+    <style>
+      .amber { fill: #eeae4c; }
+      .amber-stroke { stroke: #eeae4c; stroke-width: 44; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+      .amber-soft { fill: #ffcf7a; }
+      .cream { fill: #fff4e0; }
+      .brown { fill: #654825; }
+      .text-main { fill: #eeae4c; font: 700 218px Bahnschrift, 'Segoe UI', sans-serif; }
+      .text-sub { fill: #ffcf7a; font: 300 102px 'Segoe UI Light', 'Segoe UI', sans-serif; letter-spacing: 0.18em; }
+    </style>
+  </defs>
+  <rect width="2400" height="1200" fill="transparent"/>
+  <rect x="150" y="220" width="520" height="520" rx="42" class="amber-stroke"/>
+  <rect x="242" y="312" width="156" height="156" class="brown"/>
+  <rect x="420" y="312" width="156" height="156" class="brown"/>
+  <rect x="242" y="490" width="156" height="156" class="brown"/>
+  <rect x="420" y="490" width="156" height="156" class="brown"/>
+  <line x1="409" y1="294" x2="409" y2="664" class="amber-stroke"/>
+  <line x1="224" y1="479" x2="594" y2="479" class="amber-stroke"/>
+  <path d="M 450 332 L 590 220" stroke="#fff4e0" stroke-width="34" fill="none"/>
+  <path d="M 424 414 L 534 332" stroke="#fff4e0" stroke-width="34" fill="none"/>
+  <path d="M 272 568 L 446 438" stroke="#fff4e0" stroke-width="34" fill="none"/>
+  <path d="M 330 616 L 504 486" stroke="#fff4e0" stroke-width="34" fill="none"/>
+  <path d="M 52 512 C 58 392, 160 352, 244 338" class="amber-stroke"/>
+  <path d="M 90 545 L 180 493 L 380 540 L 510 572 L 510 512 L 690 662 L 510 812 L 510 754 L 258 704 L 118 670 Z" class="amber"/>
+  <path d="M 132 554 L 200 514 L 398 556 L 470 574 L 470 544 L 634 662 L 470 778 L 470 748 L 266 704 L 150 676 Z" class="cream"/>
+  <text x="950" y="560" class="text-main">Double</text>
+  <text x="950" y="790" class="text-main">Take</text>
+  <text x="958" y="938" class="text-sub">Utilities</text>
+</svg>
