@@ -1,37 +1,302 @@
 <!doctype html>
-<html lang='en'>
+<html lang="en">
 <head>
-  <meta charset='utf-8' />
-  <meta name='viewport' content='width=device-width, initial-scale=1' />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>WASPrFlow Install Guide</title>
+  <meta name="description" content="Comprehensive installation, licensing, and settings guide for WASPrFlow on Windows." />
+  <meta name="theme-color" content="#0c1b2d" />
+  <link rel="icon" type="image/png" href="assets/wasprflow-mark.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
-    :root { --bg:#f6f8fb; --card:#fff; --text:#152033; --muted:#5d6b7f; --line:#d9e1ec; --accent:#0f6dcb; }
-    body { margin:0; font-family: Segoe UI, Arial, sans-serif; color:var(--text); background:var(--bg); }
-    .wrap { max-width: 860px; margin: 0 auto; padding: 20px; }
-    .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; margin-bottom:14px; }
-    a { color:var(--accent); }
-    ol { margin:8px 0 0 20px; }
+    :root {
+      --bg-1: #071018;
+      --bg-2: #0c1b2d;
+      --panel: #112033;
+      --text: #edf3fb;
+      --muted: #9fb1c9;
+      --accent-h: 212;
+      --accent-s: 54%;
+      --accent-l: 40%;
+      --line: hsl(var(--accent-h) 39% 26%);
+      --accent: hsl(var(--accent-h) var(--accent-s) var(--accent-l));
+      --ok: hsl(var(--accent-h) 47% 57%);
+      --warn: hsl(var(--accent-h) 53% 65%);
+      --danger: hsl(var(--accent-h) 57% 73%);
+      --radius: 14px;
+      --measure: 68ch;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: "Space Grotesk", Segoe UI, sans-serif;
+      font-size: 16px;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, hsl(var(--accent-h) var(--accent-s) var(--accent-l) / 0.18) 0%, transparent 60%),
+        radial-gradient(1000px 800px at 100% 0%, hsl(var(--accent-h) 47% 57% / 0.12) 0%, transparent 65%),
+        linear-gradient(165deg, var(--bg-1), var(--bg-2));
+      min-height: 100vh;
+    }
+    .wrap { width: min(1080px, 92vw); margin: 0 auto; }
+    .topbar { position: sticky; top: 0; background: rgba(9,17,28,0.88); backdrop-filter: blur(10px); border-bottom: 1px solid hsl(var(--accent-h) 39% 26% / 0.62); }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 14px 20px; padding: 14px 0; }
+    .nav-cluster { display: flex; align-items: center; justify-content: flex-end; gap: 12px 16px; flex-wrap: wrap; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.03em; }
+    .brand-mark { width: 32px; height: 32px; display: block; object-fit: contain; filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.25)); }
+    .nav nav { display: flex; flex-wrap: wrap; gap: 8px 16px; }
+    .nav a { color: var(--muted); text-decoration: none; font-size: 0.92rem; line-height: 1.4; }
+    .nav a:hover { color: var(--text); }
+    .theme-swatches { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .theme-swatches span { font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+    .swatch { width: 16px; height: 16px; border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; background: hsl(var(--swatch-h) 58% 52%); cursor: pointer; box-shadow: 0 0 0 0 transparent; transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
+    .swatch:hover { transform: translateY(-1px) scale(1.06); }
+    .swatch[aria-pressed="true"] { border-color: rgba(255,255,255,0.6); box-shadow: 0 0 0 4px hsl(var(--swatch-h) 58% 52% / 0.2); }
+    .hero { padding: 36px 0 12px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(220px, 0.9fr); gap: 18px; align-items: center; }
+    .hero-copy h1 { margin: 0 0 10px; font-size: clamp(1.85rem, 4vw, 2.7rem); line-height: 1.08; max-width: 16ch; text-wrap: balance; }
+    .hero-copy p { margin: 0; color: var(--muted); max-width: var(--measure); line-height: 1.62; }
+    .hero-art { display: flex; justify-content: center; }
+    .hero-badge { width: min(100%, 260px); padding: 18px; border: 1px solid var(--line); border-radius: 18px; background: linear-gradient(180deg, rgba(18,32,51,0.96), rgba(12,24,40,0.96)); box-shadow: 0 18px 44px rgba(0,0,0,0.22); }
+    .hero-badge img { width: 100%; height: auto; display: block; border: 0; background: transparent; }
+    .panel { border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(180deg, rgba(18,32,51,0.96), rgba(12,24,40,0.96)); }
+    .callout { margin-top: 14px; padding: 14px 16px; }
+    .callout p { margin: 0; color: var(--muted); line-height: 1.58; }
+    .callout strong { color: var(--text); }
+    main { padding: 6px 0 24px; }
+    section { padding: 14px 0; }
+    section h2 { margin: 0 0 10px; font-size: 1.25rem; line-height: 1.15; }
+    .list { margin: 0; padding-left: 20px; color: var(--muted); line-height: 1.58; }
+    .step { margin-top: 12px; padding: 14px 16px; }
+    .step h3 { margin: 0 0 8px; font-size: 1rem; line-height: 1.2; }
+    .step p { margin: 0 0 10px; color: var(--muted); line-height: 1.58; font-size: 0.96rem; }
+    figure { margin: 0; }
+    img { width: 100%; height: auto; border-radius: 10px; border: 1px solid hsl(var(--accent-h) 39% 26%); background: #0a1420; }
+    figcaption { color: var(--muted); font-size: 0.9rem; margin-top: 7px; line-height: 1.5; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .status { display: grid; gap: 10px; }
+    .status .row { padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: #201012; line-height: 1.56; }
+    .status .row b { color: var(--text); }
+    .good { color: var(--ok); }
+    .warn { color: var(--warn); }
+    .bad { color: var(--danger); }
+    footer { padding: 22px 0 34px; color: var(--muted); text-align: center; line-height: 1.6; }
+    @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } .nav { align-items: flex-start; } .nav-cluster { justify-content: flex-start; width: 100%; } .nav nav { width: 100%; } .hero { grid-template-columns: 1fr; } .hero-copy h1 { max-width: none; } .hero-art { justify-content: flex-start; } }
   </style>
 </head>
 <body>
-  <div class='wrap'>
-    <h1>WASPrFlow Install Guide</h1>
-    <section class='card'>
-      <h2>Quick Steps</h2>
-      <ol>
-        <li>Download installer from the <a href='index.html'>WASPrFlow page</a>.</li>
-        <li>Run the setup EXE or MSI as Administrator.</li>
-        <li>Complete prompts and launch WASPrFlow.</li>
-      </ol>
-    </section>
-    <section class='card'>
-      <h2>Troubleshooting</h2>
-      <ol>
-        <li>If SmartScreen appears, choose More info, then Run anyway.</li>
-        <li>If install fails, reboot and retry with Administrator rights.</li>
-        <li>If needed, re-download installer and verify file size is non-zero.</li>
-      </ol>
-    </section>
+  <header class="topbar">
+    <div class="wrap nav">
+      <div class="brand"><img class="brand-mark" src="assets/wasprflow-mark.png" alt="WASPrFlow mark" /> WASPrFlow</div>
+      <div class="nav-cluster">
+        <nav>
+          <a href="../">DoubleTake Utilities</a>
+          <a href="index.html">Home</a>
+          <a href="#install">Install</a>
+          <a href="#license">License</a>
+          <a href="#settings">Settings</a>
+          <a href="#troubleshooting">Troubleshooting</a>
+        </nav>
+        <div class="theme-swatches" aria-label="Theme colour">
+          <span>Colour</span>
+          <button class="swatch" type="button" data-theme-color="212" style="--swatch-h: 212" aria-label="Blue theme"></button>
+          <button class="swatch" type="button" data-theme-color="164" style="--swatch-h: 164" aria-label="Teal theme"></button>
+          <button class="swatch" type="button" data-theme-color="18" style="--swatch-h: 18" aria-label="Amber theme"></button>
+          <button class="swatch" type="button" data-theme-color="332" style="--swatch-h: 332" aria-label="Rose theme"></button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap hero">
+    <div class="hero-copy">
+      <h1>WASPrFlow Install And Setup Guide</h1>
+      <p>This guide covers install, first launch, licensing, API keys, expected behavior, and troubleshooting for Windows users.</p>
+      <div class="panel callout">
+        <p><strong>Recommended installer:</strong> Use <b>Setup EXE</b> for most users. Use <b>MSI</b> for managed business rollouts (RMM, Intune, SCCM, GPO workflows).</p>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="hero-badge">
+        <img src="assets/wasprflow-mark.png" alt="WASPrFlow emblem" />
+      </div>
+    </div>
   </div>
+
+  <main class="wrap">
+    <section id="install">
+      <h2>1. Download And Install</h2>
+      <div class="grid-2">
+        <article class="panel step">
+          <h3>Step 1: Open the download page</h3>
+          <p>Use either <b>WASPrFlow MSI</b> or <b>WASPrFlow Setup EXE</b>.</p>
+          <figure>
+            <img src="assets/guide/01-download-page.png" alt="WASPrFlow website download section" loading="lazy" />
+            <figcaption>Download buttons on the WASPrFlow site.</figcaption>
+          </figure>
+        </article>
+        <article class="panel step">
+          <h3>Step 2: If SmartScreen appears</h3>
+          <p>Windows may show an unknown publisher prompt. Select <b>Run anyway</b> to continue installation.</p>
+          <figure>
+            <img src="assets/guide/02-smartscreen.png" alt="Windows SmartScreen prompt" loading="lazy" />
+            <figcaption>Expected first-run Windows SmartScreen prompt.</figcaption>
+          </figure>
+        </article>
+      </div>
+
+      <article class="panel step">
+        <h3>Step 3: Complete setup wizard</h3>
+        <p>Run through the setup wizard and finish installation.</p>
+        <figure>
+          <img src="assets/guide/03-installer-setup.png" alt="WASPrFlow setup wizard welcome screen" loading="lazy" />
+          <figcaption>Setup wizard screen.</figcaption>
+        </figure>
+      </article>
+    </section>
+
+    <section id="first-run">
+      <h2>2. First Launch And Main UI</h2>
+      <div class="grid-2">
+        <article class="panel step">
+          <h3>Floating bar</h3>
+          <p>The compact bar is your always-available control point. Use your configured hotkey to dictate and insert text.</p>
+          <figure>
+            <img src="assets/guide/04-floating-bar-idle.png" alt="WASPrFlow compact floating bar" loading="lazy" />
+            <figcaption>Idle floating bar state.</figcaption>
+          </figure>
+        </article>
+        <article class="panel step" id="settings">
+          <h3>Settings panel</h3>
+          <p>Open settings from the bar. Configure hotkey, language, microphone, privacy mode, dictionary, and open licensing or API keys.</p>
+          <figure>
+            <img src="assets/guide/05-settings-panel.png" alt="WASPrFlow settings panel" loading="lazy" />
+            <figcaption>Main settings and controls.</figcaption>
+          </figure>
+        </article>
+      </div>
+    </section>
+
+    <section id="license">
+      <h2>3. Licensing Workflow</h2>
+      <div class="grid-2">
+        <article class="panel step">
+          <h3>Enter key or buy license</h3>
+          <p>From the License panel, paste a key, import a saved <code>.lic</code> file, or purchase with your email.</p>
+          <figure>
+            <img src="assets/guide/06-license-panel-entry.png" alt="License panel with activate and buy options" loading="lazy" />
+            <figcaption>License entry and buy options.</figcaption>
+          </figure>
+        </article>
+        <article class="panel step">
+          <h3>License management after activation</h3><p>After activation, this panel shows your licensed account and action buttons to remove, back up, or delete the local license file.</p><figure><img src="assets/guide/09-import-dialog.png" alt="Activated license panel with management actions" loading="lazy" /><figcaption>Activated license with management actions.</figcaption></figure>
+        </article>
+      </div>
+
+      <div class="grid-2">
+        <article class="panel step">
+          <h3>File loaded state</h3>
+          <p>After import, the app confirms file load and enables activation with the loaded key.</p>
+          <figure>
+            <img src="assets/guide/07-license-file-loaded.png" alt="License file loaded message in panel" loading="lazy" />
+            <figcaption>License file loaded and ready to activate.</figcaption>
+          </figure>
+        </article>
+        <article class="panel step">
+          <h3>Activated state</h3>
+          <p>After successful activation, you should see <b>Pro License</b> and management actions for remove, backup, and delete.</p>
+          <figure>
+            <img src="assets/guide/09-import-dialog.png" alt="Activated license panel with management actions" loading="lazy" />
+            <figcaption>Activated license UI and controls.</figcaption>
+          </figure>
+        </article>
+      </div>
+
+      <article class="panel step">
+        <h3>Backup license file</h3>
+        <p>Use <b>Backup License</b> to save a reusable file named <code>WASPrflow_license.lic</code>.</p>
+        <figure>
+          <img src="assets/guide/10-backup-dialog.png" alt="Save As dialog for license backup file" loading="lazy" />
+          <figcaption>Saving a backup <code>.lic</code> file.</figcaption>
+        </figure>
+      </article>
+
+      <div class="panel step status">
+        <h3>Expected Licensing Behaviors</h3>
+        <div class="row"><b class="good">Expected:</b> Activation happens only after confirmed payment or valid key import/paste.</div>
+        <div class="row"><b class="good">Expected:</b> Saved license in AppData can be reused on startup through the license prompt flow.</div>
+        <div class="row"><b class="good">Expected:</b> You can import, backup, and delete local license files directly from the license panel.</div>
+      </div>
+    </section>
+
+    <section id="api-keys">
+      <h2>4. API Keys</h2>
+      <article class="panel step">
+        <h3>Built-in keys and custom keys</h3>
+        <p>WASPrFlow includes built-in keys. Add your own Deepgram/OpenAI keys if you want dedicated quota, then click <b>Save</b>.</p>
+        <figure>
+          <img src="assets/guide/11-api-keys-panel.png" alt="API Keys panel for Deepgram and OpenAI" loading="lazy" />
+          <figcaption>API key management panel.</figcaption>
+        </figure>
+      </article>
+    </section>
+
+    <section id="behavior">
+      <h2>5. Expected Runtime Behavior</h2>
+      <ul class="list">
+        <li>Hold configured hotkey to capture speech, release to insert text at current cursor position.</li>
+        <li>The bar reflects state changes (idle, listening, processing, success/error).</li>
+        <li>Very short utterances may be less reliable than full phrases depending on mic and noise conditions.</li>
+        <li>License purchase flow should send receipt/invoice and include license details based on configured payment worker setup.</li>
+      </ul>
+    </section>
+
+    <section id="troubleshooting">
+      <h2>6. Troubleshooting</h2>
+      <div class="panel step">
+        <ul class="list">
+          <li><b>Cannot activate:</b> confirm purchase email matches, then try importing your saved <code>.lic</code> and activating again.</li>
+          <li><b>No receipt received:</b> verify sender/domain settings in your payment email provider and check spam folder.</li>
+          <li><b>Mic issues:</b> confirm selected input device in settings and Windows sound privacy permissions.</li>
+          <li><b>Punctuation quality:</b> speak complete phrases and pauses; tune model settings as they are updated.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    WASPrFlow - Voice Dictation for Windows - <a href="../" style="color:inherit;">DoubleTake Utilities</a>
+  </footer>
+  <script>
+    const storageKey = "wasprflow-theme-hue";
+    const root = document.documentElement;
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const swatches = Array.from(document.querySelectorAll(".swatch"));
+
+    function applyTheme(hue) {
+      root.style.setProperty("--accent-h", hue);
+      root.style.setProperty("--bg-1", `hsl(${hue} 46% 8%)`);
+      root.style.setProperty("--bg-2", `hsl(${hue} 42% 13%)`);
+      root.style.setProperty("--panel", `hsl(${hue} 34% 16%)`);
+      root.style.setProperty("--text", `hsl(${Number(hue) + 18} 72% 96%)`);
+      root.style.setProperty("--muted", `hsl(${Number(hue) + 10} 34% 72%)`);
+      if (metaTheme) metaTheme.setAttribute("content", `hsl(${hue} 52% 18%)`);
+      swatches.forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.themeColor === String(hue)));
+      });
+    }
+
+    const savedHue = localStorage.getItem(storageKey);
+    applyTheme(savedHue || "212");
+
+    swatches.forEach((button) => {
+      button.addEventListener("click", () => {
+        const hue = button.dataset.themeColor;
+        localStorage.setItem(storageKey, hue);
+        applyTheme(hue);
+      });
+    });
+  </script>
 </body>
 </html>
