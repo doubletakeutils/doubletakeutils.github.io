@@ -178,7 +178,7 @@
           <p>The installer is delivered through a bootstrap script that downloads verified chunks from GitHub Releases, reassembles the installer, and launches it.</p>
           <div class="download-note">
             Bootstrap page: <code>doubletake-image-video/downloads/download-bootstrap.html</code><br />
-            Release source: <code>github.com/doubletake/DoubleTake-Images/releases/tag/v1.2.116</code>
+            Release source: <code>doubletake.sbs/doubletake-image-video/downloads/release-assets/</code>
           </div>
           <div class="cta-row" style="margin-top:16px;">
             <a class="btn primary" id="dl-nsis" href="#">Open bootstrap download page</a>
@@ -192,13 +192,12 @@
     DoubleTake Image and Video • <a href="doubletake-landing.html">DoubleTake Utilities</a> • <a href="netaudit-pro.html">NetAudit Pro</a>
   </footer>
   <script>
-    const REPO = "doubletake/DoubleTake-Images";
-    const TAG = "v1.2.116";
+    const RELEASE_ASSETS_URL = "doubletake-image-video/downloads/release-assets/";
     const storageKey = "doubletake-image-video-theme-hue";
     const root = document.documentElement;
     const metaTheme = document.querySelector('meta[name="theme-color"]');
     const swatches = Array.from(document.querySelectorAll(".swatch"));
-    document.getElementById("dl-msi").href = `https://github.com/${REPO}/releases/tag/${TAG}`;
+    document.getElementById("dl-msi").href = RELEASE_ASSETS_URL;
     document.getElementById("dl-nsis").href = "doubletake-image-video/downloads/download-bootstrap.html";
     function applyTheme(hue) {
       root.style.setProperty("--accent-h", hue);

@@ -1,0 +1,121 @@
+{
+  "app_name": "DoubleTake Image and Video",
+  "version": "1.2.115",
+  "tag": "v1.2.115",
+  "repo": "dijib/DoubleTake-Images",
+  "installer_filename": "DoubleTake-Image-and-Video-Setup.exe",
+  "installer_size": 363439299,
+  "installer_sha256": "37acc6bacece45b989ee3280f33d4dc99db92acb636be16ab56bbc3e3559ac7a",
+  "chunk_size_bytes": 25165824,
+  "generated_asset_names": [
+    "DoubleTakeSetup-bootstrap.ps1",
+    "DoubleTake-release-manifest.json",
+    "DoubleTake-Image-and-Video-Setup.exe.part001",
+    "DoubleTake-Image-and-Video-Setup.exe.part002",
+    "DoubleTake-Image-and-Video-Setup.exe.part003",
+    "DoubleTake-Image-and-Video-Setup.exe.part004",
+    "DoubleTake-Image-and-Video-Setup.exe.part005",
+    "DoubleTake-Image-and-Video-Setup.exe.part006",
+    "DoubleTake-Image-and-Video-Setup.exe.part007",
+    "DoubleTake-Image-and-Video-Setup.exe.part008",
+    "DoubleTake-Image-and-Video-Setup.exe.part009",
+    "DoubleTake-Image-and-Video-Setup.exe.part010",
+    "DoubleTake-Image-and-Video-Setup.exe.part011",
+    "DoubleTake-Image-and-Video-Setup.exe.part012",
+    "DoubleTake-Image-and-Video-Setup.exe.part013",
+    "DoubleTake-Image-and-Video-Setup.exe.part014",
+    "DoubleTake-Image-and-Video-Setup.exe.part015"
+  ],
+  "chunks": [
+    {
+      "name": "DoubleTake-Image-and-Video-Setup.exe.part001",
+      "size": 25165824,
+      "sha256": "00b0e3e1787c0040f3a38cccec04e7fea0a348ddc8b20d117019ff55e69d91b1",
+      "url": "https://github.com/dijib/DoubleTake-Images/releases/download/v1.2.115/DoubleTake-Image-and-Video-Setup.exe.part001"
+    },
+    {
+      "name": "DoubleTake-Image-and-Video-Setup.exe.part002",
+      "size": 25165824,
+      "sha256": "b2cc54c1b3e935473ec250d6f4eeb734330d2a5c8c2753713fea9c40c37a2ba7",
+      "url": "https://github.com/dijib/DoubleTake-Images/releases/download/v1.2.115/DoubleTake-Image-and-Video-Setup.exe.part002"
+    },
+    {
+      "name": "DoubleTake-Image-and-Video-Setup.exe.part003",
+      "size": 25165824,
+      "sha256": "14e49ada39bb0b513603104749087538200670403f8c96aa3299712be90c1ec9",
+      "url": "https://github.com/dijib/DoubleTake-Images/releases/download/v1.2.115/DoubleTake-Image-and-Video-Setup.exe.part003"
+    },
+    {
+      "name": "DoubleTake-Image-and-Video-Setup.exe.part004",
+      "size": 25165824,
+      "sha256": "59a0146717e163aa9434f4601977cc6b194b223d09c748c512a2888151296711",
+      "url": "https://github.com/dijib/DoubleTake-Images/releases/download/v1.2.115/DoubleTake-Image-and-Video-Setup.exe.part004"
+    },
+    {
+      "name": "DoubleTake-Image-and-Video-Setup.exe.part005",
+      "size": 25165824,
+      "sha256": "054c08e325db25eaa0277eac5fd3feda765eeb9c71d1b907bba89c0afefd771f",
+      "url": "https://github.com/dijib/DoubleTake-Images/releases/download/v1.2.115/DoubleTake-Image-and-Video-Setup.exe.part005"
+    },
+    {
+      "name": "DoubleTake-Image-and-Video-Setup.exe.part006",
+      "size": 25165824,
+      "sha256": "05bf7fee460a601b83eef620c5cfa51a0e47c5e1d1b3972602562425005cee73",
+      "url": "https://github.com/dijib/DoubleTake-Images/releases/download/v1.2.115/DoubleTake-Image-and-Video-Setup.exe.part006"
+    },
+    {
+      "name": "DoubleTake-Image-and-Video-Setup.exe.part007",
+      "size": 25165824,
+      "sha256": "6bc39391ded24a5da276544f1490fe9a0e12b356399a26e50ac35eb09faac9f0",
+      "url": "https://github.com/dijib/DoubleTake-Images/releases/download/v1.2.115/DoubleTake-Image-and-Video-Setup.exe.part007"
+    },
+    {
+      "name": "DoubleTake-Image-and-Video-Setup.exe.part008",
+      "size": 25165824,
+      "sha256": "54ae07fac2ac14401639ef61fde3a463721caf5d22fc7194fbe5cc554a6ab5e2",
+      "url": "https://github.com/dijib/DoubleTake-Images/releases/download/v1.2.115/DoubleTake-Image-and-Video-Setup.exe.part008"
+    },
+    {
+      "name": "DoubleTake-Image-and-Video-Setup.exe.part009",
+      "size": 25165824,
+      "sha256": "e3af25e61679499c83a2abb08b35884fd9d078dac24ef92bd50bc7bcdd1eb03e",
+      "url": "https://github.com/dijib/DoubleTake-Images/releases/download/v1.2.115/DoubleTake-Image-and-Video-Setup.exe.part009"
+    },
+    {
+      "name": "DoubleTake-Image-and-Video-Setup.exe.part010",
+      "size": 25165824,
+      "sha256": "a188bed90a2da86841fe1bdbc04f3d19513dffca8aa789f36be76e1e02a4307c",
+      "url": "https://github.com/dijib/DoubleTake-Images/releases/download/v1.2.115/DoubleTake-Image-and-Video-Setup.exe.part010"
+    },
+    {
+      "name": "DoubleTake-Image-and-Video-Setup.exe.part011",
+      "size": 25165824,
+      "sha256": "8aecbd84ddc45cb0c99e9d723e0257f5a03a85e6211cbf6468462211257a5fd6",
+      "url": "https://github.com/dijib/DoubleTake-Images/releases/download/v1.2.115/DoubleTake-Image-and-Video-Setup.exe.part011"
+    },
+    {
+      "name": "DoubleTake-Image-and-Video-Setup.exe.part012",
+      "size": 25165824,
+      "sha256": "af571f7c7e9533bba36989c13e470dcbb051f49673c012d67ce0e285b606d749",
+      "url": "https://github.com/dijib/DoubleTake-Images/releases/download/v1.2.115/DoubleTake-Image-and-Video-Setup.exe.part012"
+    },
+    {
+      "name": "DoubleTake-Image-and-Video-Setup.exe.part013",
+      "size": 25165824,
+      "sha256": "d430503e6f0dec6f59cbe899ea92afeb1a604fd6549bac6a1809bc2e3f23b85b",
+      "url": "https://github.com/dijib/DoubleTake-Images/releases/download/v1.2.115/DoubleTake-Image-and-Video-Setup.exe.part013"
+    },
+    {
+      "name": "DoubleTake-Image-and-Video-Setup.exe.part014",
+      "size": 25165824,
+      "sha256": "610e278f81ae6a465c060f23ef98ecfb94f6269082b4baf6212f995d92c2828e",
+      "url": "https://github.com/dijib/DoubleTake-Images/releases/download/v1.2.115/DoubleTake-Image-and-Video-Setup.exe.part014"
+    },
+    {
+      "name": "DoubleTake-Image-and-Video-Setup.exe.part015",
+      "size": 11117763,
+      "sha256": "2e4a10b14015d0cdd75e23f9760b781d8780ee223c0ce8d6bf3d6d24bf1ab58d",
+      "url": "https://github.com/dijib/DoubleTake-Images/releases/download/v1.2.115/DoubleTake-Image-and-Video-Setup.exe.part015"
+    }
+  ]
+}

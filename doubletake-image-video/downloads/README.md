@@ -1,31 +1,31 @@
-# Website Download Assets (GitHub Releases)
+# Website Download Assets
 
-This folder contains website-facing files for the GitHub chunked installer flow.
+This folder contains website-facing files for the chunked installer flow.
 
 ## Files
 
 - `download-bootstrap.html`
-  - Basic download page that launches the bootstrap script from GitHub Releases.
-  - Update `REPO` and `TAG` placeholders before publishing.
+  - Download page that launches the bootstrap script from website-hosted release assets.
+- `release-assets/`
+  - Bootstrap script, manifest, and installer chunk files served directly from the website.
 
 ## Recommended Website Flow
 
-1. Publish a tagged release with:
+1. Place release assets under `release-assets/`:
    - `DoubleTakeSetup-bootstrap.ps1`
    - `DoubleTake-release-manifest.json`
    - `DoubleTake-Image-and-Video-Setup.exe.part001...partNNN`
-2. Link your website's "Download" button to the bootstrap script asset URL for that tag.
-3. The bootstrap script downloads and verifies all chunks, rebuilds the installer, and runs it.
+2. Link the website download button to `download-bootstrap.html`.
+3. The bootstrap script downloads and verifies chunks from the website URL, rebuilds the installer, and runs it.
 
-## Bootstrap URL Pattern
+## Bootstrap URL Pattern (Website)
 
 ```text
-https://github.com/<owner>/<repo>/releases/download/<tag>/DoubleTakeSetup-bootstrap.ps1
+https://doubletake.sbs/doubletake-image-video/downloads/release-assets/DoubleTakeSetup-bootstrap.ps1
 ```
 
 ## Client Command
 
 ```powershell
-powershell -ExecutionPolicy Bypass -Command "iwr https://github.com/<owner>/<repo>/releases/download/<tag>/DoubleTakeSetup-bootstrap.ps1 -OutFile DoubleTakeSetup-bootstrap.ps1; .\DoubleTakeSetup-bootstrap.ps1 -Repo <owner>/<repo> -Tag <tag>"
+powershell -ExecutionPolicy Bypass -Command "iwr https://doubletake.sbs/doubletake-image-video/downloads/release-assets/DoubleTakeSetup-bootstrap.ps1 -OutFile DoubleTakeSetup-bootstrap.ps1; .\DoubleTakeSetup-bootstrap.ps1 -BaseUrl https://doubletake.sbs/doubletake-image-video/downloads/release-assets"
 ```
-
