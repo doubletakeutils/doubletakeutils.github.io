@@ -11,7 +11,7 @@
 
   <style>
     :root {
-      --accent-h: 18;
+      --accent-h: 282;
       --bg: hsl(var(--accent-h) 30% 8%);
       --bg-soft: hsl(var(--accent-h) 34% 10%);
       --bg-deep: hsl(var(--accent-h) 22% 6%);
@@ -82,7 +82,7 @@
         <a href="install-guide.html">Install Guide</a>
         <div class="theme-mini">
           <label for="hue">Hue</label>
-          <input id="hue" type="range" min="0" max="360" value="22" />
+          <input id="hue" type="range" min="0" max="360" value="282" />
         </div>
       </div>
     </nav>
@@ -159,7 +159,7 @@
     document.getElementById("v").textContent = VERSION;
   </script>
   <script>
-    const themeKey = "wasprflow-theme-hue";
+    const themeKey = "wasprflow-theme-hue-v2";
     const hueInput = document.getElementById("hue");
     const savedHue = localStorage.getItem(themeKey);
     if (savedHue !== null) {

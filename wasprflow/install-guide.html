@@ -17,7 +17,7 @@
       --panel: #112033;
       --text: #edf3fb;
       --muted: #9fb1c9;
-      --accent-h: 212;
+      --accent-h: 282;
       --accent-s: 54%;
       --accent-l: 40%;
       --line: hsl(var(--accent-h) 39% 26%);
@@ -49,11 +49,9 @@
     .nav nav { display: flex; flex-wrap: wrap; gap: 8px 16px; }
     .nav a { color: var(--muted); text-decoration: none; font-size: 0.92rem; line-height: 1.4; }
     .nav a:hover { color: var(--text); }
-    .theme-swatches { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-    .theme-swatches span { font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
-    .swatch { width: 16px; height: 16px; border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; background: hsl(var(--swatch-h) 58% 52%); cursor: pointer; box-shadow: 0 0 0 0 transparent; transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
-    .swatch:hover { transform: translateY(-1px) scale(1.06); }
-    .swatch[aria-pressed="true"] { border-color: rgba(255,255,255,0.6); box-shadow: 0 0 0 4px hsl(var(--swatch-h) 58% 52% / 0.2); }
+    .theme-mini { display: inline-flex; align-items: center; gap: 8px; padding: 6px 8px; border: 1px solid hsl(var(--accent-h) 39% 26% / 0.7); border-radius: 8px; background: hsl(var(--accent-h) 28% 14% / 0.65); }
+    .theme-mini label { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+    .theme-mini input { width: 110px; accent-color: var(--accent); }
     .hero { padding: 36px 0 12px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(220px, 0.9fr); gap: 18px; align-items: center; }
     .hero-copy h1 { margin: 0 0 10px; font-size: clamp(1.85rem, 4vw, 2.7rem); line-height: 1.08; max-width: 16ch; text-wrap: balance; }
     .hero-copy p { margin: 0; color: var(--muted); max-width: var(--measure); line-height: 1.62; }
@@ -98,12 +96,9 @@
           <a href="#settings">Settings</a>
           <a href="#troubleshooting">Troubleshooting</a>
         </nav>
-        <div class="theme-swatches" aria-label="Theme colour">
-          <span>Colour</span>
-          <button class="swatch" type="button" data-theme-color="212" style="--swatch-h: 212" aria-label="Blue theme"></button>
-          <button class="swatch" type="button" data-theme-color="164" style="--swatch-h: 164" aria-label="Teal theme"></button>
-          <button class="swatch" type="button" data-theme-color="18" style="--swatch-h: 18" aria-label="Amber theme"></button>
-          <button class="swatch" type="button" data-theme-color="332" style="--swatch-h: 332" aria-label="Rose theme"></button>
+        <div class="theme-mini">
+          <label for="hue">Hue</label>
+          <input id="hue" type="range" min="0" max="360" value="282" />
         </div>
       </div>
     </div>
@@ -269,10 +264,10 @@
     WASPrFlow - Voice Dictation for Windows - <a href="../" style="color:inherit;">DoubleTake Utilities</a>
   </footer>
   <script>
-    const storageKey = "wasprflow-theme-hue";
+    const storageKey = "wasprflow-install-guide-theme-hue-v2";
     const root = document.documentElement;
     const metaTheme = document.querySelector('meta[name="theme-color"]');
-    const swatches = Array.from(document.querySelectorAll(".swatch"));
+    const hueInput = document.getElementById("hue");
 
     function applyTheme(hue) {
       root.style.setProperty("--accent-h", hue);
@@ -282,20 +277,16 @@
       root.style.setProperty("--text", `hsl(${Number(hue) + 18} 72% 96%)`);
       root.style.setProperty("--muted", `hsl(${Number(hue) + 10} 34% 72%)`);
       if (metaTheme) metaTheme.setAttribute("content", `hsl(${hue} 52% 18%)`);
-      swatches.forEach((button) => {
-        button.setAttribute("aria-pressed", String(button.dataset.themeColor === String(hue)));
-      });
     }
 
     const savedHue = localStorage.getItem(storageKey);
-    applyTheme(savedHue || "212");
-
-    swatches.forEach((button) => {
-      button.addEventListener("click", () => {
-        const hue = button.dataset.themeColor;
-        localStorage.setItem(storageKey, hue);
-        applyTheme(hue);
-      });
+    const startHue = savedHue || hueInput.value || "282";
+    hueInput.value = startHue;
+    applyTheme(startHue);
+    hueInput.addEventListener("input", (e) => {
+      const hue = e.target.value;
+      localStorage.setItem(storageKey, hue);
+      applyTheme(hue);
     });
   </script>
 </body>

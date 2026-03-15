@@ -11,7 +11,7 @@
 
   <style>
     :root {
-      --accent-h: 18;
+      --accent-h: 236;
       --bg: hsl(var(--accent-h) 30% 8%);
       --bg-soft: hsl(var(--accent-h) 34% 10%);
       --bg-deep: hsl(var(--accent-h) 22% 6%);
@@ -81,7 +81,7 @@
         <a href="../doubletake-image-video/">Image and Video</a>
         <div class="theme-mini">
           <label for="hue">Hue</label>
-          <input id="hue" type="range" min="0" max="360" value="132" />
+          <input id="hue" type="range" min="0" max="360" value="236" />
         </div>
       </div>
     </nav>
@@ -158,7 +158,7 @@
     document.getElementById("v").textContent = VERSION;
   </script>
   <script>
-    const themeKey = "netaudit-pro-theme-hue";
+    const themeKey = "netaudit-pro-theme-hue-v2";
     const hueInput = document.getElementById("hue");
     const savedHue = localStorage.getItem(themeKey);
     if (savedHue !== null) {

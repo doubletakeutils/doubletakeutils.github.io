@@ -11,7 +11,7 @@
 
   <style>
     :root {
-      --accent-h: 18;
+      --accent-h: 42;
       --bg: hsl(var(--accent-h) 30% 8%);
       --bg-soft: hsl(var(--accent-h) 34% 10%);
       --bg-deep: hsl(var(--accent-h) 22% 6%);
@@ -80,7 +80,7 @@
         <a href="netaudit-pro/">NetAudit Pro</a>
         <div class="theme-mini">
           <label for="hue">Hue</label>
-          <input id="hue" type="range" min="0" max="360" value="18" />
+          <input id="hue" type="range" min="0" max="360" value="42" />
         </div>
       </div>
     </nav>
@@ -128,7 +128,7 @@
   <footer class="wrap">DoubleTake Utilities • doubletake.sbs</footer>
 
   <script>
-    const themeKey = "doubletake-utilities-theme-hue";
+    const themeKey = "doubletake-utilities-theme-hue-v2";
     const hueInput = document.getElementById("hue");
     const savedHue = localStorage.getItem(themeKey);
     if (savedHue !== null) {
