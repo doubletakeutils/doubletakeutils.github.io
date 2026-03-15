@@ -42,42 +42,22 @@
       border-bottom: 1px solid hsl(calc(var(--accent-h) + 8) 72% 82% / 0.12);
       z-index: 20;
     }
-    .nav { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 14px 0; flex-wrap: wrap; }
+    .nav { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 12px 0; flex-wrap: wrap; }
     .nav a { color: var(--muted); text-decoration: none; font-weight: 600; }
     .nav a:hover { color: var(--text); }
     .brand { color: var(--text) !important; font-weight: 800; }
+    .nav-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .theme-mini { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 8px; background: hsl(var(--accent-h) 28% 14% / 0.65); }
+    .theme-mini label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+    .theme-mini input { width: 110px; accent-color: var(--accent); }
 
     .hero { padding: 44px 0 18px; display: grid; gap: 16px; }
     h1 { margin: 0; font-size: clamp(2rem, 4vw, 3.1rem); line-height: 1.06; }
-    h2 { margin: 0 0 10px; font-size: clamp(1.2rem, 2vw, 1.6rem); }
     p { color: var(--muted); margin: 0; }
     .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
     .btn { display: inline-block; text-decoration: none; font-weight: 700; padding: 10px 14px; border-radius: 10px; }
     .btn.primary { background: linear-gradient(120deg, var(--accent), var(--accent-2)); color: #081524; }
     .btn.secondary { border: 1px solid var(--line); color: var(--text); }
-
-    .theme {
-      display: grid;
-      gap: 10px;
-      margin: 0 0 18px;
-      background: hsl(var(--accent-h) 28% 14% / 0.7);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 12px;
-      max-width: 620px;
-    }
-    .theme label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
-    .swatches { display: flex; gap: 8px; flex-wrap: wrap; }
-    .swatch {
-      width: 30px;
-      height: 30px;
-      border-radius: 999px;
-      border: 2px solid rgba(255,255,255,0.35);
-      background: hsl(var(--h) 88% 57%);
-      cursor: pointer;
-      padding: 0;
-    }
-    .swatch.active { box-shadow: 0 0 0 3px rgba(255,255,255,0.25); transform: translateY(-1px); }
 
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 14px 0 26px; }
     .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
@@ -93,10 +73,14 @@
   <header class="topbar">
     <nav class="wrap nav">
       <a class="brand" href="./">NetAudit Pro • DoubleTake Utilities</a>
-      <div style="display:flex;gap:14px;flex-wrap:wrap;">
-        <a href="../">Company</a>
+      <div class="nav-right">
+        <a href="../">DoubleTake Utils</a>
         <a href="../wasprflow/">WASPrFlow</a>
         <a href="../doubletake-image-video/">Image and Video</a>
+        <div class="theme-mini">
+          <label for="hue">Hue</label>
+          <input id="hue" type="range" min="0" max="360" value="132" />
+        </div>
       </div>
     </nav>
   </header>
@@ -109,11 +93,6 @@
         <a class="btn primary" id="btn-setup" href="#">Download Setup EXE</a>
         <a class="btn secondary" id="btn-portable" href="#">Download Portable EXE</a>
       </div>
-    </section>
-
-    <section class="theme">
-      <label>Theme Presets</label>
-      <div id="swatches" class="swatches"></div>
     </section>
 
     <section class="grid">
@@ -152,31 +131,21 @@
     document.getElementById("btn-portable").href = `downloads/NetAuditPro_${VERSION}_x64-portable.exe`;
     document.getElementById("v").textContent = VERSION;
   </script>
-
   <script>
-    const HUES = [18, 42, 88, 132, 180, 214, 262, 320];
     const themeKey = "netaudit-pro-theme-hue";
-    const holder = document.getElementById("swatches");
-    function applyHue(h) {
-      document.documentElement.style.setProperty("--accent-h", String(h));
-      localStorage.setItem(themeKey, String(h));
-      [...holder.querySelectorAll(".swatch")].forEach((b) => {
-        b.classList.toggle("active", Number(b.dataset.hue) === Number(h));
-      });
+    const hueInput = document.getElementById("hue");
+    const savedHue = localStorage.getItem(themeKey);
+    if (savedHue !== null) {
+      hueInput.value = savedHue;
+      document.documentElement.style.setProperty("--accent-h", savedHue);
+    } else {
+      document.documentElement.style.setProperty("--accent-h", hueInput.value);
     }
-    for (const h of HUES) {
-      const b = document.createElement("button");
-      b.type = "button";
-      b.className = "swatch";
-      b.style.setProperty("--h", h);
-      b.dataset.hue = String(h);
-      b.title = `Theme ${h}`;
-      b.addEventListener("click", () => applyHue(h));
-      holder.appendChild(b);
-    }
-    const saved = Number(localStorage.getItem(themeKey) || HUES[0]);
-    applyHue(saved);
+    hueInput.addEventListener("input", (e) => {
+      const v = e.target.value;
+      document.documentElement.style.setProperty("--accent-h", v);
+      localStorage.setItem(themeKey, v);
+    });
   </script>
-
 </body>
 </html>
