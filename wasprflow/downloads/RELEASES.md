@@ -1,5 +1,13 @@
 ## WASPrFlow Website Download Releases
 
+### 2026-03-15 - v0.2.35 (rebuild)
+- Source MSI: `f:\DEV\WASPrFlow\src-tauri\target\release\bundle\msi\WASPrFlow_0.2.35_x64_en-US.msi`
+- Source Setup EXE: `f:\DEV\WASPrFlow\src-tauri\target\release\bundle\nsis\WASPrFlow_0.2.35_x64-setup.exe`
+- Website MSI: `f:\DEV\WEBSITE\wasprflow\downloads\WASPrFlow_0.2.35_x64_en-US.msi`
+- Website Setup EXE: `f:\DEV\WEBSITE\wasprflow\downloads\WASPrFlow_0.2.35_x64-setup.exe`
+- MSI SHA-256: `09203C68E119BF7C136971A449E29784BF60C9CDEE5612496B313763FECAFF32`
+- Setup EXE SHA-256: `7D42D7A901F81A2805D483D38E68C1ACB9E05C952238952FC8A3D14EC03A3301`
+
 ### 2026-03-14 - v0.2.35
 - Source MSI: `f:\DEV\WASPrFlow\src-tauri\target\release\bundle\msi\WASPrFlow_0.2.35_x64_en-US.msi`
 - Source Setup EXE: `f:\DEV\WASPrFlow\src-tauri\target\release\bundle\nsis\WASPrFlow_0.2.35_x64-setup.exe`
