@@ -174,15 +174,15 @@
         </article>
         <article class="panel download-panel" id="download">
           <span class="feature-kicker">Packages</span>
-          <h3 style="margin:0 0 10px;">Prepared for installer upload</h3>
-          <p>When the package files exist, the expected filenames below can be uploaded directly into the product download folder.</p>
+          <h3 style="margin:0 0 10px;">GitHub release bootstrap installer</h3>
+          <p>The installer is delivered through a bootstrap script that downloads verified chunks from GitHub Releases, reassembles the installer, and launches it.</p>
           <div class="download-note">
-            Setup EXE: <code>downloads/DoubleTakeImageVideo_0.1.0_x64-setup.exe</code><br />
-            MSI: <code>downloads/DoubleTakeImageVideo_0.1.0_x64_en-US.msi</code>
+            Bootstrap page: <code>downloads/download-bootstrap.html</code><br />
+            Release source: <code>github.com/dijib/DoubleTake-Images/releases/tag/v1.2.115</code>
           </div>
           <div class="cta-row" style="margin-top:16px;">
-            <a class="btn primary" id="dl-nsis" href="#">Setup EXE path</a>
-            <a class="btn secondary" id="dl-msi" href="#">MSI path</a>
+            <a class="btn primary" id="dl-nsis" href="#">Open bootstrap download page</a>
+            <a class="btn secondary" id="dl-msi" href="#">Open GitHub release</a>
           </div>
         </article>
       </div>
@@ -192,13 +192,14 @@
     DoubleTake Image and Video • <a href="../">DoubleTake Utilities</a> • <a href="../netaudit-pro/">NetAudit Pro</a>
   </footer>
   <script>
-    const VERSION = "0.1.0";
+    const REPO = "dijib/DoubleTake-Images";
+    const TAG = "v1.2.115";
     const storageKey = "doubletake-image-video-theme-hue";
     const root = document.documentElement;
     const metaTheme = document.querySelector('meta[name="theme-color"]');
     const swatches = Array.from(document.querySelectorAll(".swatch"));
-    document.getElementById("dl-msi").href = `downloads/DoubleTakeImageVideo_${VERSION}_x64_en-US.msi`;
-    document.getElementById("dl-nsis").href = `downloads/DoubleTakeImageVideo_${VERSION}_x64-setup.exe`;
+    document.getElementById("dl-msi").href = `https://github.com/${REPO}/releases/tag/${TAG}`;
+    document.getElementById("dl-nsis").href = "downloads/download-bootstrap.html";
     function applyTheme(hue) {
       root.style.setProperty("--accent-h", hue);
       if (metaTheme) metaTheme.setAttribute("content", `hsl(${hue} 52% 18%)`);
@@ -213,4 +214,3 @@
   </script>
 </body>
 </html>
-
