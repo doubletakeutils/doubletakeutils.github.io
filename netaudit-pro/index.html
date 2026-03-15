@@ -3,214 +3,149 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>NetAudit Pro | Network Audit Workflow Software</title>
-  <meta name="description" content="NetAudit Pro now has a dedicated DoubleTake Utilities product page prepared for launch copy and Windows package uploads." />
-  <meta name="theme-color" content="#112116" />
-  <link rel="icon" type="image/png" href="../assets/doubletake-mark.png" />
+  <title>NetAudit Pro | DoubleTake Utilities</title>
+  <meta name="description" content="NetAudit Pro download and details from DoubleTake Utilities." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
   <style>
     :root {
-      --accent-h: 148;
+      --accent-h: 18;
       --bg: hsl(var(--accent-h) 30% 8%);
       --bg-soft: hsl(var(--accent-h) 34% 10%);
       --bg-deep: hsl(var(--accent-h) 22% 6%);
-      --panel: hsl(var(--accent-h) 38% 16% / 0.96);
       --text: hsl(calc(var(--accent-h) + 22) 100% 95%);
-      --muted: hsl(calc(var(--accent-h) + 8) 28% 72%);
-      --muted-strong: hsl(calc(var(--accent-h) + 10) 52% 82%);
-      --accent: hsl(var(--accent-h) 78% 52%);
-      --accent-2: hsl(calc(var(--accent-h) + 16) 72% 60%);
-      --line: hsl(calc(var(--accent-h) + 8) 52% 82% / 0.18);
-      --line-soft: hsl(calc(var(--accent-h) + 8) 52% 82% / 0.08);
-      --glow: hsl(var(--accent-h) 78% 52% / 0.18);
-      --shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
-      --radius-xl: 28px;
-      --radius-lg: 20px;
-      --radius-md: 14px;
-      --wrap: min(1180px, 92vw);
-      --measure: 68ch;
+      --muted: hsl(calc(var(--accent-h) + 8) 34% 72%);
+      --accent: hsl(var(--accent-h) 88% 57%);
+      --accent-2: hsl(calc(var(--accent-h) + 16) 82% 63%);
+      --line: hsl(calc(var(--accent-h) + 8) 72% 82% / 0.2);
+      --panel: hsl(var(--accent-h) 38% 16% / 0.92);
     }
     * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
     body {
+      margin: 0;
       font-family: "Sora", "Segoe UI", sans-serif;
-      font-size: 16px;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, hsl(var(--accent-h) 78% 52% / 0.22), transparent 28%),
-        radial-gradient(circle at top right, hsl(calc(var(--accent-h) + 16) 72% 60% / 0.12), transparent 22%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 34%, var(--bg-deep) 100%);
+        radial-gradient(circle at top left, hsl(var(--accent-h) 88% 57% / 0.22), transparent 28%),
+        radial-gradient(circle at top right, hsl(calc(var(--accent-h) + 16) 82% 63% / 0.14), transparent 24%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 40%, var(--bg-deep) 100%);
       min-height: 100vh;
     }
-    a { color: inherit; }
-    .wrap { width: var(--wrap); margin: 0 auto; }
-    .topbar { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(16px); background: hsl(var(--accent-h) 30% 8% / 0.76); border-bottom: 1px solid var(--line-soft); }
-    .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px 24px; padding: 16px 0; }
-    .brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 800; text-decoration: none; }
-    .brand-mark { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #081109; font-family: "IBM Plex Mono", Consolas, monospace; font-size: 0.86rem; box-shadow: 0 12px 28px var(--glow); }
-    .nav-links { display: flex; align-items: center; gap: 10px 16px; flex-wrap: wrap; }
-    .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.92rem; line-height: 1.4; }
-    .nav-links a:hover { color: var(--text); }
-    .theme-swatches { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-    .theme-swatches span { font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
-    .swatch { width: 16px; height: 16px; border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; background: hsl(var(--swatch-h) 58% 52%); cursor: pointer; }
-    .swatch[aria-pressed="true"] { border-color: rgba(255,255,255,0.6); box-shadow: 0 0 0 4px hsl(var(--swatch-h) 58% 52% / 0.2); }
-    .hero { padding: 52px 0 26px; display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr); gap: 24px; align-items: center; }
-    .eyebrow { display: inline-flex; padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; background: hsl(var(--accent-h) 78% 52% / 0.12); color: var(--muted-strong); font-size: 0.82rem; letter-spacing: 0.07em; text-transform: uppercase; }
-    h1 { margin: 18px 0 16px; font-size: clamp(2.45rem, 5.1vw, 4.7rem); line-height: 1.01; letter-spacing: -0.05em; max-width: 10ch; text-wrap: balance; }
-    .hero-copy, .card p, .download-panel p, .stat span { color: var(--muted-strong); line-height: 1.66; }
-    .hero-copy { max-width: var(--measure); margin: 0; }
-    .hero-copy strong { color: var(--text); }
-    .cta-row { display: flex; flex-wrap: wrap; gap: 10px 12px; margin-top: 22px; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--line); text-decoration: none; font-weight: 700; font-size: 0.95rem; }
-    .btn.primary { color: #081109; border-color: transparent; background: linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow: 0 18px 46px var(--glow); }
-    .btn.secondary { background: rgba(255,255,255,0.04); }
-    .panel { border: 1px solid var(--line); border-radius: var(--radius-xl); background: linear-gradient(180deg, var(--panel), hsl(var(--accent-h) 22% 9% / 0.96)); box-shadow: var(--shadow); overflow: hidden; }
-    .hero-card, .card, .download-panel { padding: 22px; }
-    .hero-card { display: grid; gap: 16px; }
-    .stat-strip, .feature-grid, .two-up { display: grid; gap: 14px; }
-    .stat-strip { grid-template-columns: repeat(3, 1fr); }
-    .feature-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .two-up { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .stat { padding: 12px; border-radius: var(--radius-md); background: hsl(var(--accent-h) 20% 98% / 0.04); border: 1px solid var(--line-soft); }
-    .stat strong, .card h3 { display: block; margin: 0 0 8px; }
-    .grid-note { padding: 18px; border-radius: var(--radius-lg); display: grid; gap: 14px; border: 1px dashed hsl(calc(var(--accent-h) + 8) 52% 82% / 0.34); background: linear-gradient(135deg, hsl(var(--accent-h) 78% 52% / 0.12), hsl(var(--accent-h) 78% 52% / 0.04)); }
-    .feature-kicker { display: inline-flex; width: fit-content; padding: 7px 10px; border-radius: 999px; background: hsl(var(--accent-h) 18% 6% / 0.28); color: var(--muted-strong); font-size: 0.76rem; letter-spacing: 0.08em; text-transform: uppercase; }
-    .mono { font-family: "IBM Plex Mono", Consolas, monospace; color: hsl(calc(var(--accent-h) + 18) 100% 90%); line-height: 1.6; }
-    section { padding: 30px 0; }
-    .section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 14px 18px; margin-bottom: 16px; }
-    .section-head h2 { margin: 0; font-size: clamp(1.65rem, 2.7vw, 2.35rem); letter-spacing: -0.03em; line-height: 1.08; }
-    .section-head p { margin: 0; color: var(--muted); max-width: 72ch; line-height: 1.62; }
-    .bullet-list { margin: 16px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
-    .bullet-list li { padding-left: 18px; position: relative; color: var(--muted-strong); line-height: 1.58; }
-    .bullet-list li::before { content: ""; position: absolute; left: 0; top: 0.66em; width: 8px; height: 8px; border-radius: 999px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
-    .download-note { padding: 12px 14px; border-left: 3px solid var(--accent); border-radius: 12px; background: hsl(var(--accent-h) 78% 52% / 0.12); color: var(--muted-strong); font-size: 0.92rem; line-height: 1.56; }
-    footer { padding: 28px 0 42px; color: var(--muted); text-align: center; font-size: 0.92rem; line-height: 1.6; }
-    @media (max-width: 920px) {
-      .hero, .two-up { grid-template-columns: 1fr; }
-      .feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .section-head { flex-direction: column; align-items: flex-start; }
-      .stat-strip { grid-template-columns: 1fr; }
+    .wrap { width: min(1120px, 92vw); margin: 0 auto; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(14px);
+      background: hsl(var(--accent-h) 30% 8% / 0.78);
+      border-bottom: 1px solid hsl(calc(var(--accent-h) + 8) 72% 82% / 0.12);
+      z-index: 20;
     }
-    @media (max-width: 760px) {
-      .nav { flex-direction: column; align-items: flex-start; }
-      .nav-links { width: 100%; }
-      .feature-grid { grid-template-columns: 1fr; }
-      h1 { max-width: none; }
-    }
+    .nav { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 12px 0; flex-wrap: wrap; }
+    .nav a { color: var(--muted); text-decoration: none; font-weight: 600; }
+    .nav a:hover { color: var(--text); }
+    .brand { color: var(--text) !important; font-weight: 800; }
+    .nav-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .theme-mini { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 8px; background: hsl(var(--accent-h) 28% 14% / 0.65); }
+    .theme-mini label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+    .theme-mini input { width: 110px; accent-color: var(--accent); }
+
+    .hero { padding: 44px 0 18px; display: grid; gap: 16px; }
+    h1 { margin: 0; font-size: clamp(2rem, 4vw, 3.1rem); line-height: 1.06; }
+    p { color: var(--muted); margin: 0; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .btn { display: inline-block; text-decoration: none; font-weight: 700; padding: 10px 14px; border-radius: 10px; }
+    .btn.primary { background: linear-gradient(120deg, var(--accent), var(--accent-2)); color: #081524; }
+    .btn.secondary { border: 1px solid var(--line); color: var(--text); }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 14px 0 26px; }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+    .panel h3 { margin: 0 0 8px; }
+    ul { margin: 8px 0 0 18px; color: var(--muted); }
+    li + li { margin-top: 4px; }
+
+    footer { padding: 12px 0 30px; color: var(--muted); font-size: 14px; }
   </style>
+
 </head>
 <body>
   <header class="topbar">
-    <div class="wrap nav">
-      <a class="brand" href="./">
-        <span class="brand-mark">NA</span>
-        <span>NetAudit Pro</span>
-      </a>
-      <nav class="nav-links" aria-label="Primary">
-        <a href="../">DoubleTake Utilities</a>
+    <nav class="wrap nav">
+      <a class="brand" href="./">NetAudit Pro • DoubleTake Utilities</a>
+      <div class="nav-right">
+        <a href="../">DoubleTake Utils</a>
         <a href="../wasprflow/">WASPrFlow</a>
-        <a href="../doubletake-image-video/">DoubleTake Image and Video</a>
-        <a href="#platform">Platform</a>
-        <a href="#download">Download</a>
-        <div class="theme-swatches" aria-label="Theme colour">
-          <span>Colour</span>
-          <button class="swatch" type="button" data-theme-color="148" style="--swatch-h: 148" aria-label="Green theme"></button>
-          <button class="swatch" type="button" data-theme-color="212" style="--swatch-h: 212" aria-label="Blue theme"></button>
-          <button class="swatch" type="button" data-theme-color="18" style="--swatch-h: 18" aria-label="Amber theme"></button>
-          <button class="swatch" type="button" data-theme-color="332" style="--swatch-h: 332" aria-label="Rose theme"></button>
+        <a href="../doubletake-image-video/">Image and Video</a>
+        <div class="theme-mini">
+          <label for="hue">Hue</label>
+          <input id="hue" type="range" min="0" max="360" value="132" />
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
   </header>
-  <main>
-    <section class="wrap hero">
-      <div>
-        <span class="eyebrow">Network Audit Software</span>
-        <h1>Give NetAudit Pro a real public home now.</h1>
-        <p class="hero-copy"><strong>NetAudit Pro now has a dedicated product page</strong> that is ready for launch messaging, screenshots, and later installer uploads. It already fits into the broader DoubleTake product family instead of living as an orphan page later.</p>
-        <div class="cta-row">
-          <a class="btn primary" href="#download">View package paths</a>
-          <a class="btn secondary" href="../">Back to company page</a>
-        </div>
-      </div>
-      <aside class="panel hero-card">
-        <div class="stat-strip">
-          <div class="stat"><strong>Discover</strong><span>Frame the product around organized audit work.</span></div>
-          <div class="stat"><strong>Assess</strong><span>Prepare room for findings, review, and reporting copy.</span></div>
-          <div class="stat"><strong>Deploy</strong><span>Keep setup EXE and MSI hosting ready from day one.</span></div>
-        </div>
-        <div class="grid-note">
-          <strong>Launch scaffolding</strong>
-          <p style="margin:0;color:var(--muted);line-height:1.6;">This page stays intentionally specific enough to publish, while leaving space for the exact product details you have not defined yet.</p>
-          <div class="mono">product = "NetAudit Pro"<br />site = "prepared for packages"<br />status = "awaiting final details"</div>
-        </div>
-      </aside>
-    </section>
-    <section class="wrap" id="platform">
-      <div class="section-head">
-        <h2>Structured now so it does not need rebuilding later.</h2>
-        <p>The product can grow into this page cleanly. You can add screenshots, exact capabilities, and release messaging later without changing the site map again.</p>
-      </div>
-      <div class="feature-grid">
-        <article class="panel card"><span class="feature-kicker">Workflow</span><h3>Network audit framing</h3><p>The copy gives NetAudit Pro a defined category and purpose instead of leaving it as an unnamed future tool.</p></article>
-        <article class="panel card"><span class="feature-kicker">Deploy</span><h3>Windows package ready</h3><p>Setup EXE and MSI paths are already reserved so upload can happen without more site work.</p></article>
-        <article class="panel card"><span class="feature-kicker">Navigation</span><h3>Connected to the product family</h3><p>The page is wired into DoubleTake Utilities, WASPrFlow, and DoubleTake Image and Video.</p></article>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1>NetAudit Pro</h1>
+      <p>Network discovery and audit product from DoubleTake Utilities.</p>
+      <div class="actions">
+        <a class="btn primary" id="btn-setup" href="#">Download Setup EXE</a>
+        <a class="btn secondary" id="btn-portable" href="#">Download Portable EXE</a>
       </div>
     </section>
-    <section class="wrap">
-      <div class="two-up">
-        <article class="panel card">
-          <h3>What this section is ready for next</h3>
-          <ul class="bullet-list">
-            <li>Final screenshots and product visuals.</li>
-            <li>Specific discovery, audit, and reporting feature copy.</li>
-            <li>Versioned setup EXE and MSI uploads.</li>
-            <li>Optional documentation or install guide pages.</li>
-          </ul>
-        </article>
-        <article class="panel download-panel" id="download">
-          <span class="feature-kicker">Packages</span>
-          <h3 style="margin:0 0 10px;">Prepared for installer upload</h3>
-          <p>When package files are ready, they can be placed directly in the product download folder using the expected names below.</p>
-          <div class="download-note">
-            Setup EXE: <code>downloads/NetAuditPro_0.1.0_x64-setup.exe</code><br />
-            MSI: <code>downloads/NetAuditPro_0.1.0_x64_en-US.msi</code>
-          </div>
-          <div class="cta-row" style="margin-top:16px;">
-            <a class="btn primary" id="dl-nsis" href="#">Setup EXE path</a>
-            <a class="btn secondary" id="dl-msi" href="#">MSI path</a>
-          </div>
-        </article>
-      </div>
+
+    <section class="grid">
+      <article class="panel">
+        <h3>Discovery</h3>
+        <ul>
+          <li>Device and service visibility.</li>
+          <li>Operational network scanning.</li>
+          <li>Structured review workflow.</li>
+        </ul>
+      </article>
+      <article class="panel">
+        <h3>Audit</h3>
+        <ul>
+          <li>Security-focused checks.</li>
+          <li>Actionable operator output.</li>
+          <li>Repeatable run patterns.</li>
+        </ul>
+      </article>
+      <article class="panel">
+        <h3>Release</h3>
+        <ul>
+          <li>Setup and portable builds.</li>
+          <li>Versioned website download links.</li>
+          <li>Simple deployment path.</li>
+        </ul>
+      </article>
     </section>
   </main>
-  <footer>
-    NetAudit Pro • <a href="../">DoubleTake Utilities</a> • <a href="../doubletake-image-video/">DoubleTake Image and Video</a>
-  </footer>
+
+  <footer class="wrap">DoubleTake Utilities • Current version: <span id="v"></span></footer>
+
   <script>
-    const VERSION = "0.1.0";
-    const storageKey = "netaudit-pro-theme-hue";
-    const root = document.documentElement;
-    const metaTheme = document.querySelector('meta[name="theme-color"]');
-    const swatches = Array.from(document.querySelectorAll(".swatch"));
-    document.getElementById("dl-msi").href = `downloads/NetAuditPro_${VERSION}_x64_en-US.msi`;
-    document.getElementById("dl-nsis").href = `downloads/NetAuditPro_${VERSION}_x64-setup.exe`;
-    function applyTheme(hue) {
-      root.style.setProperty("--accent-h", hue);
-      if (metaTheme) metaTheme.setAttribute("content", `hsl(${hue} 52% 18%)`);
-      swatches.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.themeColor === String(hue))));
+    const VERSION = "1.0.0";
+    document.getElementById("btn-setup").href = `downloads/NetAuditPro_${VERSION}_x64-setup.exe`;
+    document.getElementById("btn-portable").href = `downloads/NetAuditPro_${VERSION}_x64-portable.exe`;
+    document.getElementById("v").textContent = VERSION;
+  </script>
+  <script>
+    const themeKey = "netaudit-pro-theme-hue";
+    const hueInput = document.getElementById("hue");
+    const savedHue = localStorage.getItem(themeKey);
+    if (savedHue !== null) {
+      hueInput.value = savedHue;
+      document.documentElement.style.setProperty("--accent-h", savedHue);
+    } else {
+      document.documentElement.style.setProperty("--accent-h", hueInput.value);
     }
-    applyTheme(localStorage.getItem(storageKey) || "148");
-    swatches.forEach((button) => button.addEventListener("click", () => {
-      const hue = button.dataset.themeColor;
-      localStorage.setItem(storageKey, hue);
-      applyTheme(hue);
-    }));
+    hueInput.addEventListener("input", (e) => {
+      const v = e.target.value;
+      document.documentElement.style.setProperty("--accent-h", v);
+      localStorage.setItem(themeKey, v);
+    });
   </script>
 </body>
 </html>
-
