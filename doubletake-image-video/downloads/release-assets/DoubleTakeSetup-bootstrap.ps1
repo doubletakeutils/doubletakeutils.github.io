@@ -19,6 +19,7 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+$DefaultBaseUrl = "https://doubletake.sbs/doubletake-image-video/downloads/release-assets"
 
 function Get-Sha256 {
     param([Parameter(Mandatory = $true)][string]$Path)
@@ -37,7 +38,8 @@ function Resolve-LatestTag {
 }
 
 if (-not $BaseUrl -and -not $Repo) {
-    throw "Provide either -BaseUrl (website-hosted assets) or -Repo (GitHub Releases)."
+    # Default to website-hosted assets so users can run the script directly.
+    $BaseUrl = $DefaultBaseUrl
 }
 
 if ($Repo -and -not $Tag) {
