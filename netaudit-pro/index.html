@@ -1,56 +1,138 @@
 <!doctype html>
-<html lang='en'>
+<html lang="en">
 <head>
-  <meta charset='utf-8' />
-  <meta name='viewport' content='width=device-width, initial-scale=1' />
-  <title>NetAudit Pro</title>
-  <meta name='description' content='NetAudit Pro downloads and core capabilities.' />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NetAudit Pro | Network Discovery and Security Audit</title>
+  <meta name="description" content="NetAudit Pro download and product overview." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
   <style>
-    :root { --bg:#f6f8fb; --card:#fff; --text:#152033; --muted:#5d6b7f; --line:#d9e1ec; --accent:#0f6dcb; }
+    :root {
+      --accent-h: 18;
+      --bg: hsl(var(--accent-h) 30% 8%);
+      --bg-soft: hsl(var(--accent-h) 34% 10%);
+      --bg-deep: hsl(var(--accent-h) 22% 6%);
+      --text: hsl(calc(var(--accent-h) + 22) 100% 95%);
+      --muted: hsl(calc(var(--accent-h) + 8) 34% 72%);
+      --accent: hsl(var(--accent-h) 88% 57%);
+      --accent-2: hsl(calc(var(--accent-h) + 16) 82% 63%);
+      --line: hsl(calc(var(--accent-h) + 8) 72% 82% / 0.18);
+      --panel: hsl(var(--accent-h) 38% 16% / 0.92);
+    }
     * { box-sizing: border-box; }
-    body { margin:0; font-family: Segoe UI, Arial, sans-serif; color:var(--text); background:var(--bg); }
-    .wrap { max-width: 860px; margin: 0 auto; padding: 20px; }
-    nav { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:20px; }
-    nav a { color:var(--text); text-decoration:none; font-weight:600; }
-    .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; margin-bottom:14px; }
-    .actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
-    .btn { display:inline-block; background:var(--accent); color:#fff; text-decoration:none; padding:9px 12px; border-radius:8px; font-weight:600; }
-    .btn.alt { background:#fff; color:var(--text); border:1px solid var(--line); }
-    ul { margin:8px 0 0 18px; }
-    .muted { color:var(--muted); }
+    body {
+      margin: 0;
+      font-family: "Sora", "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, hsl(var(--accent-h) 88% 57% / 0.22), transparent 28%),
+        radial-gradient(circle at top right, hsl(calc(var(--accent-h) + 16) 82% 63% / 0.14), transparent 24%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 40%, var(--bg-deep) 100%);
+      min-height: 100vh;
+    }
+    .wrap { width: min(1080px, 92vw); margin: 0 auto; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(14px);
+      background: hsl(var(--accent-h) 30% 8% / 0.76);
+      border-bottom: 1px solid hsl(calc(var(--accent-h) + 8) 72% 82% / 0.1);
+      z-index: 20;
+    }
+    .nav { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 14px 0; flex-wrap: wrap; }
+    .nav a { color: var(--muted); text-decoration: none; font-weight: 600; }
+    .nav a:hover { color: var(--text); }
+    .brand { color: var(--text) !important; font-weight: 700; }
+    .hero { padding: 44px 0 22px; display: grid; gap: 16px; }
+    h1 { margin: 0; font-size: clamp(2rem, 4vw, 3.1rem); line-height: 1.06; }
+    p { color: var(--muted); margin: 0; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .btn { display: inline-block; text-decoration: none; font-weight: 700; padding: 10px 14px; border-radius: 10px; }
+    .btn.primary { background: linear-gradient(120deg, var(--accent), var(--accent-2)); color: #081524; }
+    .btn.secondary { border: 1px solid var(--line); color: var(--text); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; margin: 16px 0 28px; }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+    .panel h2, .panel h3 { margin: 0 0 8px; }
+    ul { margin: 8px 0 0 18px; color: var(--muted); }
+    .theme {
+      display: grid;
+      gap: 8px;
+      margin: 0 0 22px;
+      max-width: 360px;
+      background: hsl(var(--accent-h) 28% 14% / 0.7);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 12px;
+    }
+    .theme label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+    .theme input { width: 100%; accent-color: var(--accent); }
+    footer { padding: 10px 0 30px; color: var(--muted); font-size: 14px; }
   </style>
+
 </head>
 <body>
-  <div class='wrap'>
-    <nav>
-      <a href='../'>DoubleTake Utilities</a>
-      <a href='../wasprflow/'>WASPrFlow</a>
-      <a href='../doubletake-image-video/'>DoubleTake Image and Video</a>
+  <header class="topbar">
+    <nav class="wrap nav">
+      <a class="brand" href="./">NetAudit Pro</a>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;">
+        <a href="../">Company</a>
+        <a href="../wasprflow/">WASPrFlow</a>
+        <a href="../doubletake-image-video/">Image and Video</a>
+      </div>
     </nav>
-    <h1>NetAudit Pro</h1>
-    <p class='muted'>Network discovery and audit workflow.</p>
-    <section class='card'>
-      <h2>Major Points</h2>
-      <ul>
-        <li>Network scan and audit operations.</li>
-        <li>Desktop workflow for operators and reviewers.</li>
-        <li>Setup and portable builds for Windows.</li>
-      </ul>
-    </section>
-    <section class='card'>
-      <h2>Download</h2>
-      <p id='versionLine' class='muted'></p>
-      <div class='actions'>
-        <a class='btn' id='dl-setup' href='#'>Download Setup EXE</a>
-        <a class='btn alt' id='dl-portable' href='#'>Download Portable EXE</a>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1>NetAudit Pro</h1>
+      <p>Network discovery and audit operations in one desktop workflow.</p>
+      <div class="actions">
+        <a class="btn primary" id="btn-setup" href="#">Download Setup EXE</a>
+        <a class="btn secondary" id="btn-portable" href="#">Download Portable EXE</a>
       </div>
     </section>
-  </div>
+
+    <section class="theme">
+      <label for="hue">Theme Color</label>
+      <input id="hue" type="range" min="0" max="360" value="132" />
+    </section>
+
+    <section class="grid">
+      <article class="panel">
+        <h3>Discover</h3>
+        <ul><li>Device and service visibility.</li><li>Operational scan workflow.</li></ul>
+      </article>
+      <article class="panel">
+        <h3>Audit</h3>
+        <ul><li>Security-focused checks.</li><li>Review-friendly reporting.</li></ul>
+      </article>
+      <article class="panel">
+        <h3>Deliver</h3>
+        <ul><li>Setup installer and portable build.</li><li>Straightforward rollout.</li></ul>
+      </article>
+    </section>
+  </main>
+
+  <footer class="wrap">Current version: <span id="v"></span></footer>
+
   <script>
-    const VERSION = '1.0.0';
-    document.getElementById('dl-setup').href = `downloads/NetAuditPro_${VERSION}_x64-setup.exe`;
-    document.getElementById('dl-portable').href = `downloads/NetAuditPro_${VERSION}_x64-portable.exe`;
-    document.getElementById('versionLine').textContent = `Current version: ${VERSION}`;
+    const VERSION = "1.0.0";
+    document.getElementById("btn-setup").href = `downloads/NetAuditPro_${VERSION}_x64-setup.exe`;
+    document.getElementById("btn-portable").href = `downloads/NetAuditPro_${VERSION}_x64-portable.exe`;
+    document.getElementById("v").textContent = VERSION;
+
+    const key = "netaudit-pro-theme-hue";
+    const slider = document.getElementById("hue");
+    const saved = localStorage.getItem(key);
+    if (saved) { slider.value = saved; document.documentElement.style.setProperty("--accent-h", saved); }
+    slider.addEventListener("input", (e) => {
+      const v = e.target.value;
+      document.documentElement.style.setProperty("--accent-h", v);
+      localStorage.setItem(key, v);
+    });
   </script>
 </body>
 </html>

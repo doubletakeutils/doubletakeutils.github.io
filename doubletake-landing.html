@@ -1,53 +1,137 @@
 <!doctype html>
-<html lang='en'>
+<html lang="en">
 <head>
-  <meta charset='utf-8' />
-  <meta name='viewport' content='width=device-width, initial-scale=1' />
-  <title>DoubleTake Utilities</title>
-  <meta name='description' content='DoubleTake Utilities software products: WASPrFlow, DoubleTake Image and Video, and NetAudit Pro.' />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DoubleTake Utilities | Software That Stays Out Of The Way</title>
+  <meta name="description" content="DoubleTake Utilities builds practical Windows software." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
   <style>
-    :root { --bg:#f6f8fb; --card:#fff; --text:#152033; --muted:#5d6b7f; --line:#d9e1ec; --accent:#0f6dcb; }
+    :root {
+      --accent-h: 18;
+      --bg: hsl(var(--accent-h) 30% 8%);
+      --bg-soft: hsl(var(--accent-h) 34% 10%);
+      --bg-deep: hsl(var(--accent-h) 22% 6%);
+      --text: hsl(calc(var(--accent-h) + 22) 100% 95%);
+      --muted: hsl(calc(var(--accent-h) + 8) 34% 72%);
+      --accent: hsl(var(--accent-h) 88% 57%);
+      --accent-2: hsl(calc(var(--accent-h) + 16) 82% 63%);
+      --line: hsl(calc(var(--accent-h) + 8) 72% 82% / 0.18);
+      --panel: hsl(var(--accent-h) 38% 16% / 0.92);
+    }
     * { box-sizing: border-box; }
-    body { margin:0; font-family: Segoe UI, Arial, sans-serif; color:var(--text); background:var(--bg); }
-    .wrap { max-width: 960px; margin: 0 auto; padding: 20px; }
-    nav { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:20px; }
-    nav a { color:var(--text); text-decoration:none; font-weight:600; }
-    h1 { margin: 8px 0 6px; font-size: 34px; }
-    .lead { color:var(--muted); margin:0 0 18px; }
-    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:14px; }
-    .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; }
-    .btn { display:inline-block; margin-top:10px; background:var(--accent); color:#fff; text-decoration:none; padding:9px 12px; border-radius:8px; font-weight:600; }
-    footer { margin-top:24px; color:var(--muted); font-size:14px; }
+    body {
+      margin: 0;
+      font-family: "Sora", "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, hsl(var(--accent-h) 88% 57% / 0.22), transparent 28%),
+        radial-gradient(circle at top right, hsl(calc(var(--accent-h) + 16) 82% 63% / 0.14), transparent 24%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 40%, var(--bg-deep) 100%);
+      min-height: 100vh;
+    }
+    .wrap { width: min(1080px, 92vw); margin: 0 auto; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(14px);
+      background: hsl(var(--accent-h) 30% 8% / 0.76);
+      border-bottom: 1px solid hsl(calc(var(--accent-h) + 8) 72% 82% / 0.1);
+      z-index: 20;
+    }
+    .nav { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 14px 0; flex-wrap: wrap; }
+    .nav a { color: var(--muted); text-decoration: none; font-weight: 600; }
+    .nav a:hover { color: var(--text); }
+    .brand { color: var(--text) !important; font-weight: 700; }
+    .hero { padding: 44px 0 22px; display: grid; gap: 16px; }
+    h1 { margin: 0; font-size: clamp(2rem, 4vw, 3.1rem); line-height: 1.06; }
+    p { color: var(--muted); margin: 0; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .btn { display: inline-block; text-decoration: none; font-weight: 700; padding: 10px 14px; border-radius: 10px; }
+    .btn.primary { background: linear-gradient(120deg, var(--accent), var(--accent-2)); color: #081524; }
+    .btn.secondary { border: 1px solid var(--line); color: var(--text); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; margin: 16px 0 28px; }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+    .panel h2, .panel h3 { margin: 0 0 8px; }
+    ul { margin: 8px 0 0 18px; color: var(--muted); }
+    .theme {
+      display: grid;
+      gap: 8px;
+      margin: 0 0 22px;
+      max-width: 360px;
+      background: hsl(var(--accent-h) 28% 14% / 0.7);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 12px;
+    }
+    .theme label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+    .theme input { width: 100%; accent-color: var(--accent); }
+    footer { padding: 10px 0 30px; color: var(--muted); font-size: 14px; }
   </style>
+
 </head>
 <body>
-  <div class='wrap'>
-    <nav>
-      <a href='./'>Home</a>
-      <a href='wasprflow/'>WASPrFlow</a>
-      <a href='doubletake-image-video/'>DoubleTake Image and Video</a>
-      <a href='netaudit-pro/'>NetAudit Pro</a>
+  <header class="topbar">
+    <nav class="wrap nav">
+      <a class="brand" href="./">DoubleTake Utilities</a>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;">
+        <a href="wasprflow/">WASPrFlow</a>
+        <a href="doubletake-image-video/">Image and Video</a>
+        <a href="netaudit-pro/">NetAudit Pro</a>
+      </div>
     </nav>
-    <h1>DoubleTake Utilities</h1>
-    <p class='lead'>Practical desktop tools. Clear pages. Fast downloads.</p>
-    <div class='grid'>
-      <section class='card'>
-        <h2>WASPrFlow</h2>
-        <p>Voice-driven writing and formatting workflow for Windows.</p>
-        <a class='btn' href='wasprflow/'>Open WASPrFlow</a>
-      </section>
-      <section class='card'>
-        <h2>DoubleTake Image and Video</h2>
-        <p>Image and video review workflow with bootstrap installer delivery.</p>
-        <a class='btn' href='doubletake-image-video/'>Open Product Page</a>
-      </section>
-      <section class='card'>
-        <h2>NetAudit Pro</h2>
-        <p>Network discovery and audit tooling for desktop operations.</p>
-        <a class='btn' href='netaudit-pro/'>Open Product Page</a>
-      </section>
-    </div>
-    <footer>doubletake.sbs</footer>
-  </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1>Clear tools for real work.</h1>
+      <p>Same visual style, less noise. Just the product decisions you need.</p>
+      <div class="actions">
+        <a class="btn primary" href="wasprflow/">Open WASPrFlow</a>
+        <a class="btn secondary" href="doubletake-image-video/">Open DoubleTake Image and Video</a>
+        <a class="btn secondary" href="netaudit-pro/">Open NetAudit Pro</a>
+      </div>
+    </section>
+
+    <section class="theme">
+      <label for="hue">Theme Color</label>
+      <input id="hue" type="range" min="0" max="360" value="18" />
+    </section>
+
+    <section class="grid">
+      <article class="panel">
+        <h3>WASPrFlow</h3>
+        <p>Voice-to-polished text workflow for Windows.</p>
+      </article>
+      <article class="panel">
+        <h3>DoubleTake Image and Video</h3>
+        <p>Media review workflow with bootstrap installer delivery.</p>
+      </article>
+      <article class="panel">
+        <h3>NetAudit Pro</h3>
+        <p>Network discovery and security audit operations.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="wrap">doubletake.sbs</footer>
+
+  <script>
+    const key = "doubletake-theme-hue";
+    const slider = document.getElementById("hue");
+    const saved = localStorage.getItem(key);
+    if (saved) {
+      slider.value = saved;
+      document.documentElement.style.setProperty("--accent-h", saved);
+    }
+    slider.addEventListener("input", (e) => {
+      const v = e.target.value;
+      document.documentElement.style.setProperty("--accent-h", v);
+      localStorage.setItem(key, v);
+    });
+  </script>
 </body>
 </html>
