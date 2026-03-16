@@ -1,8 +1,19 @@
 ## WASPrFlow Website Download Releases
 
-### 2026-03-15 - v0.2.43
-- Source MSI: `f:\DEV\WASPrFlow\src-tauri	argeteleaseundle\msi\WASPrFlow_0.2.43_x64_en-US.msi`
+### 2026-03-15 - v0.2.44
+- Source MSI: `f:\DEV\WASPrFlow\src-tauri	argeteleaseundle\msi\WASPrFlow_0.2.44_x64_en-US.msi`
 - Source Setup EXE: `f:\DEV\WASPrFlow\src-tauri	argeteleaseundle
+sis\WASPrFlow_0.2.44_x64-setup.exe`
+- Website MSI: `f:\DEV\WEBSITE\wasprflow\downloads\WASPrFlow_0.2.44_x64_en-US.msi`
+- Website Setup EXE: `f:\DEV\WEBSITE\wasprflow\downloads\WASPrFlow_0.2.44_x64-setup.exe`
+- MSI SHA-256: `52D078C92D3EC0C69F3D3684A164C7500255380B9E66E2B20406E4A34E83A3FD`
+- Setup EXE SHA-256: `19295E4EBD6952D74D39BF7547A314BA084827D386F2981D5C09EFD26AFD3D25`
+
+### 2026-03-15 - v0.2.43
+- Source MSI: `f:\DEV\WASPrFlow\src-tauri	arget
+eleaseundle\msi\WASPrFlow_0.2.43_x64_en-US.msi`
+- Source Setup EXE: `f:\DEV\WASPrFlow\src-tauri	arget
+eleaseundle
 sis\WASPrFlow_0.2.43_x64-setup.exe`
 - Website MSI: `f:\DEV\WEBSITE\wasprflow\downloads\WASPrFlow_0.2.43_x64_en-US.msi`
 - Website Setup EXE: `f:\DEV\WEBSITE\wasprflow\downloads\WASPrFlow_0.2.43_x64-setup.exe`
