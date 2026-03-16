@@ -307,7 +307,7 @@
     });
     const ZOOM_MIN = 85;
     const ZOOM_MAX = 125;
-    const ZOOM_STEP = 7.5;
+    const ZOOM_STEP = 5;
 
     function applyZoom(raw) {
       const clamped = Math.max(ZOOM_MIN, Math.min(ZOOM_MAX, Math.round(raw * 10) / 10));
