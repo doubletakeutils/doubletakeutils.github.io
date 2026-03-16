@@ -3,12 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>DoubleTake Utilities | Software That Stays Out Of The Way</title>
-  <meta name="description" content="DoubleTake Utilities builds practical Windows software." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
-
+  <title>Refund Policy | DoubleTake Utilities</title>
+  <meta name="description" content="Refund Policy for DoubleTake Utilities software purchases." />
   <style>
     :root {
       --accent-h: 42;
@@ -26,9 +22,9 @@
     * { box-sizing: border-box; }
     body {
       margin: 0;
+      zoom: var(--ui-zoom);
       font-family: "Sora", "Segoe UI", sans-serif;
       color: var(--text);
-      zoom: var(--ui-zoom);
       background:
         radial-gradient(circle at top left, hsl(var(--accent-h) 88% 57% / 0.22), transparent 28%),
         radial-gradient(circle at top right, hsl(calc(var(--accent-h) + 16) 82% 63% / 0.14), transparent 24%),
@@ -36,14 +32,7 @@
       min-height: 100vh;
     }
     .wrap { width: min(1120px, 92vw); margin: 0 auto; }
-    .topbar {
-      position: sticky;
-      top: 0;
-      backdrop-filter: blur(14px);
-      background: hsl(var(--accent-h) 30% 8% / 0.78);
-      border-bottom: 1px solid hsl(calc(var(--accent-h) + 8) 72% 82% / 0.12);
-      z-index: 20;
-    }
+    .topbar { position: sticky; top: 0; backdrop-filter: blur(14px); background: hsl(var(--accent-h) 30% 8% / 0.78); border-bottom: 1px solid hsl(calc(var(--accent-h) + 8) 72% 82% / 0.12); z-index: 20; }
     .nav { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 12px 0; flex-wrap: wrap; }
     .nav a { color: var(--muted); text-decoration: none; font-weight: 600; }
     .nav a:hover { color: var(--text); }
@@ -52,25 +41,14 @@
     .theme-mini { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 8px; background: hsl(var(--accent-h) 28% 14% / 0.65); }
     .theme-mini label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
     .theme-mini input { width: 96px; accent-color: var(--accent); }
-
-    .hero { padding: 44px 0 18px; display: grid; gap: 16px; }
-    h1 { margin: 0; font-size: clamp(2rem, 4vw, 3.1rem); line-height: 1.06; }
-    h2 { margin: 0 0 10px; font-size: clamp(1.2rem, 2vw, 1.6rem); }
-    p { color: var(--muted); margin: 0; }
-    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
-    .btn { display: inline-block; text-decoration: none; font-weight: 700; padding: 10px 14px; border-radius: 10px; }
-    .btn.primary { background: linear-gradient(120deg, var(--accent), var(--accent-2)); color: #081524; }
-    .btn.secondary { border: 1px solid var(--line); color: var(--text); }
-
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 14px 0 26px; }
-    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
-    .panel h3 { margin: 0 0 8px; }
-    ul { margin: 8px 0 0 18px; color: var(--muted); }
-    li + li { margin-top: 4px; }
-
-    footer { padding: 12px 0 30px; color: var(--muted); font-size: 14px; }
+    .hero { padding: 38px 0 14px; }
+    h1 { margin: 0 0 8px; font-size: clamp(2rem, 4vw, 3rem); }
+    p, li { color: var(--muted); line-height: 1.55; }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px; margin: 0 0 14px; }
+    h2 { margin: 0 0 8px; font-size: 1.2rem; }
+    footer { padding: 10px 0 28px; color: var(--muted); }
+    code { color: var(--text); }
   </style>
-
 </head>
 <body>
   <header class="topbar">
@@ -81,67 +59,62 @@
         <a href="doubletake-image-video/">Image and Video</a>
         <a href="netaudit-pro/">NetAudit Pro</a>
         <a href="terms.html">Terms</a>
-        <a href="refund-policy.html">Refunds</a>
-        <div class="theme-mini">
-          <label for="hue">Hue</label>
-          <input id="hue" type="range" min="0" max="360" value="42" />
-        </div>
-        <div class="theme-mini">
-          <label for="zoom">Zoom</label>
-          <input id="zoom" type="range" min="85" max="125" step="1" value="100" />
-        </div>
+        <div class="theme-mini"><label for="hue">Hue</label><input id="hue" type="range" min="0" max="360" value="42" /></div>
+        <div class="theme-mini"><label for="zoom">Zoom</label><input id="zoom" type="range" min="85" max="125" step="1" value="100" /></div>
       </div>
     </nav>
   </header>
 
   <main class="wrap">
     <section class="hero">
-      <h1>DoubleTake Utilities</h1>
-      <p>Practical desktop software with cleaner workflows, clear downloads, and predictable rollout paths.</p>
-      <div class="actions">
-        <a class="btn primary" href="wasprflow/">Open WASPrFlow</a>
-        <a class="btn secondary" href="doubletake-image-video/">Open Image and Video</a>
-        <a class="btn secondary" href="netaudit-pro/">Open NetAudit Pro</a>
-      </div>
+      <h1>Refund Policy</h1>
+      <p>Last updated: March 16, 2026</p>
     </section>
 
-    <section class="grid">
-      <article class="panel">
-        <h3>WASPrFlow</h3>
-        <ul>
-          <li>Voice-to-polished-text workflow.</li>
-          <li>MSI and Setup EXE for Windows.</li>
-          <li>Install guide and release tracking.</li>
-        </ul>
-      </article>
-      <article class="panel">
-        <h3>DoubleTake Image and Video</h3>
-        <ul>
-          <li>Dedicated media review product.</li>
-          <li>Bootstrap installer with chunk verification.</li>
-          <li>Website-hosted release assets.</li>
-        </ul>
-      </article>
-      <article class="panel">
-        <h3>NetAudit Pro</h3>
-        <ul>
-          <li>Network discovery and audit operations.</li>
-          <li>Setup and portable desktop builds.</li>
-          <li>Focused operator workflow.</li>
-        </ul>
-      </article>
+    <section class="panel">
+      <h2>1. Eligibility Window</h2>
+      <p><strong>[REVIEW REQUIRED]</strong> Refund requests are accepted within <code>[X days]</code> of purchase, unless prohibited by law or payment processor rules.</p>
+    </section>
+
+    <section class="panel">
+      <h2>2. Qualifying Conditions</h2>
+      <ul>
+        <li>Purchase cannot be activated successfully due to a verified licensing issue.</li>
+        <li>Material technical defect preventing core use and unresolved by support.</li>
+        <li>Duplicate purchase of the same product/license.</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>3. Non-Refundable Cases</h2>
+      <ul>
+        <li>Change of mind after substantial use, where legally permitted.</li>
+        <li>Requests outside the stated eligibility window.</li>
+        <li>Issues caused by unsupported systems or user environment misconfiguration after documented requirements are provided.</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>4. How to Request a Refund</h2>
+      <p>Send your order email, purchase date, product name, and reason for request to:</p>
+      <p><strong>[REVIEW REQUIRED]</strong> <code>support@doubletake.sbs</code></p>
+    </section>
+
+    <section class="panel">
+      <h2>5. Processing Time</h2>
+      <p><strong>[REVIEW REQUIRED]</strong> Approved refunds are processed within <code>[X business days]</code>. Bank/card settlement times vary by provider.</p>
     </section>
   </main>
 
-  <footer class="wrap">DoubleTake Utilities • <a href="terms.html">Terms</a> • <a href="refund-policy.html">Refund Policy</a> • doubletake.sbs</footer>
+  <footer class="wrap">DoubleTake Utilities • <a href="terms.html">Terms of Service</a></footer>
 
   <script>
     const themeKey = "doubletake-utilities-theme-hue-v2";
     const zoomKey = "doubletake-site-zoom-v1";
     const hueInput = document.getElementById("hue");
     const zoomInput = document.getElementById("zoom");
+
     const savedHue = localStorage.getItem(themeKey);
-    const savedZoom = localStorage.getItem(zoomKey);
     if (savedHue !== null) {
       hueInput.value = savedHue;
       document.documentElement.style.setProperty("--accent-h", savedHue);
@@ -153,6 +126,8 @@
       document.documentElement.style.setProperty("--accent-h", v);
       localStorage.setItem(themeKey, v);
     });
+
+    const savedZoom = localStorage.getItem(zoomKey);
     const startZoom = savedZoom !== null ? savedZoom : zoomInput.value;
     zoomInput.value = startZoom;
     document.documentElement.style.setProperty("--ui-zoom", String(Number(startZoom) / 100));
@@ -162,6 +137,5 @@
       localStorage.setItem(zoomKey, v);
     });
   </script>
-
 </body>
 </html>
