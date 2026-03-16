@@ -12,6 +12,7 @@
   <style>
     :root {
       --accent-h: 88;
+      --ui-zoom: 1;
       --bg: hsl(var(--accent-h) 30% 8%);
       --bg-soft: hsl(var(--accent-h) 34% 10%);
       --bg-deep: hsl(var(--accent-h) 22% 6%);
@@ -27,6 +28,7 @@
       margin: 0;
       font-family: "Sora", "Segoe UI", sans-serif;
       color: var(--text);
+      zoom: var(--ui-zoom);
       background:
         radial-gradient(circle at top left, hsl(var(--accent-h) 88% 57% / 0.22), transparent 28%),
         radial-gradient(circle at top right, hsl(calc(var(--accent-h) + 16) 82% 63% / 0.14), transparent 24%),
@@ -49,7 +51,7 @@
     .nav-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
     .theme-mini { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 8px; background: hsl(var(--accent-h) 28% 14% / 0.65); }
     .theme-mini label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
-    .theme-mini input { width: 110px; accent-color: var(--accent); }
+    .theme-mini input { width: 96px; accent-color: var(--accent); }
 
     .hero { padding: 44px 0 18px; display: grid; gap: 16px; }
     h1 { margin: 0; font-size: clamp(2rem, 4vw, 3.1rem); line-height: 1.06; }
@@ -79,9 +81,15 @@
         <a href="../">DoubleTake Utils</a>
         <a href="../wasprflow/">WASPrFlow</a>
         <a href="../netaudit-pro/">NetAudit Pro</a>
+        <a href="../terms.html">Terms</a>
+        <a href="../refund-policy.html">Refunds</a>
         <div class="theme-mini">
           <label for="hue">Hue</label>
           <input id="hue" type="range" min="0" max="360" value="88" />
+        </div>
+        <div class="theme-mini">
+          <label for="zoom">Zoom</label>
+          <input id="zoom" type="range" min="85" max="125" step="1" value="100" />
         </div>
       </div>
     </nav>
@@ -149,13 +157,16 @@
     </section>
   </main>
 
-  <footer class="wrap">DoubleTake Utilities • doubletake.sbs/doubletake-image-video</footer>
+  <footer class="wrap">DoubleTake Utilities • <a href="../terms.html">Terms</a> • <a href="../refund-policy.html">Refund Policy</a> • doubletake.sbs/doubletake-image-video</footer>
 
 
   <script>
     const themeKey = "doubletake-image-video-theme-hue-v2";
+    const zoomKey = "doubletake-site-zoom-v1";
     const hueInput = document.getElementById("hue");
+    const zoomInput = document.getElementById("zoom");
     const savedHue = localStorage.getItem(themeKey);
+    const savedZoom = localStorage.getItem(zoomKey);
     if (savedHue !== null) {
       hueInput.value = savedHue;
       document.documentElement.style.setProperty("--accent-h", savedHue);
@@ -166,6 +177,14 @@
       const v = e.target.value;
       document.documentElement.style.setProperty("--accent-h", v);
       localStorage.setItem(themeKey, v);
+    });
+    const startZoom = savedZoom !== null ? savedZoom : zoomInput.value;
+    zoomInput.value = startZoom;
+    document.documentElement.style.setProperty("--ui-zoom", String(Number(startZoom) / 100));
+    zoomInput.addEventListener("input", (e) => {
+      const v = e.target.value;
+      document.documentElement.style.setProperty("--ui-zoom", String(Number(v) / 100));
+      localStorage.setItem(zoomKey, v);
     });
   </script>
 </body>

@@ -14,6 +14,7 @@
     :root {
       --bg-1: #071018;
       --bg-2: #0c1b2d;
+      --ui-zoom: 1;
       --panel: #112033;
       --text: #edf3fb;
       --muted: #9fb1c9;
@@ -34,6 +35,7 @@
       font-family: "Space Grotesk", Segoe UI, sans-serif;
       font-size: 16px;
       color: var(--text);
+      zoom: var(--ui-zoom);
       background:
         radial-gradient(1200px 600px at 20% -10%, hsl(var(--accent-h) var(--accent-s) var(--accent-l) / 0.18) 0%, transparent 60%),
         radial-gradient(1000px 800px at 100% 0%, hsl(var(--accent-h) 47% 57% / 0.12) 0%, transparent 65%),
@@ -51,7 +53,7 @@
     .nav a:hover { color: var(--text); }
     .theme-mini { display: inline-flex; align-items: center; gap: 8px; padding: 6px 8px; border: 1px solid hsl(var(--accent-h) 39% 26% / 0.7); border-radius: 8px; background: hsl(var(--accent-h) 28% 14% / 0.65); }
     .theme-mini label { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
-    .theme-mini input { width: 110px; accent-color: var(--accent); }
+    .theme-mini input { width: 96px; accent-color: var(--accent); }
     .hero { padding: 36px 0 12px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(220px, 0.9fr); gap: 18px; align-items: center; }
     .hero-copy h1 { margin: 0 0 10px; font-size: clamp(1.85rem, 4vw, 2.7rem); line-height: 1.08; max-width: 16ch; text-wrap: balance; }
     .hero-copy p { margin: 0; color: var(--muted); max-width: var(--measure); line-height: 1.62; }
@@ -95,10 +97,16 @@
           <a href="#license">License</a>
           <a href="#settings">Settings</a>
           <a href="#troubleshooting">Troubleshooting</a>
+          <a href="../terms.html">Terms</a>
+          <a href="../refund-policy.html">Refunds</a>
         </nav>
         <div class="theme-mini">
           <label for="hue">Hue</label>
           <input id="hue" type="range" min="0" max="360" value="282" />
+        </div>
+        <div class="theme-mini">
+          <label for="zoom">Zoom</label>
+          <input id="zoom" type="range" min="85" max="125" step="1" value="100" />
         </div>
       </div>
     </div>
@@ -261,13 +269,15 @@
   </main>
 
   <footer>
-    WASPrFlow - Voice Dictation for Windows - <a href="../" style="color:inherit;">DoubleTake Utilities</a>
+    WASPrFlow - Voice Dictation for Windows - <a href="../" style="color:inherit;">DoubleTake Utilities</a> - <a href="../terms.html" style="color:inherit;">Terms</a> - <a href="../refund-policy.html" style="color:inherit;">Refund Policy</a>
   </footer>
   <script>
     const storageKey = "wasprflow-install-guide-theme-hue-v2";
+    const zoomKey = "doubletake-site-zoom-v1";
     const root = document.documentElement;
     const metaTheme = document.querySelector('meta[name="theme-color"]');
     const hueInput = document.getElementById("hue");
+    const zoomInput = document.getElementById("zoom");
 
     function applyTheme(hue) {
       root.style.setProperty("--accent-h", hue);
@@ -287,6 +297,15 @@
       const hue = e.target.value;
       localStorage.setItem(storageKey, hue);
       applyTheme(hue);
+    });
+    const savedZoom = localStorage.getItem(zoomKey);
+    const startZoom = savedZoom !== null ? savedZoom : zoomInput.value;
+    zoomInput.value = startZoom;
+    root.style.setProperty("--ui-zoom", String(Number(startZoom) / 100));
+    zoomInput.addEventListener("input", (e) => {
+      const zoom = e.target.value;
+      root.style.setProperty("--ui-zoom", String(Number(zoom) / 100));
+      localStorage.setItem(zoomKey, zoom);
     });
   </script>
 </body>
