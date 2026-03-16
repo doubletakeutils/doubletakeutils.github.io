@@ -54,6 +54,9 @@
     .theme-mini { display: inline-flex; align-items: center; gap: 8px; padding: 6px 8px; border: 1px solid hsl(var(--accent-h) 39% 26% / 0.7); border-radius: 8px; background: hsl(var(--accent-h) 28% 14% / 0.65); }
     .theme-mini label { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
     .theme-mini input { width: 96px; accent-color: var(--accent); }
+    .zoom-btn { width: 26px; height: 24px; border: 1px solid hsl(var(--accent-h) 39% 26% / 0.7); border-radius: 6px; background: transparent; color: var(--text); font-weight: 700; cursor: pointer; line-height: 1; }
+    .zoom-btn:hover { border-color: hsl(var(--accent-h) 39% 40% / 0.9); }
+    .zoom-readout { min-width: 44px; text-align: center; color: var(--text); font-size: 12px; font-weight: 700; }
     .hero { padding: 36px 0 12px; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(220px, 0.9fr); gap: 18px; align-items: center; }
     .hero-copy h1 { margin: 0 0 10px; font-size: clamp(1.85rem, 4vw, 2.7rem); line-height: 1.08; max-width: 16ch; text-wrap: balance; }
     .hero-copy p { margin: 0; color: var(--muted); max-width: var(--measure); line-height: 1.62; }
@@ -105,8 +108,10 @@
           <input id="hue" type="range" min="0" max="360" value="282" />
         </div>
         <div class="theme-mini">
-          <label for="zoom">Zoom</label>
-          <input id="zoom" type="range" min="85" max="125" step="1" value="100" />
+          <label>Zoom</label>
+          <button type="button" class="zoom-btn" id="zoom-out" aria-label="Zoom out">-</button>
+          <span id="zoom-readout" class="zoom-readout">100%</span>
+          <button type="button" class="zoom-btn" id="zoom-in" aria-label="Zoom in">+</button>
         </div>
       </div>
     </div>
@@ -277,7 +282,9 @@
     const root = document.documentElement;
     const metaTheme = document.querySelector('meta[name="theme-color"]');
     const hueInput = document.getElementById("hue");
-    const zoomInput = document.getElementById("zoom");
+    const zoomOutBtn = document.getElementById("zoom-out");
+    const zoomInBtn = document.getElementById("zoom-in");
+    const zoomReadout = document.getElementById("zoom-readout");
 
     function applyTheme(hue) {
       root.style.setProperty("--accent-h", hue);
@@ -298,14 +305,27 @@
       localStorage.setItem(storageKey, hue);
       applyTheme(hue);
     });
-    const savedZoom = localStorage.getItem(zoomKey);
-    const startZoom = savedZoom !== null ? savedZoom : zoomInput.value;
-    zoomInput.value = startZoom;
-    root.style.setProperty("--ui-zoom", String(Number(startZoom) / 100));
-    zoomInput.addEventListener("input", (e) => {
-      const zoom = e.target.value;
-      root.style.setProperty("--ui-zoom", String(Number(zoom) / 100));
-      localStorage.setItem(zoomKey, zoom);
+    const ZOOM_MIN = 85;
+    const ZOOM_MAX = 125;
+    const ZOOM_STEP = 7.5;
+
+    function applyZoom(raw) {
+      const clamped = Math.max(ZOOM_MIN, Math.min(ZOOM_MAX, Math.round(raw * 10) / 10));
+      root.style.setProperty("--ui-zoom", String(clamped / 100));
+      localStorage.setItem(zoomKey, String(clamped));
+      zoomReadout.textContent = `${clamped}%`;
+      return clamped;
+    }
+
+    let currentZoom = Number(localStorage.getItem(zoomKey) || 100);
+    currentZoom = applyZoom(currentZoom);
+
+    zoomOutBtn.addEventListener("click", () => {
+      currentZoom = applyZoom(currentZoom - ZOOM_STEP);
+    });
+
+    zoomInBtn.addEventListener("click", () => {
+      currentZoom = applyZoom(currentZoom + ZOOM_STEP);
     });
   </script>
 </body>

@@ -52,6 +52,9 @@
     .theme-mini { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 8px; background: hsl(var(--accent-h) 28% 14% / 0.65); }
     .theme-mini label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
     .theme-mini input { width: 96px; accent-color: var(--accent); }
+    .zoom-btn { width: 26px; height: 24px; border: 1px solid var(--line); border-radius: 6px; background: transparent; color: var(--text); font-weight: 700; cursor: pointer; line-height: 1; }
+    .zoom-btn:hover { border-color: hsl(calc(var(--accent-h) + 8) 72% 82% / 0.55); }
+    .zoom-readout { min-width: 44px; text-align: center; color: var(--text); font-size: 12px; font-weight: 700; }
 
     .hero { padding: 44px 0 18px; display: grid; gap: 16px; }
     h1 { margin: 0; font-size: clamp(2rem, 4vw, 3.1rem); line-height: 1.06; }
@@ -88,8 +91,10 @@
           <input id="hue" type="range" min="0" max="360" value="88" />
         </div>
         <div class="theme-mini">
-          <label for="zoom">Zoom</label>
-          <input id="zoom" type="range" min="85" max="125" step="1" value="100" />
+          <label>Zoom</label>
+          <button type="button" class="zoom-btn" id="zoom-out" aria-label="Zoom out">-</button>
+          <span id="zoom-readout" class="zoom-readout">100%</span>
+          <button type="button" class="zoom-btn" id="zoom-in" aria-label="Zoom in">+</button>
         </div>
       </div>
     </nav>
@@ -164,7 +169,12 @@
     const themeKey = "doubletake-image-video-theme-hue-v2";
     const zoomKey = "doubletake-site-zoom-v1";
     const hueInput = document.getElementById("hue");
-    const zoomInput = document.getElementById("zoom");
+    const zoomOutBtn = document.getElementById("zoom-out");
+    const zoomInBtn = document.getElementById("zoom-in");
+    const zoomReadout = document.getElementById("zoom-readout");
+    const ZOOM_MIN = 85;
+    const ZOOM_MAX = 125;
+    const ZOOM_STEP = 7.5;
     const savedHue = localStorage.getItem(themeKey);
     const savedZoom = localStorage.getItem(zoomKey);
     if (savedHue !== null) {
@@ -178,13 +188,19 @@
       document.documentElement.style.setProperty("--accent-h", v);
       localStorage.setItem(themeKey, v);
     });
-    const startZoom = savedZoom !== null ? savedZoom : zoomInput.value;
-    zoomInput.value = startZoom;
-    document.documentElement.style.setProperty("--ui-zoom", String(Number(startZoom) / 100));
-    zoomInput.addEventListener("input", (e) => {
-      const v = e.target.value;
-      document.documentElement.style.setProperty("--ui-zoom", String(Number(v) / 100));
-      localStorage.setItem(zoomKey, v);
+    function applyZoom(raw) {
+      const clamped = Math.max(ZOOM_MIN, Math.min(ZOOM_MAX, Math.round(raw * 10) / 10));
+      document.documentElement.style.setProperty("--ui-zoom", String(clamped / 100));
+      localStorage.setItem(zoomKey, String(clamped));
+      zoomReadout.textContent = `${clamped}%`;
+      return clamped;
+    }
+    let currentZoom = applyZoom(Number(savedZoom !== null ? savedZoom : 100));
+    zoomOutBtn.addEventListener("click", () => {
+      currentZoom = applyZoom(currentZoom - ZOOM_STEP);
+    });
+    zoomInBtn.addEventListener("click", () => {
+      currentZoom = applyZoom(currentZoom + ZOOM_STEP);
     });
   </script>
 </body>
