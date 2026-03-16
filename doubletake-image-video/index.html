@@ -44,10 +44,11 @@
       border-bottom: 1px solid hsl(calc(var(--accent-h) + 8) 72% 82% / 0.12);
       z-index: 20;
     }
-    .nav { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 12px 0; flex-wrap: wrap; }
+    .nav { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 12px 0 6px; flex-wrap: wrap; }
     .nav a { color: var(--muted); text-decoration: none; font-weight: 600; }
     .nav a:hover { color: var(--text); }
     .brand { color: var(--text) !important; font-weight: 800; }
+    .sub-brand { padding: 0 0 10px; color: var(--text); font-weight: 800; opacity: 0.9; }
     .nav-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
     .theme-mini { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 8px; background: hsl(var(--accent-h) 28% 14% / 0.65); }
     .theme-mini label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
@@ -79,7 +80,7 @@
 <body>
   <header class="topbar">
     <nav class="wrap nav">
-      <a class="brand" href="./">DoubleTake Image and Video • DoubleTake Utilities</a>
+      <a class="brand" href="./">DoubleTake Utilities</a>
       <div class="nav-right">
         <a href="../">DoubleTake Utils</a>
         <a href="../wasprflow/">WASPrFlow</a>
@@ -98,6 +99,7 @@
         </div>
       </div>
     </nav>
+    <div class="wrap sub-brand">DoubleTake Image and Video • DoubleTake Utilities</div>
   </header>
 
   <main class="wrap">
