@@ -109,6 +109,8 @@
       <div class="actions">
         <a class="btn primary" id="btn-exe" href="#">Download Setup EXE</a>
         <a class="btn secondary" id="btn-msi" href="#">Download MSI</a>
+        <a class="btn secondary" id="btn-macos-intel" href="#" target="_blank" rel="noopener noreferrer">macOS Intel (x64)</a>
+        <a class="btn secondary" id="btn-macos-arm" href="#" target="_blank" rel="noopener noreferrer">macOS Apple Silicon (arm64)</a>
         <a class="btn secondary" href="install-guide.html">Install Guide</a>
       </div>
     </section>
@@ -134,6 +136,7 @@
         <h3>Deployment</h3>
         <ul>
           <li>MSI and Setup EXE installers.</li>
+          <li>macOS Intel and Apple Silicon download links.</li>
           <li>Straightforward team rollout.</li>
           <li>Versioned website downloads.</li>
         </ul>
@@ -171,6 +174,8 @@
     const VERSION = "0.2.45";
     document.getElementById("btn-exe").href = `downloads/WASPrFlow_${VERSION}_x64-setup.exe`;
     document.getElementById("btn-msi").href = `downloads/WASPrFlow_${VERSION}_x64_en-US.msi`;
+    document.getElementById("btn-macos-intel").href = "https://github.com/doubletakeutils/wasprflow-osx/actions/runs/23230092341/artifacts/5979162504";
+    document.getElementById("btn-macos-arm").href = "https://github.com/doubletakeutils/wasprflow-osx/actions/runs/23230092341/artifacts/5979163418";
     document.getElementById("v").textContent = VERSION;
   </script>
   <script>
