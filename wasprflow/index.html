@@ -135,8 +135,7 @@
       <article class="panel">
         <h3>Deployment</h3>
         <ul>
-          <li>MSI and Setup EXE installers.</li>
-          <li>macOS Intel and Apple Silicon download links.</li>
+          <li>Windows installers and macOS ZIP apps.</li>
           <li>Straightforward team rollout.</li>
           <li>Versioned website downloads.</li>
         </ul>
@@ -174,8 +173,8 @@
     const VERSION = "0.2.45";
     document.getElementById("btn-exe").href = `downloads/WASPrFlow_${VERSION}_x64-setup.exe`;
     document.getElementById("btn-msi").href = `downloads/WASPrFlow_${VERSION}_x64_en-US.msi`;
-    document.getElementById("btn-macos-intel").href = "https://github.com/doubletakeutils/wasprflow-osx/actions/runs/23230092341/artifacts/5979162504";
-    document.getElementById("btn-macos-arm").href = "https://github.com/doubletakeutils/wasprflow-osx/actions/runs/23230092341/artifacts/5979163418";
+    document.getElementById("btn-macos-intel").href = `downloads/WASPrFlow_${VERSION}_macos-intel.zip`;
+    document.getElementById("btn-macos-arm").href = `downloads/WASPrFlow_${VERSION}_macos-arm64.zip`;
     document.getElementById("v").textContent = VERSION;
   </script>
   <script>
