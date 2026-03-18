@@ -110,6 +110,8 @@
       <div class="actions">
         <a class="btn primary" id="btn-exe" href="#">Download Setup EXE</a>
         <a class="btn secondary" id="btn-msi" href="#">Download MSI</a>
+        <a class="btn secondary" id="btn-mac-intel" href="#">Download macOS (Intel)</a>
+        <a class="btn secondary" id="btn-mac-arm" href="#">Download macOS (Apple Silicon)</a>
       </div>
     </section>
 
@@ -133,7 +135,7 @@
       <article class="panel">
         <h3>Deployment</h3>
         <ul>
-          <li>MSI and Setup EXE installers.</li>
+          <li>Windows installers and macOS ZIP apps.</li>
           <li>Straightforward team rollout.</li>
           <li>Versioned website downloads.</li>
         </ul>
@@ -171,6 +173,8 @@
     const VERSION = "0.2.45";
     document.getElementById("btn-exe").href = `downloads/WASPrFlow_${VERSION}_x64-setup.exe`;
     document.getElementById("btn-msi").href = `downloads/WASPrFlow_${VERSION}_x64_en-US.msi`;
+    document.getElementById("btn-mac-intel").href = `downloads/WASPrFlow_${VERSION}_macos-intel.zip`;
+    document.getElementById("btn-mac-arm").href = `downloads/WASPrFlow_${VERSION}_macos-arm64.zip`;
     document.getElementById("v").textContent = VERSION;
   </script>
   <script>
