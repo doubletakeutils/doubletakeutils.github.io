@@ -78,6 +78,19 @@
     .panel h3 { margin: 0 0 8px; }
     ul { margin: 8px 0 0 18px; color: var(--muted); }
     li + li { margin-top: 4px; }
+    .video-wrap {
+      margin: 8px 0 18px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      background: hsl(var(--accent-h) 38% 16% / 0.92);
+    }
+    .video-frame {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      display: block;
+      border: 0;
+    }
 
     footer { padding: 12px 0 30px; color: var(--muted); font-size: 14px; }
   </style>
@@ -119,6 +132,16 @@
         <a class="btn secondary disabled" id="btn-macos-arm" href="#" aria-disabled="true" title="Temporarily unavailable">macOS Apple Silicon (arm64)</a>
         <a class="btn secondary" href="install-guide.html">Install Guide</a>
       </div>
+    </section>
+    <section class="video-wrap" aria-label="WASPrFlow marketing video">
+      <iframe
+        class="video-frame"
+        src="https://www.youtube.com/embed/kiCifKMxs9c"
+        title="WASPrFlow Marketing Video"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
     </section>
 
     <section class="grid">
