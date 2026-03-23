@@ -126,6 +126,7 @@
       <h1>WASPrFlow</h1>
       <p>Dictation workflow from DoubleTake Utilities for faster writing with cleaner output.</p>
       <div class="actions">
+        <a class="btn primary" id="btn-buy" href="#">Buy WASPrFlow</a>
         <a class="btn primary" id="btn-exe" href="#">Download Setup EXE</a>
         <a class="btn secondary" id="btn-msi" href="#">Download MSI</a>
         <a class="btn secondary disabled" id="btn-macos-intel" href="#" aria-disabled="true" title="Temporarily unavailable">macOS Intel (x64)</a>
@@ -199,10 +200,136 @@
   <footer class="wrap">DoubleTake Utilities • <a href="../terms.html">Terms</a> • <a href="../refund-policy.html">Refund Policy</a> • Current version: <span id="v"></span></footer>
 
   <script>
+    const META_PIXEL_ID = window.WASPRFLOW_PIXEL_ID || "";
+    const PAYMENTS_BASE_URL = "https://waspflow-payments.doubletakeutils.workers.dev";
+    const DEFAULT_PRICE_USD = 14.99;
+    const DEFAULT_UTM = {
+      utm_source: "x",
+      utm_medium: "paid",
+      utm_campaign: "wasprflow",
+      utm_content: "buy_cta",
+    };
     const VERSION = "1.2.65";
+    const btnBuy = document.getElementById("btn-buy");
     document.getElementById("btn-exe").href = `downloads/WASPrFlow_${VERSION}_x64-setup.exe`;
     document.getElementById("btn-msi").href = `downloads/WASPrFlow_${VERSION}_x64_en-US.msi`;
     document.getElementById("v").textContent = VERSION;
+
+    function genEventId(prefix) {
+      if (crypto && crypto.randomUUID) return `${prefix}_${crypto.randomUUID()}`;
+      return `${prefix}_${Date.now()}_${Math.random().toString(16).slice(2)}`;
+    }
+
+    function currentUTM() {
+      const p = new URLSearchParams(window.location.search);
+      return {
+        utm_source: p.get("utm_source") || DEFAULT_UTM.utm_source,
+        utm_medium: p.get("utm_medium") || DEFAULT_UTM.utm_medium,
+        utm_campaign: p.get("utm_campaign") || DEFAULT_UTM.utm_campaign,
+        utm_content: p.get("utm_content") || DEFAULT_UTM.utm_content,
+      };
+    }
+
+    function appendUTM(url, utm) {
+      try {
+        const u = new URL(url);
+        Object.entries(utm).forEach(([k, v]) => {
+          if (v && !u.searchParams.get(k)) u.searchParams.set(k, v);
+        });
+        return u.toString();
+      } catch {
+        return url;
+      }
+    }
+
+    window.fbq = window.fbq || function () {
+      (window.fbq.q = window.fbq.q || []).push(arguments);
+    };
+
+    function trackPixelCustom(name, payload, eventId) {
+      if (!META_PIXEL_ID || typeof window.fbq !== "function") return;
+      window.fbq("trackCustom", name, payload, { eventID: eventId });
+    }
+
+    function initMetaPixel() {
+      if (!META_PIXEL_ID) return;
+      if (!document.getElementById("meta-pixel-script")) {
+        const s = document.createElement("script");
+        s.id = "meta-pixel-script";
+        s.async = true;
+        s.src = "https://connect.facebook.net/en_US/fbevents.js";
+        s.onload = () => {
+          window.fbq("init", META_PIXEL_ID);
+          const pageViewEventId = genEventId("page_view");
+          trackPixelCustom("page_view", {
+            event_name: "page_view",
+            event_time: Math.floor(Date.now() / 1000),
+            event_id: pageViewEventId,
+            value: DEFAULT_PRICE_USD,
+            currency: "USD",
+            page_url: window.location.href,
+          }, pageViewEventId);
+          const viewContentEventId = genEventId("view_content");
+          trackPixelCustom("view_content", {
+            event_name: "view_content",
+            event_time: Math.floor(Date.now() / 1000),
+            event_id: viewContentEventId,
+            value: DEFAULT_PRICE_USD,
+            currency: "USD",
+            page_url: window.location.href,
+          }, viewContentEventId);
+        };
+        document.head.appendChild(s);
+      }
+    }
+
+    let checkoutInFlight = false;
+    btnBuy.addEventListener("click", async (e) => {
+      e.preventDefault();
+      if (checkoutInFlight) return;
+      const identifier = window.prompt("Enter your purchase email:");
+      if (!identifier || !identifier.includes("@")) {
+        window.alert("A valid email is required to start checkout.");
+        return;
+      }
+      checkoutInFlight = true;
+      btnBuy.style.pointerEvents = "none";
+      btnBuy.style.opacity = "0.7";
+      try {
+        const utm = currentUTM();
+        const res = await fetch(`${PAYMENTS_BASE_URL}/create-checkout`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            identifier: identifier.trim(),
+            page_url: window.location.href,
+            ...utm,
+          }),
+        });
+        const data = await res.json();
+        if (!res.ok || !data.url) {
+          throw new Error(data.error || "Checkout creation failed.");
+        }
+        const checkoutStartEventId = genEventId("checkout_start");
+        trackPixelCustom("checkout_start", {
+          event_name: "checkout_start",
+          event_time: Math.floor(Date.now() / 1000),
+          event_id: checkoutStartEventId,
+          value: DEFAULT_PRICE_USD,
+          currency: "USD",
+          page_url: window.location.href,
+        }, checkoutStartEventId);
+        window.location.href = appendUTM(data.url, utm);
+      } catch (err) {
+        console.error(err);
+        window.alert("Could not start checkout. Please try again.");
+        checkoutInFlight = false;
+        btnBuy.style.pointerEvents = "";
+        btnBuy.style.opacity = "";
+      }
+    });
+
+    initMetaPixel();
   </script>
   <script>
     const themeKey = "wasprflow-theme-hue-v2";
