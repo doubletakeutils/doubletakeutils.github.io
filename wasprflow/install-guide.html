@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" href="assets/wasprflow-mark.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg-1: #071018;
@@ -32,7 +32,7 @@
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
     body {
-      font-family: "Space Grotesk", Segoe UI, sans-serif;
+      font-family: "Sora", "Segoe UI", sans-serif;
       font-size: 16px;
       color: var(--text);
       zoom: var(--ui-zoom);
@@ -43,13 +43,11 @@
       min-height: 100vh;
     }
     .wrap { width: min(1080px, 92vw); margin: 0 auto; }
-    .topbar { position: sticky; top: 0; background: rgba(9,17,28,0.88); backdrop-filter: blur(10px); border-bottom: 1px solid hsl(var(--accent-h) 39% 26% / 0.62); }
-    .nav { display: flex; align-items: center; justify-content: space-between; gap: 14px 20px; padding: 14px 0; }
-    .nav-cluster { display: flex; align-items: center; justify-content: flex-end; gap: 12px 16px; flex-wrap: wrap; }
-    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.03em; }
-    .brand-mark { width: 32px; height: 32px; display: block; object-fit: contain; filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.25)); }
-    .nav nav { display: flex; flex-wrap: wrap; gap: 8px 16px; }
-    .nav a { color: var(--muted); text-decoration: none; font-size: 0.92rem; line-height: 1.4; }
+    .topbar { position: sticky; top: 0; backdrop-filter: blur(14px); background: hsl(var(--accent-h) 30% 8% / 0.78); border-bottom: 1px solid hsl(var(--accent-h) 39% 26% / 0.62); z-index: 20; }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 12px 0 6px; flex-wrap: wrap; }
+    .brand { color: var(--text) !important; font-weight: 800; text-decoration: none; }
+    .nav-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .nav a { color: var(--muted); text-decoration: none; font-size: 0.92rem; line-height: 1.4; font-weight: 600; }
     .nav a:hover { color: var(--text); }
     .theme-mini { display: inline-flex; align-items: center; gap: 8px; padding: 6px 8px; border: 1px solid hsl(var(--accent-h) 39% 26% / 0.7); border-radius: 8px; background: hsl(var(--accent-h) 28% 14% / 0.65); }
     .theme-mini label { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
@@ -85,24 +83,19 @@
     .warn { color: var(--warn); }
     .bad { color: var(--danger); }
     footer { padding: 22px 0 34px; color: var(--muted); text-align: center; line-height: 1.6; }
-    @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } .nav { align-items: flex-start; } .nav-cluster { justify-content: flex-start; width: 100%; } .nav nav { width: 100%; } .hero { grid-template-columns: 1fr; } .hero-copy h1 { max-width: none; } .hero-art { justify-content: flex-start; } }
+    @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } .nav { align-items: flex-start; } .hero { grid-template-columns: 1fr; } .hero-copy h1 { max-width: none; } .hero-art { justify-content: flex-start; } }
   </style>
 </head>
 <body>
   <header class="topbar">
-    <div class="wrap nav">
-      <div class="brand"><img class="brand-mark" src="assets/wasprflow-mark.png" alt="WASPrFlow mark" /> WASPrFlow</div>
-      <div class="nav-cluster">
-        <nav>
-          <a href="../">DoubleTake Utilities</a>
-          <a href="index.html">Home</a>
-          <a href="#install">Install</a>
-          <a href="#license">License</a>
-          <a href="#settings">Settings</a>
-          <a href="#troubleshooting">Troubleshooting</a>
-          <a href="../terms.html">Terms</a>
-          <a href="../refund-policy.html">Refunds</a>
-        </nav>
+    <nav class="wrap nav">
+      <a class="brand" href="../">DoubleTake Utilities</a>
+      <div class="nav-right">
+        <a href="../wasprflow/">WASPrFlow</a>
+        <a href="../doubletake-image-video/">Image and Video</a>
+        <a href="../utilities/">Utilities</a>
+        <a href="../terms.html">Terms</a>
+        <a href="../refund-policy.html">Refunds</a>
         <div class="theme-mini">
           <label for="hue">Hue</label>
           <input id="hue" type="range" min="0" max="360" value="282" />
@@ -114,7 +107,7 @@
           <button type="button" class="zoom-btn" id="zoom-in" aria-label="Zoom in">+</button>
         </div>
       </div>
-    </div>
+    </nav>
   </header>
 
   <div class="wrap hero">
