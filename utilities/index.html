@@ -60,6 +60,15 @@
     .hero { padding: 44px 0 18px; display: grid; gap: 16px; }
     h1 { margin: 0; font-size: clamp(2rem, 4vw, 3.1rem); line-height: 1.06; }
     p { color: var(--muted); margin: 0; }
+    .warning {
+      border: 1px solid hsl(40 90% 65% / 0.45);
+      background: hsl(40 90% 60% / 0.12);
+      color: hsl(40 92% 86%);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 14px;
+      font-weight: 600;
+    }
     .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
     .btn { display: inline-block; text-decoration: none; font-weight: 700; padding: 10px 14px; border-radius: 10px; }
     .btn.primary { background: linear-gradient(120deg, var(--accent), var(--accent-2)); color: #081524; }
@@ -116,6 +125,7 @@
     <section class="hero">
       <h1>Utilities</h1>
       <p>Operator-focused tools for discovery, cleanup, and practical day-to-day desktop work.</p>
+      <p class="warning">Warning: All software titles in this Utilities section are currently work in progress.</p>
       <div class="actions">
         <a class="btn primary" href="#netaudit-pro">NetAudit Pro</a>
         <a class="btn secondary" href="#ascii-art">ASCII Art</a>
