@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>DoubleTake Image and Video | DoubleTake Utilities</title>
-  <meta name="description" content="DoubleTake Image and Video download and details from DoubleTake Utilities." />
+  <title>Utilities | DoubleTake Utilities</title>
+  <meta name="description" content="Utilities section for NetAudit Pro, ASCII Art, and HDD Scanner." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --accent-h: 88;
+      --accent-h: 198;
       --ui-zoom: 1;
       --bg: hsl(var(--accent-h) 30% 8%);
       --bg-soft: hsl(var(--accent-h) 34% 10%);
@@ -64,6 +64,12 @@
     .btn { display: inline-block; text-decoration: none; font-weight: 700; padding: 10px 14px; border-radius: 10px; }
     .btn.primary { background: linear-gradient(120deg, var(--accent), var(--accent-2)); color: #081524; }
     .btn.secondary { border: 1px solid var(--line); color: var(--text); }
+    .btn.disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      pointer-events: none;
+      filter: grayscale(35%);
+    }
 
     .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 14px 0 26px; }
     @media (max-width: 980px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -75,21 +81,20 @@
 
     footer { padding: 12px 0 30px; color: var(--muted); font-size: 14px; }
   </style>
-
 </head>
 <body>
   <header class="topbar">
     <nav class="wrap nav">
-      <a class="brand" href="./">DoubleTake Utilities</a>
+      <a class="brand" href="../">DoubleTake Utilities</a>
       <div class="nav-right">
-        <a href="../">DoubleTake Utils</a>
         <a href="../wasprflow/">WASPrFlow</a>
-        <a href="../utilities/">Utilities</a>
+        <a href="../doubletake-image-video/">Image and Video</a>
+        <a href="./">Utilities</a>
         <a href="../terms.html">Terms</a>
         <a href="../refund-policy.html">Refunds</a>
         <div class="theme-mini">
           <label for="hue">Hue</label>
-          <input id="hue" type="range" min="0" max="360" value="88" />
+          <input id="hue" type="range" min="0" max="360" value="198" />
         </div>
         <div class="theme-mini">
           <label>Zoom</label>
@@ -99,76 +104,52 @@
         </div>
       </div>
     </nav>
-    <div class="wrap sub-brand">DoubleTake Image and Video • DoubleTake Utilities</div>
+    <div class="wrap sub-brand">Utilities • DoubleTake Utilities</div>
   </header>
 
   <main class="wrap">
     <section class="hero">
-      <h1>DoubleTake Image and Video</h1>
-      <p>Media review tooling from DoubleTake Utilities with reliable installer delivery.</p>
+      <h1>Utilities</h1>
+      <p>Operator-focused tools for discovery, cleanup, and practical day-to-day desktop work.</p>
       <div class="actions">
-        <a class="btn primary" href="downloads/download-bootstrap.html">Open Download Page</a>
-        <a class="btn secondary" href="downloads/release-assets/">Open Release Assets</a>
+        <a class="btn primary" href="../netaudit-pro/">Open NetAudit Pro</a>
+        <a class="btn secondary disabled" href="#" aria-disabled="true">ASCII Art (Soon)</a>
+        <a class="btn secondary disabled" href="#" aria-disabled="true">HDD Scanner (Soon)</a>
       </div>
     </section>
 
     <section class="grid">
       <article class="panel">
-        <h3>Core Use</h3>
+        <h3>NetAudit Pro</h3>
         <ul>
-          <li>Focused image and video workflow.</li>
-          <li>Simple entry point for operators.</li>
-          <li>Product-specific page and download path.</li>
+          <li>Network discovery and audit workflows.</li>
+          <li>Setup and portable desktop builds.</li>
+          <li>Built for operator-first remediation runs.</li>
         </ul>
       </article>
       <article class="panel">
-        <h3>Installer Pipeline</h3>
+        <h3>ASCII Art</h3>
         <ul>
-          <li>Bootstrap script delivery.</li>
-          <li>Manifest + chunk hash validation.</li>
-          <li>Reassembled installer launch.</li>
+          <li>Simple text-to-ASCII creation utility.</li>
+          <li>Fast output for quick formatting tasks.</li>
+          <li>Placeholder until release package is ready.</li>
         </ul>
       </article>
       <article class="panel">
-        <h3>Hosting Model</h3>
+        <h3>HDD Scanner</h3>
         <ul>
-          <li>Website-hosted release assets.</li>
-          <li>Resilient to external release issues.</li>
-          <li>Versioned artifact updates.</li>
-        </ul>
-      </article>
-      <article class="panel">
-        <h3>Download Reliability</h3>
-        <ul>
-          <li>Installer assembled from verified chunks.</li>
-          <li>Hash checks before launch.</li>
-          <li>Lower risk of partial/corrupt downloads.</li>
-        </ul>
-      </article>
-      <article class="panel">
-        <h3>Release Workflow</h3>
-        <ul>
-          <li>Website updates track latest prepared assets.</li>
-          <li>Manifest-driven file mapping.</li>
-          <li>Predictable path for future version upgrades.</li>
-        </ul>
-      </article>
-      <article class="panel">
-        <h3>Operator Experience</h3>
-        <ul>
-          <li>Single entry download page for install.</li>
-          <li>Direct access to release asset folder.</li>
-          <li>Works even when external release links fail.</li>
+          <li>Directory discovery and storage visibility.</li>
+          <li>Cleanup management for large disk trees.</li>
+          <li>Placeholder until release package is ready.</li>
         </ul>
       </article>
     </section>
   </main>
 
-  <footer class="wrap">DoubleTake Utilities • <a href="../terms.html">Terms</a> • <a href="../refund-policy.html">Refund Policy</a> • doubletake.sbs/doubletake-image-video</footer>
-
+  <footer class="wrap">DoubleTake Utilities • <a href="../terms.html">Terms</a> • <a href="../refund-policy.html">Refund Policy</a> • doubletake.sbs/utilities</footer>
 
   <script>
-    const themeKey = "doubletake-image-video-theme-hue-v2";
+    const themeKey = "utilities-theme-hue-v1";
     const zoomKey = "doubletake-site-zoom-v1";
     const hueInput = document.getElementById("hue");
     const zoomOutBtn = document.getElementById("zoom-out");
