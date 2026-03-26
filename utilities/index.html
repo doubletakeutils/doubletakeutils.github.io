@@ -154,7 +154,8 @@
       <article class="panel" id="ascii-art">
         <h3>ASCII Art</h3>
         <div class="row-actions">
-          <a class="btn secondary disabled" href="#" aria-disabled="true">Coming Soon</a>
+          <a class="btn primary" id="btn-ascii-setup" href="#">Download Setup EXE</a>
+          <a class="btn secondary" id="btn-ascii-portable" href="#">Download Portable EXE</a>
         </div>
         <div class="info-cols">
           <div class="subpanel">
@@ -162,21 +163,23 @@
             <ul>
               <li>Simple text-to-ASCII creation utility.</li>
               <li>Fast output for quick formatting tasks.</li>
+              <li>Windows setup and portable builds published.</li>
             </ul>
           </div>
           <div class="subpanel">
-            <h4>Status</h4>
+            <h4>Release</h4>
             <ul>
-              <li>Placeholder until release package is ready.</li>
-              <li>Will follow the same download pattern as NetAudit Pro.</li>
+              <li>Versioned downloads hosted on this website.</li>
+              <li>Latest aliases updated with each release.</li>
             </ul>
           </div>
         </div>
+        <p class="mini">Current version: <span id="ascii-version"></span></p>
       </article>
       <article class="panel" id="hdd-scanner">
         <h3>HDD Scanner</h3>
         <div class="row-actions">
-          <a class="btn secondary disabled" href="#" aria-disabled="true">Coming Soon</a>
+          <a class="btn primary" id="btn-hdd-exe" href="#">Download EXE</a>
         </div>
         <div class="info-cols">
           <div class="subpanel">
@@ -184,16 +187,18 @@
             <ul>
               <li>Directory discovery and storage visibility.</li>
               <li>Cleanup management for large disk trees.</li>
+              <li>Operator-focused output from scan to cleanup.</li>
             </ul>
           </div>
           <div class="subpanel">
-            <h4>Status</h4>
+            <h4>Release</h4>
             <ul>
-              <li>Placeholder until release package is ready.</li>
-              <li>Planned for operator-focused cleanup workflows.</li>
+              <li>Versioned executable published on this website.</li>
+              <li>Latest alias updated with each release.</li>
             </ul>
           </div>
         </div>
+        <p class="mini">Current version: <span id="hdd-version"></span></p>
       </article>
     </section>
   </main>
@@ -202,9 +207,16 @@
 
   <script>
     const NETAUDIT_VERSION = "0.2.31";
+    const ASCII_VERSION = "1.0.4";
+    const HDD_VERSION = "0.1.11";
     document.getElementById("btn-netaudit-setup").href = `../netaudit-pro/downloads/NetAuditPro_${NETAUDIT_VERSION}_x64-setup.exe`;
     document.getElementById("btn-netaudit-portable").href = `../netaudit-pro/downloads/NetAuditPro_${NETAUDIT_VERSION}_x64-portable.exe`;
     document.getElementById("netaudit-version").textContent = NETAUDIT_VERSION;
+    document.getElementById("btn-ascii-setup").href = `downloads/ASCIIArt_${ASCII_VERSION}_x64-setup.exe`;
+    document.getElementById("btn-ascii-portable").href = `downloads/ASCIIArt_${ASCII_VERSION}_x64-portable.exe`;
+    document.getElementById("ascii-version").textContent = ASCII_VERSION;
+    document.getElementById("btn-hdd-exe").href = `downloads/HDDScanner_${HDD_VERSION}_x64.exe`;
+    document.getElementById("hdd-version").textContent = HDD_VERSION;
 
     const themeKey = "utilities-theme-hue-v1";
     const zoomKey = "doubletake-site-zoom-v1";
