@@ -74,6 +74,9 @@
     .grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin: 12px 0 22px; }
     .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; }
     .panel h3 { margin: 0 0 6px; }
+    .row-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 8px; }
+    .row-actions .btn { padding: 8px 12px; }
+    .mini { font-size: 14px; color: var(--muted); margin-top: 6px; }
     ul { margin: 6px 0 0 18px; color: var(--muted); }
     li + li { margin-top: 2px; }
 
@@ -110,31 +113,45 @@
       <h1>Utilities</h1>
       <p>Operator-focused tools for discovery, cleanup, and practical day-to-day desktop work.</p>
       <div class="actions">
-        <a class="btn primary" href="../netaudit-pro/">Open NetAudit Pro</a>
-        <a class="btn secondary disabled" href="#" aria-disabled="true">ASCII Art (Soon)</a>
-        <a class="btn secondary disabled" href="#" aria-disabled="true">HDD Scanner (Soon)</a>
+        <a class="btn primary" href="#netaudit-pro">NetAudit Pro</a>
+        <a class="btn secondary" href="#ascii-art">ASCII Art</a>
+        <a class="btn secondary" href="#hdd-scanner">HDD Scanner</a>
       </div>
     </section>
 
     <section class="grid">
-      <article class="panel">
+      <article class="panel" id="netaudit-pro">
         <h3>NetAudit Pro</h3>
+        <p>Network discovery and audit utility for day-to-day operator workflows.</p>
+        <div class="row-actions">
+          <a class="btn primary" id="btn-netaudit-setup" href="#">Download Setup EXE</a>
+          <a class="btn secondary" id="btn-netaudit-portable" href="#">Download Portable EXE</a>
+        </div>
         <ul>
           <li>Network discovery and audit workflows.</li>
           <li>Setup and portable desktop builds.</li>
           <li>Built for operator-first remediation runs.</li>
+          <li>Security-focused checks with actionable output.</li>
+          <li>Structured run-to-run process and reporting.</li>
         </ul>
+        <p class="mini">Current version: <span id="netaudit-version"></span></p>
       </article>
-      <article class="panel">
+      <article class="panel" id="ascii-art">
         <h3>ASCII Art</h3>
+        <div class="row-actions">
+          <a class="btn secondary disabled" href="#" aria-disabled="true">Coming Soon</a>
+        </div>
         <ul>
           <li>Simple text-to-ASCII creation utility.</li>
           <li>Fast output for quick formatting tasks.</li>
           <li>Placeholder until release package is ready.</li>
         </ul>
       </article>
-      <article class="panel">
+      <article class="panel" id="hdd-scanner">
         <h3>HDD Scanner</h3>
+        <div class="row-actions">
+          <a class="btn secondary disabled" href="#" aria-disabled="true">Coming Soon</a>
+        </div>
         <ul>
           <li>Directory discovery and storage visibility.</li>
           <li>Cleanup management for large disk trees.</li>
@@ -147,6 +164,11 @@
   <footer class="wrap">DoubleTake Utilities • <a href="../terms.html">Terms</a> • <a href="../refund-policy.html">Refund Policy</a> • doubletake.sbs/utilities</footer>
 
   <script>
+    const NETAUDIT_VERSION = "0.2.31";
+    document.getElementById("btn-netaudit-setup").href = `../netaudit-pro/downloads/NetAuditPro_${NETAUDIT_VERSION}_x64-setup.exe`;
+    document.getElementById("btn-netaudit-portable").href = `../netaudit-pro/downloads/NetAuditPro_${NETAUDIT_VERSION}_x64-portable.exe`;
+    document.getElementById("netaudit-version").textContent = NETAUDIT_VERSION;
+
     const themeKey = "utilities-theme-hue-v1";
     const zoomKey = "doubletake-site-zoom-v1";
     const hueInput = document.getElementById("hue");
