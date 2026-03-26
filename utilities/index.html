@@ -71,13 +71,16 @@
       filter: grayscale(35%);
     }
 
-    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 12px 0 22px; }
-    @media (max-width: 820px) { .grid { grid-template-columns: 1fr; } }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin: 12px 0 22px; }
     .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; }
     .panel h3 { margin: 0 0 6px; }
     .row-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 8px; }
     .row-actions .btn { padding: 8px 12px; }
     .mini { font-size: 14px; color: var(--muted); margin-top: 6px; }
+    .info-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    @media (max-width: 820px) { .info-cols { grid-template-columns: 1fr; } }
+    .subpanel { border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; background: hsl(var(--accent-h) 36% 14% / 0.45); }
+    .subpanel h4 { margin: 0 0 4px; font-size: 15px; }
     ul { margin: 6px 0 0 18px; color: var(--muted); }
     li + li { margin-top: 2px; }
 
@@ -128,13 +131,24 @@
           <a class="btn primary" id="btn-netaudit-setup" href="#">Download Setup EXE</a>
           <a class="btn secondary" id="btn-netaudit-portable" href="#">Download Portable EXE</a>
         </div>
-        <ul>
-          <li>Network discovery and audit workflows.</li>
-          <li>Setup and portable desktop builds.</li>
-          <li>Built for operator-first remediation runs.</li>
-          <li>Security-focused checks with actionable output.</li>
-          <li>Structured run-to-run process and reporting.</li>
-        </ul>
+        <div class="info-cols">
+          <div class="subpanel">
+            <h4>Core Use</h4>
+            <ul>
+              <li>Network discovery and audit workflows.</li>
+              <li>Built for operator-first remediation runs.</li>
+              <li>Security-focused checks with actionable output.</li>
+            </ul>
+          </div>
+          <div class="subpanel">
+            <h4>Release</h4>
+            <ul>
+              <li>Setup and portable desktop builds.</li>
+              <li>Versioned website download links.</li>
+              <li>Structured run-to-run process and reporting.</li>
+            </ul>
+          </div>
+        </div>
         <p class="mini">Current version: <span id="netaudit-version"></span></p>
       </article>
       <article class="panel" id="ascii-art">
@@ -142,22 +156,44 @@
         <div class="row-actions">
           <a class="btn secondary disabled" href="#" aria-disabled="true">Coming Soon</a>
         </div>
-        <ul>
-          <li>Simple text-to-ASCII creation utility.</li>
-          <li>Fast output for quick formatting tasks.</li>
-          <li>Placeholder until release package is ready.</li>
-        </ul>
+        <div class="info-cols">
+          <div class="subpanel">
+            <h4>Core Use</h4>
+            <ul>
+              <li>Simple text-to-ASCII creation utility.</li>
+              <li>Fast output for quick formatting tasks.</li>
+            </ul>
+          </div>
+          <div class="subpanel">
+            <h4>Status</h4>
+            <ul>
+              <li>Placeholder until release package is ready.</li>
+              <li>Will follow the same download pattern as NetAudit Pro.</li>
+            </ul>
+          </div>
+        </div>
       </article>
       <article class="panel" id="hdd-scanner">
         <h3>HDD Scanner</h3>
         <div class="row-actions">
           <a class="btn secondary disabled" href="#" aria-disabled="true">Coming Soon</a>
         </div>
-        <ul>
-          <li>Directory discovery and storage visibility.</li>
-          <li>Cleanup management for large disk trees.</li>
-          <li>Placeholder until release package is ready.</li>
-        </ul>
+        <div class="info-cols">
+          <div class="subpanel">
+            <h4>Core Use</h4>
+            <ul>
+              <li>Directory discovery and storage visibility.</li>
+              <li>Cleanup management for large disk trees.</li>
+            </ul>
+          </div>
+          <div class="subpanel">
+            <h4>Status</h4>
+            <ul>
+              <li>Placeholder until release package is ready.</li>
+              <li>Planned for operator-focused cleanup workflows.</li>
+            </ul>
+          </div>
+        </div>
       </article>
     </section>
   </main>
