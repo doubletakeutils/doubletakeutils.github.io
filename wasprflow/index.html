@@ -48,6 +48,7 @@
     .nav a { color: var(--muted); text-decoration: none; font-weight: 600; }
     .nav a:hover { color: var(--text); }
     .brand { color: var(--text) !important; font-weight: 800; }
+    .sub-brand { padding: 0 0 10px; color: var(--text); font-weight: 800; opacity: 0.9; }
     .nav-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
     .theme-mini { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 8px; background: hsl(var(--accent-h) 28% 14% / 0.65); }
     .theme-mini label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
@@ -57,20 +58,12 @@
     .zoom-readout { min-width: 44px; text-align: center; color: var(--text); font-size: 12px; font-weight: 700; }
 
     .hero { padding: 44px 0 18px; display: grid; gap: 16px; }
-    .hero-title { display: flex; align-items: center; gap: 12px; }
-    .hero-icon { width: 42px; height: 42px; object-fit: contain; filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.28)); }
     h1 { margin: 0; font-size: clamp(2rem, 4vw, 3.1rem); line-height: 1.06; }
     p { color: var(--muted); margin: 0; }
     .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
     .btn { display: inline-block; text-decoration: none; font-weight: 700; padding: 10px 14px; border-radius: 10px; }
     .btn.primary { background: linear-gradient(120deg, var(--accent), var(--accent-2)); color: #081524; }
     .btn.secondary { border: 1px solid var(--line); color: var(--text); }
-    .btn.disabled {
-      opacity: 0.45;
-      cursor: not-allowed;
-      pointer-events: none;
-      filter: grayscale(35%);
-    }
 
     .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 14px 0 26px; }
     @media (max-width: 980px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -79,19 +72,6 @@
     .panel h3 { margin: 0 0 8px; }
     ul { margin: 8px 0 0 18px; color: var(--muted); }
     li + li { margin-top: 4px; }
-    .video-wrap {
-      margin: 8px 0 18px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      overflow: hidden;
-      background: hsl(var(--accent-h) 38% 16% / 0.92);
-    }
-    .video-frame {
-      aspect-ratio: 16 / 9;
-      width: 100%;
-      display: block;
-      border: 0;
-    }
 
     footer { padding: 12px 0 30px; color: var(--muted); font-size: 14px; }
   </style>
@@ -100,11 +80,12 @@
 <body>
   <header class="topbar">
     <nav class="wrap nav">
-      <a class="brand" href="../">DoubleTake Utilities</a>
+      <a class="brand" href="./">DoubleTake Utilities</a>
       <div class="nav-right">
-        <a href="../wasprflow/">WASPrFlow</a>
+        <a href="../">DoubleTake Utils</a>
         <a href="../doubletake-image-video/">Image and Video</a>
-        <a href="../utilities/">Utilities</a>
+        <a href="../netaudit-pro/">NetAudit Pro</a>
+        <a href="install-guide.html">Install Guide</a>
         <a href="../terms.html">Terms</a>
         <a href="../refund-policy.html">Refunds</a>
         <div class="theme-mini">
@@ -119,33 +100,19 @@
         </div>
       </div>
     </nav>
+    <div class="wrap sub-brand">WASPrFlow • DoubleTake Utilities</div>
   </header>
 
   <main class="wrap">
     <section class="hero">
-      <div class="hero-title">
-        <img class="hero-icon" src="assets/wasprflow-mark.png" alt="WASPrFlow icon" />
-        <h1>WASPrFlow</h1>
-      </div>
+      <h1>WASPrFlow</h1>
       <p>Dictation workflow from DoubleTake Utilities for faster writing with cleaner output.</p>
       <div class="actions">
-        <a class="btn primary" id="btn-buy" href="https://shop.doubletake.sbs/">Buy WASPrFlow</a>
         <a class="btn primary" id="btn-exe" href="#">Download Setup EXE</a>
         <a class="btn secondary" id="btn-msi" href="#">Download MSI</a>
-        <a class="btn secondary disabled" id="btn-macos-intel" href="#" aria-disabled="true" title="Temporarily unavailable">macOS Intel (x64)</a>
-        <a class="btn secondary disabled" id="btn-macos-arm" href="#" aria-disabled="true" title="Temporarily unavailable">macOS Apple Silicon (arm64)</a>
-        <a class="btn secondary" href="install-guide.html">Install Guide</a>
+        <a class="btn secondary" id="btn-mac-intel" href="#">Download macOS (Intel)</a>
+        <a class="btn secondary" id="btn-mac-arm" href="#">Download macOS (Apple Silicon)</a>
       </div>
-    </section>
-    <section class="video-wrap" aria-label="WASPrFlow marketing video">
-      <iframe
-        class="video-frame"
-        src="https://www.youtube.com/embed/kiCifKMxs9c"
-        title="WASPrFlow Marketing Video"
-        loading="lazy"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-      </iframe>
     </section>
 
     <section class="grid">
@@ -203,73 +170,12 @@
   <footer class="wrap">DoubleTake Utilities • <a href="../terms.html">Terms</a> • <a href="../refund-policy.html">Refund Policy</a> • Current version: <span id="v"></span></footer>
 
   <script>
-    const META_PIXEL_ID = window.WASPRFLOW_PIXEL_ID || "";
-    const DEFAULT_PRICE_USD = 14.99;
-    const VERSION = "1.2.123";
-    const btnBuy = document.getElementById("btn-buy");
+    const VERSION = "1.2.133";
     document.getElementById("btn-exe").href = `downloads/WASPrFlow_${VERSION}_x64-setup.exe`;
     document.getElementById("btn-msi").href = `downloads/WASPrFlow_${VERSION}_x64_en-US.msi`;
+    document.getElementById("btn-mac-intel").href = `downloads/WASPrFlow_${VERSION}_macos-intel.zip`;
+    document.getElementById("btn-mac-arm").href = `downloads/WASPrFlow_${VERSION}_macos-arm64.zip`;
     document.getElementById("v").textContent = VERSION;
-
-    function genEventId(prefix) {
-      if (crypto && crypto.randomUUID) return `${prefix}_${crypto.randomUUID()}`;
-      return `${prefix}_${Date.now()}_${Math.random().toString(16).slice(2)}`;
-    }
-
-    window.fbq = window.fbq || function () {
-      (window.fbq.q = window.fbq.q || []).push(arguments);
-    };
-
-    function trackPixelCustom(name, payload, eventId) {
-      if (!META_PIXEL_ID || typeof window.fbq !== "function") return;
-      window.fbq("trackCustom", name, payload, { eventID: eventId });
-    }
-
-    function initMetaPixel() {
-      if (!META_PIXEL_ID) return;
-      if (!document.getElementById("meta-pixel-script")) {
-        const s = document.createElement("script");
-        s.id = "meta-pixel-script";
-        s.async = true;
-        s.src = "https://connect.facebook.net/en_US/fbevents.js";
-        s.onload = () => {
-          window.fbq("init", META_PIXEL_ID);
-          const pageViewEventId = genEventId("page_view");
-          trackPixelCustom("page_view", {
-            event_name: "page_view",
-            event_time: Math.floor(Date.now() / 1000),
-            event_id: pageViewEventId,
-            value: DEFAULT_PRICE_USD,
-            currency: "USD",
-            page_url: window.location.href,
-          }, pageViewEventId);
-          const viewContentEventId = genEventId("view_content");
-          trackPixelCustom("view_content", {
-            event_name: "view_content",
-            event_time: Math.floor(Date.now() / 1000),
-            event_id: viewContentEventId,
-            value: DEFAULT_PRICE_USD,
-            currency: "USD",
-            page_url: window.location.href,
-          }, viewContentEventId);
-        };
-        document.head.appendChild(s);
-      }
-    }
-
-    btnBuy.addEventListener("click", () => {
-      const checkoutStartEventId = genEventId("checkout_start");
-      trackPixelCustom("checkout_start", {
-        event_name: "checkout_start",
-        event_time: Math.floor(Date.now() / 1000),
-        event_id: checkoutStartEventId,
-        value: DEFAULT_PRICE_USD,
-        currency: "USD",
-        page_url: window.location.href,
-      }, checkoutStartEventId);
-    });
-
-    initMetaPixel();
   </script>
   <script>
     const themeKey = "wasprflow-theme-hue-v2";
@@ -311,8 +217,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-

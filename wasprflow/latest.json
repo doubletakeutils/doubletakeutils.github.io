@@ -1,0 +1,19 @@
+{
+  "version": "1.2.133",
+  "notes": "WASPrFlow 1.2.133",
+  "pub_date": "2026-05-20T04:01:00Z",
+  "platforms": {
+    "windows-x86_64": {
+      "url": "https://doubletake.sbs/wasprflow/downloads/WASPrFlow_latest_x64-setup.exe",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTbG5BaVFFckFLS0NCb1FUODdqbW1yc3kzNEk1emVBenFkSkJGcjZralhrdWlvenZPVmZ3THJpKzhiZDFiVlAwMjBsWnlMcnJWSWRNR2FVMnNHWGRHemRuWlo4L1lTcVFzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzc5MjQyODE2CWZpbGU6V0FTUHJGbG93XzEuMi4xMzNfeDY0LXNldHVwLmV4ZQoyZkV6c2ZMSGoxUEZiSDNIOWVLeVhQS2N3MUFhS3pVeC9aajhiNmJRcEFJb29HamZrRmlOK1U4ekEvY0owRkRpSHJaMGFETklKSVBmRFFQTUp2azJBdz09Cg=="
+    },
+    "windows-x86_64-nsis": {
+      "url": "https://doubletake.sbs/wasprflow/downloads/WASPrFlow_latest_x64-setup.exe",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTbG5BaVFFckFLS0NCb1FUODdqbW1yc3kzNEk1emVBenFkSkJGcjZralhrdWlvenZPVmZ3THJpKzhiZDFiVlAwMjBsWnlMcnJWSWRNR2FVMnNHWGRHemRuWlo4L1lTcVFzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzc5MjQyODE2CWZpbGU6V0FTUHJGbG93XzEuMi4xMzNfeDY0LXNldHVwLmV4ZQoyZkV6c2ZMSGoxUEZiSDNIOWVLeVhQS2N3MUFhS3pVeC9aajhiNmJRcEFJb29HamZrRmlOK1U4ekEvY0owRkRpSHJaMGFETklKSVBmRFFQTUp2azJBdz09Cg=="
+    },
+    "windows-x86_64-msi": {
+      "url": "https://doubletake.sbs/wasprflow/downloads/WASPrFlow_latest_x64_en-US.msi",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTbG5BaVFFckFLS0Z3eWY1MGliZkVOU1FUL015RzRQeXVvS3BNaWlvSTQ3VkZHVzlsRy9QOFRYaUh5VlFVT201OEljYWVXd1dVc0V1OCtKZDZFWTZBZTNoNmttakE3NUEwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzc5MjQyODE2CWZpbGU6V0FTUHJGbG93XzEuMi4xMzNfeDY0X2VuLVVTLm1zaQpmZHBvR3kydmdQeGdWRjBkS2RpUjVtcllWK1dZNEVKRWozOFBHb3p5Lzl3c1lxMUJoY0Nscm5aaUNWSkJrdk5XMHRsa1ZWQk9qa0FHOEVEb1VHUnVBQT09Cg=="
+    }
+  }
+}
