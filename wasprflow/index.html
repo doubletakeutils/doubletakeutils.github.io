@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <script defer src="/metrics.js"></script>
 
   <style>
     :root {
@@ -77,7 +78,7 @@
   </style>
 
 </head>
-<body>
+<body data-metrics-page="wasprflow" data-metrics-content="true">
   <header class="topbar">
     <nav class="wrap nav">
       <a class="brand" href="./">DoubleTake Utilities</a>
@@ -108,10 +109,10 @@
       <h1>WASPrFlow</h1>
       <p>Dictation workflow from DoubleTake Utilities for faster writing with cleaner output.</p>
       <div class="actions">
-        <a class="btn primary" id="btn-exe" href="#">Download Setup EXE</a>
-        <a class="btn secondary" id="btn-msi" href="#">Download MSI</a>
-        <a class="btn secondary" id="btn-mac-intel" href="#">Download macOS (Intel)</a>
-        <a class="btn secondary" id="btn-mac-arm" href="#">Download macOS (Apple Silicon)</a>
+        <a class="btn primary" id="btn-exe" href="#" data-metrics-event="download_click" data-metrics-target="wasprflow-setup-exe">Download Setup EXE</a>
+        <a class="btn secondary" id="btn-msi" href="#" data-metrics-event="download_click" data-metrics-target="wasprflow-msi">Download MSI</a>
+        <a class="btn secondary" id="btn-mac-intel" href="#" data-metrics-event="download_click" data-metrics-target="wasprflow-macos-intel">Download macOS (Intel)</a>
+        <a class="btn secondary" id="btn-mac-arm" href="#" data-metrics-event="download_click" data-metrics-target="wasprflow-macos-arm64">Download macOS (Apple Silicon)</a>
       </div>
     </section>
 
@@ -170,7 +171,7 @@
   <footer class="wrap">DoubleTake Utilities • <a href="../terms.html">Terms</a> • <a href="../refund-policy.html">Refund Policy</a> • Current version: <span id="v"></span></footer>
 
   <script>
-    const VERSION = "1.2.134";
+    const VERSION = "1.2.135";
     document.getElementById("btn-exe").href = `downloads/WASPrFlow_${VERSION}_x64-setup.exe`;
     document.getElementById("btn-msi").href = `downloads/WASPrFlow_${VERSION}_x64_en-US.msi`;
     document.getElementById("btn-mac-intel").href = `downloads/WASPrFlow_${VERSION}_macos-intel.zip`;
