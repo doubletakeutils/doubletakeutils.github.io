@@ -1,6 +1,7 @@
 param(
   [string]$SourceRoot = "F:\DEV\WASPrFlow",
-  [string]$WebsiteRoot = "F:\DEV\WEBSITE"
+  [string]$WebsiteRoot = "F:\DEV\WEBSITE",
+  [string]$MetricsEndpoint = "https://waspflow-payments.doubletakeutils.workers.dev/metrics/event"
 )
 
 $ErrorActionPreference = "Stop"
@@ -57,6 +58,44 @@ $exeHash = (Get-FileHash -Path $destExe -Algorithm SHA256).Hash
 $msiHash = (Get-FileHash -Path $destMsi -Algorithm SHA256).Hash
 $aliasExeHash = (Get-FileHash -Path $aliasExe -Algorithm SHA256).Hash
 $aliasMsiHash = (Get-FileHash -Path $aliasMsi -Algorithm SHA256).Hash
+
+function Send-ReleaseMetric {
+  param(
+    [string]$Endpoint,
+    [string]$ReleaseVersion,
+    [string]$ExeName,
+    [string]$MsiName
+  )
+
+  if ([string]::IsNullOrWhiteSpace($Endpoint)) {
+    return
+  }
+
+  $payload = @{
+    event_name = "update_install_success"
+    event_id   = [guid]::NewGuid().ToString()
+    event_time = (Get-Date).ToUniversalTime().ToString("o")
+    page_name  = "wasprflow-release-publish"
+    page_path  = "/wasprflow/release"
+    page_url   = "file:///F:/DEV/WEBSITE/scripts/publish-wasprflow-windows.ps1"
+    target_name = "release_publish"
+    version    = $ReleaseVersion
+    target_url = "https://doubletake.sbs/wasprflow/"
+    release_exe = $ExeName
+    release_msi = $MsiName
+  }
+
+  try {
+    $json = $payload | ConvertTo-Json -Compress
+    Invoke-RestMethod -Method Post -Uri $Endpoint -ContentType "text/plain; charset=UTF-8" -Body $json | Out-Null
+    Write-Output "Release metric recorded for WASPrFlow $ReleaseVersion."
+  }
+  catch {
+    Write-Warning "Release metric could not be recorded: $($_.Exception.Message)"
+  }
+}
+
+Send-ReleaseMetric -Endpoint $MetricsEndpoint -ReleaseVersion $version -ExeName $latestExe.Name -MsiName $latestMsi.Name
 
 Write-Output "Published WASPrFlow version: $version"
 Write-Output "EXE: $destExe"
