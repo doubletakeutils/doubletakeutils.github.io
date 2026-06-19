@@ -3,13 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>WASPrFlow | DoubleTake Utilities</title>
-  <meta name="description" content="WASPrFlow download and workflow details from DoubleTake Utilities." />
+  <title>WASPrFlow Release History | DoubleTake Utilities</title>
+  <meta name="description" content="Release history and version timeline for WASPrFlow." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <script defer src="/metrics.js"></script>
-
   <style>
     :root {
       --accent-h: 282;
@@ -37,19 +36,11 @@
       min-height: 100vh;
     }
     .wrap { width: min(1120px, 92vw); margin: 0 auto; }
-    .topbar {
-      position: sticky;
-      top: 0;
-      backdrop-filter: blur(14px);
-      background: hsl(var(--accent-h) 30% 8% / 0.78);
-      border-bottom: 1px solid hsl(calc(var(--accent-h) + 8) 72% 82% / 0.12);
-      z-index: 20;
-    }
-    .nav { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 12px 0 6px; flex-wrap: wrap; }
+    .topbar { position: sticky; top: 0; backdrop-filter: blur(14px); background: hsl(var(--accent-h) 30% 8% / 0.78); border-bottom: 1px solid hsl(calc(var(--accent-h) + 8) 72% 82% / 0.12); z-index: 20; }
+    .nav { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 12px 0; flex-wrap: wrap; }
     .nav a { color: var(--muted); text-decoration: none; font-weight: 600; }
     .nav a:hover { color: var(--text); }
     .brand { color: var(--text) !important; font-weight: 800; }
-    .sub-brand { padding: 0 0 10px; color: var(--text); font-weight: 800; opacity: 0.9; }
     .nav-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
     .theme-mini { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 8px; background: hsl(var(--accent-h) 28% 14% / 0.65); }
     .theme-mini label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
@@ -57,28 +48,26 @@
     .zoom-btn { width: 26px; height: 24px; border: 1px solid var(--line); border-radius: 6px; background: transparent; color: var(--text); font-weight: 700; cursor: pointer; line-height: 1; }
     .zoom-btn:hover { border-color: hsl(calc(var(--accent-h) + 8) 72% 82% / 0.55); }
     .zoom-readout { min-width: 44px; text-align: center; color: var(--text); font-size: 12px; font-weight: 700; }
-
-    .hero { padding: 44px 0 18px; display: grid; gap: 16px; }
+    .hero { padding: 42px 0 14px; display: grid; gap: 14px; }
     h1 { margin: 0; font-size: clamp(2rem, 4vw, 3.1rem); line-height: 1.06; }
-    p { color: var(--muted); margin: 0; }
-    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    p { color: var(--muted); margin: 0; line-height: 1.6; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
     .btn { display: inline-block; text-decoration: none; font-weight: 700; padding: 10px 14px; border-radius: 10px; }
     .btn.primary { background: linear-gradient(120deg, var(--accent), var(--accent-2)); color: #081524; }
     .btn.secondary { border: 1px solid var(--line); color: var(--text); }
-
-    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 14px 0 26px; }
-    @media (max-width: 980px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
-    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
-    .panel h3 { margin: 0 0 8px; }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px; margin: 14px 0; }
+    .panel h2 { margin: 0 0 10px; font-size: 1.2rem; }
+    .timeline { display: grid; gap: 10px; }
+    .entry { padding: 14px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,0.02); }
+    .entry-head { display: flex; gap: 10px; flex-wrap: wrap; align-items: baseline; margin-bottom: 8px; }
+    .tag { display: inline-block; padding: 4px 10px; border-radius: 999px; background: rgba(139, 211, 255, 0.14); border: 1px solid rgba(139, 211, 255, 0.22); color: var(--text); font-size: 0.84rem; font-weight: 700; }
+    .date { color: var(--muted); font-size: 0.92rem; }
     ul { margin: 8px 0 0 18px; color: var(--muted); }
     li + li { margin-top: 4px; }
-
     footer { padding: 12px 0 30px; color: var(--muted); font-size: 14px; }
   </style>
-
 </head>
-<body data-metrics-page="wasprflow" data-metrics-content="true">
+<body data-metrics-page="wasprflow-release-history" data-metrics-content="true">
   <header class="topbar">
     <nav class="wrap nav">
       <a class="brand" href="./">DoubleTake Utilities</a>
@@ -86,8 +75,8 @@
         <a href="../">DoubleTake Utils</a>
         <a href="../doubletake-image-video/">Image and Video</a>
         <a href="../netaudit-pro/">NetAudit Pro</a>
+        <a href="index.html">WASPrFlow</a>
         <a href="install-guide.html">Install Guide</a>
-        <a href="release-history.html">Release History</a>
         <a href="../terms.html">Terms</a>
         <a href="../refund-policy.html">Refunds</a>
         <div class="theme-mini">
@@ -102,83 +91,55 @@
         </div>
       </div>
     </nav>
-    <div class="wrap sub-brand">WASPrFlow • DoubleTake Utilities</div>
   </header>
 
   <main class="wrap">
     <section class="hero">
-      <h1>WASPrFlow</h1>
-      <p>Dictation workflow from DoubleTake Utilities for faster writing with cleaner output.</p>
+      <h1>WASPrFlow Release History</h1>
+      <p>Version timeline for website-published Windows installers and release metadata.</p>
       <div class="actions">
-        <a class="btn primary" id="btn-exe" href="#" data-metrics-event="download_click" data-metrics-target="wasprflow-setup-exe">Download Setup EXE</a>
-        <a class="btn secondary" id="btn-msi" href="#" data-metrics-event="download_click" data-metrics-target="wasprflow-msi">Download MSI</a>
-        <a class="btn secondary" id="btn-mac-intel" href="#" data-metrics-event="download_click" data-metrics-target="wasprflow-macos-intel">Download macOS (Intel)</a>
-        <a class="btn secondary" id="btn-mac-arm" href="#" data-metrics-event="download_click" data-metrics-target="wasprflow-macos-arm64">Download macOS (Apple Silicon)</a>
+        <a class="btn primary" href="downloads/WASPrFlow_latest_x64-setup.exe" data-metrics-event="download_click" data-metrics-target="wasprflow-release-history-latest-exe">Download Latest Setup EXE</a>
+        <a class="btn secondary" href="downloads/WASPrFlow_latest_x64_en-US.msi" data-metrics-event="download_click" data-metrics-target="wasprflow-release-history-latest-msi">Download Latest MSI</a>
       </div>
     </section>
 
-    <section class="grid">
-      <article class="panel">
-        <h3>Input</h3>
-        <ul>
-          <li>Push-to-talk voice capture.</li>
-          <li>Natural speech flow support.</li>
-          <li>Daily-use workflow focus.</li>
-        </ul>
-      </article>
-      <article class="panel">
-        <h3>Output</h3>
-        <ul>
-          <li>Polish/rewrite pass for readability.</li>
-          <li>Cleaner punctuation and structure.</li>
-          <li>Optimized for professional text.</li>
-        </ul>
-      </article>
-      <article class="panel">
-        <h3>Deployment</h3>
-        <ul>
-          <li>Windows installers and macOS ZIP apps.</li>
-          <li>Straightforward team rollout.</li>
-          <li>Versioned website downloads.</li>
-        </ul>
-      </article>
-      <article class="panel">
-        <h3>Privacy Controls</h3>
-        <ul>
-          <li>Privacy mode for local-only handling.</li>
-          <li>Clear on/off behavior while working.</li>
-          <li>Built for environments with stricter data rules.</li>
-        </ul>
-      </article>
-      <article class="panel">
-        <h3>Personalization</h3>
-        <ul>
-          <li>Personal dictionary for names and terms.</li>
-          <li>Better recognition for repeated vocabulary.</li>
-          <li>Useful for technical and domain-specific writing.</li>
-        </ul>
-      </article>
-      <article class="panel">
-        <h3>Workflow Fit</h3>
-        <ul>
-          <li>Designed for everyday desktop applications.</li>
-          <li>Fast capture-to-insert loop.</li>
-          <li>Less editing after each dictation pass.</li>
-        </ul>
-      </article>
+    <section class="panel">
+      <h2>Recent Releases</h2>
+      <div class="timeline">
+        <article class="entry">
+          <div class="entry-head"><span class="tag">1.2.135</span><span class="date">June 19, 2026</span></div>
+          <ul>
+            <li>Latest alias pointers updated for EXE and MSI.</li>
+            <li>Updater manifest points to latest downloads.</li>
+            <li>Current release hash verified against website copies.</li>
+          </ul>
+        </article>
+        <article class="entry">
+          <div class="entry-head"><span class="tag">1.2.134</span><span class="date">June 19, 2026</span></div>
+          <ul>
+            <li>Previous stable release on the Windows stream.</li>
+            <li>Still available in the release archive for rollback/reference.</li>
+          </ul>
+        </article>
+        <article class="entry">
+          <div class="entry-head"><span class="tag">1.2.133</span><span class="date">June 19, 2026</span></div>
+          <ul>
+            <li>Published before the latest alias switch.</li>
+            <li>Useful as a fallback comparison point.</li>
+          </ul>
+        </article>
+        <article class="entry">
+          <div class="entry-head"><span class="tag">Earlier releases</span><span class="date">March 2026</span></div>
+          <ul>
+            <li>Historical versions are retained in <code>wasprflow/downloads/</code> and can be surfaced here later if needed.</li>
+          </ul>
+        </article>
+      </div>
     </section>
   </main>
 
-  <footer class="wrap">DoubleTake Utilities • <a href="../terms.html">Terms</a> • <a href="../refund-policy.html">Refund Policy</a> • Current version: <span id="v"></span></footer>
+  <footer class="wrap">DoubleTake Utilities • <a href="index.html">WASPrFlow</a> • <a href="install-guide.html">Install Guide</a></footer>
 
-  <script>
-    const VERSION = "1.2.135";
-    document.getElementById("btn-exe").href = `downloads/WASPrFlow_${VERSION}_x64-setup.exe`;
-    document.getElementById("btn-msi").href = `downloads/WASPrFlow_${VERSION}_x64_en-US.msi`;
-    document.getElementById("btn-mac-intel").href = `downloads/WASPrFlow_${VERSION}_macos-intel.zip`;
-    document.getElementById("btn-mac-arm").href = `downloads/WASPrFlow_${VERSION}_macos-arm64.zip`;
-    document.getElementById("v").textContent = VERSION;
-  </script>
   <script>
     const themeKey = "wasprflow-theme-hue-v2";
     const zoomKey = "doubletake-site-zoom-v1";
@@ -210,12 +171,8 @@
       return clamped;
     }
     let currentZoom = applyZoom(Number(savedZoom !== null ? savedZoom : 100));
-    zoomOutBtn.addEventListener("click", () => {
-      currentZoom = applyZoom(currentZoom - ZOOM_STEP);
-    });
-    zoomInBtn.addEventListener("click", () => {
-      currentZoom = applyZoom(currentZoom + ZOOM_STEP);
-    });
+    zoomOutBtn.addEventListener("click", () => { currentZoom = applyZoom(currentZoom - ZOOM_STEP); });
+    zoomInBtn.addEventListener("click", () => { currentZoom = applyZoom(currentZoom + ZOOM_STEP); });
   </script>
 </body>
 </html>
