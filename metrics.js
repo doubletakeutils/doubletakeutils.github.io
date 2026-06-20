@@ -5,12 +5,58 @@
 
   const pageName = body.dataset.metricsPage || location.pathname.replace(/^\/+|\/+$/g, "") || "home";
   const sendViewContent = body.dataset.metricsContent === "true";
+  function getClientContext() {
+    const ua = navigator.userAgent || "";
+    const data = navigator.userAgentData || null;
+    const brands = data && Array.isArray(data.brands) ? data.brands.map((b) => b.brand).filter(Boolean) : [];
+    const platform = data && data.platform ? String(data.platform) : "";
+    const mobile = data && typeof data.mobile === "boolean" ? data.mobile : /Mobi|Android/i.test(ua);
+    let browser = "";
+    if (brands.length) {
+      browser = brands.join(" ");
+    } else if (/Edg\//i.test(ua)) {
+      browser = "Edge";
+    } else if (/Chrome\//i.test(ua)) {
+      browser = "Chrome";
+    } else if (/Firefox\//i.test(ua)) {
+      browser = "Firefox";
+    } else if (/Safari\//i.test(ua)) {
+      browser = "Safari";
+    } else {
+      browser = "Unknown";
+    }
+    let os = "";
+    if (platform) {
+      os = platform;
+    } else if (/Windows NT/i.test(ua)) {
+      os = "Windows";
+    } else if (/Mac OS X/i.test(ua)) {
+      os = "macOS";
+    } else if (/Android/i.test(ua)) {
+      os = "Android";
+    } else if (/iPhone|iPad|iPod/i.test(ua)) {
+      os = "iOS";
+    } else {
+      os = "Unknown";
+    }
+    return {
+      client_browser: browser,
+      client_os: os,
+      client_device: mobile ? "mobile" : "desktop",
+      client_language: navigator.language || "",
+      client_timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "",
+      screen_width: window.screen ? window.screen.width : 0,
+      screen_height: window.screen ? window.screen.height : 0,
+    };
+  }
+
   const basePayload = () => ({
     page_name: pageName,
     page_path: location.pathname || "/",
     page_url: location.href,
     page_title: document.title || "",
     referrer: document.referrer || "",
+    ...getClientContext(),
   });
 
   function uuid() {
