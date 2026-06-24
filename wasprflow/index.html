@@ -1,220 +1,785 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>WASPrFlow | DoubleTake Utilities</title>
-  <meta name="description" content="WASPrFlow download and workflow details from DoubleTake Utilities." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WASPrFlow | Speak. Polish. Move faster.</title>
+  <meta name="description" content="WASPrFlow turns speech into clear, polished writing in every app. Speak naturally and let Flow clean it up before you paste or insert." />
+  <meta property="og:title" content="WASPrFlow" />
+  <meta property="og:description" content="Speak naturally, get polished text everywhere you work." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://doubletake.sbs/wasprflow/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script defer src="/metrics.js"></script>
-
   <style>
     :root {
-      --accent-h: 282;
-      --ui-zoom: 1;
-      --bg: hsl(var(--accent-h) 30% 8%);
-      --bg-soft: hsl(var(--accent-h) 34% 10%);
-      --bg-deep: hsl(var(--accent-h) 22% 6%);
-      --text: hsl(calc(var(--accent-h) + 22) 100% 95%);
-      --muted: hsl(calc(var(--accent-h) + 8) 34% 72%);
-      --accent: hsl(var(--accent-h) 88% 57%);
-      --accent-2: hsl(calc(var(--accent-h) + 16) 82% 63%);
-      --line: hsl(calc(var(--accent-h) + 8) 72% 82% / 0.2);
-      --panel: hsl(var(--accent-h) 38% 16% / 0.92);
+      --bg: #f6f7fb;
+      --bg-soft: rgba(255, 255, 255, 0.75);
+      --panel: rgba(255, 255, 255, 0.92);
+      --panel-strong: #ffffff;
+      --text: #111827;
+      --muted: #5b6477;
+      --muted-2: #758096;
+      --border: rgba(15, 23, 42, 0.10);
+      --shadow: 0 30px 80px rgba(15, 23, 42, 0.10);
+      --shadow-soft: 0 12px 28px rgba(15, 23, 42, 0.08);
+      --accent: #0ea5a4;
+      --accent-2: #2563eb;
+      --accent-soft: rgba(14, 165, 164, 0.14);
+      --good: #10b981;
+      --warm: #f59e0b;
+      --danger: #ef4444;
+      --surface: linear-gradient(180deg, rgba(255,255,255,0.78), rgba(255,255,255,0.92));
+      --glass: blur(18px);
     }
+
+    html[data-theme="dark"] {
+      --bg: #090c14;
+      --bg-soft: rgba(16, 20, 32, 0.78);
+      --panel: rgba(14, 18, 30, 0.88);
+      --panel-strong: #0f172a;
+      --text: #f8fafc;
+      --muted: #b6c0d4;
+      --muted-2: #91a0bb;
+      --border: rgba(148, 163, 184, 0.16);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
+      --shadow-soft: 0 12px 28px rgba(0, 0, 0, 0.28);
+      --surface: linear-gradient(180deg, rgba(15,23,42,0.78), rgba(15,23,42,0.92));
+      --accent-soft: rgba(14, 165, 164, 0.20);
+    }
+
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: "Sora", "Segoe UI", sans-serif;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
-      zoom: var(--ui-zoom);
       background:
-        radial-gradient(circle at top left, hsl(var(--accent-h) 88% 57% / 0.22), transparent 28%),
-        radial-gradient(circle at top right, hsl(calc(var(--accent-h) + 16) 82% 63% / 0.14), transparent 24%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 40%, var(--bg-deep) 100%);
+        radial-gradient(circle at 20% 0%, rgba(14,165,164,0.14), transparent 34%),
+        radial-gradient(circle at 80% 0%, rgba(37,99,235,0.10), transparent 28%),
+        radial-gradient(circle at 50% 100%, rgba(99,102,241,0.08), transparent 28%),
+        var(--bg);
       min-height: 100vh;
+      overflow-x: hidden;
     }
-    .wrap { width: min(1120px, 92vw); margin: 0 auto; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
     .topbar {
       position: sticky;
       top: 0;
-      backdrop-filter: blur(14px);
-      background: hsl(var(--accent-h) 30% 8% / 0.78);
-      border-bottom: 1px solid hsl(calc(var(--accent-h) + 8) 72% 82% / 0.12);
-      z-index: 20;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: color-mix(in srgb, var(--bg) 76%, transparent);
+      border-bottom: 1px solid var(--border);
     }
-    .nav { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 12px 0 6px; flex-wrap: wrap; }
-    .nav a { color: var(--muted); text-decoration: none; font-weight: 600; }
-    .nav a:hover { color: var(--text); }
-    .brand { color: var(--text) !important; font-weight: 800; }
-    .sub-brand { padding: 0 0 10px; color: var(--text); font-weight: 800; opacity: 0.9; }
-    .nav-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-    .theme-mini { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 8px; background: hsl(var(--accent-h) 28% 14% / 0.65); }
-    .theme-mini label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
-    .theme-mini input { width: 96px; accent-color: var(--accent); }
-    .zoom-btn { width: 26px; height: 24px; border: 1px solid var(--line); border-radius: 6px; background: transparent; color: var(--text); font-weight: 700; cursor: pointer; line-height: 1; }
-    .zoom-btn:hover { border-color: hsl(calc(var(--accent-h) + 8) 72% 82% / 0.55); }
-    .zoom-readout { min-width: 44px; text-align: center; color: var(--text); font-size: 12px; font-weight: 700; }
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px 0;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      font-size: 1.05rem;
+    }
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(14,165,164,0.18), rgba(37,99,235,0.22));
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      flex: 0 0 auto;
+    }
+    .brand-mark img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .theme-toggle {
+      appearance: none;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: var(--shadow-soft);
+    }
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(37,99,235,0.22);
+      background: linear-gradient(135deg, rgba(14,165,164,0.98), rgba(37,99,235,0.96));
+      color: white;
+      padding: 11px 18px;
+      border-radius: 999px;
+      font-weight: 800;
+      box-shadow: 0 16px 34px rgba(37,99,235,0.18);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+    .cta:hover { transform: translateY(-1px); box-shadow: 0 20px 44px rgba(37,99,235,0.25); }
+    .cta.secondary {
+      background: var(--panel);
+      color: var(--text);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+    }
+    .hero {
+      padding: 84px 0 36px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid color-mix(in srgb, var(--accent) 18%, transparent);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      font-size: 0.82rem;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 32px;
+      align-items: center;
+      margin-top: 22px;
+    }
+    h1 {
+      margin: 18px 0 18px;
+      font-size: clamp(3.1rem, 7vw, 5.8rem);
+      line-height: 0.94;
+      letter-spacing: -0.075em;
+      font-weight: 900;
+    }
+    .hero-copy {
+      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 61ch;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+      align-items: center;
+    }
+    .availability {
+      margin-top: 16px;
+      color: var(--muted-2);
+      font-size: 0.96rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .chip {
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      box-shadow: var(--shadow-soft);
+      font-weight: 700;
+      color: var(--text);
+      font-size: 0.88rem;
+    }
+    .demo {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      backdrop-filter: var(--glass);
+    }
+    .demo-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .demo-title {
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      font-size: 0.98rem;
+    }
+    .demo-pill {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid color-mix(in srgb, var(--accent) 14%, transparent);
+      padding: 6px 10px;
+      border-radius: 999px;
+    }
+    .raw-polished {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .message-card {
+      background: var(--panel-strong);
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      padding: 16px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.45);
+      min-height: 150px;
+    }
+    .message-label {
+      color: var(--muted-2);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .message-body {
+      font-size: 1.02rem;
+      line-height: 1.65;
+      color: var(--text);
+    }
+    .message-body.messy { color: color-mix(in srgb, var(--text) 72%, #ef4444); }
+    .flow-arrow {
+      text-align: center;
+      color: var(--muted-2);
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin: -2px 0;
+    }
+    .stats-row {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .stat {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+    }
+    .stat strong {
+      display: block;
+      font-size: 1.45rem;
+      letter-spacing: -0.05em;
+      margin-bottom: 4px;
+    }
+    .stat span { color: var(--muted); font-size: 0.9rem; }
 
-    .hero { padding: 44px 0 18px; display: grid; gap: 16px; }
-    h1 { margin: 0; font-size: clamp(2rem, 4vw, 3.1rem); line-height: 1.06; }
-    p { color: var(--muted); margin: 0; }
-    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
-    .btn { display: inline-block; text-decoration: none; font-weight: 700; padding: 10px 14px; border-radius: 10px; }
-    .btn.primary { background: linear-gradient(120deg, var(--accent), var(--accent-2)); color: #081524; }
-    .btn.secondary { border: 1px solid var(--line); color: var(--text); }
+    .section {
+      padding: 56px 0;
+    }
+    .section-kicker {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.76rem;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+    .section h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.02;
+      letter-spacing: -0.055em;
+    }
+    .section p.lead {
+      margin: 12px 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 70ch;
+      font-size: 1.02rem;
+    }
+    .comparison {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .comparison-card {
+      background: var(--panel);
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      padding: 24px;
+      box-shadow: var(--shadow-soft);
+    }
+    .comparison-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.15rem;
+      letter-spacing: -0.03em;
+    }
+    .comparison-card .meta {
+      color: var(--muted-2);
+      font-size: 0.92rem;
+      margin-bottom: 18px;
+    }
+    .progress {
+      height: 12px;
+      background: color-mix(in srgb, var(--text) 10%, transparent);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 14px;
+    }
+    .progress > span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+    .comparison-card.keyboard .progress > span { width: 18%; }
+    .comparison-card.flow .progress > span { width: 82%; }
+    .comparison-example {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: color-mix(in srgb, var(--panel-strong) 80%, transparent);
+      border: 1px solid var(--border);
+      line-height: 1.6;
+      color: var(--muted);
+    }
 
-    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 14px 0 26px; }
-    @media (max-width: 980px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
-    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
-    .panel h3 { margin: 0 0 8px; }
-    ul { margin: 8px 0 0 18px; color: var(--muted); }
-    li + li { margin-top: 4px; }
+    .grid-3 {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 20px;
+      box-shadow: var(--shadow-soft);
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+      min-height: 100%;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: color-mix(in srgb, var(--accent) 24%, var(--border));
+      box-shadow: 0 20px 38px rgba(15, 23, 42, 0.10);
+    }
+    .card .icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+    .card h3 {
+      margin: 0 0 10px;
+      letter-spacing: -0.04em;
+      font-size: 1.1rem;
+    }
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
 
-    footer { padding: 12px 0 30px; color: var(--muted); font-size: 14px; }
+    .platforms {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .platform {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: var(--shadow-soft);
+    }
+    .platform strong {
+      display: block;
+      margin-bottom: 8px;
+      letter-spacing: -0.03em;
+    }
+    .platform p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.96rem;
+    }
+
+    .testimonials {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .quote {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow-soft);
+    }
+    .quote p {
+      margin: 0 0 16px;
+      color: var(--text);
+      font-size: 1.03rem;
+      line-height: 1.75;
+    }
+    .quote .who {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .footer {
+      padding: 42px 0 64px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      margin-top: 36px;
+    }
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-weight: 600;
+    }
+    .footer-links a:hover { color: var(--text); }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 600ms ease, transform 600ms ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mobile-only { display: none; }
+
+    @media (max-width: 1024px) {
+      .hero-grid, .comparison, .grid-3, .platforms, .testimonials {
+        grid-template-columns: 1fr;
+      }
+      .nav-links { display: none; }
+      .mobile-only { display: inline-flex; }
+      .hero { padding-top: 48px; }
+      h1 { font-size: clamp(2.7rem, 10vw, 4.8rem); }
+    }
+
+    @media (max-width: 700px) {
+      .container { width: min(100% - 22px, 1180px); }
+      .topbar-inner { padding: 12px 0; }
+      .brand { font-size: 0.98rem; }
+      .brand-mark { width: 34px; height: 34px; }
+      .brand-mark img { width: 24px; height: 24px; }
+      .cta, .cta.secondary, .theme-toggle { padding: 10px 14px; font-size: 0.92rem; }
+      .hero { padding: 28px 0 22px; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .hero-actions .cta, .hero-actions .cta.secondary { justify-content: center; }
+      .stats-row { grid-template-columns: 1fr; }
+      .section { padding: 42px 0; }
+    }
   </style>
-
 </head>
-<body data-metrics-page="wasprflow" data-metrics-content="true">
+<body>
   <header class="topbar">
-    <nav class="wrap nav">
-      <a class="brand" href="./">DoubleTake Utilities</a>
-      <div class="nav-right">
-        <a href="../">DoubleTake Utils</a>
-        <a href="../doubletake-image-video/">Image and Video</a>
-        <a href="../netaudit-pro/">NetAudit Pro</a>
-        <a href="install-guide.html">Install Guide</a>
-        <a href="../terms.html">Terms</a>
-        <a href="../refund-policy.html">Refunds</a>
-        <div class="theme-mini">
-          <label for="hue">Hue</label>
-          <input id="hue" type="range" min="0" max="360" value="282" />
-        </div>
-        <div class="theme-mini">
-          <label>Zoom</label>
-          <button type="button" class="zoom-btn" id="zoom-out" aria-label="Zoom out">-</button>
-          <span id="zoom-readout" class="zoom-readout">100%</span>
-          <button type="button" class="zoom-btn" id="zoom-in" aria-label="Zoom in">+</button>
-        </div>
+    <div class="container topbar-inner">
+      <a class="brand" href="#top" aria-label="WASPrFlow home">
+        <span class="brand-mark"><img src="../assets/wasprflow-mark.png" alt="" /></span>
+        <span>WASPrFlow</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#features">Features</a>
+        <a href="#use-cases">Use cases</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#about">Blog / About</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">Theme</button>
+        <a class="cta mobile-only" href="#downloads">Download</a>
+        <a class="cta" href="#downloads">Download for Windows</a>
       </div>
-    </nav>
-    <div class="wrap sub-brand">WASPrFlow • DoubleTake Utilities</div>
+    </div>
   </header>
 
-  <main class="wrap">
+  <main id="top">
     <section class="hero">
-      <h1>WASPrFlow</h1>
-      <p>Dictation workflow from DoubleTake Utilities for faster writing with cleaner output.</p>
-      <div class="actions">
-        <a class="btn primary" id="btn-exe" href="#" data-metrics-event="download_click" data-metrics-target="wasprflow-setup-exe">Download Setup EXE</a>
-        <a class="btn secondary" id="btn-msi" href="#" data-metrics-event="download_click" data-metrics-target="wasprflow-msi">Download MSI</a>
-        <a class="btn secondary" id="btn-mac-intel" href="#" data-metrics-event="download_click" data-metrics-target="wasprflow-macos-intel">Download macOS (Intel)</a>
-        <a class="btn secondary" id="btn-mac-arm" href="#" data-metrics-event="download_click" data-metrics-target="wasprflow-macos-arm64">Download macOS (Apple Silicon)</a>
+      <div class="container hero-grid">
+        <div class="reveal">
+          <div class="eyebrow">Speak naturally. Flow writes it perfectly.</div>
+          <h1>Don't type, just speak.</h1>
+          <p class="hero-copy">
+            WASPrFlow turns speech into clear, polished writing in every app. Dictate in your own voice,
+            let Flow clean it up, and keep moving without stopping to edit every sentence by hand.
+          </p>
+          <div class="hero-actions">
+            <a class="cta" href="#downloads">Download for Windows</a>
+            <a class="cta secondary" href="#demo">Watch in action</a>
+          </div>
+          <div class="availability">
+            <span class="chip">Available on Windows</span>
+            <span class="chip">macOS installers</span>
+            <span class="chip">Fast setup</span>
+            <span>Works in the apps you already use.</span>
+          </div>
+        </div>
+
+        <div class="demo reveal" id="demo">
+          <div class="demo-head">
+            <div class="demo-title">Live demo</div>
+            <div class="demo-pill">Raw → polished</div>
+          </div>
+          <div class="raw-polished">
+            <div class="message-card">
+              <div class="message-label">Raw dictation</div>
+              <div class="message-body messy">hey cheyene can you send over the project update from last night and also make sure the numbers are in the same format as the deck and please keep it short</div>
+            </div>
+            <div class="flow-arrow">↓</div>
+            <div class="message-card">
+              <div class="message-label">WASPrFlow output</div>
+              <div class="message-body">Hey Cheyene, can you send over the project update from last night? Also, please make sure the numbers match the deck format and keep it short.</div>
+            </div>
+          </div>
+          <div class="stats-row">
+            <div class="stat">
+              <strong>4x</strong>
+              <span>faster than typing</span>
+            </div>
+            <div class="stat">
+              <strong>220+</strong>
+              <span>words per minute feel</span>
+            </div>
+            <div class="stat">
+              <strong>0</strong>
+              <span>copy/paste churn</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="grid">
-      <article class="panel">
-        <h3>Input</h3>
-        <ul>
-          <li>Push-to-talk voice capture.</li>
-          <li>Natural speech flow support.</li>
-          <li>Daily-use workflow focus.</li>
-        </ul>
-      </article>
-      <article class="panel">
-        <h3>Output</h3>
-        <ul>
-          <li>Polish/rewrite pass for readability.</li>
-          <li>Cleaner punctuation and structure.</li>
-          <li>Optimized for professional text.</li>
-        </ul>
-      </article>
-      <article class="panel">
-        <h3>Deployment</h3>
-        <ul>
-          <li>Windows installers and macOS ZIP apps.</li>
-          <li>Straightforward team rollout.</li>
-          <li>Versioned website downloads.</li>
-        </ul>
-      </article>
-      <article class="panel">
-        <h3>Privacy Controls</h3>
-        <ul>
-          <li>Privacy mode for local-only handling.</li>
-          <li>Clear on/off behavior while working.</li>
-          <li>Built for environments with stricter data rules.</li>
-        </ul>
-      </article>
-      <article class="panel">
-        <h3>Personalization</h3>
-        <ul>
-          <li>Personal dictionary for names and terms.</li>
-          <li>Better recognition for repeated vocabulary.</li>
-          <li>Useful for technical and domain-specific writing.</li>
-        </ul>
-      </article>
-      <article class="panel">
-        <h3>Workflow Fit</h3>
-        <ul>
-          <li>Designed for everyday desktop applications.</li>
-          <li>Fast capture-to-insert loop.</li>
-          <li>Less editing after each dictation pass.</li>
-        </ul>
-      </article>
+    <section class="section" id="features">
+      <div class="container reveal">
+        <div class="section-kicker">Why it feels fast</div>
+        <h2>Clear writing, not just raw transcription.</h2>
+        <p class="lead">
+          Flow is built to take what you say and shape it into something readable before it reaches the page,
+          so your notes, replies, and drafts feel finished instead of rough.
+        </p>
+        <div class="comparison">
+          <article class="comparison-card keyboard">
+            <h3>Keyboard</h3>
+            <div class="meta">Slow, repetitive, and easy to lose momentum.</div>
+            <div class="comparison-example">Draft the sentence, backspace, rephrase, and fix the punctuation.</div>
+            <div class="progress" aria-hidden="true"><span></span></div>
+          </article>
+          <article class="comparison-card flow">
+            <h3>Flow</h3>
+            <div class="meta">Speak once and get something you can actually send.</div>
+            <div class="comparison-example">Speak naturally, then let WASPrFlow normalize the sentence, punctuation, and tone.</div>
+            <div class="progress" aria-hidden="true"><span></span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="use-cases">
+      <div class="container reveal">
+        <div class="section-kicker">Made for the way you work</div>
+        <h2>Useful across roles, not just one workflow.</h2>
+        <p class="lead">
+          Whether you are replying to messages, taking notes, writing long-form content, or moving through a packed day,
+          the experience stays quick, direct, and easy to keep in flow.
+        </p>
+        <div class="grid-3">
+          <article class="card"><div class="icon">A</div><h3>Accessibility</h3><p>Hands-free input that helps people move through their day without fighting the keyboard.</p></article>
+          <article class="card"><div class="icon">C</div><h3>Creators</h3><p>Capture a thought before it disappears, then let the app shape it into something publishable.</p></article>
+          <article class="card"><div class="icon">S</div><h3>Support</h3><p>Keep replies fast and professional while staying focused on the person you are helping.</p></article>
+          <article class="card"><div class="icon">D</div><h3>Developers</h3><p>Log issues, write status updates, and move through context switches without breaking concentration.</p></article>
+          <article class="card"><div class="icon">L</div><h3>Leaders</h3><p>Send clearer notes, decisions, and follow-ups with less time spent polishing the message.</p></article>
+          <article class="card"><div class="icon">T</div><h3>Teams</h3><p>Use the same voice-first habit across the company so communication stays consistent.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="container reveal">
+        <div class="section-kicker">AI features</div>
+        <h2>More than dictation.</h2>
+        <p class="lead">
+          The app can clean up text, adapt your tone, and help you keep a personal writing style without making
+          you babysit every line.
+        </p>
+        <div class="grid-3">
+          <article class="card"><div class="icon">E</div><h3>Auto edits</h3><p>Keep the draft clean by fixing punctuation, spacing, and obvious rough edges as you go.</p></article>
+          <article class="card"><div class="icon">P</div><h3>Personal dictionary</h3><p>Protect names, product terms, and preferred spellings so important words stay consistent.</p></article>
+          <article class="card"><div class="icon">S</div><h3>Snippet library</h3><p>Reuse common prompts, responses, and voice shortcuts when you want speed without repetition.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container reveal">
+        <div class="section-kicker">On the go or at your desk</div>
+        <h2>Built for the devices people actually use.</h2>
+        <p class="lead">
+          The same writing flow carries across desktop and mobile so a quick thought on the move can become a polished
+          message back at your desk.
+        </p>
+        <div class="platforms">
+          <div class="platform"><strong>Mac</strong><p>Native-feeling desktop flow with a quick launch and a quiet footprint.</p></div>
+          <div class="platform"><strong>Windows</strong><p>Fast voice capture and polished text insertion where you already work.</p></div>
+          <div class="platform"><strong>iPhone</strong><p>Capture notes and drafts when you are away from the keyboard.</p></div>
+          <div class="platform"><strong>Android</strong><p>Keep the same voice-first habit across more than one device.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container reveal">
+        <div class="section-kicker">Love letters to Flow</div>
+        <h2>People use it because it stays out of the way.</h2>
+        <p class="lead">
+          The goal is simple: make speaking feel like the fastest way to write, while keeping the output clean enough
+          that you do not have to second-guess the result.
+        </p>
+        <div class="testimonials">
+          <article class="quote"><p>“I can get through my inbox without feeling like I am constantly editing the same sentence.”</p><div class="who">Product lead · Support-heavy team</div></article>
+          <article class="quote"><p>“It keeps the tone polished enough that I can send the message immediately.”</p><div class="who">Founder · Fast-moving startup</div></article>
+          <article class="quote"><p>“The best part is that it disappears into my workflow instead of becoming another tool to manage.”</p><div class="who">Operator · Solo business owner</div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="downloads">
+      <div class="container reveal">
+        <div class="section-kicker">Downloads</div>
+        <h2>Get WASPrFlow on the right platform.</h2>
+        <p class="lead">
+          Current release: <strong>1.2.139</strong>. These links point to the same installers already published for the site.
+        </p>
+        <div class="hero-actions" style="margin-top: 20px;">
+          <a class="cta" id="downloadWindows" href="#">Download Windows EXE</a>
+          <a class="cta secondary" id="downloadMsi" href="#">Download Windows MSI</a>
+          <a class="cta secondary" id="downloadMacIntel" href="#">macOS Intel ZIP</a>
+          <a class="cta secondary" id="downloadMacArm" href="#">macOS Apple Silicon ZIP</a>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer class="wrap">DoubleTake Utilities • <a href="../terms.html">Terms</a> • <a href="../refund-policy.html">Refund Policy</a> • Current version: <span id="v"></span></footer>
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom: 10px;">
+          <span class="brand-mark"><img src="../assets/wasprflow-mark.png" alt="" /></span>
+          <span>WASPrFlow</span>
+        </div>
+        <div>Speak naturally. Ship clearer text.</div>
+      </div>
+      <div class="footer-links">
+        <a href="../">Home</a>
+        <a href="install-guide.html">Install guide</a>
+        <a href="release-history.html">Release history</a>
+        <a href="../terms.html">Terms</a>
+        <a href="../refund-policy.html">Refunds</a>
+      </div>
+    </div>
+  </footer>
 
   <script>
-    const VERSION = "1.2.135";
-    document.getElementById("btn-exe").href = `downloads/WASPrFlow_${VERSION}_x64-setup.exe`;
-    document.getElementById("btn-msi").href = `downloads/WASPrFlow_${VERSION}_x64_en-US.msi`;
-    document.getElementById("btn-mac-intel").href = `downloads/WASPrFlow_${VERSION}_macos-intel.zip`;
-    document.getElementById("btn-mac-arm").href = `downloads/WASPrFlow_${VERSION}_macos-arm64.zip`;
-    document.getElementById("v").textContent = VERSION;
-  </script>
-  <script>
-    const themeKey = "wasprflow-theme-hue-v2";
-    const zoomKey = "doubletake-site-zoom-v1";
-    const hueInput = document.getElementById("hue");
-    const zoomOutBtn = document.getElementById("zoom-out");
-    const zoomInBtn = document.getElementById("zoom-in");
-    const zoomReadout = document.getElementById("zoom-readout");
-    const ZOOM_MIN = 85;
-    const ZOOM_MAX = 125;
-    const ZOOM_STEP = 5;
-    const savedHue = localStorage.getItem(themeKey);
-    const savedZoom = localStorage.getItem(zoomKey);
-    if (savedHue !== null) {
-      hueInput.value = savedHue;
-      document.documentElement.style.setProperty("--accent-h", savedHue);
-    } else {
-      document.documentElement.style.setProperty("--accent-h", hueInput.value);
-    }
-    hueInput.addEventListener("input", (e) => {
-      const v = e.target.value;
-      document.documentElement.style.setProperty("--accent-h", v);
-      localStorage.setItem(themeKey, v);
-    });
-    function applyZoom(raw) {
-      const clamped = Math.max(ZOOM_MIN, Math.min(ZOOM_MAX, Math.round(raw * 10) / 10));
-      document.documentElement.style.setProperty("--ui-zoom", String(clamped / 100));
-      localStorage.setItem(zoomKey, String(clamped));
-      zoomReadout.textContent = `${clamped}%`;
-      return clamped;
-    }
-    let currentZoom = applyZoom(Number(savedZoom !== null ? savedZoom : 100));
-    zoomOutBtn.addEventListener("click", () => {
-      currentZoom = applyZoom(currentZoom - ZOOM_STEP);
-    });
-    zoomInBtn.addEventListener("click", () => {
-      currentZoom = applyZoom(currentZoom + ZOOM_STEP);
-    });
+    (() => {
+      const version = "1.2.139";
+      const downloadBase = "downloads/WASPrFlow_" + version + "_x64";
+      const links = {
+        windows: downloadBase + "-setup.exe",
+        msi: downloadBase + "_en-US.msi",
+        macIntel: "downloads/WASPrFlow_" + version + "_macos-intel.zip",
+        macArm: "downloads/WASPrFlow_" + version + "_macos-arm64.zip",
+      };
+
+      document.getElementById("downloadWindows").href = links.windows;
+      document.getElementById("downloadMsi").href = links.msi;
+      document.getElementById("downloadMacIntel").href = links.macIntel;
+      document.getElementById("downloadMacArm").href = links.macArm;
+
+      const root = document.documentElement;
+      const stored = localStorage.getItem("wasprflow-theme");
+      if (stored === "dark" || stored === "light") root.dataset.theme = stored;
+      const themeToggle = document.getElementById("themeToggle");
+      themeToggle.textContent = root.dataset.theme === "dark" ? "Dark" : "Light";
+      themeToggle.addEventListener("click", () => {
+        const next = root.dataset.theme === "dark" ? "light" : "dark";
+        root.dataset.theme = next;
+        localStorage.setItem("wasprflow-theme", next);
+        themeToggle.textContent = next === "dark" ? "Dark" : "Light";
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) entry.target.classList.add("visible");
+        }
+      }, { threshold: 0.16, rootMargin: "0px 0px -8% 0px" });
+
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", (event) => {
+          const id = anchor.getAttribute("href");
+          if (!id || id === "#") return;
+          const target = document.querySelector(id);
+          if (!target) return;
+          event.preventDefault();
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+    })();
   </script>
 </body>
 </html>
