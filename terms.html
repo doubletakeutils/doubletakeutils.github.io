@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -154,6 +154,7 @@
     zoomInBtn.addEventListener("click", () => {
       currentZoom = applyZoom(currentZoom + ZOOM_STEP);
     });
+    document.documentElement.dataset.theme = "light";
   </script>
 </body>
 </html>
