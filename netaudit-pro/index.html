@@ -1,22 +1,115 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>NetAudit Pro Moved | DoubleTake Utilities</title>
+  <meta name="description" content="NetAudit Pro now lives inside the DoubleTake Utilities page." />
   <meta http-equiv="refresh" content="0; url=../utilities/#netaudit-pro" />
   <script>location.replace('../utilities/#netaudit-pro');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/wisprflow-system.css">
   <style>
-    body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:#0c1022;color:#e9ecff;display:grid;place-items:center;min-height:100vh}
-    a{color:#8aa0ff}
-    .box{max-width:640px;padding:24px}
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(14,165,164,0.14), transparent 34%),
+        radial-gradient(circle at 80% 0%, rgba(37,99,235,0.10), transparent 28%),
+        radial-gradient(circle at 50% 100%, rgba(99,102,241,0.08), transparent 28%),
+        var(--wf-bg);
+    }
+    .notice {
+      margin: 72px auto;
+      width: min(720px, calc(100% - 32px));
+      padding: 28px;
+      border-radius: 20px;
+      border: 1px solid var(--wf-border);
+      background: var(--wf-panel);
+      box-shadow: var(--wf-shadow);
+      text-align: center;
+    }
+    .notice h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: -0.06em;
+    }
+    .notice p {
+      margin: 0 0 14px;
+      color: var(--wf-muted);
+      line-height: 1.6;
+    }
+    .notice .btn {
+      margin-top: 8px;
+    }
   </style>
 </head>
 <body data-metrics-page="netaudit-pro" data-metrics-content="true">
-  <main class="box">
-    <h1>NetAudit Pro is now in Utilities</h1>
-    <p>You are being redirected to the Utilities page.</p>
-    <p><a href="../utilities/#netaudit-pro">Go to NetAudit Pro in Utilities</a></p>
+  <header class="topbar">
+    <nav class="wrap nav">
+      <a class="brand" href="../">DoubleTake Utilities</a>
+      <div class="nav-right">
+        <a href="../wasprflow/">WASPrFlow</a>
+        <a href="../doubletake-image-video/">Image and Video</a>
+        <a href="../utilities/">Utilities</a>
+        <a href="../terms.html">Terms</a>
+        <a href="../refund-policy.html">Refunds</a>
+        <div class="theme-mini">
+          <label for="hue">Hue</label>
+          <input id="hue" type="range" min="0" max="360" value="198" />
+        </div>
+        <div class="theme-mini">
+          <label>Zoom</label>
+          <button type="button" class="zoom-btn" id="zoom-out" aria-label="Zoom out">-</button>
+          <span id="zoom-readout" class="zoom-readout">100%</span>
+          <button type="button" class="zoom-btn" id="zoom-in" aria-label="Zoom in">+</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="notice">
+    <h1>NetAudit Pro now lives in Utilities</h1>
+    <p>We moved the product into the Utilities page so the site stays simpler and the main navigation stays cohesive.</p>
+    <a class="btn primary" href="../utilities/#netaudit-pro">Go to NetAudit Pro in Utilities</a>
   </main>
+
+  <script>
+    const root = document.documentElement;
+    const hueInput = document.getElementById("hue");
+    const zoomOut = document.getElementById("zoom-out");
+    const zoomIn = document.getElementById("zoom-in");
+    const zoomReadout = document.getElementById("zoom-readout");
+    const hueKey = "netaudit-pro-hue";
+    const zoomKey = "netaudit-pro-zoom";
+    const savedHue = localStorage.getItem(hueKey);
+    const savedZoom = localStorage.getItem(zoomKey);
+    const applyHue = (value) => {
+      const hue = Number(value) || 198;
+      const accent2 = (hue + 24) % 360;
+      root.style.setProperty("--accent-h", String(hue));
+      root.style.setProperty("--accent", `hsl(${hue} 88% 57%)`);
+      root.style.setProperty("--accent-2", `hsl(${accent2} 82% 63%)`);
+      root.style.setProperty("--accent-soft", `hsla(${hue} 88% 57% / 0.14)`);
+    };
+    const applyZoom = (zoom) => {
+      const clamped = Math.max(0.85, Math.min(1.25, zoom));
+      document.body.style.zoom = clamped;
+      zoomReadout.textContent = `${Math.round(clamped * 100)}%`;
+      localStorage.setItem(zoomKey, String(clamped));
+    };
+
+    applyHue(savedHue ?? hueInput.value);
+    hueInput.value = savedHue ?? hueInput.value;
+    applyZoom(savedZoom ? Number(savedZoom) : 1);
+    hueInput.addEventListener("input", () => {
+      applyHue(hueInput.value);
+      localStorage.setItem(hueKey, hueInput.value);
+    });
+    zoomOut.addEventListener("click", () => applyZoom((parseFloat(document.body.style.zoom || "1") || 1) - 0.05));
+    zoomIn.addEventListener("click", () => applyZoom((parseFloat(document.body.style.zoom || "1") || 1) + 0.05));
+  </script>
 </body>
 </html>

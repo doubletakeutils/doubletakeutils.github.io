@@ -1,105 +1,110 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Download DoubleTake</title>
+  <meta name="description" content="Bootstrap installer for DoubleTake Image and Video." />
   <script defer src="/metrics.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/wisprflow-system.css">
   <style>
-    :root {
-      --bg: #f4f7fb;
-      --card: #ffffff;
-      --text: #162033;
-      --muted: #50607a;
-      --brand: #1f88e5;
-      --brand-strong: #1168b6;
-      --line: #dbe3ee;
-    }
     body {
-      margin: 0;
-      font-family: "Segoe UI", Tahoma, sans-serif;
-      background: linear-gradient(160deg, #eef3f9 0%, #f8fbff 100%);
-      color: var(--text);
       min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 24px;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(14,165,164,0.14), transparent 34%),
+        radial-gradient(circle at 80% 0%, rgba(37,99,235,0.10), transparent 28%),
+        radial-gradient(circle at 50% 100%, rgba(99,102,241,0.08), transparent 28%),
+        var(--wf-bg);
+    }
+    .page {
+      width: min(960px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 40px 0 60px;
     }
     .card {
-      max-width: 760px;
-      width: 100%;
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 24px;
-      box-shadow: 0 12px 30px rgba(17, 40, 78, 0.08);
+      padding: 28px;
+      border-radius: 22px;
+      border: 1px solid var(--wf-border);
+      background: var(--wf-panel);
+      box-shadow: var(--wf-shadow);
     }
     h1 {
-      margin-top: 0;
-      margin-bottom: 10px;
-      font-size: 28px;
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.06em;
     }
     p {
       margin: 0 0 14px;
-      color: var(--muted);
-      line-height: 1.45;
+      color: var(--wf-muted);
+      line-height: 1.65;
     }
     .actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin: 18px 0;
-    }
-    .btn {
-      display: inline-block;
-      text-decoration: none;
-      border-radius: 8px;
-      padding: 11px 16px;
-      font-weight: 600;
-    }
-    .btn-primary {
-      background: var(--brand);
-      color: #fff;
-    }
-    .btn-primary:hover {
-      background: var(--brand-strong);
-    }
-    .btn-secondary {
-      border: 1px solid var(--line);
-      color: var(--text);
-      background: #f8fbff;
+      gap: 12px;
+      margin: 18px 0 10px;
     }
     code, pre {
       font-family: Consolas, "Courier New", monospace;
       font-size: 13px;
-      background: #f3f7fc;
-      border: 1px solid var(--line);
-      border-radius: 8px;
+      background: color-mix(in srgb, var(--wf-panel-strong) 72%, transparent);
+      border: 1px solid var(--wf-border);
+      border-radius: 10px;
     }
     code {
       padding: 2px 6px;
     }
     pre {
       margin: 10px 0 0;
-      padding: 12px;
+      padding: 14px;
       overflow: auto;
       white-space: pre-wrap;
+      color: var(--wf-text);
     }
   </style>
 </head>
 <body data-metrics-page="doubletake-image-video-download-bootstrap" data-metrics-content="true">
-  <main class="card">
-    <h1>Download DoubleTake</h1>
-    <p>This installer is delivered from website-hosted release assets using a bootstrap script and verified chunk downloads.</p>
-    <p>If GitHub release hosting is down or private, this flow still works from the website directly.</p>
+  <header class="topbar">
+    <nav class="wrap nav">
+      <a class="brand" href="../../">DoubleTake Utilities</a>
+      <div class="nav-right">
+        <a href="../../wasprflow/">WASPrFlow</a>
+        <a href="../../doubletake-image-video/">Image and Video</a>
+        <a href="../../utilities/">Utilities</a>
+        <a href="../../terms.html">Terms</a>
+        <a href="../../refund-policy.html">Refunds</a>
+        <div class="theme-mini">
+          <label for="hue">Hue</label>
+          <input id="hue" type="range" min="0" max="360" value="88" />
+        </div>
+        <div class="theme-mini">
+          <label>Zoom</label>
+          <button type="button" class="zoom-btn" id="zoom-out" aria-label="Zoom out">-</button>
+          <span id="zoom-readout" class="zoom-readout">100%</span>
+          <button type="button" class="zoom-btn" id="zoom-in" aria-label="Zoom in">+</button>
+        </div>
+      </div>
+    </nav>
+  </header>
 
-    <div class="actions">
-      <a id="bootstrap-link" class="btn btn-primary" href="#" data-metrics-event="download_click" data-metrics-target="doubletake-bootstrap-script">Download Bootstrap Script</a>
-      <a id="release-link" class="btn btn-secondary" href="#" target="_blank" rel="noopener" data-metrics-event="download_page_click" data-metrics-target="doubletake-release-assets">Open Release Asset Folder</a>
-    </div>
+  <main class="page">
+    <section class="card">
+      <h1>Download DoubleTake</h1>
+      <p>This installer is delivered from website-hosted release assets using a bootstrap script and verified chunk downloads.</p>
+      <p>If GitHub release hosting is down or private, this flow still works from the website directly.</p>
 
-    <p>One-command install (PowerShell):</p>
-    <pre id="cmd"></pre>
+      <div class="actions">
+        <a id="bootstrap-link" class="btn primary" href="#" data-metrics-event="download_click" data-metrics-target="doubletake-bootstrap-script">Download Bootstrap Script</a>
+        <a id="release-link" class="btn secondary" href="#" target="_blank" rel="noopener" data-metrics-event="download_page_click" data-metrics-target="doubletake-release-assets">Open Release Asset Folder</a>
+      </div>
+
+      <p>One-command install (PowerShell):</p>
+      <pre id="cmd"></pre>
+    </section>
   </main>
 
   <script>
@@ -112,6 +117,40 @@
     document.getElementById("bootstrap-link").href = bootstrapUrl;
     document.getElementById("release-link").href = releaseUrl;
     document.getElementById("cmd").textContent = command;
+
+    const root = document.documentElement;
+    const hueInput = document.getElementById("hue");
+    const zoomOut = document.getElementById("zoom-out");
+    const zoomIn = document.getElementById("zoom-in");
+    const zoomReadout = document.getElementById("zoom-readout");
+    const hueKey = "doubletake-image-video-bootstrap-hue";
+    const zoomKey = "doubletake-image-video-bootstrap-zoom";
+    const savedHue = localStorage.getItem(hueKey);
+    const savedZoom = localStorage.getItem(zoomKey);
+    const applyHue = (value) => {
+      const hue = Number(value) || 88;
+      const accent2 = (hue + 24) % 360;
+      root.style.setProperty("--accent-h", String(hue));
+      root.style.setProperty("--accent", `hsl(${hue} 88% 57%)`);
+      root.style.setProperty("--accent-2", `hsl(${accent2} 82% 63%)`);
+      root.style.setProperty("--accent-soft", `hsla(${hue} 88% 57% / 0.14)`);
+    };
+    const applyZoom = (zoom) => {
+      const clamped = Math.max(0.85, Math.min(1.25, zoom));
+      document.body.style.zoom = clamped;
+      zoomReadout.textContent = `${Math.round(clamped * 100)}%`;
+      localStorage.setItem(zoomKey, String(clamped));
+    };
+
+    applyHue(savedHue ?? hueInput.value);
+    hueInput.value = savedHue ?? hueInput.value;
+    applyZoom(savedZoom ? Number(savedZoom) : 1);
+    hueInput.addEventListener("input", () => {
+      applyHue(hueInput.value);
+      localStorage.setItem(hueKey, hueInput.value);
+    });
+    zoomOut.addEventListener("click", () => applyZoom((parseFloat(document.body.style.zoom || "1") || 1) - 0.05));
+    zoomIn.addEventListener("click", () => applyZoom((parseFloat(document.body.style.zoom || "1") || 1) + 0.05));
   </script>
 </body>
 </html>

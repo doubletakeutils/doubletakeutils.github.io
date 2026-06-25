@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -525,26 +525,35 @@
       .section { padding: 42px 0; }
     }
   </style>
+  <link rel="stylesheet" href="/assets/wisprflow-system.css">
 </head>
 <body>
   <header class="topbar">
     <div class="container topbar-inner">
-      <a class="brand" href="#top" aria-label="WASPrFlow home">
+      <a class="brand" href="../" aria-label="DoubleTake Utilities home">
         <span class="brand-mark"><img src="../assets/wasprflow-mark.png" alt="" /></span>
-        <span>WASPrFlow</span>
+        <span>DoubleTake Utilities</span>
       </a>
 
       <nav class="nav-links" aria-label="Primary">
-        <a href="#features">Features</a>
-        <a href="#use-cases">Use cases</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#about">Blog / About</a>
+        <a href="../wasprflow/" aria-current="page">WASPrFlow</a>
+        <a href="../doubletake-image-video/">Image and Video</a>
+        <a href="../utilities/">Utilities</a>
+        <a href="../terms.html">Terms</a>
+        <a href="../refund-policy.html">Refunds</a>
       </nav>
 
       <div class="nav-actions">
-        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">Theme</button>
-        <a class="cta mobile-only" href="#downloads">Download</a>
-        <a class="cta" href="#downloads">Download for Windows</a>
+        <div class="theme-mini">
+          <label for="hue">Hue</label>
+          <input id="hue" type="range" min="0" max="360" value="282" />
+        </div>
+        <div class="theme-mini">
+          <label>Zoom</label>
+          <button type="button" class="zoom-btn" id="zoom-out" aria-label="Zoom out">-</button>
+          <span id="zoom-readout" class="zoom-readout">100%</span>
+          <button type="button" class="zoom-btn" id="zoom-in" aria-label="Zoom in">+</button>
+        </div>
       </div>
     </div>
   </header>
@@ -562,6 +571,7 @@
           <div class="hero-actions">
             <a class="cta" href="#downloads">Download for Windows</a>
             <a class="cta secondary" href="#demo">Watch in action</a>
+            <a class="cta secondary" href="https://shop.doubletake.sbs/" target="_blank" rel="noopener noreferrer">Visit Store</a>
           </div>
           <div class="availability">
             <span class="chip">Available on Windows</span>
@@ -722,6 +732,7 @@
       </div>
       <div class="footer-links">
         <a href="../">Home</a>
+        <a href="https://shop.doubletake.sbs/" target="_blank" rel="noopener noreferrer">Store</a>
         <a href="install-guide.html">Install guide</a>
         <a href="release-history.html">Release history</a>
         <a href="../terms.html">Terms</a>
@@ -743,16 +754,38 @@
       document.getElementById("downloadMsi").href = links.msi;
 
       const root = document.documentElement;
-      const stored = localStorage.getItem("wasprflow-theme");
-      if (stored === "dark" || stored === "light") root.dataset.theme = stored;
-      const themeToggle = document.getElementById("themeToggle");
-      themeToggle.textContent = root.dataset.theme === "dark" ? "Dark" : "Light";
-      themeToggle.addEventListener("click", () => {
-        const next = root.dataset.theme === "dark" ? "light" : "dark";
-        root.dataset.theme = next;
-        localStorage.setItem("wasprflow-theme", next);
-        themeToggle.textContent = next === "dark" ? "Dark" : "Light";
+      const hueInput = document.getElementById("hue");
+      const zoomOut = document.getElementById("zoom-out");
+      const zoomIn = document.getElementById("zoom-in");
+      const zoomReadout = document.getElementById("zoom-readout");
+      const hueKey = "wasprflow-site-hue";
+      const zoomKey = "wasprflow-site-zoom";
+      const savedHue = localStorage.getItem(hueKey);
+      const savedZoom = localStorage.getItem(zoomKey);
+      const applyHue = (value) => {
+        const hue = Number(value) || 282;
+        const accent2 = (hue + 24) % 360;
+        root.style.setProperty("--accent-h", String(hue));
+        root.style.setProperty("--accent", `hsl(${hue} 88% 57%)`);
+        root.style.setProperty("--accent-2", `hsl(${accent2} 82% 63%)`);
+        root.style.setProperty("--accent-soft", `hsla(${hue} 88% 57% / 0.14)`);
+      };
+      const applyZoom = (zoom) => {
+        const clamped = Math.max(0.85, Math.min(1.25, zoom));
+        document.body.style.zoom = clamped;
+        zoomReadout.textContent = `${Math.round(clamped * 100)}%`;
+        localStorage.setItem(zoomKey, String(clamped));
+      };
+
+      applyHue(savedHue ?? hueInput.value);
+      hueInput.value = savedHue ?? hueInput.value;
+      applyZoom(savedZoom ? Number(savedZoom) : 1);
+      hueInput.addEventListener("input", () => {
+        applyHue(hueInput.value);
+        localStorage.setItem(hueKey, hueInput.value);
       });
+      zoomOut.addEventListener("click", () => applyZoom((parseFloat(document.body.style.zoom || "1") || 1) - 0.05));
+      zoomIn.addEventListener("click", () => applyZoom((parseFloat(document.body.style.zoom || "1") || 1) + 0.05));
 
       const observer = new IntersectionObserver((entries) => {
         for (const entry of entries) {
