@@ -49,6 +49,7 @@ body {
   color: var(--wf-text);
   background: inherit;
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  zoom: 1 !important;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
@@ -300,7 +301,8 @@ figcaption,
   display: none !important;
 }
 
-nav .nav-right > .theme-mini:first-of-type {
+nav .theme-mini,
+nav .zoom-mini {
   display: none !important;
 }
 
