@@ -102,12 +102,6 @@
           <label for="hue">Hue</label>
           <input id="hue" type="range" min="0" max="360" value="282" />
         </div>
-        <div class="theme-mini">
-          <label>Zoom</label>
-          <button type="button" class="zoom-btn" id="zoom-out" aria-label="Zoom out">-</button>
-          <span id="zoom-readout" class="zoom-readout">100%</span>
-          <button type="button" class="zoom-btn" id="zoom-in" aria-label="Zoom in">+</button>
-        </div>
       </div>
     </nav>
   </header>
@@ -273,55 +267,7 @@
   </footer>
   <script>
     const storageKey = "wasprflow-install-guide-theme-hue-v2";
-    const zoomKey = "doubletake-site-zoom-v1";
-    const root = document.documentElement;
-    const metaTheme = document.querySelector('meta[name="theme-color"]');
-    const hueInput = document.getElementById("hue");
-    const zoomOutBtn = document.getElementById("zoom-out");
-    const zoomInBtn = document.getElementById("zoom-in");
-    const zoomReadout = document.getElementById("zoom-readout");
-
-    function applyTheme(hue) {
-      root.style.setProperty("--accent-h", hue);
-      root.style.setProperty("--bg-1", `hsl(${hue} 46% 8%)`);
-      root.style.setProperty("--bg-2", `hsl(${hue} 42% 13%)`);
-      root.style.setProperty("--panel", `hsl(${hue} 34% 16%)`);
-      root.style.setProperty("--text", `hsl(${Number(hue) + 18} 72% 96%)`);
-      root.style.setProperty("--muted", `hsl(${Number(hue) + 10} 34% 72%)`);
-      if (metaTheme) metaTheme.setAttribute("content", `hsl(${hue} 52% 18%)`);
-    }
-
-    const savedHue = localStorage.getItem(storageKey);
-    const startHue = savedHue || hueInput.value || "282";
-    hueInput.value = startHue;
-    applyTheme(startHue);
-    hueInput.addEventListener("input", (e) => {
-      const hue = e.target.value;
-      localStorage.setItem(storageKey, hue);
-      applyTheme(hue);
-    });
-    const ZOOM_MIN = 85;
-    const ZOOM_MAX = 125;
-    const ZOOM_STEP = 5;
-
-    function applyZoom(raw) {
-      const clamped = Math.max(ZOOM_MIN, Math.min(ZOOM_MAX, Math.round(raw * 10) / 10));
-      root.style.setProperty("--ui-zoom", String(clamped / 100));
-      localStorage.setItem(zoomKey, String(clamped));
-      zoomReadout.textContent = `${clamped}%`;
-      return clamped;
-    }
-
-    let currentZoom = Number(localStorage.getItem(zoomKey) || 100);
-    currentZoom = applyZoom(currentZoom);
-
-    zoomOutBtn.addEventListener("click", () => {
-      currentZoom = applyZoom(currentZoom - ZOOM_STEP);
-    });
-
-    zoomInBtn.addEventListener("click", () => {
-      currentZoom = applyZoom(currentZoom + ZOOM_STEP);
-    });
   </script>
 </body>
 </html>
+

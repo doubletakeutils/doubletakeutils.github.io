@@ -81,12 +81,6 @@
           <label for="hue">Hue</label>
           <input id="hue" type="range" min="0" max="360" value="88" />
         </div>
-        <div class="theme-mini">
-          <label>Zoom</label>
-          <button type="button" class="zoom-btn" id="zoom-out" aria-label="Zoom out">-</button>
-          <span id="zoom-readout" class="zoom-readout">100%</span>
-          <button type="button" class="zoom-btn" id="zoom-in" aria-label="Zoom in">+</button>
-        </div>
       </div>
     </nav>
   </header>
@@ -124,33 +118,7 @@
     const zoomIn = document.getElementById("zoom-in");
     const zoomReadout = document.getElementById("zoom-readout");
     const hueKey = "doubletake-image-video-bootstrap-hue";
-    const zoomKey = "doubletake-image-video-bootstrap-zoom";
-    const savedHue = localStorage.getItem(hueKey);
-    const savedZoom = localStorage.getItem(zoomKey);
-    const applyHue = (value) => {
-      const hue = Number(value) || 88;
-      const accent2 = (hue + 24) % 360;
-      root.style.setProperty("--accent-h", String(hue));
-      root.style.setProperty("--accent", `hsl(${hue} 88% 57%)`);
-      root.style.setProperty("--accent-2", `hsl(${accent2} 82% 63%)`);
-      root.style.setProperty("--accent-soft", `hsla(${hue} 88% 57% / 0.14)`);
-    };
-    const applyZoom = (zoom) => {
-      const clamped = Math.max(0.85, Math.min(1.25, zoom));
-      document.body.style.zoom = clamped;
-      zoomReadout.textContent = `${Math.round(clamped * 100)}%`;
-      localStorage.setItem(zoomKey, String(clamped));
-    };
-
-    applyHue(savedHue ?? hueInput.value);
-    hueInput.value = savedHue ?? hueInput.value;
-    applyZoom(savedZoom ? Number(savedZoom) : 1);
-    hueInput.addEventListener("input", () => {
-      applyHue(hueInput.value);
-      localStorage.setItem(hueKey, hueInput.value);
-    });
-    zoomOut.addEventListener("click", () => applyZoom((parseFloat(document.body.style.zoom || "1") || 1) - 0.05));
-    zoomIn.addEventListener("click", () => applyZoom((parseFloat(document.body.style.zoom || "1") || 1) + 0.05));
   </script>
 </body>
 </html>
+
