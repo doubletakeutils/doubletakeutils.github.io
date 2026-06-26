@@ -23,8 +23,7 @@
       --accent-2: hsl(calc(var(--accent-h) + 16) 82% 63%);
       --line: hsl(calc(var(--accent-h) + 8) 72% 82% / 0.2);
       --panel: hsl(var(--accent-h) 38% 16% / 0.92);
-    }
-    * { box-sizing: border-box; }
+* { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: "Sora", "Segoe UI", sans-serif;
@@ -35,8 +34,7 @@
         radial-gradient(circle at top right, hsl(calc(var(--accent-h) + 16) 82% 63% / 0.14), transparent 24%),
         linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 40%, var(--bg-deep) 100%);
       min-height: 100vh;
-    }
-    .wrap { width: min(1120px, 92vw); margin: 0 auto; }
+.wrap { width: min(1120px, 92vw); margin: 0 auto; }
     .topbar {
       position: sticky;
       top: 0;
@@ -44,8 +42,7 @@
       background: hsl(var(--accent-h) 30% 8% / 0.78);
       border-bottom: 1px solid hsl(calc(var(--accent-h) + 8) 72% 82% / 0.12);
       z-index: 20;
-    }
-    .nav { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 12px 0 6px; flex-wrap: wrap; }
+.nav { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 12px 0 6px; flex-wrap: wrap; }
     .nav a { color: var(--muted); text-decoration: none; font-weight: 600; }
     .nav a:hover { color: var(--text); }
     .brand { color: var(--text) !important; font-weight: 800; }
@@ -88,10 +85,6 @@
         <a href="../utilities/">Utilities</a>
         <a href="../terms.html">Terms</a>
         <a href="../refund-policy.html">Refunds</a>
-        <div class="theme-mini">
-          <label for="hue">Hue</label>
-          <input id="hue" type="range" min="0" max="360" value="88" />
-        </div>
       </div>
     </nav>
   </header>
@@ -161,9 +154,8 @@
   <footer class="wrap">DoubleTake Utilities • <a href="../terms.html">Terms</a> • <a href="../refund-policy.html">Refund Policy</a> • doubletake.sbs/doubletake-image-video</footer>
 
 
-  <script>
-    const themeKey = "doubletake-image-video-theme-hue-v2";
-  </script>
+  
 </body>
 </html>
+
 

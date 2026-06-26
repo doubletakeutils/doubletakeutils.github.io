@@ -18,54 +18,45 @@
         radial-gradient(circle at 80% 0%, rgba(37,99,235,0.10), transparent 28%),
         radial-gradient(circle at 50% 100%, rgba(99,102,241,0.08), transparent 28%),
         var(--wf-bg);
-    }
-    .page {
+.page {
       width: min(960px, calc(100% - 32px));
       margin: 0 auto;
       padding: 40px 0 60px;
-    }
-    .card {
+.card {
       padding: 28px;
       border-radius: 22px;
       border: 1px solid var(--wf-border);
       background: var(--wf-panel);
       box-shadow: var(--wf-shadow);
-    }
-    h1 {
+h1 {
       margin: 0 0 12px;
       font-size: clamp(2rem, 4vw, 3.2rem);
       line-height: 1.05;
       letter-spacing: -0.06em;
-    }
-    p {
+p {
       margin: 0 0 14px;
       color: var(--wf-muted);
       line-height: 1.65;
-    }
-    .actions {
+.actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
       margin: 18px 0 10px;
-    }
-    code, pre {
+code, pre {
       font-family: Consolas, "Courier New", monospace;
       font-size: 13px;
       background: color-mix(in srgb, var(--wf-panel-strong) 72%, transparent);
       border: 1px solid var(--wf-border);
       border-radius: 10px;
-    }
-    code {
+code {
       padding: 2px 6px;
-    }
-    pre {
+pre {
       margin: 10px 0 0;
       padding: 14px;
       overflow: auto;
       white-space: pre-wrap;
       color: var(--wf-text);
-    }
-  </style>
+</style>
 </head>
 <body data-metrics-page="doubletake-image-video-download-bootstrap" data-metrics-content="true">
   <header class="topbar">
@@ -77,10 +68,6 @@
         <a href="../../utilities/">Utilities</a>
         <a href="../../terms.html">Terms</a>
         <a href="../../refund-policy.html">Refunds</a>
-        <div class="theme-mini">
-          <label for="hue">Hue</label>
-          <input id="hue" type="range" min="0" max="360" value="88" />
-        </div>
       </div>
     </nav>
   </header>
@@ -113,12 +100,8 @@
     document.getElementById("cmd").textContent = command;
 
     const root = document.documentElement;
-    const hueInput = document.getElementById("hue");
-    const zoomOut = document.getElementById("zoom-out");
-    const zoomIn = document.getElementById("zoom-in");
-    const zoomReadout = document.getElementById("zoom-readout");
-    const hueKey = "doubletake-image-video-bootstrap-hue";
-  </script>
+</script>
 </body>
 </html>
+
 

@@ -22,8 +22,7 @@
       --accent-2: hsl(calc(var(--accent-h) + 16) 82% 63%);
       --line: hsl(calc(var(--accent-h) + 8) 72% 82% / 0.2);
       --panel: hsl(var(--accent-h) 38% 16% / 0.92);
-    }
-    * { box-sizing: border-box; }
+* { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: "Sora", "Segoe UI", sans-serif;
@@ -34,8 +33,7 @@
         radial-gradient(circle at top right, hsl(calc(var(--accent-h) + 16) 82% 63% / 0.14), transparent 24%),
         linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 40%, var(--bg-deep) 100%);
       min-height: 100vh;
-    }
-    .wrap { width: min(1120px, 92vw); margin: 0 auto; }
+.wrap { width: min(1120px, 92vw); margin: 0 auto; }
     .topbar {
       position: sticky;
       top: 0;
@@ -43,8 +41,7 @@
       background: hsl(var(--accent-h) 30% 8% / 0.78);
       border-bottom: 1px solid hsl(calc(var(--accent-h) + 8) 72% 82% / 0.12);
       z-index: 20;
-    }
-    .nav { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 12px 0 6px; flex-wrap: wrap; }
+.nav { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 12px 0 6px; flex-wrap: wrap; }
     .nav a { color: var(--muted); text-decoration: none; font-weight: 600; }
     .nav a:hover { color: var(--text); }
     .brand { color: var(--text) !important; font-weight: 800; }
@@ -67,8 +64,7 @@
       padding: 10px 12px;
       font-size: 14px;
       font-weight: 600;
-    }
-    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
     .btn { display: inline-block; text-decoration: none; font-weight: 700; padding: 10px 14px; border-radius: 10px; }
     .btn.primary { background: linear-gradient(120deg, var(--accent), var(--accent-2)); color: #081524; }
     .btn.secondary { border: 1px solid var(--line); color: var(--text); }
@@ -77,9 +73,7 @@
       cursor: not-allowed;
       pointer-events: none;
       filter: grayscale(35%);
-    }
-
-    .grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin: 12px 0 22px; }
+.grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin: 12px 0 22px; }
     .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; }
     .panel h3 { margin: 0 0 6px; }
     .row-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 8px; }
@@ -106,10 +100,6 @@
         <a href="./">Utilities</a>
         <a href="../terms.html">Terms</a>
         <a href="../refund-policy.html">Refunds</a>
-        <div class="theme-mini">
-          <label for="hue">Hue</label>
-          <input id="hue" type="range" min="0" max="360" value="198" />
-        </div>
       </div>
     </nav>
   </header>
@@ -220,9 +210,8 @@
     document.getElementById("ascii-version").textContent = ASCII_VERSION;
     document.getElementById("btn-hdd-exe").href = `downloads/HDDScanner_${HDD_VERSION}_x64.exe`;
     document.getElementById("hdd-version").textContent = HDD_VERSION;
-
-    const themeKey = "utilities-theme-hue-v1";
-  </script>
+</script>
 </body>
 </html>
+
 

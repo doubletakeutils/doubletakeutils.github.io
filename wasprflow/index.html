@@ -543,14 +543,8 @@
         <a href="../refund-policy.html">Refunds</a>
       </nav>
 
-      <div class="nav-actions">
-        <div class="theme-mini">
-          <label for="hue">Hue</label>
-          <input id="hue" type="range" min="0" max="360" value="282" />
-        </div>
       </div>
-    </div>
-  </header>
+    </header>
 
   <main id="top">
     <section class="hero">
@@ -746,13 +740,6 @@
 
       document.getElementById("downloadWindows").href = links.windows;
       document.getElementById("downloadMsi").href = links.msi;
-
-      const root = document.documentElement;
-      const hueInput = document.getElementById("hue");
-      const zoomOut = document.getElementById("zoom-out");
-      const zoomIn = document.getElementById("zoom-in");
-      const zoomReadout = document.getElementById("zoom-readout");
-      const hueKey = "wasprflow-site-hue";
 
       const observer = new IntersectionObserver((entries) => {
         for (const entry of entries) {

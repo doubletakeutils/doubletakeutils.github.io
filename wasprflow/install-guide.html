@@ -29,8 +29,7 @@
       --danger: hsl(var(--accent-h) 57% 73%);
       --radius: 14px;
       --measure: 68ch;
-    }
-    * { box-sizing: border-box; }
+* { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
     body {
       font-family: "Sora", "Segoe UI", sans-serif;
@@ -42,8 +41,7 @@
         radial-gradient(1000px 800px at 100% 0%, hsl(var(--accent-h) 47% 57% / 0.12) 0%, transparent 65%),
         linear-gradient(165deg, var(--bg-1), var(--bg-2));
       min-height: 100vh;
-    }
-    .wrap { width: min(1080px, 92vw); margin: 0 auto; }
+.wrap { width: min(1080px, 92vw); margin: 0 auto; }
     .topbar { position: sticky; top: 0; backdrop-filter: blur(14px); background: hsl(var(--accent-h) 30% 8% / 0.78); border-bottom: 1px solid hsl(var(--accent-h) 39% 26% / 0.62); z-index: 20; }
     .nav { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 12px 0 6px; flex-wrap: wrap; }
     .brand { color: var(--text) !important; font-weight: 800; text-decoration: none; }
@@ -98,10 +96,6 @@
         <a href="../utilities/">Utilities</a>
         <a href="../terms.html">Terms</a>
         <a href="../refund-policy.html">Refunds</a>
-        <div class="theme-mini">
-          <label for="hue">Hue</label>
-          <input id="hue" type="range" min="0" max="360" value="282" />
-        </div>
       </div>
     </nav>
   </header>
@@ -270,4 +264,5 @@
   </script>
 </body>
 </html>
+
 
