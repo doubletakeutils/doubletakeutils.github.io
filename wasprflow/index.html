@@ -472,6 +472,20 @@
       font-weight: 600;
     }
     .footer-links a:hover { color: var(--text); }
+    .footer-badge {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+      max-width: 100%;
+      margin-top: 16px;
+    }
+    .footer-badge img {
+      display: block;
+      width: 125px;
+      height: 44px;
+      object-fit: contain;
+    }
 
     .reveal {
       opacity: 0;
@@ -709,6 +723,11 @@
         <a href="release-history.html">Release history</a>
         <a href="../terms.html">Terms</a>
         <a href="../refund-policy.html">Refunds</a>
+      </div>
+      <div class="footer-badge">
+        <a href="https://listmysaas.xyz/" target="_blank" rel="dofollow noopener noreferrer">
+          <img src="https://listmysaas.xyz/listmysaasbadgenormal.svg" alt="Featured on ListMySaaS" width="125" height="44" loading="lazy" decoding="async" />
+        </a>
       </div>
     </div>
   </footer>
