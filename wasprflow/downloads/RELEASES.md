@@ -1,5 +1,10 @@
 ## WASPrFlow Website Download Releases
 
+### 2026-07-14 - v1.2.146
+- Restored the proven 1.2.143 text-insertion behavior after the experimental cursor restoration caused regressions.
+- MSI SHA-256: `6F41D04F11245100CA81FB4CBED720DBCB03231B614AA665F12E8450EA371754`
+- Setup EXE SHA-256: `C03F2E95F34CCB5A9B8224CC97E0D878C86F4594E931FDFDC77E6391ECD06FEA`
+
 ### 2026-03-15 - v0.2.45
 - Source MSI: `f:\DEV\WASPrFlow\src-tauri	argeteleaseundle\msi\WASPrFlow_0.2.45_x64_en-US.msi`
 - Source Setup EXE: `f:\DEV\WASPrFlow\src-tauri	argeteleaseundle
