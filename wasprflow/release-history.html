@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WASPrFlow Release History | DoubleTake Utilities</title>
+  <meta name="description" content="Release history and version timeline for WASPrFlow." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <script defer src="/metrics.js"></script>
+  <style>
+    :root {
+      --accent-h: 282;
+      --ui-zoom: 1;
+      --bg: hsl(var(--accent-h) 30% 8%);
+      --bg-soft: hsl(var(--accent-h) 34% 10%);
+      --bg-deep: hsl(var(--accent-h) 22% 6%);
+      --text: hsl(calc(var(--accent-h) + 22) 100% 95%);
+      --muted: hsl(calc(var(--accent-h) + 8) 34% 72%);
+      --accent: hsl(var(--accent-h) 88% 57%);
+      --accent-2: hsl(calc(var(--accent-h) + 16) 82% 63%);
+      --line: hsl(calc(var(--accent-h) + 8) 72% 82% / 0.2);
+      --panel: hsl(var(--accent-h) 38% 16% / 0.92);
+* { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Sora", "Segoe UI", sans-serif;
+      color: var(--text);
+      zoom: var(--ui-zoom);
+      background:
+        radial-gradient(circle at top left, hsl(var(--accent-h) 88% 57% / 0.22), transparent 28%),
+        radial-gradient(circle at top right, hsl(calc(var(--accent-h) + 16) 82% 63% / 0.14), transparent 24%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 40%, var(--bg-deep) 100%);
+      min-height: 100vh;
+.wrap { width: min(1120px, 92vw); margin: 0 auto; }
+    .topbar { position: sticky; top: 0; backdrop-filter: blur(14px); background: hsl(var(--accent-h) 30% 8% / 0.78); border-bottom: 1px solid hsl(calc(var(--accent-h) + 8) 72% 82% / 0.12); z-index: 20; }
+    .nav { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 12px 0; flex-wrap: wrap; }
+    .nav a { color: var(--muted); text-decoration: none; font-weight: 600; font-size: 0.92rem; white-space: nowrap; }
+    .nav a:hover { color: var(--text); }
+    .brand { color: var(--text) !important; font-weight: 800; }
+    .nav-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .theme-mini { display: flex; align-items: center; gap: 6px; padding: 5px 7px; border: 1px solid var(--line); border-radius: 8px; background: hsl(var(--accent-h) 28% 14% / 0.65); }
+    .theme-mini label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+    .theme-mini input { width: 82px; accent-color: var(--accent); }
+    .zoom-btn { width: 24px; height: 22px; border: 1px solid var(--line); border-radius: 6px; background: transparent; color: var(--text); font-weight: 700; cursor: pointer; line-height: 1; }
+    .zoom-btn:hover { border-color: hsl(calc(var(--accent-h) + 8) 72% 82% / 0.55); }
+    .zoom-readout { min-width: 40px; text-align: center; color: var(--text); font-size: 12px; font-weight: 700; }
+    .hero { padding: 42px 0 14px; display: grid; gap: 14px; }
+    h1 { margin: 0; font-size: clamp(2rem, 4vw, 3.1rem); line-height: 1.06; }
+    p { color: var(--muted); margin: 0; line-height: 1.6; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+    .btn { display: inline-block; text-decoration: none; font-weight: 700; padding: 10px 14px; border-radius: 10px; }
+    .btn.primary { background: linear-gradient(120deg, var(--accent), var(--accent-2)); color: #081524; }
+    .btn.secondary { border: 1px solid var(--line); color: var(--text); }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px; margin: 14px 0; }
+    .panel h2 { margin: 0 0 10px; font-size: 1.2rem; }
+    .timeline { display: grid; gap: 10px; }
+    .entry { padding: 14px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,0.02); }
+    .entry-head { display: flex; gap: 10px; flex-wrap: wrap; align-items: baseline; margin-bottom: 8px; }
+    .tag { display: inline-block; padding: 4px 10px; border-radius: 999px; background: rgba(139, 211, 255, 0.14); border: 1px solid rgba(139, 211, 255, 0.22); color: var(--text); font-size: 0.84rem; font-weight: 700; }
+    .date { color: var(--muted); font-size: 0.92rem; }
+    ul { margin: 8px 0 0 18px; color: var(--muted); }
+    li + li { margin-top: 4px; }
+    footer { padding: 12px 0 30px; color: var(--muted); font-size: 14px; }
+  </style>
+  <link rel="stylesheet" href="/assets/wisprflow-system.css">
+</head>
+<body data-metrics-page="wasprflow-release-history" data-metrics-content="true">
+  <header class="topbar">
+    <nav class="wrap nav">
+      <a class="brand" href="../">DoubleTake Utilities</a>
+      <div class="nav-right">
+        <a href="../wasprflow/">WASPrFlow</a>
+        <a href="../doubletake-image-video/">Image and Video</a>
+        <a href="../utilities/">Utilities</a>
+        <a href="../terms.html">Terms</a>
+        <a href="../refund-policy.html">Refunds</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1>WASPrFlow Release History</h1>
+      <p>Version timeline for website-published Windows installers and release metadata.</p>
+      <div class="actions">
+        <a class="btn primary" href="downloads/WASPrFlow_latest_x64-setup.exe" data-metrics-event="download_click" data-metrics-target="wasprflow-release-history-latest-exe">Download Latest Setup EXE</a>
+        <a class="btn secondary" href="downloads/WASPrFlow_latest_x64_en-US.msi" data-metrics-event="download_click" data-metrics-target="wasprflow-release-history-latest-msi">Download Latest MSI</a>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Recent Releases</h2>
+      <div class="timeline">
+        <article class="entry">
+          <div class="entry-head"><span class="tag">1.2.146</span><span class="date">July 14, 2026</span></div>
+          <ul>
+            <li>Restored the proven 1.2.143 insertion behavior after the experimental cursor-restoration work caused regressions.</li>
+            <li>Windows EXE and MSI refreshed, signed, and published with verified updater metadata.</li>
+          </ul>
+        </article>
+        <article class="entry">
+          <div class="entry-head"><span class="tag">1.2.143</span><span class="date">July 4, 2026</span></div>
+          <ul>
+            <li>Windows EXE and MSI refreshed from the latest published build.</li>
+            <li>Latest alias pointers updated for the updater and download buttons.</li>
+            <li>Manifest signatures refreshed to match the 1.2.143 installers.</li>
+          </ul>
+        </article>
+        <article class="entry">
+          <div class="entry-head"><span class="tag">1.2.141</span><span class="date">July 2, 2026</span></div>
+          <ul>
+            <li>Windows EXE and MSI refreshed from the latest local build.</li>
+            <li>Latest alias pointers updated for the updater and download buttons.</li>
+            <li>Manifest signatures refreshed to match the new installers.</li>
+          </ul>
+        </article>
+        <article class="entry">
+          <div class="entry-head"><span class="tag">1.2.139</span><span class="date">June 22, 2026</span></div>
+          <ul>
+            <li>Latest alias pointers updated for EXE and MSI for the new Windows build.</li>
+            <li>Updater manifest points to the latest downloads for 1.2.139.</li>
+            <li>Current release hash verified against website copies and latest aliases.</li>
+          </ul>
+        </article>
+        <article class="entry">
+          <div class="entry-head"><span class="tag">1.2.134</span><span class="date">June 19, 2026</span></div>
+          <ul>
+            <li>Previous stable release on the Windows stream.</li>
+            <li>Still available in the release archive for rollback/reference.</li>
+          </ul>
+        </article>
+        <article class="entry">
+          <div class="entry-head"><span class="tag">1.2.133</span><span class="date">June 19, 2026</span></div>
+          <ul>
+            <li>Published before the latest alias switch.</li>
+            <li>Useful as a fallback comparison point.</li>
+          </ul>
+        </article>
+        <article class="entry">
+          <div class="entry-head"><span class="tag">Earlier releases</span><span class="date">March 2026</span></div>
+          <ul>
+            <li>Historical versions are retained in <code>wasprflow/downloads/</code> and can be surfaced here later if needed.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">DoubleTake Utilities • <a href="index.html">WASPrFlow</a> • <a href="install-guide.html">Guide</a> • <a href="https://shop.doubletake.sbs/" target="_blank" rel="noopener noreferrer">Store</a></footer>
+
+  
+</body>
+</html>
+
+
