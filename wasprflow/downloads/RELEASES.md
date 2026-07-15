@@ -1,5 +1,10 @@
 ## WASPrFlow Website Download Releases
 
+### 2026-07-15 - v1.2.147
+- Fixed startup update notification placement and sizing above the floating bar.
+- MSI SHA-256: `33A553D2F739C3F78CFC1A21C4C99B233111C72BCCBF0A2BECB3C0A4095D73BE`
+- Setup EXE SHA-256: `0AF869008A0B7E1F9FBFE8D7F48C8BFD22E4617D9E32E6F994119F8E8F2B6E1E`
+
 ### 2026-07-14 - v1.2.146
 - Restored the proven 1.2.143 text-insertion behavior after the experimental cursor restoration caused regressions.
 - MSI SHA-256: `6F41D04F11245100CA81FB4CBED720DBCB03231B614AA665F12E8450EA371754`
