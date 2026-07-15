@@ -1,5 +1,12 @@
 ## WASPrFlow Website Download Releases
 
+### 2026-07-15 - v1.2.148
+- Added a rewrite model selector in Privacy & Settings.
+- Restored `gpt-4o-mini` as the default rewrite model.
+- Added `gpt-4.1-nano`, `gpt-5-nano`, and `gpt-5.4-mini` as supported rewrite choices.
+- MSI SHA-256: `3B9B8C93918A3865B13F0E8CFE647388C3A15154EAB242C81C0BA7ECCC366F07`
+- Setup EXE SHA-256: `5EA04C6D34917355C13971F4015F4F991BD547BDD544C38278C09E97F366FFC2`
+
 ### 2026-07-15 - v1.2.147
 - Fixed startup update notification placement and sizing above the floating bar.
 - MSI SHA-256: `33A553D2F739C3F78CFC1A21C4C99B233111C72BCCBF0A2BECB3C0A4095D73BE`
