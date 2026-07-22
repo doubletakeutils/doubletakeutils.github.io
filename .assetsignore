@@ -1,0 +1,5 @@
+# Cloudflare Workers static assets are limited to 25 MiB per file.
+# These installers are published through GitHub Releases instead.
+/doubletake-image-video/downloads/DoubleTakeImageVideo_0.1.0_x64-setup.exe
+/netaudit-pro/downloads/NetAuditPro_1.0.0_x64-portable.exe
+/netaudit-pro/downloads/NetAuditPro_1.0.0_x64-setup.exe
