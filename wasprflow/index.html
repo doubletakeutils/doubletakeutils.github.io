@@ -160,6 +160,31 @@
       text-decoration: underline;
       text-underline-offset: 3px;
     }
+    .updates-signup {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(320px, 1.2fr);
+      gap: 28px;
+      align-items: center;
+      margin-top: 34px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border);
+    }
+    .updates-signup h3 {
+      margin: 0 0 8px;
+      font-size: 1.25rem;
+      letter-spacing: 0;
+    }
+    .updates-signup p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .updates-signup .consent-note {
+      margin-top: 8px;
+      color: var(--muted-2);
+      font-size: 0.82rem;
+    }
+    .kit-embed { min-width: 0; }
     .hero {
       padding: 84px 0 36px;
     }
@@ -538,6 +563,7 @@
       .hero { padding: 28px 0 22px; }
       .hero-actions { flex-direction: column; align-items: stretch; }
       .hero-actions .cta, .hero-actions .cta.secondary { justify-content: center; }
+      .updates-signup { grid-template-columns: 1fr; gap: 16px; }
       .stats-row { grid-template-columns: 1fr; }
       .section { padding: 42px 0; }
     }
@@ -727,6 +753,16 @@
         <p class="feedback-invite">
           Tried WASPrFlow? Tell us what you wrote and what felt better or worse. <a href="mailto:feedback@doubletake.sbs?subject=WASPrFlow%20feedback">Send candid feedback</a>.
         </p>
+        <div class="updates-signup" aria-labelledby="updates-heading">
+          <div>
+            <h3 id="updates-heading">Get WASPrFlow updates</h3>
+            <p>Windows writing tips, early product updates, and occasional feedback invites.</p>
+            <p class="consent-note">Unsubscribe anytime.</p>
+          </div>
+          <div class="kit-embed">
+            <script async data-uid="905f4f98f3" src="https://doubletake-labs.kit.com/905f4f98f3/index.js"></script>
+          </div>
+        </div>
       </div>
     </section>
   </main>
