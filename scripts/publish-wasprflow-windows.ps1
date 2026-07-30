@@ -1,6 +1,6 @@
 param(
   [string]$SourceRoot = "F:\DEV\WASPrFlow",
-  [string]$WebsiteRoot = "F:\DEV\WEBSITE",
+  [string]$WebsiteRoot = "F:\DEV\wasprflow-site\public",
   [string]$MetricsEndpoint = "https://waspflow-payments.doubletakeutils.workers.dev/metrics/event"
 )
 
@@ -18,8 +18,8 @@ function Get-LatestInstaller([string]$Path, [string]$Filter) {
 
 $nsisDir = Join-Path $SourceRoot "src-tauri\target\release\bundle\nsis"
 $msiDir = Join-Path $SourceRoot "src-tauri\target\release\bundle\msi"
-$downloadsDir = Join-Path $WebsiteRoot "wasprflow\downloads"
-$indexPath = Join-Path $WebsiteRoot "wasprflow\index.html"
+$downloadsDir = Join-Path $WebsiteRoot "downloads"
+$indexPath = Join-Path $WebsiteRoot "index.html"
 
 $latestExe = Get-LatestInstaller -Path $nsisDir -Filter "WASPrFlow_*_x64-setup.exe"
 $latestMsi = Get-LatestInstaller -Path $msiDir -Filter "WASPrFlow_*_x64_en-US.msi"
@@ -49,7 +49,7 @@ Copy-Item -Path $latestExe.FullName -Destination $aliasExe -Force
 Copy-Item -Path $latestMsi.FullName -Destination $aliasMsi -Force
 
 $index = Get-Content -Path $indexPath -Raw
-$updated = [regex]::Replace($index, 'const VERSION = "[^"]+";', "const VERSION = `"$version`";")
+$updated = [regex]::Replace($index, 'const version = "[^"]+";', "const version = `"$version`";")
 if ($updated -ne $index) {
   Set-Content -Path $indexPath -Value $updated
 }
@@ -76,11 +76,11 @@ function Send-ReleaseMetric {
     event_id   = [guid]::NewGuid().ToString()
     event_time = (Get-Date).ToUniversalTime().ToString("o")
     page_name  = "wasprflow-release-publish"
-    page_path  = "/wasprflow/release"
-    page_url   = "file:///F:/DEV/WEBSITE/scripts/publish-wasprflow-windows.ps1"
+    page_path  = "/release"
+    page_url   = "file:///F:/DEV/wasprflow-site/scripts/publish-wasprflow-windows.ps1"
     target_name = "release_publish"
     version    = $ReleaseVersion
-    target_url = "https://doubletake.sbs/wasprflow/"
+    target_url = "https://wasprflow.xyz/"
     release_exe = $ExeName
     release_msi = $MsiName
   }

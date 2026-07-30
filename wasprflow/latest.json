@@ -4,15 +4,15 @@
   "pub_date": "2026-07-15T15:48:05Z",
   "platforms": {
     "windows-x86_64": {
-      "url": "https://doubletake.sbs/wasprflow/downloads/WASPrFlow_latest_x64-setup.exe",
+      "url": "https://wasprflow.xyz/downloads/WASPrFlow_latest_x64-setup.exe",
       "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTbG5BaVFFckFLS01RdDM3U0hya0RERlhxbTFEYUlkdm91aEVMNFF0Nyt1Q281bGcrLzBFYWJLeGFIYjNZNGErdWJRMFhwREI2Q2c1SWpJZmVvbXBXV1R0YmFvbEk2ZndJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg0MTQ0ODUzCWZpbGU6V0FTUHJGbG93XzEuMi4xNDhfeDY0LXNldHVwLmV4ZQpUYWJFUlNKQXNkdWJ2YTBQQWR4N3FqekY1NlJNNFlpTU05eUJlVW82UVRPL2xCeFAwZGRUSGtFdDBPYWE5SW1mZE5rY2ltaFN2SU44d3hNZzh2RnpBZz09Cg=="
     },
     "windows-x86_64-nsis": {
-      "url": "https://doubletake.sbs/wasprflow/downloads/WASPrFlow_latest_x64-setup.exe",
+      "url": "https://wasprflow.xyz/downloads/WASPrFlow_latest_x64-setup.exe",
       "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTbG5BaVFFckFLS01RdDM3U0hya0RERlhxbTFEYUlkdm91aEVMNFF0Nyt1Q281bGcrLzBFYWJLeGFIYjNZNGErdWJRMFhwREI2Q2c1SWpJZmVvbXBXV1R0YmFvbEk2ZndJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg0MTQ0ODUzCWZpbGU6V0FTUHJGbG93XzEuMi4xNDhfeDY0LXNldHVwLmV4ZQpUYWJFUlNKQXNkdWJ2YTBQQWR4N3FqekY1NlJNNFlpTU05eUJlVW82UVRPL2xCeFAwZGRUSGtFdDBPYWE5SW1mZE5rY2ltaFN2SU44d3hNZzh2RnpBZz09Cg=="
     },
     "windows-x86_64-msi": {
-      "url": "https://doubletake.sbs/wasprflow/downloads/WASPrFlow_latest_x64_en-US.msi",
+      "url": "https://wasprflow.xyz/downloads/WASPrFlow_latest_x64_en-US.msi",
       "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTbG5BaVFFckFLS0hUbUZ3ZGQ0SVFwbXgzSUF4Sm5pVDJHSUl4UVFocEQ5SllhM1lhV1czWk80cnc4VFhIMGNheDlIeWZickhKT0lpT250aGVURVV2d21LYTJ4OGd6M1FRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg0MTQ0ODUzCWZpbGU6V0FTUHJGbG93XzEuMi4xNDhfeDY0X2VuLVVTLm1zaQpTUWYvS2czZlE2NEVxU3RpYTJlWG5jYTlrR3FQc2JTK1c3b0JFMnlINXFpT25vRjZKTzFJTjVJck0zaUpBektNK2xRamhTZ21Fa2doTUplMjRVbjVBQT09Cg=="
     }
   }
