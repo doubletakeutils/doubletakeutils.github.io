@@ -11,6 +11,7 @@
   const SESSION_FIRST_PAGE_KEY = "doubletake-site-session-first-page-v1";
   const SESSION_LAST_PAGE_KEY = "doubletake-site-session-last-page-v1";
   const SESSION_PAGE_INDEX_KEY = "doubletake-site-session-page-index-v1";
+  const VISITOR_ID_KEY = "doubletake-site-visitor-id-v1";
   const SCROLL_KEY_PREFIX = "doubletake-site-scroll-reported-v1:";
   const scrollThresholds = [25, 50, 75, 90];
 
@@ -20,6 +21,19 @@
       ? crypto.randomUUID()
       : `sid_${Date.now()}_${Math.random().toString(16).slice(2)}`;
     sessionStorage.setItem(SESSION_ID_KEY, sessionId);
+  }
+
+  let visitorId = "";
+  try {
+    visitorId = localStorage.getItem(VISITOR_ID_KEY) || "";
+    if (!visitorId) {
+      visitorId = (crypto && typeof crypto.randomUUID === "function")
+        ? crypto.randomUUID()
+        : `vid_${Date.now()}_${Math.random().toString(16).slice(2)}`;
+      localStorage.setItem(VISITOR_ID_KEY, visitorId);
+    }
+  } catch {
+    visitorId = `vid_${Date.now()}_${Math.random().toString(16).slice(2)}`;
   }
 
   let sessionFirstPage = sessionStorage.getItem(SESSION_FIRST_PAGE_KEY);
@@ -91,6 +105,7 @@
     page_url: currentUrl,
     page_title: document.title || "",
     referrer: document.referrer || "",
+    visitor_id: visitorId,
     session_id: sessionId,
     session_first_page: sessionFirstPage,
     session_page_index: sessionPageIndex,
@@ -164,6 +179,9 @@
       target_name: target.dataset.metricsTarget || target.dataset.metricsName || target.getAttribute("href") || target.textContent.trim().slice(0, 80),
       product: target.dataset.metricsProduct || "",
       target_url: target.getAttribute("href") || "",
+      installer_type: target.dataset.metricsInstaller || "",
+      download_kind: target.dataset.metricsDownloadKind || "",
+      version: target.dataset.metricsVersion || "",
     });
     return true;
   }

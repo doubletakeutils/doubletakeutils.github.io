@@ -746,8 +746,8 @@
           Current release: <strong>1.2.152</strong>. These links point to the Windows installers currently published for the site.
         </p>
         <div class="hero-actions" style="margin-top: 20px;">
-          <a class="cta" id="downloadWindows" href="#">Download Free Trial EXE</a>
-          <a class="cta secondary" id="downloadMsi" href="#">Download Windows MSI</a>
+          <a class="cta" id="downloadWindows" href="#" data-metrics-event="download_started" data-metrics-product="WASPrFlow" data-metrics-installer="exe" data-metrics-download-kind="website_direct">Download Free Trial EXE</a>
+          <a class="cta secondary" id="downloadMsi" href="#" data-metrics-event="download_started" data-metrics-product="WASPrFlow" data-metrics-installer="msi" data-metrics-download-kind="website_direct">Download Windows MSI</a>
           <a class="cta secondary" href="https://shop.doubletake.sbs/" target="_blank" rel="noopener noreferrer">Visit Store</a>
         </div>
         <p class="feedback-invite">
@@ -813,8 +813,12 @@
         msi: downloadBase + "_en-US.msi",
       };
 
-      document.getElementById("downloadWindows").href = links.windows;
-      document.getElementById("downloadMsi").href = links.msi;
+      const downloadWindows = document.getElementById("downloadWindows");
+      const downloadMsi = document.getElementById("downloadMsi");
+      downloadWindows.href = links.windows;
+      downloadMsi.href = links.msi;
+      downloadWindows.dataset.metricsVersion = version;
+      downloadMsi.dataset.metricsVersion = version;
 
       const observer = new IntersectionObserver((entries) => {
         for (const entry of entries) {
