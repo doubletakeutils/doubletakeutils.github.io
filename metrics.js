@@ -1,5 +1,5 @@
 (function () {
-  const ENDPOINT = "https://waspflow-payments.doubletakeutils.workers.dev/metrics/event";
+  const ENDPOINT = "https://api.doubletake.sbs/metrics/event";
   const body = document.body;
   if (!body) return;
 

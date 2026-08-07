@@ -1,7 +1,7 @@
 param(
   [string]$SourceRoot = "F:\DEV\WASPrFlow",
   [string]$WebsiteRoot = "F:\DEV\wasprflow-site\public",
-  [string]$MetricsEndpoint = "https://waspflow-payments.doubletakeutils.workers.dev/metrics/event"
+  [string]$MetricsEndpoint = "https://api.doubletake.sbs/metrics/event"
 )
 
 $ErrorActionPreference = "Stop"
