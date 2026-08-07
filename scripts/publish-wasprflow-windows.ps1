@@ -73,6 +73,7 @@ function Send-ReleaseMetric {
 
   $payload = @{
     event_name = "update_install_success"
+    site_id    = "wasprflow"
     event_id   = [guid]::NewGuid().ToString()
     event_time = (Get-Date).ToUniversalTime().ToString("o")
     page_name  = "wasprflow-release-publish"

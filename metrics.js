@@ -4,6 +4,7 @@
   if (!body) return;
 
   const pageName = body.dataset.metricsPage || location.pathname.replace(/^\/+|\/+$/g, "") || "home";
+  const siteId = body.dataset.metricsSite || "doubletake";
   const sendViewContent = body.dataset.metricsContent === "true";
   const currentPath = location.pathname || "/";
   const currentUrl = location.href;
@@ -101,6 +102,7 @@
 
   const basePayload = () => ({
     page_name: pageName,
+    site_id: siteId,
     page_path: currentPath,
     page_url: currentUrl,
     page_title: document.title || "",
@@ -198,6 +200,14 @@
     }
     const sameOrigin = resolved.origin === location.origin;
     const targetName = target.dataset.metricsTarget || target.dataset.metricsName || target.textContent.trim().slice(0, 80) || resolved.pathname;
+    if (resolved.protocol === "tel:") {
+      emit("phone_click", { target_name: targetName, target_url: resolved.href, link_kind: "phone" });
+      return true;
+    }
+    if (resolved.protocol === "mailto:") {
+      emit("email_click", { target_name: targetName, target_url: resolved.href, link_kind: "email" });
+      return true;
+    }
     emit(sameOrigin ? "internal_nav_click" : "external_link_click", {
       target_name: targetName,
       target_url: resolved.href,
