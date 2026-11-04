@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Utilities | DoubleTake Utilities</title>
-  <meta name="description" content="Utilities section for NetAudit Pro, ASCII Art, and HDD Scanner." />
+  <meta name="description" content="Utilities section for ASCII Art and HDD Scanner." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
@@ -110,40 +110,12 @@
       <p>Operator-focused tools for discovery, cleanup, and practical day-to-day desktop work.</p>
       <p class="warning">Warning: All software titles in this Utilities section are currently work in progress.</p>
       <div class="actions">
-        <a class="btn primary" href="#netaudit-pro">NetAudit Pro</a>
-        <a class="btn secondary" href="#ascii-art">ASCII Art</a>
+        <a class="btn primary" href="#ascii-art">ASCII Art</a>
         <a class="btn secondary" href="#hdd-scanner">HDD Scanner</a>
       </div>
     </section>
 
     <section class="grid">
-      <article class="panel" id="netaudit-pro">
-        <h3>NetAudit Pro</h3>
-        <p>Network discovery and audit utility for day-to-day operator workflows.</p>
-        <div class="row-actions">
-          <a class="btn primary" id="btn-netaudit-setup" href="#">Download Setup EXE</a>
-          <a class="btn secondary" id="btn-netaudit-portable" href="#">Download Portable EXE</a>
-        </div>
-        <div class="info-cols">
-          <div class="subpanel">
-            <h4>Core Use</h4>
-            <ul>
-              <li>Network discovery and audit workflows.</li>
-              <li>Built for operator-first remediation runs.</li>
-              <li>Security-focused checks with actionable output.</li>
-            </ul>
-          </div>
-          <div class="subpanel">
-            <h4>Release</h4>
-            <ul>
-              <li>Setup and portable desktop builds.</li>
-              <li>Versioned website download links.</li>
-              <li>Structured run-to-run process and reporting.</li>
-            </ul>
-          </div>
-        </div>
-        <p class="mini">Current version: <span id="netaudit-version"></span></p>
-      </article>
       <article class="panel" id="ascii-art">
         <h3>ASCII Art</h3>
         <div class="row-actions">
@@ -199,12 +171,8 @@
   <footer class="wrap">DoubleTake Utilities • <a href="../terms.html">Terms</a> • <a href="../refund-policy.html">Refund Policy</a> • doubletake.sbs/utilities</footer>
 
   <script>
-    const NETAUDIT_VERSION = "0.2.31";
     const ASCII_VERSION = "1.0.4";
     const HDD_VERSION = "0.1.11";
-    document.getElementById("btn-netaudit-setup").href = `../netaudit-pro/downloads/NetAuditPro_${NETAUDIT_VERSION}_x64-setup.exe`;
-    document.getElementById("btn-netaudit-portable").href = `../netaudit-pro/downloads/NetAuditPro_${NETAUDIT_VERSION}_x64-portable.exe`;
-    document.getElementById("netaudit-version").textContent = NETAUDIT_VERSION;
     document.getElementById("btn-ascii-setup").href = `downloads/ASCIIArt_${ASCII_VERSION}_x64-setup.exe`;
     document.getElementById("btn-ascii-portable").href = `downloads/ASCIIArt_${ASCII_VERSION}_x64-portable.exe`;
     document.getElementById("ascii-version").textContent = ASCII_VERSION;
