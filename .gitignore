@@ -4,3 +4,21 @@
 !.dev.vars.example
 .env*
 !.env.example
+
+# Installers and archives are published as GitHub Release assets, not committed.
+# Every committed binary is permanent history weight. If one genuinely belongs
+# in the tree, stage it explicitly with: git add -f <path>
+*.exe
+*.msi
+*.msix
+*.dmg
+*.pkg
+*.zip
+*.7z
+*.iso
+*.rar
+*.cab
+*.part[0-9]*
+*.tar
+*.gz
+*.tgz
